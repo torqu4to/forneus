@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "tool": "amigatos",
+  "cost_unit": "fish_jelly_r1",
+  "captured_at": "2026-05-01",
+  "game_version": "unknown",
+  "categories": {
+    "Purple": {
+      "display_name": "Purple r1",
+      "effectiveness_rate": 0.3,
+      "tier": [
+        6,
+        6
+      ],
+      "levels": [
+        {
+          "level": 10,
+          "bracket_cost": 0,
+          "raw_power": 9350
+        },
+        {
+          "level": 20,
+          "bracket_cost": 70,
+          "raw_power": 11390
+        },
+        {
+          "level": 30,
+          "bracket_cost": 130,
+          "raw_power": 13870
+        },
+        {
+          "level": 40,
+          "bracket_cost": 200,
+          "raw_power": 16930
+        },
+        {
+          "level": 50,
+          "bracket_cost": 250,
+          "raw_power": 20470
+        },
+        {
+          "level": 60,
+          "bracket_cost": 300,
+          "raw_power": 24360
+        },
+        {
+          "level": 70,
+          "bracket_cost": 400,
+          "raw_power": 28690
+        },
+        {
+          "level": 80,
+          "bracket_cost": 500,
+          "raw_power": 33360
+        },
+        {
+          "level": 90,
+          "bracket_cost": 550,
+          "raw_power": 38830
+        },
+        {
+          "level": 100,
+          "bracket_cost": 600,
+          "raw_power": 44900
+        },
+        {
+          "level": 110,
+          "bracket_cost": 650,
+          "raw_power": 51690
+        },
+        {
+          "level": 120,
+          "bracket_cost": 700,
+          "raw_power": 58900
+        },
+        {
+          "level": 130,
+          "bracket_cost": 800,
+          "raw_power": 66510
+        },
+        {
+          "level": 140,
+          "bracket_cost": 900,
+          "raw_power": 74680
+        },
+        {
+          "level": "Max",
+          "bracket_cost": 950,
+          "raw_power": 76400
+        }
+      ]
+    },
+    "GoldR1": {
+      "display_name": "Gold r1",
+      "effectiveness_rate": 0.3,
+      "tier": [
+        6,
+        6
+      ],
+      "levels": [
+        {
+          "level": 10,
+          "bracket_cost": 0,
+          "raw_power": 17970
+        },
+        {
+          "level": 20,
+          "bracket_cost": 112,
+          "raw_power": 20910
+        },
+        {
+          "level": 30,
+          "bracket_cost": 208,
+          "raw_power": 24940
+        },
+        {
+          "level": 40,
+          "bracket_cost": 320,
+          "raw_power": 30050
+        },
+        {
+          "level": 50,
+          "bracket_cost": 400,
+          "raw_power": 36210
+        },
+        {
+          "level": 60,
+          "bracket_cost": 480,
+          "raw_power": 42920
+        },
+        {
+          "level": 70,
+          "bracket_cost": 640,
+          "raw_power": 50260
+        },
+        {
+          "level": 80,
+          "bracket_cost": 800,
+          "raw_power": 58420
+        },
+        {
+          "level": 90,
+          "bracket_cost": 880,
+          "raw_power": 67300
+        },
+        {
+          "level": 100,
+          "bracket_cost": 960,
+          "raw_power": 76900
+        },
+        {
+          "level": 110,
+          "bracket_cost": 1040,
+          "raw_power": 87360
+        },
+        {
+          "level": 120,
+          "bracket_cost": 1120,
+          "raw_power": 98980
+        },
+        {
+          "level": 130,
+          "bracket_cost": 1200,
+          "raw_power": 111250
+        },
+        {
+          "level": 140,
+          "bracket_cost": 1440,
+          "raw_power": 124220
+        },
+        {
+          "level": 150,
+          "bracket_cost": 1520,
+          "raw_power": 138380
+        },
+        {
+          "level": "Max",
+          "bracket_cost": 1600,
+          "raw_power": 141350
+        }
+      ]
+    },
+    "GoldR2": {
+      "display_name": "Gold r2",
+      "effectiveness_rate": 0.3,
+      "tier": [
+        6,
+        6
+      ],
+      "levels": [
+        {
+          "level": 10,
+          "bracket_cost": 0,
+          "raw_power": 38980
+        },
+        {
+          "level": 20,
+          "bracket_cost": 180,
+          "raw_power": 46530
+        },
+        {
+          "level": 30,
+          "bracket_cost": 330,
+          "raw_power": 56260
+        },
+        {
+          "level": 40,
+          "bracket_cost": 510,
+          "raw_power": 67170
+        },
+        {
+          "level": 50,
+          "bracket_cost": 645,
+          "raw_power": 79170
+        },
+        {
+          "level": 60,
+          "bracket_cost": 765,
+          "raw_power": 91410
+        },
+        {
+          "level": 70,
+          "bracket_cost": 1020,
+          "raw_power": 104490
+        },
+        {
+          "level": 80,
+          "bracket_cost": 1275,
+          "raw_power": 117810
+        },
+        {
+          "level": 90,
+          "bracket_cost": 1500,
+          "raw_power": 132340
+        },
+        {
+          "level": 100,
+          "bracket_cost": 1635,
+          "raw_power": 147460
+        },
+        {
+          "level": 110,
+          "bracket_cost": 2010,
+          "raw_power": 162700
+        },
+        {
+          "level": 120,
+          "bracket_cost": 2160,
+          "raw_power": 178540
+        },
+        {
+          "level": 130,
+          "bracket_cost": 2310,
+          "raw_power": 194510
+        },
+        {
+          "level": 140,
+          "bracket_cost": 3240,
+          "raw_power": 210590
+        },
+        {
+          "level": 150,
+          "bracket_cost": 3420,
+          "raw_power": 227410
+        },
+        {
+          "level": "Max",
+          "bracket_cost": 2400,
+          "raw_power": 230890
+        }
+      ]
+    },
+    "RedR1": {
+      "display_name": "Red r1",
+      "effectiveness_rate": 0.6,
+      "tier": [
+        6,
+        6
+      ],
+      "levels": [
+        {
+          "level": 10,
+          "bracket_cost": 0,
+          "raw_power": 30260
+        },
+        {
+          "level": 20,
+          "bracket_cost": 140,
+          "raw_power": 35180
+        },
+        {
+          "level": 30,
+          "bracket_cost": 260,
+          "raw_power": 41180
+        },
+        {
+          "level": 40,
+          "bracket_cost": 400,
+          "raw_power": 47900
+        },
+        {
+          "level": 50,
+          "bracket_cost": 500,
+          "raw_power": 56310
+        },
+        {
+          "level": 60,
+          "bracket_cost": 600,
+          "raw_power": 65890
+        },
+        {
+          "level": 70,
+          "bracket_cost": 800,
+          "raw_power": 76340
+        },
+        {
+          "level": 80,
+          "bracket_cost": 1000,
+          "raw_power": 87500
+        },
+        {
+          "level": 90,
+          "bracket_cost": 1100,
+          "raw_power": 99630
+        },
+        {
+          "level": 100,
+          "bracket_cost": 1200,
+          "raw_power": 112720
+        },
+        {
+          "level": 110,
+          "bracket_cost": 1400,
+          "raw_power": 128310
+        },
+        {
+          "level": 120,
+          "bracket_cost": 1500,
+          "raw_power": 145720
+        },
+        {
+          "level": 130,
+          "bracket_cost": 1600,
+          "raw_power": 165040
+        },
+        {
+          "level": 140,
+          "bracket_cost": 1800,
+          "raw_power": 185460
+        },
+        {
+          "level": 150,
+          "bracket_cost": 1900,
+          "raw_power": 207060
+        },
+        {
+          "level": 160,
+          "bracket_cost": 2000,
+          "raw_power": 230590
+        },
+        {
+          "level": "Max",
+          "bracket_cost": 2200,
+          "raw_power": 235500
+        }
+      ]
+    },
+    "RedR2": {
+      "display_name": "Red r2",
+      "effectiveness_rate": 0.6,
+      "tier": [
+        4,
+        6
+      ],
+      "levels": [
+        {
+          "level": 10,
+          "bracket_cost": 0,
+          "raw_power": 52450
+        },
+        {
+          "level": 20,
+          "bracket_cost": 225,
+          "raw_power": 61750
+        },
+        {
+          "level": 30,
+          "bracket_cost": 420,
+          "raw_power": 72970
+        },
+        {
+          "level": 40,
+          "bracket_cost": 645,
+          "raw_power": 85950
+        },
+        {
+          "level": 50,
+          "bracket_cost": 795,
+          "raw_power": 102070
+        },
+        {
+          "level": 60,
+          "bracket_cost": 960,
+          "raw_power": 120110
+        },
+        {
+          "level": 70,
+          "bracket_cost": 1275,
+          "raw_power": 139720
+        },
+        {
+          "level": 80,
+          "bracket_cost": 1605,
+          "raw_power": 161090
+        },
+        {
+          "level": 90,
+          "bracket_cost": 1755,
+          "raw_power": 184070
+        },
+        {
+          "level": 100,
+          "bracket_cost": 2040,
+          "raw_power": 208690
+        },
+        {
+          "level": 110,
+          "bracket_cost": 2385,
+          "raw_power": 234130
+        },
+        {
+          "level": 120,
+          "bracket_cost": 2700,
+          "raw_power": 260000
+        },
+        {
+          "level": 130,
+          "bracket_cost": 2880,
+          "raw_power": 286870
+        },
+        {
+          "level": 140,
+          "bracket_cost": 3240,
+          "raw_power": 314000
+        },
+        {
+          "level": 150,
+          "bracket_cost": 4275,
+          "raw_power": 341450
+        },
+        {
+          "level": 160,
+          "bracket_cost": 4500,
+          "raw_power": 370020
+        },
+        {
+          "level": "Max",
+          "bracket_cost": 4950,
+          "raw_power": 375950
+        }
+      ]
+    }
+  },
+  "display_order": [
+    "RedR2",
+    "RedR1",
+    "GoldR2",
+    "GoldR1",
+    "Purple"
+  ]
+}

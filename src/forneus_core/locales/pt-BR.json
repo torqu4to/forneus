@@ -1,0 +1,30 @@
+{
+  "tool.amigatos.title": "Otimizador de Amigatos",
+  "tool.amigatos.description": "Descubra a melhor distribuição da sua Fish Jelly entre os amigatos dos assist slots.",
+  "tool.fantasmas.title": "Otimizador de Fantasmas",
+  "tool.fantasmas.description": "Em breve.",
+  "tool.florais.title": "Guardiões Florais",
+  "tool.florais.description": "Em breve.",
+
+  "unit.fish_jelly_r1": "Fish Jelly r1",
+
+  "notice.amigatos.currencies_excluded": "Silverleaf e Dried Fish não são considerados; o resultado é ótimo apenas para Fish Jelly e estas tabelas.",
+  "notice.amigatos.provisional_tier": "{display_name} usa dados do tier {captured}/{max}.",
+
+  "error.payload.invalid": "Envie um objeto JSON válido.",
+  "error.counts.missing": "Informe as quantidades de amigatos.",
+  "error.category.unknown": "Categoria de amigato desconhecida.",
+  "error.counts.range": "As quantidades devem ser inteiros entre 0 e {max}.",
+  "error.team.too_large": "A equipe aceita até {max} amigatos no total.",
+  "error.jelly.range": "Informe Jelly inteira entre 0 e {max}.",
+  "error.jelly.insufficient": "Jelly insuficiente para o custo de entrada da equipe.",
+  "error.profile.missing": "Envie um perfil e a nova Jelly.",
+  "error.profile.shape": "O perfil precisa conter uma lista de amigatos.",
+  "error.profile.too_large": "Um perfil aceita no máximo {max} amigatos.",
+  "error.profile.entry_shape": "Cada amigato precisa ser um objeto.",
+  "error.profile.id_missing": "Cada amigato precisa de um id não vazio.",
+  "error.profile.id_duplicated": "Os ids dos amigatos devem ser únicos.",
+  "error.profile.level_invalid": "Nível {level} inválido para {display_name}.",
+  "error.profile.name_type": "O nome do amigato deve ser texto.",
+  "error.new_jelly.range": "A nova Jelly deve ser um inteiro não negativo."
+}

@@ -1,0 +1,9 @@
+# Normalize line endings in the repository; check out native on each platform.
+# This is what made the Phase 0 patch need --keep-cr on Windows.
+* text=auto
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff binary
+*.woff2 binary

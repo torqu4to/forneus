@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forneus-core"
+version = "0.2.0"
+description = "Shared core for forneus.wiki - optimization tools for Tree of Savior Neo"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Forneus" }]
+
+[project.urls]
+Homepage = "https://forneus.wiki"
+
+[project.scripts]
+forneus-amigatos = "forneus_core.tools.amigatos.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+dev = ["pytest", "flask>=3.0,<4", "jsonschema>=4"]
+web = ["flask>=3.0,<4"]
+
+[tool.setuptools.package-data]
+forneus_core = [
+    "templates/*.html",
+    "static/*.css",
+    "static/*.js",
+    "locales/*.json",
+    "data/*/*.json",
+    "data/_schema/*.json",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -1,0 +1,30 @@
+{
+  "tool.amigatos.title": "Catpal Optimizer",
+  "tool.amigatos.description": "Find the best way to spend your Fish Jelly across the catpals in your assist slots.",
+  "tool.fantasmas.title": "Ghost Optimizer",
+  "tool.fantasmas.description": "Coming soon.",
+  "tool.florais.title": "Floral Guardians",
+  "tool.florais.description": "Coming soon.",
+
+  "unit.fish_jelly_r1": "Fish Jelly r1",
+
+  "notice.amigatos.currencies_excluded": "Silverleaf and Dried Fish are not modeled; the result is optimal for Fish Jelly and these tables only.",
+  "notice.amigatos.provisional_tier": "{display_name} uses tier {captured}/{max} data.",
+
+  "error.payload.invalid": "Send a valid JSON object.",
+  "error.counts.missing": "Provide the catpal quantities.",
+  "error.category.unknown": "Unknown catpal category.",
+  "error.counts.range": "Quantities must be integers between 0 and {max}.",
+  "error.team.too_large": "A team supports at most {max} catpals in total.",
+  "error.jelly.range": "Provide an integer Jelly amount between 0 and {max}.",
+  "error.jelly.insufficient": "Not enough Jelly to cover the team's entry cost.",
+  "error.profile.missing": "Send a profile and the new Jelly amount.",
+  "error.profile.shape": "The profile must contain a catpals list.",
+  "error.profile.too_large": "A profile supports at most {max} catpals.",
+  "error.profile.entry_shape": "Each catpal must be an object.",
+  "error.profile.id_missing": "Each catpal needs a nonempty id.",
+  "error.profile.id_duplicated": "Catpal ids must be unique.",
+  "error.profile.level_invalid": "Invalid level {level} for {display_name}.",
+  "error.profile.name_type": "Catpal name must be text.",
+  "error.new_jelly.range": "New Jelly must be a nonnegative integer."
+}
