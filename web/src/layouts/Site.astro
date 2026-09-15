@@ -11,6 +11,13 @@ const t = useTranslations(locale);
 
 const site = Astro.site ?? new URL('https://forneus.wiki');
 const canonical = new URL(Astro.url.pathname, site);
+
+/* Only the real domain may be indexed. A temporary origin — the workers.dev
+   subdomain, a preview branch — would otherwise publish canonical URLs and
+   hreflang pointing at whatever host it was built for, and a duplicate of the
+   whole site would compete with it in search results. */
+const PRODUCTION_HOST = 'forneus.wiki';
+const indexable = site.host === PRODUCTION_HOST || site.host === `www.${PRODUCTION_HOST}`;
 ---
 <!doctype html>
 <html lang={LOCALE_TAG[locale]}>
@@ -19,6 +26,7 @@ const canonical = new URL(Astro.url.pathname, site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · Forneus</title>
     <meta name="description" content={description ?? t('site.tagline')} />
+    {!indexable && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical.href} />
 
     {/* Every page exists in both languages at a predictable path, so the
