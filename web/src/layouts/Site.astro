@@ -1,0 +1,74 @@
+---
+import '../styles/base.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { useTranslations, switchLocalePath, LOCALES, type Locale } from '../i18n/utils';
+import { LOCALE_TAG } from '../i18n/ui';
+
+interface Props { locale: Locale; title: string; description?: string; active?: string }
+const { locale, title, description, active } = Astro.props;
+const t = useTranslations(locale);
+
+const site = Astro.site ?? new URL('https://forneus.wiki');
+const canonical = new URL(Astro.url.pathname, site);
+---
+<!doctype html>
+<html lang={LOCALE_TAG[locale]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · Forneus</title>
+    <meta name="description" content={description ?? t('site.tagline')} />
+    <link rel="canonical" href={canonical.href} />
+
+    {/* Every page exists in both languages at a predictable path, so the
+        alternates are derivable rather than hand-maintained. */}
+    {LOCALES.map((code) => (
+      <link
+        rel="alternate"
+        hreflang={LOCALE_TAG[code]}
+        href={new URL(switchLocalePath(Astro.url.pathname, code), site).href}
+      />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(switchLocalePath(Astro.url.pathname, 'en'), site).href} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description ?? t('site.tagline')} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:locale" content={LOCALE_TAG[locale].replace('-', '_')} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    />
+  </head>
+  <body>
+    <a href="#main" class="skip">{t('nav.tools')}</a>
+    <SiteHeader locale={locale} active={active} />
+    <main id="main" class="page">
+      <slot />
+    </main>
+    <SiteFooter locale={locale} />
+
+    <style>
+      /* Content stops growing at --page-max and centers. No padding here:
+         each section brings its own gutter (the landing) or deliberately runs
+         to the edge (the tool page's striped grid). The header bar is left
+         full-bleed on purpose. */
+      .page {
+        max-width: var(--page-max);
+        margin-inline: auto;
+      }
+
+      .skip {
+        position: absolute; left: -9999px;
+        padding: var(--space-4) var(--space-7);
+        background: var(--accent); color: var(--accent-ink);
+      }
+      .skip:focus { left: var(--space-4); top: var(--space-4); z-index: var(--z-header); }
+    </style>
+  </body>
+</html>

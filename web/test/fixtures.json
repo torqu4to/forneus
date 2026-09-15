@@ -1,0 +1,8437 @@
+{
+ "generated_by": "scripts/generate_fixtures.py",
+ "cases": [
+  {
+   "note": "empty team keeps all jelly",
+   "input": {
+    "counts": {},
+    "total_jelly": 70
+   },
+   "expected": {
+    "totals": {
+     "budget": 70,
+     "entry_cost": 0,
+     "leveling_cost": 0,
+     "spent": 0,
+     "leftover": 70,
+     "raw_power": 0.0,
+     "effective_power": 0.0
+    },
+    "rows": [],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "zero budget stays at base level",
+   "input": {
+    "counts": {
+     "Purple": 1
+    },
+    "total_jelly": 0
+   },
+   "expected": {
+    "totals": {
+     "budget": 0,
+     "entry_cost": 0,
+     "leveling_cost": 0,
+     "spent": 0,
+     "leftover": 0,
+     "raw_power": 9350,
+     "effective_power": 2805.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "exactly one bracket",
+   "input": {
+    "counts": {
+     "Purple": 1
+    },
+    "total_jelly": 70
+   },
+   "expected": {
+    "totals": {
+     "budget": 70,
+     "entry_cost": 0,
+     "leveling_cost": 70,
+     "spent": 70,
+     "leftover": 0,
+     "raw_power": 11390,
+     "effective_power": 3417.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "budget below the cheapest step",
+   "input": {
+    "counts": {
+     "RedR2": 1
+    },
+    "total_jelly": 1
+   },
+   "expected": {
+    "totals": {
+     "budget": 1,
+     "entry_cost": 0,
+     "leveling_cost": 0,
+     "spent": 0,
+     "leftover": 1,
+     "raw_power": 52450,
+     "effective_power": 31470.0
+    },
+    "rows": [
+     {
+      "category": "RedR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 31470.0,
+      "raw_power": 52450
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "the example team used across the site",
+   "input": {
+    "counts": {
+     "RedR2": 1,
+     "RedR1": 1,
+     "GoldR2": 4,
+     "GoldR1": 5,
+     "Purple": 5
+    },
+    "total_jelly": 43671
+   },
+   "expected": {
+    "totals": {
+     "budget": 43671,
+     "entry_cost": 0,
+     "leveling_cost": 43665,
+     "spent": 43665,
+     "leftover": 6,
+     "raw_power": 1036360,
+     "effective_power": 466146.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "GoldR1",
+      "level": 40,
+      "cost": 640,
+      "effective_power": 9015.0,
+      "raw_power": 30050
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 130,
+      "cost": 17685,
+      "effective_power": 172122.0,
+      "raw_power": 286870
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "full team of the cheapest category",
+   "input": {
+    "counts": {
+     "Purple": 18
+    },
+    "total_jelly": 5000
+   },
+   "expected": {
+    "totals": {
+     "budget": 5000,
+     "entry_cost": 0,
+     "leveling_cost": 5000,
+     "spent": 5000,
+     "leftover": 0,
+     "raw_power": 271080,
+     "effective_power": 81324.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "full team of the priciest category",
+   "input": {
+    "counts": {
+     "RedR2": 18
+    },
+    "total_jelly": 100000
+   },
+   "expected": {
+    "totals": {
+     "budget": 100000,
+     "entry_cost": 0,
+     "leveling_cost": 99960,
+     "spent": 99960,
+     "leftover": 40,
+     "raw_power": 2805680,
+     "effective_power": 1683408.0
+    },
+    "rows": [
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "absurd budget must short-circuit, not overflow",
+   "input": {
+    "counts": {
+     "RedR2": 18
+    },
+    "total_jelly": 9007199254740991
+   },
+   "expected": {
+    "totals": {
+     "budget": 9007199254740991,
+     "entry_cost": 0,
+     "leveling_cost": 623700,
+     "spent": 623700,
+     "leftover": 9007199254117291,
+     "raw_power": 6767100,
+     "effective_power": 4060260.0
+    },
+    "rows": [
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     },
+     {
+      "category": "RedR2",
+      "level": "Max",
+      "cost": 34650,
+      "effective_power": 225570.0,
+      "raw_power": 375950
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #0",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 4,
+     "GoldR2": 5,
+     "RedR1": 0,
+     "RedR2": 4
+    },
+    "total_jelly": 27045
+   },
+   "expected": {
+    "totals": {
+     "budget": 27045,
+     "entry_cost": 0,
+     "leveling_cost": 27038,
+     "spent": 27038,
+     "leftover": 7,
+     "raw_power": 1064650,
+     "effective_power": 512703.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR2",
+      "level": 80,
+      "cost": 5925,
+      "effective_power": 96654.0,
+      "raw_power": 161090
+     },
+     {
+      "category": "RedR2",
+      "level": 80,
+      "cost": 5925,
+      "effective_power": 96654.0,
+      "raw_power": 161090
+     },
+     {
+      "category": "RedR2",
+      "level": 80,
+      "cost": 5925,
+      "effective_power": 96654.0,
+      "raw_power": 161090
+     },
+     {
+      "category": "RedR2",
+      "level": 80,
+      "cost": 5925,
+      "effective_power": 96654.0,
+      "raw_power": 161090
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #1",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 2,
+     "GoldR2": 5,
+     "RedR1": 0,
+     "RedR2": 3
+    },
+    "total_jelly": 38558
+   },
+   "expected": {
+    "totals": {
+     "budget": 38558,
+     "entry_cost": 0,
+     "leveling_cost": 38520,
+     "spent": 38520,
+     "leftover": 38,
+     "raw_power": 1037830,
+     "effective_power": 514434.0
+    },
+    "rows": [
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #2",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 4,
+     "GoldR2": 3,
+     "RedR1": 5,
+     "RedR2": 1
+    },
+    "total_jelly": 5245
+   },
+   "expected": {
+    "totals": {
+     "budget": 5245,
+     "entry_cost": 0,
+     "leveling_cost": 5225,
+     "spent": 5225,
+     "leftover": 20,
+     "raw_power": 531730,
+     "effective_power": 257322.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #3",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 0,
+     "GoldR2": 1,
+     "RedR1": 1,
+     "RedR2": 2
+    },
+    "total_jelly": 1664
+   },
+   "expected": {
+    "totals": {
+     "budget": 1664,
+     "entry_cost": 0,
+     "leveling_cost": 1610,
+     "spent": 1610,
+     "leftover": 54,
+     "raw_power": 227650,
+     "effective_power": 122631.0
+    },
+    "rows": [
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 20,
+      "cost": 140,
+      "effective_power": 21108.0,
+      "raw_power": 35180
+     },
+     {
+      "category": "RedR2",
+      "level": 30,
+      "cost": 645,
+      "effective_power": 43782.0,
+      "raw_power": 72970
+     },
+     {
+      "category": "RedR2",
+      "level": 30,
+      "cost": 645,
+      "effective_power": 43782.0,
+      "raw_power": 72970
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #4",
+   "input": {
+    "counts": {
+     "Purple": 2,
+     "GoldR1": 5,
+     "GoldR2": 3,
+     "RedR1": 3,
+     "RedR2": 5
+    },
+    "total_jelly": 21602
+   },
+   "expected": {
+    "totals": {
+     "budget": 21602,
+     "entry_cost": 0,
+     "leveling_cost": 21577,
+     "spent": 21577,
+     "leftover": 25,
+     "raw_power": 1049300,
+     "effective_power": 554256.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #5",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 0,
+     "GoldR2": 3,
+     "RedR1": 2,
+     "RedR2": 1
+    },
+    "total_jelly": 41147
+   },
+   "expected": {
+    "totals": {
+     "budget": 41147,
+     "entry_cost": 0,
+     "leveling_cost": 41110,
+     "spent": 41110,
+     "leftover": 37,
+     "raw_power": 851990,
+     "effective_power": 443019.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 140,
+      "cost": 12300,
+      "effective_power": 111276.0,
+      "raw_power": 185460
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #6",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 2,
+     "GoldR2": 1,
+     "RedR1": 2,
+     "RedR2": 0
+    },
+    "total_jelly": 40537
+   },
+   "expected": {
+    "totals": {
+     "budget": 40537,
+     "entry_cost": 0,
+     "leveling_cost": 40520,
+     "spent": 40520,
+     "leftover": 17,
+     "raw_power": 720660,
+     "effective_power": 354552.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 60,
+      "cost": 950,
+      "effective_power": 7308.0,
+      "raw_power": 24360
+     },
+     {
+      "category": "Purple",
+      "level": 50,
+      "cost": 650,
+      "effective_power": 6141.0,
+      "raw_power": 20470
+     },
+     {
+      "category": "Purple",
+      "level": 50,
+      "cost": 650,
+      "effective_power": 6141.0,
+      "raw_power": 20470
+     },
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR2",
+      "level": 60,
+      "cost": 2430,
+      "effective_power": 27423.0,
+      "raw_power": 91410
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #7",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 1,
+     "GoldR2": 2,
+     "RedR1": 1,
+     "RedR2": 1
+    },
+    "total_jelly": 1324
+   },
+   "expected": {
+    "totals": {
+     "budget": 1324,
+     "entry_cost": 0,
+     "leveling_cost": 1295,
+     "spent": 1295,
+     "leftover": 29,
+     "raw_power": 247720,
+     "effective_power": 108561.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR2",
+      "level": 30,
+      "cost": 645,
+      "effective_power": 43782.0,
+      "raw_power": 72970
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #8",
+   "input": {
+    "counts": {
+     "Purple": 2,
+     "GoldR1": 0,
+     "GoldR2": 1,
+     "RedR1": 2,
+     "RedR2": 1
+    },
+    "total_jelly": 72813
+   },
+   "expected": {
+    "totals": {
+     "budget": 72813,
+     "entry_cost": 0,
+     "leveling_cost": 72675,
+     "spent": 72675,
+     "leftover": 138,
+     "raw_power": 1037130,
+     "effective_power": 560499.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 100,
+      "cost": 3000,
+      "effective_power": 13470.0,
+      "raw_power": 44900
+     },
+     {
+      "category": "Purple",
+      "level": 70,
+      "cost": 1350,
+      "effective_power": 8607.0,
+      "raw_power": 28690
+     },
+     {
+      "category": "GoldR2",
+      "level": 90,
+      "cost": 6225,
+      "effective_power": 39702.0,
+      "raw_power": 132340
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 160,
+      "cost": 29700,
+      "effective_power": 222012.0,
+      "raw_power": 370020
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #9",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 5,
+     "GoldR2": 0,
+     "RedR1": 4,
+     "RedR2": 4
+    },
+    "total_jelly": 75283
+   },
+   "expected": {
+    "totals": {
+     "budget": 75283,
+     "entry_cost": 0,
+     "leveling_cost": 75268,
+     "spent": 75268,
+     "leftover": 15,
+     "raw_power": 1568180,
+     "effective_power": 897981.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 150,
+      "cost": 14200,
+      "effective_power": 124236.0,
+      "raw_power": 207060
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #10",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 1,
+     "GoldR2": 1,
+     "RedR1": 4,
+     "RedR2": 1
+    },
+    "total_jelly": 39793
+   },
+   "expected": {
+    "totals": {
+     "budget": 39793,
+     "entry_cost": 0,
+     "leveling_cost": 39742,
+     "spent": 39742,
+     "leftover": 51,
+     "raw_power": 814070,
+     "effective_power": 461130.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 140,
+      "cost": 12300,
+      "effective_power": 111276.0,
+      "raw_power": 185460
+     },
+     {
+      "category": "RedR1",
+      "level": 130,
+      "cost": 10500,
+      "effective_power": 99024.0,
+      "raw_power": 165040
+     },
+     {
+      "category": "RedR1",
+      "level": 80,
+      "cost": 3700,
+      "effective_power": 52500.0,
+      "raw_power": 87500
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #11",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 2,
+     "GoldR2": 5,
+     "RedR1": 3,
+     "RedR2": 2
+    },
+    "total_jelly": 3702
+   },
+   "expected": {
+    "totals": {
+     "budget": 3702,
+     "entry_cost": 0,
+     "leveling_cost": 3675,
+     "spent": 3675,
+     "leftover": 27,
+     "raw_power": 564000,
+     "effective_power": 253938.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR2",
+      "level": 40,
+      "cost": 1290,
+      "effective_power": 51570.0,
+      "raw_power": 85950
+     },
+     {
+      "category": "RedR2",
+      "level": 30,
+      "cost": 645,
+      "effective_power": 43782.0,
+      "raw_power": 72970
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #12",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 5,
+     "GoldR2": 2,
+     "RedR1": 3,
+     "RedR2": 3
+    },
+    "total_jelly": 7456
+   },
+   "expected": {
+    "totals": {
+     "budget": 7456,
+     "entry_cost": 0,
+     "leveling_cost": 7455,
+     "spent": 7455,
+     "leftover": 1,
+     "raw_power": 644310,
+     "effective_power": 322218.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR2",
+      "level": 50,
+      "cost": 2085,
+      "effective_power": 61242.0,
+      "raw_power": 102070
+     },
+     {
+      "category": "RedR2",
+      "level": 50,
+      "cost": 2085,
+      "effective_power": 61242.0,
+      "raw_power": 102070
+     },
+     {
+      "category": "RedR2",
+      "level": 50,
+      "cost": 2085,
+      "effective_power": 61242.0,
+      "raw_power": 102070
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #13",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 4,
+     "GoldR2": 0,
+     "RedR1": 1,
+     "RedR2": 0
+    },
+    "total_jelly": 26203
+   },
+   "expected": {
+    "totals": {
+     "budget": 26203,
+     "entry_cost": 0,
+     "leveling_cost": 26200,
+     "spent": 26200,
+     "leftover": 3,
+     "raw_power": 443590,
+     "effective_power": 202254.0
+    },
+    "rows": [
+     {
+      "category": "GoldR1",
+      "level": 100,
+      "cost": 4800,
+      "effective_power": 23070.0,
+      "raw_power": 76900
+     },
+     {
+      "category": "GoldR1",
+      "level": 70,
+      "cost": 2160,
+      "effective_power": 15078.0,
+      "raw_power": 50260
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #14",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 2,
+     "GoldR2": 0,
+     "RedR1": 1,
+     "RedR2": 3
+    },
+    "total_jelly": 77601
+   },
+   "expected": {
+    "totals": {
+     "budget": 77601,
+     "entry_cost": 0,
+     "leveling_cost": 77575,
+     "spent": 77575,
+     "leftover": 26,
+     "raw_power": 1267750,
+     "effective_power": 723963.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 140,
+      "cost": 20925,
+      "effective_power": 188400.0,
+      "raw_power": 314000
+     },
+     {
+      "category": "RedR2",
+      "level": 140,
+      "cost": 20925,
+      "effective_power": 188400.0,
+      "raw_power": 314000
+     },
+     {
+      "category": "RedR2",
+      "level": 130,
+      "cost": 17685,
+      "effective_power": 172122.0,
+      "raw_power": 286870
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #15",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 5,
+     "GoldR2": 4,
+     "RedR1": 4,
+     "RedR2": 2
+    },
+    "total_jelly": 72154
+   },
+   "expected": {
+    "totals": {
+     "budget": 72154,
+     "entry_cost": 0,
+     "leveling_cost": 72128,
+     "spent": 72128,
+     "leftover": 26,
+     "raw_power": 1517880,
+     "effective_power": 803952.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 150,
+      "cost": 14200,
+      "effective_power": 124236.0,
+      "raw_power": 207060
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #16",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 3,
+     "GoldR2": 3,
+     "RedR1": 3,
+     "RedR2": 1
+    },
+    "total_jelly": 78093
+   },
+   "expected": {
+    "totals": {
+     "budget": 78093,
+     "entry_cost": 0,
+     "leveling_cost": 78085,
+     "spent": 78085,
+     "leftover": 8,
+     "raw_power": 1412970,
+     "effective_power": 725622.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "GoldR1",
+      "level": 40,
+      "cost": 640,
+      "effective_power": 9015.0,
+      "raw_power": 30050
+     },
+     {
+      "category": "GoldR1",
+      "level": 40,
+      "cost": 640,
+      "effective_power": 9015.0,
+      "raw_power": 30050
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR2",
+      "level": 60,
+      "cost": 2430,
+      "effective_power": 27423.0,
+      "raw_power": 91410
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 140,
+      "cost": 20925,
+      "effective_power": 188400.0,
+      "raw_power": 314000
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #17",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 2,
+     "GoldR2": 0,
+     "RedR1": 4,
+     "RedR2": 4
+    },
+    "total_jelly": 39194
+   },
+   "expected": {
+    "totals": {
+     "budget": 39194,
+     "entry_cost": 0,
+     "leveling_cost": 39190,
+     "spent": 39190,
+     "leftover": 4,
+     "raw_power": 1057620,
+     "effective_power": 620373.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #18",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 1,
+     "GoldR2": 1,
+     "RedR1": 3,
+     "RedR2": 5
+    },
+    "total_jelly": 17905
+   },
+   "expected": {
+    "totals": {
+     "budget": 17905,
+     "entry_cost": 0,
+     "leveling_cost": 17905,
+     "spent": 17905,
+     "leftover": 0,
+     "raw_power": 810440,
+     "effective_power": 466914.0
+    },
+    "rows": [
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 50,
+      "cost": 1300,
+      "effective_power": 33786.0,
+      "raw_power": 56310
+     },
+     {
+      "category": "RedR1",
+      "level": 40,
+      "cost": 800,
+      "effective_power": 28740.0,
+      "raw_power": 47900
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #19",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 1,
+     "GoldR2": 1,
+     "RedR1": 1,
+     "RedR2": 3
+    },
+    "total_jelly": 37399
+   },
+   "expected": {
+    "totals": {
+     "budget": 37399,
+     "entry_cost": 0,
+     "leveling_cost": 37390,
+     "spent": 37390,
+     "leftover": 9,
+     "raw_power": 835580,
+     "effective_power": 476988.0
+    },
+    "rows": [
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 110,
+      "cost": 7400,
+      "effective_power": 76986.0,
+      "raw_power": 128310
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #20",
+   "input": {
+    "counts": {
+     "Purple": 2,
+     "GoldR1": 4,
+     "GoldR2": 3,
+     "RedR1": 4,
+     "RedR2": 1
+    },
+    "total_jelly": 39532
+   },
+   "expected": {
+    "totals": {
+     "budget": 39532,
+     "entry_cost": 0,
+     "leveling_cost": 39524,
+     "spent": 39524,
+     "leftover": 8,
+     "raw_power": 982980,
+     "effective_power": 505719.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 90,
+      "cost": 4800,
+      "effective_power": 59778.0,
+      "raw_power": 99630
+     },
+     {
+      "category": "RedR1",
+      "level": 80,
+      "cost": 3700,
+      "effective_power": 52500.0,
+      "raw_power": 87500
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #21",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 0,
+     "GoldR2": 4,
+     "RedR1": 4,
+     "RedR2": 0
+    },
+    "total_jelly": 39628
+   },
+   "expected": {
+    "totals": {
+     "budget": 39628,
+     "entry_cost": 0,
+     "leveling_cost": 39510,
+     "spent": 39510,
+     "leftover": 118,
+     "raw_power": 829170,
+     "effective_power": 432909.0
+    },
+    "rows": [
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #22",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 2,
+     "GoldR2": 0,
+     "RedR1": 3,
+     "RedR2": 1
+    },
+    "total_jelly": 11500
+   },
+   "expected": {
+    "totals": {
+     "budget": 11500,
+     "entry_cost": 0,
+     "leveling_cost": 11490,
+     "spent": 11490,
+     "leftover": 10,
+     "raw_power": 447700,
+     "effective_power": 238662.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #23",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 4,
+     "GoldR2": 3,
+     "RedR1": 0,
+     "RedR2": 2
+    },
+    "total_jelly": 49029
+   },
+   "expected": {
+    "totals": {
+     "budget": 49029,
+     "entry_cost": 0,
+     "leveling_cost": 48995,
+     "spent": 48995,
+     "leftover": 34,
+     "raw_power": 1032140,
+     "effective_power": 498042.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "GoldR2",
+      "level": 50,
+      "cost": 1665,
+      "effective_power": 23751.0,
+      "raw_power": 79170
+     },
+     {
+      "category": "RedR2",
+      "level": 140,
+      "cost": 20925,
+      "effective_power": 188400.0,
+      "raw_power": 314000
+     },
+     {
+      "category": "RedR2",
+      "level": 140,
+      "cost": 20925,
+      "effective_power": 188400.0,
+      "raw_power": 314000
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #24",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 5,
+     "GoldR2": 4,
+     "RedR1": 2,
+     "RedR2": 2
+    },
+    "total_jelly": 62455
+   },
+   "expected": {
+    "totals": {
+     "budget": 62455,
+     "entry_cost": 0,
+     "leveling_cost": 62414,
+     "spent": 62414,
+     "leftover": 41,
+     "raw_power": 1365280,
+     "effective_power": 688416.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #25",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 2,
+     "GoldR2": 0,
+     "RedR1": 2,
+     "RedR2": 2
+    },
+    "total_jelly": 13993
+   },
+   "expected": {
+    "totals": {
+     "budget": 13993,
+     "entry_cost": 0,
+     "leveling_cost": 13944,
+     "spent": 13944,
+     "leftover": 49,
+     "raw_power": 522920,
+     "effective_power": 283377.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #26",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 4,
+     "GoldR2": 3,
+     "RedR1": 0,
+     "RedR2": 3
+    },
+    "total_jelly": 12930
+   },
+   "expected": {
+    "totals": {
+     "budget": 12930,
+     "entry_cost": 0,
+     "leveling_cost": 12885,
+     "spent": 12885,
+     "leftover": 45,
+     "raw_power": 639830,
+     "effective_power": 311814.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #27",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 4,
+     "GoldR2": 1,
+     "RedR1": 5,
+     "RedR2": 4
+    },
+    "total_jelly": 2401
+   },
+   "expected": {
+    "totals": {
+     "budget": 2401,
+     "entry_cost": 0,
+     "leveling_cost": 2392,
+     "spent": 2392,
+     "leftover": 9,
+     "raw_power": 581970,
+     "effective_power": 306627.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 20,
+      "cost": 140,
+      "effective_power": 21108.0,
+      "raw_power": 35180
+     },
+     {
+      "category": "RedR1",
+      "level": 20,
+      "cost": 140,
+      "effective_power": 21108.0,
+      "raw_power": 35180
+     },
+     {
+      "category": "RedR1",
+      "level": 20,
+      "cost": 140,
+      "effective_power": 21108.0,
+      "raw_power": 35180
+     },
+     {
+      "category": "RedR1",
+      "level": 20,
+      "cost": 140,
+      "effective_power": 21108.0,
+      "raw_power": 35180
+     },
+     {
+      "category": "RedR2",
+      "level": 30,
+      "cost": 645,
+      "effective_power": 43782.0,
+      "raw_power": 72970
+     },
+     {
+      "category": "RedR2",
+      "level": 20,
+      "cost": 225,
+      "effective_power": 37050.0,
+      "raw_power": 61750
+     },
+     {
+      "category": "RedR2",
+      "level": 20,
+      "cost": 225,
+      "effective_power": 37050.0,
+      "raw_power": 61750
+     },
+     {
+      "category": "RedR2",
+      "level": 20,
+      "cost": 225,
+      "effective_power": 37050.0,
+      "raw_power": 61750
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #28",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 5,
+     "GoldR2": 1,
+     "RedR1": 2,
+     "RedR2": 1
+    },
+    "total_jelly": 77553
+   },
+   "expected": {
+    "totals": {
+     "budget": 77553,
+     "entry_cost": 0,
+     "leveling_cost": 77520,
+     "spent": 77520,
+     "leftover": 33,
+     "raw_power": 1266350,
+     "effective_power": 629265.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 60,
+      "cost": 950,
+      "effective_power": 7308.0,
+      "raw_power": 24360
+     },
+     {
+      "category": "Purple",
+      "level": 60,
+      "cost": 950,
+      "effective_power": 7308.0,
+      "raw_power": 24360
+     },
+     {
+      "category": "Purple",
+      "level": 60,
+      "cost": 950,
+      "effective_power": 7308.0,
+      "raw_power": 24360
+     },
+     {
+      "category": "Purple",
+      "level": 60,
+      "cost": 950,
+      "effective_power": 7308.0,
+      "raw_power": 24360
+     },
+     {
+      "category": "Purple",
+      "level": 60,
+      "cost": 950,
+      "effective_power": 7308.0,
+      "raw_power": 24360
+     },
+     {
+      "category": "GoldR1",
+      "level": 70,
+      "cost": 2160,
+      "effective_power": 15078.0,
+      "raw_power": 50260
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR2",
+      "level": 60,
+      "cost": 2430,
+      "effective_power": 27423.0,
+      "raw_power": 91410
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 160,
+      "cost": 29700,
+      "effective_power": 222012.0,
+      "raw_power": 370020
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #29",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 0,
+     "GoldR2": 1,
+     "RedR1": 3,
+     "RedR2": 1
+    },
+    "total_jelly": 60100
+   },
+   "expected": {
+    "totals": {
+     "budget": 60100,
+     "entry_cost": 0,
+     "leveling_cost": 60080,
+     "spent": 60080,
+     "leftover": 20,
+     "raw_power": 1021210,
+     "effective_power": 576501.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 40,
+      "cost": 400,
+      "effective_power": 5079.0,
+      "raw_power": 16930
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #30",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 1,
+     "GoldR2": 1,
+     "RedR1": 0,
+     "RedR2": 1
+    },
+    "total_jelly": 53622
+   },
+   "expected": {
+    "totals": {
+     "budget": 53622,
+     "entry_cost": 0,
+     "leveling_cost": 53585,
+     "spent": 53585,
+     "leftover": 37,
+     "raw_power": 754570,
+     "effective_power": 337377.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 120,
+      "cost": 4350,
+      "effective_power": 17670.0,
+      "raw_power": 58900
+     },
+     {
+      "category": "Purple",
+      "level": 110,
+      "cost": 3650,
+      "effective_power": 15507.0,
+      "raw_power": 51690
+     },
+     {
+      "category": "Purple",
+      "level": 100,
+      "cost": 3000,
+      "effective_power": 13470.0,
+      "raw_power": 44900
+     },
+     {
+      "category": "GoldR1",
+      "level": 130,
+      "cost": 8160,
+      "effective_power": 33375.0,
+      "raw_power": 111250
+     },
+     {
+      "category": "GoldR2",
+      "level": 80,
+      "cost": 4725,
+      "effective_power": 35343.0,
+      "raw_power": 117810
+     },
+     {
+      "category": "RedR2",
+      "level": 160,
+      "cost": 29700,
+      "effective_power": 222012.0,
+      "raw_power": 370020
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #31",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 4,
+     "GoldR2": 1,
+     "RedR1": 1,
+     "RedR2": 5
+    },
+    "total_jelly": 21872
+   },
+   "expected": {
+    "totals": {
+     "budget": 21872,
+     "entry_cost": 0,
+     "leveling_cost": 21866,
+     "spent": 21866,
+     "leftover": 6,
+     "raw_power": 873620,
+     "effective_power": 479667.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #32",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 1,
+     "GoldR2": 4,
+     "RedR1": 2,
+     "RedR2": 3
+    },
+    "total_jelly": 18552
+   },
+   "expected": {
+    "totals": {
+     "budget": 18552,
+     "entry_cost": 0,
+     "leveling_cost": 18540,
+     "spent": 18540,
+     "leftover": 12,
+     "raw_power": 823660,
+     "effective_power": 412380.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #33",
+   "input": {
+    "counts": {
+     "Purple": 2,
+     "GoldR1": 3,
+     "GoldR2": 3,
+     "RedR1": 3,
+     "RedR2": 4
+    },
+    "total_jelly": 72630
+   },
+   "expected": {
+    "totals": {
+     "budget": 72630,
+     "entry_cost": 0,
+     "leveling_cost": 72596,
+     "spent": 72596,
+     "leftover": 34,
+     "raw_power": 1592350,
+     "effective_power": 875850.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 140,
+      "cost": 12300,
+      "effective_power": 111276.0,
+      "raw_power": 185460
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #34",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 1,
+     "GoldR2": 3,
+     "RedR1": 5,
+     "RedR2": 3
+    },
+    "total_jelly": 58936
+   },
+   "expected": {
+    "totals": {
+     "budget": 58936,
+     "entry_cost": 0,
+     "leveling_cost": 58872,
+     "spent": 58872,
+     "leftover": 64,
+     "raw_power": 1374260,
+     "effective_power": 764232.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 80,
+      "cost": 3700,
+      "effective_power": 52500.0,
+      "raw_power": 87500
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #35",
+   "input": {
+    "counts": {
+     "Purple": 2,
+     "GoldR1": 4,
+     "GoldR2": 0,
+     "RedR1": 3,
+     "RedR2": 0
+    },
+    "total_jelly": 55037
+   },
+   "expected": {
+    "totals": {
+     "budget": 55037,
+     "entry_cost": 0,
+     "leveling_cost": 55020,
+     "spent": 55020,
+     "leftover": 17,
+     "raw_power": 890970,
+     "effective_power": 474822.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 50,
+      "cost": 650,
+      "effective_power": 6141.0,
+      "raw_power": 20470
+     },
+     {
+      "category": "Purple",
+      "level": 50,
+      "cost": 650,
+      "effective_power": 6141.0,
+      "raw_power": 20470
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR1",
+      "level": 60,
+      "cost": 1520,
+      "effective_power": 12876.0,
+      "raw_power": 42920
+     },
+     {
+      "category": "GoldR1",
+      "level": 50,
+      "cost": 1040,
+      "effective_power": 10863.0,
+      "raw_power": 36210
+     },
+     {
+      "category": "GoldR1",
+      "level": 50,
+      "cost": 1040,
+      "effective_power": 10863.0,
+      "raw_power": 36210
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #36",
+   "input": {
+    "counts": {
+     "Purple": 2,
+     "GoldR1": 5,
+     "GoldR2": 0,
+     "RedR1": 1,
+     "RedR2": 5
+    },
+    "total_jelly": 77210
+   },
+   "expected": {
+    "totals": {
+     "budget": 77210,
+     "entry_cost": 0,
+     "leveling_cost": 77201,
+     "spent": 77201,
+     "leftover": 9,
+     "raw_power": 1522690,
+     "effective_power": 877179.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #37",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 2,
+     "GoldR2": 5,
+     "RedR1": 5,
+     "RedR2": 1
+    },
+    "total_jelly": 68165
+   },
+   "expected": {
+    "totals": {
+     "budget": 68165,
+     "entry_cost": 0,
+     "leveling_cost": 68074,
+     "spent": 68074,
+     "leftover": 91,
+     "raw_power": 1409720,
+     "effective_power": 742206.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 80,
+      "cost": 3700,
+      "effective_power": 52500.0,
+      "raw_power": 87500
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #38",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 1,
+     "GoldR2": 4,
+     "RedR1": 5,
+     "RedR2": 3
+    },
+    "total_jelly": 22160
+   },
+   "expected": {
+    "totals": {
+     "budget": 22160,
+     "entry_cost": 0,
+     "leveling_cost": 22147,
+     "spent": 22147,
+     "leftover": 13,
+     "raw_power": 957300,
+     "effective_power": 503016.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 50,
+      "cost": 1300,
+      "effective_power": 33786.0,
+      "raw_power": 56310
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #39",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 1,
+     "GoldR2": 2,
+     "RedR1": 0,
+     "RedR2": 0
+    },
+    "total_jelly": 33225
+   },
+   "expected": {
+    "totals": {
+     "budget": 33225,
+     "entry_cost": 0,
+     "leveling_cost": 33020,
+     "spent": 33020,
+     "leftover": 205,
+     "raw_power": 479620,
+     "effective_power": 143886.0
+    },
+    "rows": [
+     {
+      "category": "GoldR1",
+      "level": 150,
+      "cost": 11120,
+      "effective_power": 41514.0,
+      "raw_power": 138380
+     },
+     {
+      "category": "GoldR2",
+      "level": 120,
+      "cost": 12030,
+      "effective_power": 53562.0,
+      "raw_power": 178540
+     },
+     {
+      "category": "GoldR2",
+      "level": 110,
+      "cost": 9870,
+      "effective_power": 48810.0,
+      "raw_power": 162700
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #40",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 3,
+     "GoldR2": 5,
+     "RedR1": 4,
+     "RedR2": 1
+    },
+    "total_jelly": 11526
+   },
+   "expected": {
+    "totals": {
+     "budget": 11526,
+     "entry_cost": 0,
+     "leveling_cost": 11519,
+     "spent": 11519,
+     "leftover": 7,
+     "raw_power": 723480,
+     "effective_power": 329271.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 50,
+      "cost": 1300,
+      "effective_power": 33786.0,
+      "raw_power": 56310
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #41",
+   "input": {
+    "counts": {
+     "Purple": 5,
+     "GoldR1": 1,
+     "GoldR2": 0,
+     "RedR1": 0,
+     "RedR2": 5
+    },
+    "total_jelly": 16827
+   },
+   "expected": {
+    "totals": {
+     "budget": 16827,
+     "entry_cost": 0,
+     "leveling_cost": 16822,
+     "spent": 16822,
+     "leftover": 5,
+     "raw_power": 693940,
+     "effective_power": 394230.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #42",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 4,
+     "GoldR2": 3,
+     "RedR1": 2,
+     "RedR2": 1
+    },
+    "total_jelly": 14641
+   },
+   "expected": {
+    "totals": {
+     "budget": 14641,
+     "entry_cost": 0,
+     "leveling_cost": 14610,
+     "spent": 14610,
+     "leftover": 31,
+     "raw_power": 577410,
+     "effective_power": 274248.0
+    },
+    "rows": [
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #43",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 5,
+     "GoldR2": 3,
+     "RedR1": 5,
+     "RedR2": 1
+    },
+    "total_jelly": 68705
+   },
+   "expected": {
+    "totals": {
+     "budget": 68705,
+     "entry_cost": 0,
+     "leveling_cost": 68700,
+     "spent": 68700,
+     "leftover": 5,
+     "raw_power": 1406230,
+     "effective_power": 744798.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 90,
+      "cost": 4800,
+      "effective_power": 59778.0,
+      "raw_power": 99630
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #44",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 0,
+     "GoldR2": 4,
+     "RedR1": 4,
+     "RedR2": 5
+    },
+    "total_jelly": 51591
+   },
+   "expected": {
+    "totals": {
+     "budget": 51591,
+     "entry_cost": 0,
+     "leveling_cost": 51525,
+     "spent": 51525,
+     "leftover": 66,
+     "raw_power": 1452390,
+     "effective_power": 803922.0
+    },
+    "rows": [
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 80,
+      "cost": 5925,
+      "effective_power": 96654.0,
+      "raw_power": 161090
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #45",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 5,
+     "GoldR2": 4,
+     "RedR1": 2,
+     "RedR2": 5
+    },
+    "total_jelly": 48909
+   },
+   "expected": {
+    "totals": {
+     "budget": 48909,
+     "entry_cost": 0,
+     "leveling_cost": 48908,
+     "spent": 48908,
+     "leftover": 1,
+     "raw_power": 1446600,
+     "effective_power": 763275.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #46",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 2,
+     "GoldR2": 4,
+     "RedR1": 1,
+     "RedR2": 5
+    },
+    "total_jelly": 69230
+   },
+   "expected": {
+    "totals": {
+     "budget": 69230,
+     "entry_cost": 0,
+     "leveling_cost": 69212,
+     "spent": 69212,
+     "leftover": 18,
+     "raw_power": 1625700,
+     "effective_power": 869922.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #47",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 2,
+     "GoldR2": 2,
+     "RedR1": 2,
+     "RedR2": 4
+    },
+    "total_jelly": 5812
+   },
+   "expected": {
+    "totals": {
+     "budget": 5812,
+     "entry_cost": 0,
+     "leveling_cost": 5787,
+     "spent": 5787,
+     "leftover": 25,
+     "raw_power": 545120,
+     "effective_power": 287490.0
+    },
+    "rows": [
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR2",
+      "level": 40,
+      "cost": 1290,
+      "effective_power": 51570.0,
+      "raw_power": 85950
+     },
+     {
+      "category": "RedR2",
+      "level": 40,
+      "cost": 1290,
+      "effective_power": 51570.0,
+      "raw_power": 85950
+     },
+     {
+      "category": "RedR2",
+      "level": 40,
+      "cost": 1290,
+      "effective_power": 51570.0,
+      "raw_power": 85950
+     },
+     {
+      "category": "RedR2",
+      "level": 30,
+      "cost": 645,
+      "effective_power": 43782.0,
+      "raw_power": 72970
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #48",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 0,
+     "GoldR2": 3,
+     "RedR1": 1,
+     "RedR2": 4
+    },
+    "total_jelly": 60444
+   },
+   "expected": {
+    "totals": {
+     "budget": 60444,
+     "entry_cost": 0,
+     "leveling_cost": 60415,
+     "spent": 60415,
+     "leftover": 29,
+     "raw_power": 1318480,
+     "effective_power": 722781.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #49",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 1,
+     "GoldR2": 5,
+     "RedR1": 1,
+     "RedR2": 3
+    },
+    "total_jelly": 32181
+   },
+   "expected": {
+    "totals": {
+     "budget": 32181,
+     "entry_cost": 0,
+     "leveling_cost": 32152,
+     "spent": 32152,
+     "leftover": 29,
+     "raw_power": 970270,
+     "effective_power": 494418.0
+    },
+    "rows": [
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #50",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 1,
+     "GoldR2": 3,
+     "RedR1": 3,
+     "RedR2": 5
+    },
+    "total_jelly": 11020
+   },
+   "expected": {
+    "totals": {
+     "budget": 11020,
+     "entry_cost": 0,
+     "leveling_cost": 11010,
+     "spent": 11010,
+     "leftover": 10,
+     "raw_power": 788280,
+     "effective_power": 421815.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "GoldR2",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 11694.0,
+      "raw_power": 38980
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR1",
+      "level": 30,
+      "cost": 400,
+      "effective_power": 24708.0,
+      "raw_power": 41180
+     },
+     {
+      "category": "RedR2",
+      "level": 50,
+      "cost": 2085,
+      "effective_power": 61242.0,
+      "raw_power": 102070
+     },
+     {
+      "category": "RedR2",
+      "level": 50,
+      "cost": 2085,
+      "effective_power": 61242.0,
+      "raw_power": 102070
+     },
+     {
+      "category": "RedR2",
+      "level": 50,
+      "cost": 2085,
+      "effective_power": 61242.0,
+      "raw_power": 102070
+     },
+     {
+      "category": "RedR2",
+      "level": 50,
+      "cost": 2085,
+      "effective_power": 61242.0,
+      "raw_power": 102070
+     },
+     {
+      "category": "RedR2",
+      "level": 40,
+      "cost": 1290,
+      "effective_power": 51570.0,
+      "raw_power": 85950
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #51",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 5,
+     "GoldR2": 4,
+     "RedR1": 2,
+     "RedR2": 3
+    },
+    "total_jelly": 69911
+   },
+   "expected": {
+    "totals": {
+     "budget": 69911,
+     "entry_cost": 0,
+     "leveling_cost": 69910,
+     "spent": 69910,
+     "leftover": 1,
+     "raw_power": 1517760,
+     "effective_power": 796767.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 110,
+      "cost": 12105,
+      "effective_power": 140478.0,
+      "raw_power": 234130
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #52",
+   "input": {
+    "counts": {
+     "Purple": 1,
+     "GoldR1": 3,
+     "GoldR2": 1,
+     "RedR1": 4,
+     "RedR2": 1
+    },
+    "total_jelly": 7478
+   },
+   "expected": {
+    "totals": {
+     "budget": 7478,
+     "entry_cost": 0,
+     "leveling_cost": 7425,
+     "spent": 7425,
+     "leftover": 53,
+     "raw_power": 438320,
+     "effective_power": 230055.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 50,
+      "cost": 1300,
+      "effective_power": 33786.0,
+      "raw_power": 56310
+     },
+     {
+      "category": "RedR1",
+      "level": 50,
+      "cost": 1300,
+      "effective_power": 33786.0,
+      "raw_power": 56310
+     },
+     {
+      "category": "RedR1",
+      "level": 40,
+      "cost": 800,
+      "effective_power": 28740.0,
+      "raw_power": 47900
+     },
+     {
+      "category": "RedR1",
+      "level": 40,
+      "cost": 800,
+      "effective_power": 28740.0,
+      "raw_power": 47900
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #53",
+   "input": {
+    "counts": {
+     "Purple": 2,
+     "GoldR1": 1,
+     "GoldR2": 0,
+     "RedR1": 0,
+     "RedR2": 2
+    },
+    "total_jelly": 77003
+   },
+   "expected": {
+    "totals": {
+     "budget": 77003,
+     "entry_cost": 0,
+     "leveling_cost": 77000,
+     "spent": 77000,
+     "leftover": 3,
+     "raw_power": 974850,
+     "effective_power": 514467.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 120,
+      "cost": 4350,
+      "effective_power": 17670.0,
+      "raw_power": 58900
+     },
+     {
+      "category": "Purple",
+      "level": 110,
+      "cost": 3650,
+      "effective_power": 15507.0,
+      "raw_power": 51690
+     },
+     {
+      "category": "GoldR1",
+      "level": 140,
+      "cost": 9600,
+      "effective_power": 37266.0,
+      "raw_power": 124220
+     },
+     {
+      "category": "RedR2",
+      "level": 160,
+      "cost": 29700,
+      "effective_power": 222012.0,
+      "raw_power": 370020
+     },
+     {
+      "category": "RedR2",
+      "level": 160,
+      "cost": 29700,
+      "effective_power": 222012.0,
+      "raw_power": 370020
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #54",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 3,
+     "GoldR2": 4,
+     "RedR1": 1,
+     "RedR2": 3
+    },
+    "total_jelly": 47121
+   },
+   "expected": {
+    "totals": {
+     "budget": 47121,
+     "entry_cost": 0,
+     "leveling_cost": 47096,
+     "spent": 47096,
+     "leftover": 25,
+     "raw_power": 1179370,
+     "effective_power": 603750.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 150,
+      "cost": 14200,
+      "effective_power": 124236.0,
+      "raw_power": 207060
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #55",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 0,
+     "GoldR2": 4,
+     "RedR1": 4,
+     "RedR2": 1
+    },
+    "total_jelly": 72157
+   },
+   "expected": {
+    "totals": {
+     "budget": 72157,
+     "entry_cost": 0,
+     "leveling_cost": 72150,
+     "spent": 72150,
+     "leftover": 7,
+     "raw_power": 1356320,
+     "effective_power": 726546.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 30,
+      "cost": 200,
+      "effective_power": 4161.0,
+      "raw_power": 13870
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "Purple",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 2805.0,
+      "raw_power": 9350
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 40,
+      "cost": 1020,
+      "effective_power": 20151.0,
+      "raw_power": 67170
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 160,
+      "cost": 16200,
+      "effective_power": 138354.0,
+      "raw_power": 230590
+     },
+     {
+      "category": "RedR1",
+      "level": 130,
+      "cost": 10500,
+      "effective_power": 99024.0,
+      "raw_power": 165040
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #56",
+   "input": {
+    "counts": {
+     "Purple": 3,
+     "GoldR1": 2,
+     "GoldR2": 5,
+     "RedR1": 1,
+     "RedR2": 4
+    },
+    "total_jelly": 56178
+   },
+   "expected": {
+    "totals": {
+     "budget": 56178,
+     "entry_cost": 0,
+     "leveling_cost": 56160,
+     "spent": 56160,
+     "leftover": 18,
+     "raw_power": 1400200,
+     "effective_power": 732606.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 30,
+      "cost": 320,
+      "effective_power": 7482.0,
+      "raw_power": 24940
+     },
+     {
+      "category": "GoldR1",
+      "level": 10,
+      "cost": 0,
+      "effective_power": 5391.0,
+      "raw_power": 17970
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 150,
+      "cost": 14200,
+      "effective_power": 124236.0,
+      "raw_power": 207060
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #57",
+   "input": {
+    "counts": {
+     "Purple": 4,
+     "GoldR1": 5,
+     "GoldR2": 3,
+     "RedR1": 4,
+     "RedR2": 2
+    },
+    "total_jelly": 52936
+   },
+   "expected": {
+    "totals": {
+     "budget": 52936,
+     "entry_cost": 0,
+     "leveling_cost": 52910,
+     "spent": 52910,
+     "leftover": 26,
+     "raw_power": 1272210,
+     "effective_power": 667659.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR1",
+      "level": 20,
+      "cost": 112,
+      "effective_power": 6273.0,
+      "raw_power": 20910
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 150,
+      "cost": 14200,
+      "effective_power": 124236.0,
+      "raw_power": 207060
+     },
+     {
+      "category": "RedR1",
+      "level": 130,
+      "cost": 10500,
+      "effective_power": 99024.0,
+      "raw_power": 165040
+     },
+     {
+      "category": "RedR1",
+      "level": 80,
+      "cost": 3700,
+      "effective_power": 52500.0,
+      "raw_power": 87500
+     },
+     {
+      "category": "RedR1",
+      "level": 70,
+      "cost": 2700,
+      "effective_power": 45804.0,
+      "raw_power": 76340
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #58",
+   "input": {
+    "counts": {
+     "Purple": 2,
+     "GoldR1": 0,
+     "GoldR2": 3,
+     "RedR1": 5,
+     "RedR2": 2
+    },
+    "total_jelly": 17333
+   },
+   "expected": {
+    "totals": {
+     "budget": 17333,
+     "entry_cost": 0,
+     "leveling_cost": 17275,
+     "spent": 17275,
+     "leftover": 58,
+     "raw_power": 751800,
+     "effective_power": 399450.0
+    },
+    "rows": [
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "Purple",
+      "level": 20,
+      "cost": 70,
+      "effective_power": 3417.0,
+      "raw_power": 11390
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "GoldR2",
+      "level": 20,
+      "cost": 180,
+      "effective_power": 13959.0,
+      "raw_power": 46530
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR1",
+      "level": 50,
+      "cost": 1300,
+      "effective_power": 33786.0,
+      "raw_power": 56310
+     },
+     {
+      "category": "RedR2",
+      "level": 70,
+      "cost": 4320,
+      "effective_power": 83832.0,
+      "raw_power": 139720
+     },
+     {
+      "category": "RedR2",
+      "level": 60,
+      "cost": 3045,
+      "effective_power": 72066.0,
+      "raw_power": 120110
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  },
+  {
+   "note": "random #59",
+   "input": {
+    "counts": {
+     "Purple": 0,
+     "GoldR1": 0,
+     "GoldR2": 3,
+     "RedR1": 2,
+     "RedR2": 3
+    },
+    "total_jelly": 34340
+   },
+   "expected": {
+    "totals": {
+     "budget": 34340,
+     "entry_cost": 0,
+     "leveling_cost": 34250,
+     "spent": 34250,
+     "leftover": 90,
+     "raw_power": 923620,
+     "effective_power": 503538.0
+    },
+    "rows": [
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "GoldR2",
+      "level": 30,
+      "cost": 510,
+      "effective_power": 16878.0,
+      "raw_power": 56260
+     },
+     {
+      "category": "RedR1",
+      "level": 80,
+      "cost": 3700,
+      "effective_power": 52500.0,
+      "raw_power": 87500
+     },
+     {
+      "category": "RedR1",
+      "level": 60,
+      "cost": 1900,
+      "effective_power": 39534.0,
+      "raw_power": 65890
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 100,
+      "cost": 9720,
+      "effective_power": 125214.0,
+      "raw_power": 208690
+     },
+     {
+      "category": "RedR2",
+      "level": 90,
+      "cost": 7680,
+      "effective_power": 110442.0,
+      "raw_power": 184070
+     }
+    ],
+    "notices": [
+     {
+      "key": "notice.amigatos.currencies_excluded",
+      "params": {},
+      "level": "warning"
+     },
+     {
+      "key": "notice.amigatos.provisional_tier",
+      "params": {
+       "display_name": "Red r2",
+       "captured": 4,
+       "max": 6
+      },
+      "level": "warning"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forneus — design system</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../web/src/styles/base.css">
+<style>
+  .wrap { max-width: var(--page-max); margin: 0 auto; padding: var(--space-9) var(--page-pad) var(--space-12); display: flex; flex-direction: column; gap: var(--space-11); }
+  section { display: flex; flex-direction: column; gap: var(--space-7); }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-5); }
+  .sw { display: flex; flex-direction: column; gap: var(--space-2); }
+  .sw__chip { height: 52px; border: var(--border) solid var(--line-control); }
+  .sw__name { font-family: var(--font-mono); font-size: var(--size-label-xs); color: var(--text-muted); }
+  .row { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+  .stack { display: flex; flex-direction: column; gap: var(--space-4); }
+  .rule { height: 1px; background: var(--line-hard); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section>
+    <h1>FORNEUS</h1>
+    <p style="font-size: var(--size-body-l); color: var(--text-muted); max-width: 640px;">Design system — direção dark técnico. Tudo nesta página usa apenas tokens; nenhum valor hexadecimal aparece fora de <code style="font-family: var(--font-mono); color: var(--accent);">tokens.css</code>.</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <section>
+    <span class="fx-label">Superfícies</span>
+    <div class="swatches">
+      <div class="sw"><div class="sw__chip" style="background: var(--bg-page)"></div><span class="sw__name">--bg-page</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--bg-inset)"></div><span class="sw__name">--bg-inset</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--bg-panel)"></div><span class="sw__name">--bg-panel</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--bg-raised)"></div><span class="sw__name">--bg-raised</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--bg-chrome)"></div><span class="sw__name">--bg-chrome</span></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="fx-label">Acento de marca</span>
+    <div class="swatches">
+      <div class="sw"><div class="sw__chip" style="background: var(--accent)"></div><span class="sw__name">--accent</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--accent-hover)"></div><span class="sw__name">--accent-hover</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--accent-dim)"></div><span class="sw__name">--accent-dim</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--accent-wash)"></div><span class="sw__name">--accent-wash</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--accent-ink)"></div><span class="sw__name">--accent-ink</span></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="fx-label">Estado semântico</span>
+    <div class="swatches">
+      <div class="sw"><div class="sw__chip" style="background: var(--warn)"></div><span class="sw__name">--warn</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--danger)"></div><span class="sw__name">--danger</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--ok)"></div><span class="sw__name">--ok</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--cat-red)"></div><span class="sw__name">--cat-red</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--cat-gold)"></div><span class="sw__name">--cat-gold</span></div>
+      <div class="sw"><div class="sw__chip" style="background: var(--cat-purple)"></div><span class="sw__name">--cat-purple</span></div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section>
+    <span class="fx-label">Tipografia</span>
+    <h1>DISPLAY XL 60</h1>
+    <h2>DISPLAY L 32</h2>
+    <h3>DISPLAY M 22</h3>
+    <span class="fx-label">Display S 15 — rótulo</span>
+    <p style="font-size: var(--size-body-l); color: var(--text-default);">Body L 17 — subtítulo de hero, texto de abertura.</p>
+    <p style="color: var(--text-muted);">Body 14 — texto corrido padrão. Barlow em peso regular, entrelinha 1,6.</p>
+    <p style="font-size: var(--size-body-s); color: var(--text-muted);">Body S 13 — linhas de tabela e legendas.</p>
+    <span class="fx-meta">Meta 10 — mono, caixa alta, tracking largo</span>
+    <div class="row">
+      <span class="fx-num" style="font-size: var(--size-figure-xl); color: var(--accent);">466.146</span>
+      <span class="fx-num" style="font-size: var(--size-figure-l); color: var(--text-strong);">43.665</span>
+      <span class="fx-num" style="font-size: var(--size-figure); color: var(--text-default);">17.685</span>
+      <span class="fx-num" style="font-size: var(--size-figure-s); color: var(--text-muted);">1.665</span>
+    </div>
+    <p style="font-size: var(--size-body-s); color: var(--text-faint);">Algarismos tabulares com zero cortado: <span class="fx-num">0123456789</span> — alinham coluna a coluna e o zero nunca se confunde com O.</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <section>
+    <span class="fx-label">Controles</span>
+    <div class="row">
+      <button class="fx-btn">Calcular</button>
+      <button class="fx-btn fx-btn--ghost">CSV</button>
+      <button class="fx-btn fx-btn--ghost">JSON</button>
+      <button class="fx-btn" disabled>Calcular</button>
+    </div>
+    <div class="row" style="align-items: flex-start;">
+      <div class="stack" style="width: 220px;">
+        <span class="fx-label">Fish Jelly (r1)</span>
+        <input class="fx-field" value="43671" inputmode="numeric">
+      </div>
+      <div class="stack" style="width: 220px;">
+        <span class="fx-label">Inválido</span>
+        <input class="fx-field" value="-1" aria-invalid="true" inputmode="numeric">
+      </div>
+      <div class="stack" style="width: 220px;">
+        <span class="fx-label">Foco (tab até aqui)</span>
+        <input class="fx-field" value="0" inputmode="numeric">
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section>
+    <span class="fx-label">Avisos</span>
+    <div class="fx-notice">
+      <span class="fx-notice__tag">Aviso</span>
+      <span class="fx-notice__text">Red r2 usa dados do tier 4/6 &middot; Silverleaf e Dried Fish fora do modelo</span>
+    </div>
+    <div class="fx-notice fx-notice--danger">
+      <span class="fx-notice__tag">Erro</span>
+      <span class="fx-notice__text">A equipe aceita até 18 amigatos no total.</span>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section>
+    <span class="fx-label">Totais</span>
+    <div class="fx-stats">
+      <div class="fx-stat fx-stat--primary">
+        <span class="fx-meta">Poder efetivo</span>
+        <span class="fx-stat__value">466.146</span>
+      </div>
+      <div class="fx-stat">
+        <span class="fx-meta">Jelly usada</span>
+        <span class="fx-stat__value">43.665</span>
+      </div>
+      <div class="fx-stat">
+        <span class="fx-meta">Restante</span>
+        <span class="fx-stat__value">6</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="fx-label">Tabela de dados</span>
+    <table class="fx-table">
+      <thead>
+        <tr>
+          <th scope="col">Amigato</th>
+          <th scope="col" data-align="end">Nível</th>
+          <th scope="col" data-align="end">Jelly</th>
+          <th scope="col" data-align="end">Poder efetivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="fx-cat--red">Red r2 <span class="fx-tier" data-provisional="true">4/6</span></td><td class="fx-num" data-align="end">130</td><td class="fx-num" data-align="end" style="color: var(--text-muted)">17.685</td><td class="fx-num fx-value" data-align="end">172.122</td></tr>
+        <tr><td class="fx-cat--red">Red r1</td><td class="fx-num" data-align="end">160</td><td class="fx-num" data-align="end" style="color: var(--text-muted)">16.200</td><td class="fx-num fx-value" data-align="end">138.354</td></tr>
+        <tr><td class="fx-cat--gold">Gold r2 <span class="fx-count">&times;4</span></td><td class="fx-num" data-align="end">50</td><td class="fx-num" data-align="end" style="color: var(--text-muted)">1.665</td><td class="fx-num fx-value" data-align="end">23.751</td></tr>
+        <tr><td class="fx-cat--gold">Gold r1</td><td class="fx-num" data-align="end">40</td><td class="fx-num" data-align="end" style="color: var(--text-muted)">640</td><td class="fx-num fx-value" data-align="end">9.015</td></tr>
+        <tr><td class="fx-cat--gold">Gold r1 <span class="fx-count">&times;4</span></td><td class="fx-num" data-align="end">30</td><td class="fx-num" data-align="end" style="color: var(--text-muted)">320</td><td class="fx-num fx-value" data-align="end">7.482</td></tr>
+        <tr><td class="fx-cat--purple">Purple r1</td><td class="fx-num" data-align="end">40</td><td class="fx-num" data-align="end" style="color: var(--text-muted)">400</td><td class="fx-num fx-value" data-align="end">5.079</td></tr>
+        <tr><td class="fx-cat--purple">Purple r1 <span class="fx-count">&times;4</span></td><td class="fx-num" data-align="end">30</td><td class="fx-num" data-align="end" style="color: var(--text-muted)">200</td><td class="fx-num fx-value" data-align="end">4.161</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+</body>
+</html>

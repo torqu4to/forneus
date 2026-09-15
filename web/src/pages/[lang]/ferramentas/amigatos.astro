@@ -1,0 +1,429 @@
+---
+import Site from '../../../layouts/Site.astro';
+import { solve } from '../../../lib/solver/index.ts';
+import { EXAMPLE_TEAM, EXAMPLE_BUDGET } from '../../../data/example-team';
+import { groupRows, categoryClass, isProvisional } from '../../../lib/rows.ts';
+import { useTranslations, formatNumber, LOCALES, type Locale } from '../../../i18n/utils';
+import { LOCALE_TAG } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const n = (value: number) => formatNumber(value, locale);
+
+/* Rendered at build time so the page paints and crawls with a real result.
+   The moment the visitor calculates, the client swaps in the API's answer
+   using the same shape — see the script at the bottom. */
+/* Solved at build time so the page paints and crawls with a real result. */
+const result = solve(EXAMPLE_TEAM, EXAMPLE_BUDGET);
+const { meta, totals, notices } = result;
+const rows = groupRows(result.rows, meta.display_order);
+
+const categories = meta.display_order.map((key) => ({
+  key,
+  count: meta.counts[key] ?? 0,
+  tier: meta.data_tiers[key],
+  rate: Math.round((meta.effectiveness_rates[key] ?? 0) * 100),
+  label: result.rows.find((row) => row.category === key)?.display_name ?? key,
+}));
+
+const teamSize = Object.values(meta.counts).reduce((sum, value) => sum + value, 0);
+const messages = notices.map((notice) => t(notice.key as never, notice.params));
+---
+<Site
+  locale={locale}
+  active="amigatos"
+  title={t('tool.amigatos.title')}
+  description={t('tool.amigatos.description')}
+>
+  <aside class="fx-notice" id="notice" data-level="warning">
+    <span class="fx-notice__tag" id="notice-tag">{t('notice.tag')}</span>
+    <span class="fx-notice__text" id="notice-text">{messages.join(' · ')}</span>
+  </aside>
+
+  <form class="work" id="solver" novalidate
+    data-locale={locale}
+    data-locale-tag={LOCALE_TAG[locale]}
+    data-max-team={meta.max_team_size}>
+
+    <section class="col" aria-labelledby="team-heading">
+      <div class="block">
+        <div class="block__head">
+          <h2 class="fx-label">{t('form.profile')}</h2>
+          <span class="fx-meta"><span id="team-size">{teamSize}</span> / {meta.max_team_size}</span>
+        </div>
+        <div class="profile">
+          <span class="profile__name">{t('form.profile.current')}</span>
+          <button type="button" class="fx-btn fx-btn--ghost">{t('form.profile.new')}</button>
+        </div>
+        <p class="hint">{t('form.profile.help')}</p>
+      </div>
+
+      <div class="block">
+        <h2 id="team-heading" class="fx-label">{t('form.team')}</h2>
+        <div class="rows">
+          {categories.map((cat) => (
+            <div class="row">
+              <label class="row__label" for={`count-${cat.key}`}>
+                <span>{cat.label}</span>
+                <span class="fx-tier" data-provisional={String(cat.tier[0] !== cat.tier[1])}>
+                  {cat.tier[0]}/{cat.tier[1]} · {t('form.effectiveness', { rate: cat.rate })}
+                </span>
+              </label>
+              <input
+                class="fx-field row__field" id={`count-${cat.key}`} name={cat.key}
+                data-count={cat.key} type="number" inputmode="numeric"
+                min="0" max={meta.max_team_size} step="1" value={cat.count}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div class="budget">
+          <label class="fx-label budget__label" for="total_jelly">{t('form.budget')}</label>
+          <span class="budget__unit">{t('form.budget.unit')}</span>
+          <input
+            class="fx-field budget__field" id="total_jelly" name="total_jelly"
+            type="number" inputmode="numeric" min="0" step="1"
+            value={totals.budget} aria-describedby="budget-help"
+          />
+          <p class="hint" id="budget-help">{t('form.budget.help')}</p>
+        </div>
+
+        <button type="submit" class="fx-btn" id="calculate">{t('form.submit')}</button>
+        <p class="hint" id="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="col col--wide" aria-labelledby="result-heading">
+      <h2 id="result-heading" class="visually-hidden">{t('result.heading')}</h2>
+
+      <div class="fx-stats">
+        <div class="fx-stat fx-stat--primary">
+          <span class="fx-meta">{t('result.power')}</span>
+          <span class="fx-stat__value" id="total-power">{n(totals.effective_power)}</span>
+        </div>
+        <div class="fx-stat">
+          <span class="fx-meta">{t('result.spent')}</span>
+          <span class="fx-stat__value" id="total-spent">{n(totals.spent)}</span>
+        </div>
+        <div class="fx-stat">
+          <span class="fx-meta">{t('result.leftover')}</span>
+          <span class="fx-stat__value" id="total-leftover">{n(totals.leftover)}</span>
+        </div>
+      </div>
+
+      <table class="fx-table">
+        <caption class="visually-hidden">{t('result.heading')}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{t('result.col.entity')}</th>
+            <th scope="col" data-align="end">{t('result.col.level')}</th>
+            <th scope="col" data-align="end">{t('result.col.cost')}</th>
+            <th scope="col" data-align="end">{t('result.col.power')}</th>
+          </tr>
+        </thead>
+        <tbody id="allocations">
+          {rows.map((row) => (
+            <tr>
+              <td class={categoryClass(row.category)}>
+                {row.display_name}
+                {isProvisional(row) && (
+                  <span class="fx-tier" data-provisional="true"> {row.tier[0]}/{row.tier[1]}</span>
+                )}
+                {row.count > 1 && <span class="fx-count"> ×{row.count}</span>}
+              </td>
+              <td class="fx-num" data-align="end">{row.level}</td>
+              <td class="fx-num cost" data-align="end">{n(row.cost)}</td>
+              <td class="fx-num fx-value" data-align="end">{n(row.effective_power)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p class="hint">{t('result.grouped')} {t('result.costnote')}</p>
+    </section>
+
+    <aside class="col">
+      <div class="block">
+        <h2 class="fx-label">{t('export.heading')}</h2>
+        <div class="exports">
+          {/* Disabled until a calculation of THIS page's own has succeeded:
+              the build-time result is an example, not the visitor's numbers. */}
+          <button type="button" class="fx-btn fx-btn--ghost" data-export="csv" disabled>CSV</button>
+          <button type="button" class="fx-btn fx-btn--ghost" data-export="json" disabled>JSON</button>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2 class="fx-label">{t('provenance.heading')}</h2>
+        <dl class="prov">
+          {categories.map((cat) => (
+            <div class="prov__row">
+              <dt class="prov__key">{cat.label}</dt>
+              <dd class="prov__val fx-tier" data-provisional={String(cat.tier[0] !== cat.tier[1])}>
+                {cat.tier[0]}/{cat.tier[1]}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </aside>
+
+  </form>
+</Site>
+
+<script>
+  /* The solver runs HERE, in the visitor's browser.
+
+     There is no API call and no server: the worst reachable case measures
+     ~0.8 s on this machine and a typical team ~0.09 s, and the result is the
+     same one the Python core produces — `web/test/solver.test.ts` checks that
+     against fixtures generated by Python itself.
+
+     The page is still useful before this script loads: the build already
+     rendered a complete example result. */
+  import { solve, ToolError } from '../../../lib/solver/index.ts';
+  import { formatCsv, formatJson } from '../../../lib/exports.ts';
+  import { groupRows, categoryClass, isProvisional } from '../../../lib/rows.ts';
+  import { useTranslations, formatNumber, type Locale } from '../../../i18n/utils';
+
+  const form = document.getElementById('solver') as HTMLFormElement;
+  const locale = form.dataset.locale as Locale;
+  const localeTag = form.dataset.localeTag!;
+  const maxTeam = Number(form.dataset.maxTeam);
+
+  const t = useTranslations(locale);
+  const fmt = (value: number) => formatNumber(value, locale);
+
+  const status = document.getElementById('status')!;
+  const button = document.getElementById('calculate') as HTMLButtonElement;
+  const notice = document.getElementById('notice')!;
+  const noticeTag = document.getElementById('notice-tag')!;
+  const noticeText = document.getElementById('notice-text')!;
+  const tbody = document.getElementById('allocations')!;
+  const teamSizeOut = document.getElementById('team-size')!;
+  const exportButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-export]')];
+  const countInputs = [...document.querySelectorAll<HTMLInputElement>('[data-count]')];
+  const jellyInput = document.getElementById('total_jelly') as HTMLInputElement;
+
+  let downloads: { csv: string; json: string } | null = null;
+
+  function showNotice(level: 'warning' | 'error', messages: string[]) {
+    notice.hidden = messages.length === 0;
+    notice.classList.toggle('fx-notice--danger', level === 'error');
+    notice.setAttribute('role', level === 'error' ? 'alert' : 'status');
+    noticeTag.textContent = level === 'error' ? t('notice.tag.error') : t('notice.tag');
+    noticeText.textContent = messages.join(' · ');
+  }
+
+  function cell(text: string, className: string) {
+    const td = document.createElement('td');
+    td.className = className;
+    td.dataset.align = 'end';
+    td.textContent = text;
+    return td;
+  }
+
+  function renderRows(rows: Parameters<typeof groupRows>[0], displayOrder: string[]) {
+    tbody.replaceChildren(...groupRows(rows, displayOrder).map((row) => {
+      const tr = document.createElement('tr');
+
+      const name = document.createElement('td');
+      name.className = categoryClass(row.category);
+      name.append(row.display_name);
+      if (isProvisional(row)) {
+        const tier = document.createElement('span');
+        tier.className = 'fx-tier';
+        tier.dataset.provisional = 'true';
+        tier.textContent = ` ${row.tier[0]}/${row.tier[1]}`;
+        name.append(tier);
+      }
+      if (row.count > 1) {
+        const count = document.createElement('span');
+        count.className = 'fx-count';
+        count.textContent = ` ×${row.count}`;
+        name.append(count);
+      }
+      tr.append(
+        name,
+        // "Max" is a level NAME, not a number — it must not reach Intl.
+        cell(typeof row.level === 'number' ? fmt(row.level) : String(row.level), 'fx-num'),
+        cell(fmt(row.cost), 'fx-num cost'),
+        cell(fmt(row.effective_power), 'fx-num fx-value'),
+      );
+      return tr;
+    }));
+  }
+
+  function readForm() {
+    const counts: Record<string, number> = {};
+    for (const input of countInputs) {
+      counts[input.dataset.count!] = Math.trunc(Number(input.value)) || 0;
+    }
+    return { counts, totalJelly: Math.trunc(Number(jellyInput.value)) || 0 };
+  }
+
+  function updateTeamSize() {
+    const total = countInputs.reduce(
+      (sum, input) => sum + (Math.trunc(Number(input.value)) || 0), 0);
+    teamSizeOut.textContent = fmt(total);
+    teamSizeOut.parentElement?.classList.toggle('is-over', total > maxTeam);
+  }
+
+  /* Editing the form invalidates what is on screen. Leaving a stale table
+     exportable is how someone downloads numbers for a team they no longer
+     have. */
+  function markStale() {
+    updateTeamSize();
+    if (!downloads) return;
+    downloads = null;
+    for (const element of exportButtons) element.disabled = true;
+    status.textContent = t('state.stale');
+  }
+
+  for (const input of [...countInputs, jellyInput]) {
+    input.addEventListener('input', markStale);
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const { counts, totalJelly } = readForm();
+    button.disabled = true;
+    status.textContent = t('state.calculating');
+
+    /* Yield one frame before solving. The work is synchronous and blocks the
+       main thread, so without this the "Calculating…" label would never paint
+       and a slow case would look like a frozen page. */
+    requestAnimationFrame(() => setTimeout(() => {
+      try {
+        const data = solve(counts, totalJelly);
+
+        document.getElementById('total-power')!.textContent = fmt(data.totals.effective_power);
+        document.getElementById('total-spent')!.textContent = fmt(data.totals.spent);
+        document.getElementById('total-leftover')!.textContent = fmt(data.totals.leftover);
+        renderRows(data.rows, data.meta.display_order);
+
+        const reportOptions = { locale: localeTag, translate: t as never };
+        showNotice('warning', data.notices.map((n) => t(n.key as never, n.params)));
+        status.textContent = data.rows.length ? t('state.done') : t('state.empty');
+
+        downloads = {
+          csv: formatCsv(data, reportOptions),
+          json: formatJson(data, reportOptions),
+        };
+        for (const element of exportButtons) element.disabled = false;
+      } catch (error) {
+        status.textContent = '';
+        if (error instanceof ToolError) {
+          showNotice('error', [t(error.key as never, error.params)]);
+        } else {
+          showNotice('error', [t('error.unexpected')]);
+          throw error;   // a real bug belongs in the console, not swallowed
+        }
+      } finally {
+        button.disabled = false;
+      }
+    }, 0));
+  });
+
+  for (const element of exportButtons) {
+    element.addEventListener('click', () => {
+      if (!downloads) return;
+      const kind = element.dataset.export as 'csv' | 'json';
+      const blob = new Blob([downloads[kind]], {
+        type: kind === 'csv' ? 'text/csv;charset=utf-8' : 'application/json',
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `forneus-amigatos.${kind}`;
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  updateTeamSize();
+</script>
+
+<style>
+  .work {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr) var(--aside-w);
+    gap: var(--border);
+    background: var(--line-hard);
+  }
+  .work > * { min-width: 0; }
+  .col {
+    display: flex; flex-direction: column; gap: var(--border);
+    background: var(--line-hard); min-width: 0;
+  }
+  .col--wide {
+    display: flex; flex-direction: column; gap: var(--space-7);
+    padding: 0 0 var(--space-8); background: var(--bg-panel);
+  }
+
+  .block {
+    display: flex; flex-direction: column; gap: var(--space-6);
+    padding: var(--space-7); background: var(--bg-panel); flex-grow: 1;
+  }
+  .block__head { display: flex; align-items: center; justify-content: space-between; }
+  .block__head .is-over { color: var(--danger); }
+
+  .profile { display: flex; gap: var(--space-3); }
+  .profile__name {
+    flex-grow: 1; display: flex; align-items: center;
+    height: var(--control-h); padding: 0 var(--space-4);
+    font-size: var(--size-body-s); color: var(--text-strong);
+    background: var(--bg-raised); border: var(--border) solid var(--line-control);
+  }
+
+  .rows { display: flex; flex-direction: column; gap: var(--border); background: var(--line-soft); }
+  .row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--space-5); padding: var(--space-3) var(--space-4);
+    background: var(--bg-raised);
+  }
+  .row__label { display: flex; flex-direction: column; gap: 2px; font-size: var(--size-body-s); color: var(--text-strong); }
+  .row__field { width: 64px; text-align: right; }
+
+  .budget { display: flex; flex-direction: column; gap: var(--space-1); }
+  .budget__label { line-height: var(--leading-snug); }
+  .budget__unit {
+    font-family: var(--font-mono); font-size: var(--size-label-xs);
+    color: var(--text-faint); letter-spacing: 0; margin-bottom: var(--space-2);
+  }
+  .budget__field { font-size: var(--size-figure); text-align: right; }
+
+  .hint { font-size: var(--size-label); line-height: var(--leading-snug); color: var(--text-faint); }
+
+  .fx-stats { border-bottom: var(--border) solid var(--line-hard); }
+  .cost { color: var(--text-muted); }
+
+  .exports { display: flex; gap: var(--space-3); }
+  .exports .fx-btn { flex-grow: 1; }
+
+  .prov { margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .prov__row { display: flex; align-items: center; justify-content: space-between; }
+  .prov__key { font-size: var(--size-body-s); color: var(--text-muted); }
+  .prov__val { margin: 0; }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; margin: -1px;
+    padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+
+  @media (max-width: 1200px) {
+    .work { grid-template-columns: var(--sidebar-w) minmax(0, 1fr); }
+    .work > aside { grid-column: 1 / -1; }
+    .work > aside .block { flex-grow: 0; }
+  }
+  @media (max-width: 860px) {
+    .work { grid-template-columns: minmax(0, 1fr); }
+    .fx-table { display: block; overflow-x: auto; }
+  }
+</style>

@@ -1,0 +1,26 @@
+# Railway service definition for the Forneus API.
+#
+# The frontend is NOT deployed from here: it is a static build that belongs on
+# a CDN. This service is only the Python API.
+#
+# Deploy from the repository root — the Dockerfile expects `pyproject.toml`
+# and `src/` beside it.
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+# $PORT is injected by Railway and is NOT 8000 — the Dockerfile's CMD is for
+# running the image locally; this overrides it in the platform.
+startCommand = "uvicorn forneus_core.api:create_app --factory --host 0.0.0.0 --port $PORT --workers 1"
+
+healthcheckPath = "/api/health"
+healthcheckTimeout = 30
+
+# A crash loop should stop, not burn the plan. Ten restarts is enough to ride
+# out a transient failure and few enough to notice a real one.
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+numReplicas = 1

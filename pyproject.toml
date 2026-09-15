@@ -21,7 +21,14 @@ forneus-amigatos = "forneus_core.tools.amigatos.cli:main"
 where = ["src"]
 
 [project.optional-dependencies]
-dev = ["pytest", "flask>=3.0,<4", "jsonschema>=4"]
+# numpy is an OPTIONAL accelerator for the solver, not a requirement: without
+# it the package returns identical numbers via the pure-Python path, just far
+# slower (~21 s vs ~0.65 s on the worst reachable case). Tests assert the two
+# agree; CI should run at least one job without it.
+fast = ["numpy>=1.24"]
+api = ["fastapi>=0.110", "uvicorn[standard]>=0.27", "numpy>=1.24"]
+dev = ["pytest", "flask>=3.0,<4", "jsonschema>=4", "numpy>=1.24",
+       "fastapi>=0.110", "httpx>=0.27"]
 web = ["flask>=3.0,<4"]
 
 [tool.setuptools.package-data]

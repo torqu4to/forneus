@@ -5,12 +5,9 @@
   "tool.fantasmas.description": "Coming soon.",
   "tool.florais.title": "Floral Guardians",
   "tool.florais.description": "Coming soon.",
-
   "unit.fish_jelly_r1": "Fish Jelly r1",
-
   "notice.amigatos.currencies_excluded": "Silverleaf and Dried Fish are not modeled; the result is optimal for Fish Jelly and these tables only.",
   "notice.amigatos.provisional_tier": "{display_name} uses tier {captured}/{max} data.",
-
   "error.payload.invalid": "Send a valid JSON object.",
   "error.counts.missing": "Provide the catpal quantities.",
   "error.category.unknown": "Unknown catpal category.",
@@ -26,5 +23,6 @@
   "error.profile.id_duplicated": "Catpal ids must be unique.",
   "error.profile.level_invalid": "Invalid level {level} for {display_name}.",
   "error.profile.name_type": "Catpal name must be text.",
-  "error.new_jelly.range": "New Jelly must be a nonnegative integer."
+  "error.new_jelly.range": "New Jelly must be a nonnegative integer.",
+  "error.rate_limited": "Too many requests. Try again in {seconds}s."
 }

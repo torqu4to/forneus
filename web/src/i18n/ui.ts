@@ -1,0 +1,234 @@
+/**
+ * Message catalogs.
+ *
+ * These mirror `forneus_core/locales/*.json` from the Python core. Keys are
+ * shared on purpose: a notice the API emits as `notice.amigatos.provisional_tier`
+ * resolves here with the same key, so the backend never sends prose.
+ *
+ * Adding a key to one locale and not the other is a bug — `missingKeys()`
+ * below is what a test or a build step checks.
+ */
+
+export const LOCALES = ['pt', 'en'] as const;
+export type Locale = (typeof LOCALES)[number];
+
+export const DEFAULT_LOCALE: Locale = 'pt';
+
+/** Maps our short URL segment to the tag the core and `<html lang>` use. */
+export const LOCALE_TAG: Record<Locale, string> = {
+  pt: 'pt-BR',
+  en: 'en-US',
+};
+
+export const LOCALE_NAME: Record<Locale, string> = {
+  pt: 'Português',
+  en: 'English',
+};
+
+export const ui = {
+  pt: {
+    'site.tagline': 'Ferramentas de otimização para Tree of Savior Neo',
+    'nav.tools': 'Ferramentas',
+    /* Short nav labels. These are NOT derived from the tool titles: the
+       titles differ in shape per language ("Otimizador de amigatos" vs
+       "Catpal optimizer"), and trimming a prefix produced two identical
+       "optimizer" entries in English. */
+    'nav.tool.amigatos': 'Amigatos',
+    'nav.tool.fantasmas': 'Fantasmas',
+    'nav.tool.florais': 'Florais',
+    'nav.data': 'Sobre os dados',
+    'nav.signin': 'Entrar',
+
+    'hero.eyebrow': 'Tree of Savior Neo',
+    'hero.title.1': 'Gaste seus recursos',
+    'hero.title.2': 'onde eles rendem mais',
+    'hero.lead':
+      'Calculadoras de otimização para TOSN. Você informa o que tem; elas devolvem a distribuição exata — não um chute, não uma heurística.',
+    'hero.cta': 'Abrir otimizador de amigatos',
+    'hero.noaccount': 'Sem conta · sem instalação',
+    'hero.sample': 'Exemplo de saída',
+
+    'tools.heading': 'Ferramentas',
+    'tools.count': '{available} disponível · {planned} em desenvolvimento',
+    'tools.open': 'Abrir',
+    'tools.soon': 'Em breve',
+
+    'tool.amigatos.title': 'Otimizador de amigatos',
+    'tool.amigatos.description':
+      'Distribuição ótima de Fish Jelly entre os amigatos dos assist slots.',
+    'tool.fantasmas.title': 'Otimizador de fantasmas',
+    'tool.fantasmas.description':
+      'Em coleta de dados. Modelagem do problema ainda em definição.',
+    'tool.florais.title': 'Guardiões florais',
+    'tool.florais.description': 'Escopo ainda não definido.',
+
+    'why.1.label': '01 · Resultado exato',
+    'why.1.text':
+      'O problema é um knapsack de múltipla escolha, resolvido por programação dinâmica. Para os dados fornecidos, o resultado é ótimo — não uma aproximação gulosa.',
+    'why.2.label': '02 · Dados com procedência',
+    'why.2.text':
+      'Cada tabela carrega o tier em que foi capturada. Onde o dado é provisório, o aviso aparece junto do resultado — não escondido num rodapé.',
+    'why.3.label': '03 · Seus números saem daqui',
+    'why.3.text':
+      'Todo resultado exporta em CSV e JSON, com os mesmos avisos embutidos. Nada fica preso na página.',
+
+    'form.team': 'Sua equipe',
+    'form.budget': 'Fish Jelly disponível',
+    'form.budget.unit': 'em unidades r1',
+    'form.budget.help': 'Converta tudo para r1 no jogo antes de informar o total.',
+    'form.submit': 'Calcular',
+    'form.profile': 'Perfil',
+    'form.profile.current': 'Equipe principal',
+    'form.profile.new': 'Novo',
+    'form.profile.help':
+      'Perfis salvos ficam neste navegador. Contas com sincronização chegam numa fase futura.',
+    'form.effectiveness': '{rate}% do poder',
+
+    'result.heading': 'Distribuição recomendada',
+    'result.power': 'Poder efetivo',
+    'result.spent': 'Jelly usada',
+    'result.leftover': 'Restante',
+    'result.col.entity': 'Amigato',
+    'result.col.level': 'Nível',
+    'result.col.cost': 'Jelly',
+    'result.col.power': 'Poder efetivo',
+    'result.grouped': 'Linhas idênticas aparecem agrupadas com ×N.',
+    'result.costnote':
+      'A coluna Jelly mostra o custo de evolução por amigato. O total utilizado também inclui eventuais custos de entrada.',
+
+    'export.heading': 'Exportar',
+    'provenance.heading': 'Procedência',
+
+    'notice.tag': 'Aviso',
+    'notice.tag.error': 'Erro',
+
+    /* States of the calculate button and of a result that no longer matches
+       what is typed in the form. */
+    'state.calculating': 'Calculando…',
+    'state.stale': 'Os dados mudaram. Calcule de novo.',
+    'state.done': 'Cálculo concluído.',
+    'state.empty': 'Nenhum amigato informado. Toda a Jelly continua disponível.',
+
+    /* Failures that have no key of their own coming from the API. */
+    'error.network': 'Não foi possível falar com o servidor. Verifique sua conexão e tente de novo.',
+    'error.unexpected': 'Algo deu errado no servidor. Tente de novo em instantes.',
+    'error.aborted': 'Cálculo cancelado.',
+    'error.rate_limited': 'Muitas requisições. Tente de novo em {seconds}s.',
+    'error.payload.invalid': 'Envie valores válidos.',
+    'error.category.unknown': 'Categoria de amigato desconhecida.',
+    'error.counts.range': 'As quantidades devem ser inteiros entre 0 e {max}.',
+    'error.team.too_large': 'A equipe aceita até {max} amigatos no total.',
+    'error.jelly.range': 'Informe Jelly inteira entre 0 e {max}.',
+    'error.jelly.insufficient': 'Jelly insuficiente para o custo de entrada da equipe.',
+    'notice.amigatos.currencies_excluded':
+      'Silverleaf e Dried Fish não são considerados; o resultado é ótimo apenas para Fish Jelly e estas tabelas.',
+    'notice.amigatos.provisional_tier': '{display_name} usa dados do tier {captured}/{max}.',
+
+    'footer.independent': 'forneus.wiki · projeto independente, sem vínculo com a IMC Games',
+    'footer.check': 'Confira os dados no jogo antes de gastar seus recursos.',
+  },
+
+  en: {
+    'site.tagline': 'Optimization tools for Tree of Savior Neo',
+    'nav.tools': 'Tools',
+    'nav.tool.amigatos': 'Catpals',
+    'nav.tool.fantasmas': 'Ghosts',
+    'nav.tool.florais': 'Guardians',
+    'nav.data': 'About the data',
+    'nav.signin': 'Sign in',
+
+    'hero.eyebrow': 'Tree of Savior Neo',
+    'hero.title.1': 'Spend your resources',
+    'hero.title.2': 'where they pay off most',
+    'hero.lead':
+      'Optimization calculators for TOSN. You tell them what you have; they return the exact allocation — not a guess, not a heuristic.',
+    'hero.cta': 'Open catpal optimizer',
+    'hero.noaccount': 'No account · no install',
+    'hero.sample': 'Sample output',
+
+    'tools.heading': 'Tools',
+    'tools.count': '{available} available · {planned} in development',
+    'tools.open': 'Open',
+    'tools.soon': 'Soon',
+
+    'tool.amigatos.title': 'Catpal optimizer',
+    'tool.amigatos.description':
+      'Optimal Fish Jelly allocation across the catpals in your assist slots.',
+    'tool.fantasmas.title': 'Ghost optimizer',
+    'tool.fantasmas.description':
+      'Collecting data. How to model the problem is still being decided.',
+    'tool.florais.title': 'Floral guardians',
+    'tool.florais.description': 'Scope not defined yet.',
+
+    'why.1.label': '01 · Exact result',
+    'why.1.text':
+      'The problem is a multiple-choice knapsack, solved with dynamic programming. For the given data the result is optimal — not a greedy approximation.',
+    'why.2.label': '02 · Data with provenance',
+    'why.2.text':
+      'Every table carries the tier it was captured at. Where the data is provisional, the caveat sits next to the result — not buried in a footer.',
+    'why.3.label': '03 · Your numbers leave with you',
+    'why.3.text':
+      'Every result exports to CSV and JSON, caveats included. Nothing is trapped in the page.',
+
+    'form.team': 'Your team',
+    'form.budget': 'Fish Jelly available',
+    'form.budget.unit': 'in r1 units',
+    'form.budget.help': 'Convert everything to r1 in game before entering the total.',
+    'form.submit': 'Calculate',
+    'form.profile': 'Profile',
+    'form.profile.current': 'Main team',
+    'form.profile.new': 'New',
+    'form.profile.help':
+      'Saved profiles live in this browser. Accounts with sync arrive in a later phase.',
+    'form.effectiveness': '{rate}% of power',
+
+    'result.heading': 'Recommended allocation',
+    'result.power': 'Effective power',
+    'result.spent': 'Jelly spent',
+    'result.leftover': 'Leftover',
+    'result.col.entity': 'Catpal',
+    'result.col.level': 'Level',
+    'result.col.cost': 'Jelly',
+    'result.col.power': 'Effective power',
+    'result.grouped': 'Identical rows are grouped as ×N.',
+    'result.costnote':
+      'The Jelly column shows each catpal’s leveling cost. The total spent also includes any entry costs.',
+
+    'export.heading': 'Export',
+    'provenance.heading': 'Provenance',
+
+    'notice.tag': 'Note',
+    'notice.tag.error': 'Error',
+
+    'state.calculating': 'Calculating…',
+    'state.stale': 'The inputs changed. Calculate again.',
+    'state.done': 'Calculation complete.',
+    'state.empty': 'No catpals entered. All Jelly stays available.',
+
+    'error.network': 'Could not reach the server. Check your connection and try again.',
+    'error.unexpected': 'Something went wrong on the server. Try again shortly.',
+    'error.aborted': 'Calculation cancelled.',
+    'error.rate_limited': 'Too many requests. Try again in {seconds}s.',
+    'error.payload.invalid': 'Send valid values.',
+    'error.category.unknown': 'Unknown catpal category.',
+    'error.counts.range': 'Quantities must be integers between 0 and {max}.',
+    'error.team.too_large': 'A team supports at most {max} catpals in total.',
+    'error.jelly.range': 'Provide an integer Jelly amount between 0 and {max}.',
+    'error.jelly.insufficient': 'Not enough Jelly to cover the team entry cost.',
+    'notice.amigatos.currencies_excluded':
+      'Silverleaf and Dried Fish are not modeled; the result is optimal for Fish Jelly and these tables only.',
+    'notice.amigatos.provisional_tier': '{display_name} uses tier {captured}/{max} data.',
+
+    'footer.independent': 'forneus.wiki · independent project, not affiliated with IMC Games',
+    'footer.check': 'Check the data in game before spending your resources.',
+  },
+} as const;
+
+export type UIKey = keyof (typeof ui)['pt'];
+
+/** Keys present in the default catalog but missing from `locale`. */
+export function missingKeys(locale: Locale): string[] {
+  const base = Object.keys(ui[DEFAULT_LOCALE]);
+  const other = new Set(Object.keys(ui[locale]));
+  return base.filter((key) => !other.has(key));
+}

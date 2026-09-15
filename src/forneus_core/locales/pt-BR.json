@@ -5,12 +5,9 @@
   "tool.fantasmas.description": "Em breve.",
   "tool.florais.title": "Guardiões Florais",
   "tool.florais.description": "Em breve.",
-
   "unit.fish_jelly_r1": "Fish Jelly r1",
-
   "notice.amigatos.currencies_excluded": "Silverleaf e Dried Fish não são considerados; o resultado é ótimo apenas para Fish Jelly e estas tabelas.",
   "notice.amigatos.provisional_tier": "{display_name} usa dados do tier {captured}/{max}.",
-
   "error.payload.invalid": "Envie um objeto JSON válido.",
   "error.counts.missing": "Informe as quantidades de amigatos.",
   "error.category.unknown": "Categoria de amigato desconhecida.",
@@ -26,5 +23,6 @@
   "error.profile.id_duplicated": "Os ids dos amigatos devem ser únicos.",
   "error.profile.level_invalid": "Nível {level} inválido para {display_name}.",
   "error.profile.name_type": "O nome do amigato deve ser texto.",
-  "error.new_jelly.range": "A nova Jelly deve ser um inteiro não negativo."
+  "error.new_jelly.range": "A nova Jelly deve ser um inteiro não negativo.",
+  "error.rate_limited": "Muitas requisições. Tente de novo em {seconds}s."
 }

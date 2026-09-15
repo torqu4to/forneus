@@ -1,0 +1,200 @@
+---
+import Site from '../../layouts/Site.astro';
+import ToolIcon from '../../components/ToolIcon.astro';
+import { tools, availableTools, plannedTools } from '../../data/tools';
+import { solve } from '../../lib/solver/index.ts';
+import { EXAMPLE_TEAM, EXAMPLE_BUDGET } from '../../data/example-team';
+import { groupRows, categoryClass } from '../../lib/rows.ts';
+import { useTranslations, formatNumber, LOCALES, type Locale } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const n = (value: number) => formatNumber(value, locale);
+
+/* Solved at build time — the example is always this solver's current
+   answer, never a checked-in number that could go stale. */
+const sampleResult = solve(EXAMPLE_TEAM, EXAMPLE_BUDGET);
+
+/* The hero preview is the same solver output the tool page shows — the
+   landing never invents numbers to look impressive. */
+/* Group first, THEN take the first five: the solver emits one row per
+   catpal, so slicing the raw rows would show five identical Purple lines
+   instead of five different catpals. */
+const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).slice(0, 5);
+---
+<Site locale={locale} title={t('tool.amigatos.title')} description={t('site.tagline')}>
+
+  <section class="hero">
+    <div class="hero__copy">
+      <span class="fx-meta hero__eyebrow">{t('hero.eyebrow')}</span>
+      <h1>{t('hero.title.1')}<br />{t('hero.title.2')}</h1>
+      <p class="hero__lead">{t('hero.lead')}</p>
+      <div class="hero__cta">
+        <a class="fx-btn" href={`/${locale}/ferramentas/amigatos/`}>
+          {t('hero.cta')}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        <span class="fx-meta">{t('hero.noaccount')}</span>
+      </div>
+    </div>
+
+    <figure class="preview">
+      <figcaption class="preview__head">
+        <span class="fx-meta">{t('hero.sample')}</span>
+        <span class="fx-num preview__budget">{n(sampleResult.totals.budget)}</span>
+      </figcaption>
+      <table class="preview__table">
+        <tbody>
+          {preview.map((row) => (
+            <tr>
+              <td class={categoryClass(row.category)}>
+                {row.display_name}{row.count > 1 && <span class="fx-count"> ×{row.count}</span>}
+              </td>
+              <td class="fx-num" data-align="end">{row.level}</td>
+              <td class="fx-num preview__power" data-align="end">{n(row.effective_power)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div class="preview__foot">
+        <span class="fx-meta">{t('result.power')}</span>
+        <span class="fx-num preview__total">{n(sampleResult.totals.effective_power)}</span>
+      </div>
+    </figure>
+  </section>
+
+  <section class="tools" aria-labelledby="tools-heading">
+    <div class="tools__head">
+      <h2 id="tools-heading" class="fx-label">{t('tools.heading')}</h2>
+      <span class="fx-meta">{t('tools.count', { available: availableTools.length, planned: plannedTools.length })}</span>
+    </div>
+
+    <ul class="tools__list">
+      {tools.map((tool) => (
+        <li class:list={['tool', { 'tool--planned': tool.status === 'planned' }]}>
+          <ToolIcon name={tool.name} size={28} class="tool__icon" />
+          <div class="tool__body">
+            <h3 class="tool__name">{t(tool.titleKey)}</h3>
+            <p class="tool__desc">{t(tool.descriptionKey)}</p>
+          </div>
+          <div class="tool__tags">
+            {tool.tags?.map((tag) => <span class="tool__tag">{tag}</span>)}
+          </div>
+          {tool.status === 'available' ? (
+            <a class="fx-btn tool__action" href={`/${locale}/ferramentas/${tool.name}/`}>{t('tools.open')}</a>
+          ) : (
+            <span class="tool__action tool__action--soon">{t('tools.soon')}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="why">
+    {([1, 2, 3] as const).map((i) => (
+      <div class="why__cell">
+        <span class="fx-meta why__label">{t(`why.${i}.label` as never)}</span>
+        <p class="why__text">{t(`why.${i}.text` as never)}</p>
+      </div>
+    ))}
+  </section>
+
+</Site>
+
+<style>
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 1fr) 420px;
+    gap: var(--space-11); align-items: center;
+    padding: var(--space-12) var(--page-pad) var(--space-11);
+    border-bottom: var(--border) solid var(--line-hard);
+  }
+  .hero__copy { display: flex; flex-direction: column; gap: var(--space-8); }
+  .hero__eyebrow { color: var(--accent); letter-spacing: var(--track-label-wide); }
+  .hero__lead { font-size: var(--size-body-l); color: var(--text-muted); max-width: 620px; }
+  .hero__cta { display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+
+  .preview { margin: 0; background: var(--bg-panel); border: var(--border) solid var(--line-hard); }
+  .preview__head, .preview__foot {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-3) var(--space-7); background: var(--bg-chrome);
+  }
+  .preview__head { border-bottom: var(--border) solid var(--line-hard); }
+  .preview__foot { border-top: var(--border) solid var(--line-hard); }
+  .preview__budget { font-size: var(--size-label-xs); color: var(--accent); }
+  .preview__total { font-size: var(--size-figure); font-weight: 600; color: var(--accent); }
+  .preview__table { width: 100%; border-collapse: collapse; }
+  .preview__table td {
+    padding: var(--space-2) var(--space-7); font-size: var(--size-figure-s);
+    border-bottom: var(--border) solid var(--line-soft);
+  }
+  .preview__table tr:last-child td { border-bottom: 0; }
+  .preview__table [data-align="end"] { text-align: right; }
+  .preview__power { color: var(--accent); }
+
+  .tools { display: flex; flex-direction: column; gap: var(--border); background: var(--line-hard); }
+  .tools__head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-6) var(--page-pad); background: var(--bg-page);
+  }
+  .tools__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--border); }
+
+  .tool {
+    display: grid; grid-template-columns: 44px minmax(0, 1fr) 300px 150px;
+    gap: var(--space-8); align-items: center;
+    padding: var(--space-8) var(--page-pad); background: var(--bg-panel);
+  }
+  .tool__icon { color: var(--accent); }
+  .tool__body { display: flex; flex-direction: column; gap: var(--space-1); }
+  .tool__name {
+    font-size: var(--size-display-m); font-weight: 600;
+    letter-spacing: var(--track-display); text-transform: uppercase;
+  }
+  .tool__desc { font-size: var(--size-body-s); color: var(--text-muted); }
+  .tool__tags { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+  .tool__tag {
+    padding: 3px var(--space-2); font-family: var(--font-mono);
+    font-size: var(--size-label-xs); color: var(--text-muted);
+    border: var(--border) solid var(--line-control);
+  }
+  .tool__action { width: 100%; }
+  .tool__action--soon {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: var(--control-h); font-family: var(--font-mono);
+    font-size: var(--size-label); letter-spacing: var(--track-label);
+    text-transform: uppercase; color: var(--text-faint);
+    border: var(--border) solid var(--line-control);
+  }
+  .tool--planned { background: var(--bg-inset); }
+  .tool--planned .tool__icon { color: var(--text-disabled); }
+  .tool--planned .tool__name { color: var(--text-muted); }
+  .tool--planned .tool__desc { color: var(--text-faint); }
+
+  .why {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--border); background: var(--line-hard);
+    border-top: var(--border) solid var(--line-hard);
+  }
+  .why__cell {
+    display: flex; flex-direction: column; gap: var(--space-3);
+    padding: var(--space-9) var(--page-pad); background: var(--bg-page);
+  }
+  .why__label { color: var(--accent); }
+  .why__text { font-size: var(--size-body-s); color: var(--text-muted); }
+
+  @media (max-width: 1100px) {
+    .hero { grid-template-columns: minmax(0, 1fr); gap: var(--space-9); }
+    .tool { grid-template-columns: 32px minmax(0, 1fr) 150px; }
+    .tool__tags { display: none; }
+    .why { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .hero { padding-block: var(--space-9); }
+    .hero h1 { font-size: var(--size-display-l); }
+    .tool { grid-template-columns: 32px minmax(0, 1fr); row-gap: var(--space-5); }
+    .tool__action, .tool__action--soon { grid-column: 2; }
+  }
+</style>

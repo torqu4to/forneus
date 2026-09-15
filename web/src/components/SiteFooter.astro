@@ -1,0 +1,35 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+<footer class="ftr">
+  {/* The rule and the background span the window; the text lines up with the
+      page content above it. Without the inner wrapper the two lines end up
+      pinned to the far corners of a wide monitor, far from anything else. */}
+  <div class="ftr__inner">
+    <span>{t('footer.independent')}</span>
+    <span>{t('footer.check')}</span>
+  </div>
+</footer>
+
+<style>
+  .ftr {
+    border-top: var(--border) solid var(--line-hard);
+    font-family: var(--font-mono);
+    font-size: var(--size-label);
+    color: var(--text-disabled);
+    text-transform: uppercase;
+  }
+  .ftr__inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--space-8);
+    max-width: var(--page-max);
+    margin-inline: auto;
+    padding: var(--space-7) var(--page-pad);
+  }
+  @media (max-width: 720px) {
+    .ftr__inner { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  }
+</style>

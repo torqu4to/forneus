@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    // The solver is imported both by Astro (Vite resolves anything) and by
+    // `node --test` (which demands an explicit extension). Writing `.ts` in
+    // the specifier is the one spelling both accept.
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true
+  }
+}

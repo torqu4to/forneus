@@ -1,0 +1,14 @@
+---
+/** The Forneus mark: a sea creature over a wave. Currency of the brand — the
+ *  one place the marine origin of the name shows. */
+interface Props { size?: number; class?: string }
+const { size = 20, class: className } = Astro.props;
+---
+<svg
+  width={size} height={size} viewBox="0 0 24 24" fill="none"
+  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+  stroke-linejoin="round" class={className} aria-hidden="true" focusable="false">
+  <path d="M2 15c2.2 0 2.2-2 4.4-2s2.2 2 4.4 2 2.2-2 4.4-2 2.2 2 4.4 2"></path>
+  <path d="M3 10.5c1.6-4 4.8-6 9-6 3.2 0 5.6 1.2 7.2 3.4-2.4.6-3.8 2-4.2 4.1"></path>
+  <path d="M8.5 8.2c.5 0 .9.4.9.9"></path>
+</svg>

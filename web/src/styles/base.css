@@ -1,0 +1,250 @@
+/*
+ * Forneus base layer: element defaults and the reusable primitives every
+ * tool page is built from. Everything here reads tokens only.
+ */
+@import "./tokens.css";
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-default);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--track-display);
+  color: var(--text-strong);
+  line-height: var(--leading-snug);
+  text-wrap: balance;
+}
+h1 { font-size: var(--size-display-xl); line-height: var(--leading-tight); }
+h2 { font-size: var(--size-display-l); }
+h3 { font-size: var(--size-display-m); font-weight: 600; }
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+
+:where(a, button, input, select, [tabindex]):focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* ── page container ───────────────────────────────────────────────────
+   Content stops growing at --page-max and centers. Full-bleed elements
+   (the header bar, the section stripes on the landing) keep their own
+   background edge to edge and put THIS class on their inner content, so the
+   colored band spans the window while the text still lines up with
+   everything else. */
+
+.fx-container {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+}
+
+/* ── type helpers ─────────────────────────────────────────────────── */
+
+.fx-label {
+  font-family: var(--font-display);
+  font-size: var(--size-display-s);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.fx-meta {
+  font-family: var(--font-mono);
+  font-size: var(--size-label-xs);
+  letter-spacing: var(--track-label);
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+/* Every figure the user reads. Tabular so columns align; slashed zero so a
+   level "0" never reads as "O". */
+.fx-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+
+/* ── controls ─────────────────────────────────────────────────────── */
+
+.fx-field {
+  width: 100%;
+  height: var(--control-h);
+  padding: 0 var(--space-4);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-size: var(--size-figure-s);
+  color: var(--accent);
+  background: var(--bg-raised);
+  border: var(--border) solid var(--line-control);
+  border-radius: var(--radius);
+}
+.fx-field:hover { border-color: var(--accent-dim); }
+.fx-field[aria-invalid="true"] { border-color: var(--danger); color: var(--danger); }
+
+.fx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  height: var(--control-h);
+  padding: 0 var(--space-7);
+  font-family: var(--font-display);
+  font-size: var(--size-display-s);
+  font-weight: 700;
+  letter-spacing: var(--track-display);
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border: var(--border) solid var(--accent);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.fx-btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.fx-btn[disabled] {
+  color: var(--text-disabled);
+  background: transparent;
+  border-color: var(--line-control);
+  cursor: not-allowed;
+}
+
+.fx-btn--ghost {
+  color: var(--text-default);
+  background: transparent;
+  border-color: var(--line-control);
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  font-weight: 400;
+}
+.fx-btn--ghost:hover {
+  color: var(--accent);
+  background: var(--bg-raised);
+  border-color: var(--accent-dim);
+}
+
+/* ── panels ───────────────────────────────────────────────────────── */
+
+.fx-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background: var(--bg-panel);
+}
+
+/* ── notice ───────────────────────────────────────────────────────── */
+
+.fx-notice {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--page-pad);
+  background: var(--warn-bg);
+  border-block: var(--border) solid var(--warn-line);
+}
+.fx-notice__tag {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  color: var(--warn);
+}
+.fx-notice__text { font-size: var(--size-body-s); color: var(--warn-text); }
+
+.fx-notice--danger { background: var(--danger-bg); border-color: var(--danger-line); }
+.fx-notice--danger .fx-notice__tag { color: var(--danger); }
+.fx-notice--danger .fx-notice__text { color: var(--danger); }
+
+/* ── data table ───────────────────────────────────────────────────── */
+
+.fx-table { width: 100%; border-collapse: collapse; }
+
+.fx-table th {
+  padding: var(--space-3) var(--space-7);
+  font-family: var(--font-mono);
+  font-size: var(--size-label-xs);
+  font-weight: 400;
+  letter-spacing: var(--track-label);
+  text-align: left;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  background: var(--bg-chrome);
+  border-bottom: var(--border) solid var(--line-control);
+}
+.fx-table td {
+  padding: var(--space-2) var(--space-7);
+  font-size: var(--size-body-s);
+  border-bottom: var(--border) solid var(--line-soft);
+}
+.fx-table tbody tr:last-child td { border-bottom: 0; }
+.fx-table [data-align="end"] { text-align: right; }
+
+/* The one column the whole page exists to produce. */
+.fx-table .fx-value { color: var(--accent); }
+
+.fx-cat--red    { color: var(--cat-red); }
+.fx-cat--gold   { color: var(--cat-gold); }
+.fx-cat--purple { color: var(--cat-purple); }
+
+/* "×4" — how many identical rows this one stands for. This is CONTENT, not
+   chrome: it must stay readable, so it uses --text-faint, never
+   --text-disabled. */
+.fx-count { color: var(--text-faint); }
+
+/* ── stat row ─────────────────────────────────────────────────────── */
+
+.fx-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--border);
+  background: var(--line-hard);
+}
+.fx-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-7);
+  background: var(--bg-raised);
+}
+.fx-stat__value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-size: var(--size-figure-l);
+  font-weight: 600;
+  color: var(--text-strong);
+}
+.fx-stat--primary .fx-stat__value { color: var(--accent); }
+
+/* Narrow screens fit two tiles per row. With an odd number of tiles the last
+   one would sit alone beside an empty cell that still paints a panel — so it
+   spans instead. Guarded by :nth-child(odd) so an even set is untouched. */
+@media (max-width: 640px) {
+  .fx-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fx-stats > .fx-stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
+/* ── tier badge ───────────────────────────────────────────────────── */
+
+.fx-tier {
+  font-family: var(--font-mono);
+  font-size: var(--size-label-xs);
+  color: var(--text-faint);
+}
+.fx-tier[data-provisional="true"] { color: var(--warn); }

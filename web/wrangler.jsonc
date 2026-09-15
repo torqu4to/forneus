@@ -1,0 +1,22 @@
+{
+  // Forneus — a static site served by Workers static assets.
+  //
+  // There is no `main` here on purpose: this Worker has no script, only
+  // files. Cloudflare serves them directly, and `public/_headers` is honored
+  // natively, the same way Pages honors it.
+  //
+  // The build that produces ./dist runs from `web/` — set "Root directory" to
+  // `web` in the dashboard, or nothing here will be found.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "forneus",
+  "compatibility_date": "2026-09-15",
+
+  "assets": {
+    "directory": "./dist",
+
+    // The site is prerendered as directories (/pt/ferramentas/amigatos/),
+    // not a single-page app: each path is a real file, so an unknown path is
+    // a genuine 404 and must not be rewritten into some other page.
+    "not_found_handling": "404-page"
+  }
+}

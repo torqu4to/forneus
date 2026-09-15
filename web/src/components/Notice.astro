@@ -1,0 +1,21 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+import type { Notice } from '../lib/solver/index.ts';
+
+interface Props { locale: Locale; notices: Notice[] }
+const { locale, notices } = Astro.props;
+const t = useTranslations(locale);
+
+/* Notices arrive from the solver as keys plus params — never as prose. This
+   component is the only place they become text. */
+const messages = notices.map((notice) =>
+  t(notice.key as never, notice.params as Record<string, string | number>),
+);
+const danger = notices.some((notice) => notice.level === 'error');
+---
+{notices.length > 0 && (
+  <aside class:list={['fx-notice', { 'fx-notice--danger': danger }]} role={danger ? 'alert' : undefined}>
+    <span class="fx-notice__tag">{t('notice.tag')}</span>
+    <span class="fx-notice__text">{messages.join(' · ')}</span>
+  </aside>
+)}

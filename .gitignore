@@ -7,3 +7,11 @@ venv/
 dist/
 build/
 .DS_Store
+node_modules/
+.astro/
+
+# Local environment. `.env.example` IS tracked and documents what belongs
+# here; the real file is per machine and stays out of the repository.
+.env
+.env.*
+!.env.example

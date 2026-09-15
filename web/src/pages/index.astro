@@ -1,0 +1,42 @@
+---
+/**
+ * Bare "/" carries no language, so it cannot render content — it sends the
+ * visitor to the default locale.
+ *
+ * This is a meta-refresh page rather than `Astro.redirect()` because the site
+ * is prerendered: a frontmatter redirect needs a server. Once the site is
+ * behind a CDN, replace this with a 302 that honors Accept-Language; until
+ * then this works everywhere, including opening the built files directly.
+ */
+import { DEFAULT_LOCALE, LOCALES } from '../i18n/utils';
+import { LOCALE_TAG, LOCALE_NAME } from '../i18n/ui';
+
+const target = `/${DEFAULT_LOCALE}/`;
+---
+<!doctype html>
+<html lang={LOCALE_TAG[DEFAULT_LOCALE]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={new URL(target, Astro.site ?? 'https://forneus.wiki').href} />
+    <title>Forneus</title>
+    <style>
+      body { margin: 0; background: #0a0b0d; color: #c3c9cf;
+             font-family: system-ui, sans-serif; display: grid;
+             place-items: center; min-height: 100vh; gap: 1rem; }
+      a { color: #5fe3c0; }
+      ul { list-style: none; padding: 0; display: flex; gap: 1rem; }
+    </style>
+  </head>
+  <body>
+    <p>Forneus</p>
+    {/* Visible only if the refresh is blocked — and it doubles as a crawlable
+        link to each language. */}
+    <ul>
+      {LOCALES.map((code) => (
+        <li><a href={`/${code}/`} hreflang={LOCALE_TAG[code]}>{LOCALE_NAME[code]}</a></li>
+      ))}
+    </ul>
+  </body>
+</html>
