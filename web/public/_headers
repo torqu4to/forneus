@@ -11,11 +11,21 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://cdn.discordapp.com https://lh3.googleusercontent.com; connect-src 'self' https://kbnuedoybxgcvtgilpxo.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://kbnuedoybxgcvtgilpxo.supabase.co
 
 # 'unsafe-inline' is for STYLE only: Astro inlines each page's scoped CSS.
 # Scripts are external files, so script-src stays strict — which is the
 # directive that actually matters.
+#
+# The Supabase origin appears twice, for two different reasons:
+#   connect-src  — the browser calls its REST and auth endpoints with fetch;
+#   form-action  — sign-in navigates to it to start the OAuth redirect.
+# Both are the project's own host, hardcoded rather than wildcarded: if the
+# project ever moves, this file must move with it, and a failure here is
+# loud (sign-in stops working) rather than silent.
+#
+# img-src admits the two avatar CDNs, since Discord and Google hand back an
+# avatar URL on their own domains.
 
 # Astro fingerprints these filenames, so a changed file gets a new name and
 # a year of caching is safe.

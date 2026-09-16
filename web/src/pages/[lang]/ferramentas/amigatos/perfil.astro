@@ -1,0 +1,464 @@
+---
+/**
+ * "My teams" — saved profiles and the keep-or-redistribute comparison.
+ *
+ * Kept off the main tool page on purpose. That page answers "I am starting
+ * fresh, how do I spend this?"; this one answers "I already have these
+ * levels, what do I do with what I just earned?". They take different input
+ * and deserve different screens.
+ *
+ * Everything here is client-rendered: it depends on who is signed in and what
+ * they saved. The build ships the shell and the empty state.
+ */
+import Site from '../../../../layouts/Site.astro';
+import { dataset } from '../../../../lib/solver/dataset.ts';
+import { useTranslations, LOCALES, type Locale } from '../../../../i18n/utils';
+import { LOCALE_TAG } from '../../../../i18n/ui';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+
+const categories = dataset.display_order.map((key) => ({
+  key,
+  label: dataset.categories[key].display_name,
+  levels: dataset.categories[key].levels.map((row) => row.level),
+}));
+const MAX_TEAM = 18;
+---
+<Site
+  locale={locale}
+  active="amigatos"
+  title={t('profile.heading')}
+  description={t('compare.lead')}
+>
+  <div
+    class="page-pad"
+    id="profiles"
+    data-locale={locale}
+    data-locale-tag={LOCALE_TAG[locale]}
+    data-max-team={MAX_TEAM}
+  >
+    <header class="head">
+      <h1>{t('profile.heading')}</h1>
+      <p class="lead">{t('compare.lead')}</p>
+      <p class="note" data-storage-note>{t('auth.local_only')}</p>
+    </header>
+
+    <div class="cols">
+      <!-- ── teams ─────────────────────────────────────────────── -->
+      <section class="panel" aria-labelledby="teams-heading">
+        <div class="panel__head">
+          <h2 id="teams-heading" class="fx-label">{t('profile.heading')}</h2>
+          <button type="button" class="fx-btn fx-btn--ghost" data-new>{t('profile.new')}</button>
+        </div>
+
+        <p class="hint" data-empty>{t('profile.none')}</p>
+        <ul class="teams" data-list hidden></ul>
+      </section>
+
+      <!-- ── editor ────────────────────────────────────────────── -->
+      <section class="panel" aria-labelledby="editor-heading" data-editor hidden>
+        <h2 id="editor-heading" class="fx-label">{t('profile.name')}</h2>
+
+        <input
+          class="fx-field" data-name type="text" maxlength="60"
+          placeholder={t('profile.name.placeholder')} aria-label={t('profile.name')}
+        />
+
+        <div class="panel__head">
+          <span class="fx-meta" data-count></span>
+          <button type="button" class="fx-btn fx-btn--ghost" data-add>{t('profile.add_catpal')}</button>
+        </div>
+
+        <p class="hint" data-team-empty>{t('profile.empty_team')}</p>
+        <ul class="catpals" data-catpals></ul>
+
+        <div class="actions">
+          <button type="button" class="fx-btn" data-save>{t('profile.save')}</button>
+          <button type="button" class="fx-btn fx-btn--ghost" data-delete>{t('profile.delete')}</button>
+        </div>
+        <p class="hint" role="status" aria-live="polite" data-status></p>
+      </section>
+    </div>
+
+    <!-- ── comparison ──────────────────────────────────────────── -->
+    <section class="panel compare" aria-labelledby="compare-heading" data-compare hidden>
+      <h2 id="compare-heading" class="fx-label">{t('compare.heading')}</h2>
+
+      <div class="compare__input">
+        <label class="fx-label" for="new-jelly">{t('compare.new_jelly')}</label>
+        <input class="fx-field" id="new-jelly" data-new-jelly type="number" min="0" step="1" value="0" />
+        <button type="button" class="fx-btn" data-run>{t('compare.run')}</button>
+      </div>
+
+      <div class="fx-stats" data-current hidden>
+        <div class="fx-stat">
+          <span class="fx-meta">{t('compare.current_power')}</span>
+          <span class="fx-stat__value" data-current-power>—</span>
+        </div>
+        <div class="fx-stat">
+          <span class="fx-meta">{t('compare.invested')}</span>
+          <span class="fx-stat__value" data-current-invested>—</span>
+        </div>
+      </div>
+
+      <div class="scenarios" data-scenarios hidden>
+        <article class="scenario" data-scenario="keep">
+          <div class="scenario__head">
+            <h3 class="scenario__title">{t('compare.keep')}</h3>
+            <span class="badge" data-badge hidden>{t('compare.recommended')}</span>
+          </div>
+          <p class="hint">{t('compare.keep.desc')}</p>
+          <span class="scenario__power fx-num" data-power>—</span>
+          <span class="scenario__gain fx-num" data-gain></span>
+          <p class="hint" data-changes></p>
+        </article>
+
+        <article class="scenario" data-scenario="redistribute">
+          <div class="scenario__head">
+            <h3 class="scenario__title">{t('compare.redistribute')}</h3>
+            <span class="badge" data-badge hidden>{t('compare.recommended')}</span>
+          </div>
+          <p class="hint">{t('compare.redistribute.desc')}</p>
+          <span class="scenario__power fx-num" data-power>—</span>
+          <span class="scenario__gain fx-num" data-gain></span>
+          <p class="hint" data-changes></p>
+        </article>
+      </div>
+
+      <aside class="fx-notice" data-reset-warning hidden>
+        <span class="fx-notice__tag">{t('notice.tag')}</span>
+        <span class="fx-notice__text">{t('compare.reset_warning')}</span>
+      </aside>
+
+      <div class="table-wrap" data-changes-table hidden>
+        <table class="fx-table">
+          <thead>
+            <tr>
+              <th scope="col">{t('result.col.entity')}</th>
+              <th scope="col" data-align="end">{t('compare.col.from')}</th>
+              <th scope="col" data-align="end">{t('compare.col.to')}</th>
+              <th scope="col" data-align="end">{t('compare.col.change')}</th>
+            </tr>
+          </thead>
+          <tbody data-changes-body></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Template for one catpal row, cloned by the client. Keeping the markup
+         here instead of in JavaScript keeps the structure reviewable and the
+         option lists generated from the dataset rather than hardcoded. -->
+    <template data-catpal-template>
+      <li class="catpal">
+        <select class="fx-field catpal__type" data-type aria-label="Tipo">
+          {categories.map((category) => (
+            <option value={category.key}>{category.label}</option>
+          ))}
+        </select>
+        <select class="fx-field catpal__level" data-level aria-label={t('profile.catpal_level')}></select>
+        <button type="button" class="fx-btn fx-btn--ghost catpal__remove" data-remove
+          aria-label={t('profile.remove_catpal')}>×</button>
+      </li>
+    </template>
+
+    <script type="application/json" id="levels-by-category" is:inline set:html={JSON.stringify(
+      Object.fromEntries(categories.map((c) => [c.key, c.levels]))
+    )}></script>
+  </div>
+</Site>
+
+
+<script>
+  /* Everything on this page depends on who is signed in and what they saved,
+     so it is all built here. The server shipped the shell and the empty
+     state. */
+  import { ProfileManager } from '../../../../lib/profiles/manager.ts';
+  import { emptyProfile, newId, type Profile, type SavedCatpal }
+    from '../../../../lib/profiles/types.ts';
+  import { optimizeProfile } from '../../../../lib/solver/profiles.ts';
+  import { ToolError } from '../../../../lib/solver/errors.ts';
+  import { useTranslations, formatNumber, type Locale } from '../../../../i18n/utils';
+
+  type Level = SavedCatpal['current_level'];
+
+  const root = document.getElementById('profiles')!;
+  const locale = root.dataset.locale as Locale;
+  const maxTeam = Number(root.dataset.maxTeam);
+  const t = useTranslations(locale);
+  const fmt = (value: number) => formatNumber(value, locale);
+
+  const levelsByCategory: Record<string, Level[]> =
+    JSON.parse(document.getElementById('levels-by-category')!.textContent!);
+  const firstCategory = Object.keys(levelsByCategory)[0];
+
+  const $ = <T extends HTMLElement>(name: string) =>
+    root.querySelector<T>(`[data-${name}]`)!;
+  const listEl = $('list'), emptyEl = $('empty'), editorEl = $('editor');
+  const nameEl = $<HTMLInputElement>('name'), catpalsEl = $('catpals');
+  const countEl = $('count'), teamEmptyEl = $('team-empty'), statusEl = $('status');
+  const compareEl = $('compare'), scenariosEl = $('scenarios'), currentEl = $('current');
+  const changesTableEl = $('changes-table'), changesBodyEl = $('changes-body');
+  const storageNoteEl = $('storage-note'), resetWarningEl = $('reset-warning');
+  const template = root.querySelector<HTMLTemplateElement>('[data-catpal-template]')!;
+
+  const manager = new ProfileManager();
+  /** The profile being edited. Null means nothing is selected. */
+  let draft: Profile | null = null;
+
+  /* ── team list ──────────────────────────────────────────────── */
+
+  function renderList(profiles: Profile[]) {
+    emptyEl.hidden = profiles.length > 0;
+    listEl.hidden = profiles.length === 0;
+    listEl.replaceChildren(...profiles.map((profile) => {
+      const li = document.createElement('li');
+      const button = document.createElement('button');
+      button.type = 'button';
+      if (draft?.id === profile.id) button.setAttribute('aria-current', 'true');
+
+      const name = document.createElement('span');
+      name.textContent = profile.name || t('profile.new');
+      const meta = document.createElement('span');
+      meta.className = 'meta';
+      meta.textContent = t('profile.count', { count: profile.catpals.length, max: maxTeam });
+
+      button.append(name, meta);
+      button.addEventListener('click', () => select(profile));
+      li.append(button);
+      return li;
+    }));
+  }
+
+  /* ── editor ─────────────────────────────────────────────────── */
+
+  function select(profile: Profile) {
+    // Edit a copy: abandoning an edit must not mutate what is stored.
+    draft = structuredClone(profile);
+    nameEl.value = draft.name;
+    renderCatpals();
+    editorEl.hidden = false;
+    compareEl.hidden = false;
+    statusEl.textContent = '';
+    renderList(manager.state.profiles);
+  }
+
+  function levelOptions(select: HTMLSelectElement, category: string, current?: Level) {
+    select.replaceChildren(...levelsByCategory[category].map((level) => {
+      const option = document.createElement('option');
+      option.value = String(level);
+      option.textContent = String(level);
+      if (current !== undefined && String(current) === String(level)) option.selected = true;
+      return option;
+    }));
+  }
+
+  /** The select's value is always a string; levels are numbers or "Max". */
+  function parseLevel(raw: string): Level {
+    return raw === 'Max' ? 'Max' : Number(raw);
+  }
+
+  function renderCatpals() {
+    if (!draft) return;
+    teamEmptyEl.hidden = draft.catpals.length > 0;
+    countEl.textContent = t('profile.count', { count: draft.catpals.length, max: maxTeam });
+
+    catpalsEl.replaceChildren(...draft.catpals.map((catpal, index) => {
+      const row = template.content.firstElementChild!.cloneNode(true) as HTMLElement;
+      const type = row.querySelector<HTMLSelectElement>('[data-type]')!;
+      const level = row.querySelector<HTMLSelectElement>('[data-level]')!;
+
+      type.value = catpal.catpal_type;
+      levelOptions(level, catpal.catpal_type, catpal.current_level);
+
+      type.addEventListener('change', () => {
+        const next = type.value;
+        draft!.catpals[index].catpal_type = next;
+        // Levels differ per category, so the old one may not exist here.
+        draft!.catpals[index].current_level = levelsByCategory[next][0];
+        renderCatpals();
+      });
+      level.addEventListener('change', () => {
+        draft!.catpals[index].current_level = parseLevel(level.value);
+      });
+      row.querySelector('[data-remove]')!.addEventListener('click', () => {
+        draft!.catpals.splice(index, 1);
+        renderCatpals();
+      });
+      return row;
+    }));
+  }
+
+  $('new').addEventListener('click', () => select(emptyProfile('')));
+
+  $('add').addEventListener('click', () => {
+    if (!draft || draft.catpals.length >= maxTeam) return;
+    draft.catpals.push({
+      id: newId(), name: '',
+      catpal_type: firstCategory,
+      current_level: levelsByCategory[firstCategory][0],
+    });
+    renderCatpals();
+  });
+
+  $('save').addEventListener('click', async () => {
+    if (!draft) return;
+    draft.name = nameEl.value.trim();
+    try {
+      const stored = await manager.save(draft);
+      draft = structuredClone(stored);
+      statusEl.textContent = t('profile.saved');
+    } catch {
+      // The account rejected the write. The local copy still has it, which is
+      // what the message promises — do not claim it was saved.
+      statusEl.textContent = t('error.profile.save_failed');
+    }
+  });
+
+  $('delete').addEventListener('click', async () => {
+    if (!draft) return;
+    if (!confirm(t('profile.delete.confirm', { name: draft.name || '—' }))) return;
+    await manager.remove(draft.id);
+    draft = null;
+    editorEl.hidden = true;
+    compareEl.hidden = true;
+  });
+
+  /* ── comparison ─────────────────────────────────────────────── */
+
+  function renderScenario(kind: 'keep' | 'redistribute', comparison: any, baseline: number) {
+    const card = root.querySelector<HTMLElement>(`[data-scenario="${kind}"]`)!;
+    const scenario = comparison[kind];
+    const recommended = comparison.recommendation === kind;
+
+    card.dataset.recommended = String(recommended);
+    card.querySelector<HTMLElement>('[data-badge]')!.hidden = !recommended;
+    card.querySelector('[data-power]')!.textContent = fmt(scenario.total_effective_power);
+
+    const gain = scenario.total_effective_power - baseline;
+    card.querySelector('[data-gain]')!.textContent =
+      gain > 0 ? `${t('compare.gain')}: +${fmt(gain)}` : t('compare.no_change');
+    card.querySelector('[data-changes]')!.textContent = scenario.changes.length
+      ? t('compare.changes', { count: scenario.changes.length })
+      : t('compare.no_change');
+  }
+
+  $('run').addEventListener('click', () => {
+    if (!draft) return;
+    const newJelly = Math.trunc(Number($<HTMLInputElement>('new-jelly').value)) || 0;
+
+    let comparison;
+    try {
+      comparison = optimizeProfile({ name: draft.name, catpals: draft.catpals }, newJelly);
+    } catch (error) {
+      statusEl.textContent = error instanceof ToolError
+        ? t(error.key as never, error.params) : t('error.unexpected');
+      return;
+    }
+
+    statusEl.textContent = '';
+    currentEl.hidden = false;
+    $('current-power').textContent = fmt(comparison.current.total_effective_power);
+    $('current-invested').textContent = fmt(comparison.current.invested_jelly);
+
+    const baseline = comparison.current.total_effective_power;
+    renderScenario('keep', comparison, baseline);
+    renderScenario('redistribute', comparison, baseline);
+    scenariosEl.hidden = false;
+
+    // The warning belongs only where it applies: resetting is irreversible in
+    // game, and showing it when we are recommending "keep" would be noise.
+    resetWarningEl.hidden = comparison.recommendation !== 'redistribute';
+
+    const changes = comparison[comparison.recommendation].changes;
+    changesTableEl.hidden = changes.length === 0;
+    changesBodyEl.replaceChildren(...changes.map((change: any) => {
+      const tr = document.createElement('tr');
+      const cell = (text: string, align = false) => {
+        const td = document.createElement('td');
+        if (align) { td.dataset.align = 'end'; td.className = 'fx-num'; }
+        td.textContent = text;
+        return td;
+      };
+      tr.append(
+        cell(change.display_name),
+        cell(String(change.current_level), true),
+        cell(String(change.target_level), true),
+        cell(change.jelly_change > 0 ? `+${fmt(change.jelly_change)}` : fmt(change.jelly_change), true),
+      );
+      return tr;
+    }));
+  });
+
+  /* ── wiring ─────────────────────────────────────────────────── */
+
+  manager.subscribe((state) => {
+    renderList(state.profiles);
+    storageNoteEl.textContent = state.syncing
+      ? t('auth.syncing')
+      : state.account
+        ? t('auth.signed_in_as', { name: state.account.name })
+        : t('auth.local_only');
+
+    if (state.lastMerge?.upload.length) {
+      storageNoteEl.textContent +=
+        ' ' + t('auth.merged', { count: state.lastMerge.upload.length });
+    }
+  });
+
+  void manager.start();
+</script>
+
+<style>
+  .page-pad { padding: var(--space-9) var(--page-pad) var(--space-11); display: flex; flex-direction: column; gap: var(--space-9); }
+  .head { display: flex; flex-direction: column; gap: var(--space-4); max-width: 70ch; }
+  h1 { font-size: var(--size-display-l); }
+  .lead { color: var(--text-muted); }
+  .note { font-family: var(--font-mono); font-size: var(--size-label); color: var(--text-faint); }
+
+  .cols { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: var(--space-7); align-items: start; }
+  .panel { display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-7); background: var(--bg-panel); border: var(--border) solid var(--line-hard); min-width: 0; }
+  .panel__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); }
+
+  .teams { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--border); background: var(--line-soft); }
+  .teams button {
+    width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4);
+    padding: var(--space-4) var(--space-5); text-align: left; cursor: pointer;
+    background: var(--bg-raised); border: 0; color: var(--text-default); font: inherit;
+  }
+  .teams button:hover { background: var(--bg-chrome); color: var(--text-strong); }
+  .teams button[aria-current="true"] { color: var(--accent); box-shadow: inset 2px 0 0 var(--accent); }
+  .teams .meta { font-family: var(--font-mono); font-size: var(--size-label-xs); color: var(--text-faint); }
+
+  .catpals { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .catpal { display: grid; grid-template-columns: minmax(0, 1fr) 120px 36px; gap: var(--space-3); }
+  .catpal__remove { padding: 0; }
+
+  .actions { display: flex; gap: var(--space-3); }
+  .actions .fx-btn { flex-grow: 1; }
+  .hint { font-size: var(--size-label); line-height: var(--leading-snug); color: var(--text-faint); }
+
+  .compare { gap: var(--space-7); }
+  .compare__input { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-3); align-items: end; }
+  .compare__input .fx-label { grid-column: 1 / -1; }
+
+  .scenarios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5); }
+  .scenario { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-7); background: var(--bg-raised); border: var(--border) solid var(--line-control); }
+  .scenario[data-recommended="true"] { border-color: var(--accent-dim); background: var(--accent-wash); }
+  .scenario__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+  .scenario__title { font-size: var(--size-display-m); font-weight: 600; letter-spacing: var(--track-display); text-transform: uppercase; }
+  .scenario__power { font-size: var(--size-figure-xl); font-weight: 600; color: var(--text-strong); }
+  .scenario[data-recommended="true"] .scenario__power { color: var(--accent); }
+  .scenario__gain { font-size: var(--size-body-s); color: var(--text-muted); }
+  .badge { padding: 3px var(--space-3); font-family: var(--font-mono); font-size: var(--size-label-xs); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--accent-ink); background: var(--accent); }
+
+  .table-wrap { overflow-x: auto; }
+
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

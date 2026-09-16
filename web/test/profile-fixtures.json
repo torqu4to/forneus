@@ -1,0 +1,5568 @@
+{
+ "generated_by": "scripts/generate_profile_fixtures.py",
+ "cases": [
+  {
+   "note": "perfil vazio",
+   "input": {
+    "profile": {
+     "name": "vazio",
+     "catpals": []
+    },
+    "new_jelly": 1000
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 0,
+     "total_effective_power": 0.0
+    },
+    "keep": {
+     "available_jelly": 1000,
+     "additional_jelly_spent": 0,
+     "jelly_leftover": 1000,
+     "total_effective_power": 0,
+     "allocations": [],
+     "changes": []
+    },
+    "redistribute": {
+     "available_jelly": 1000,
+     "additional_jelly_spent": 0,
+     "jelly_leftover": 1000,
+     "total_effective_power": 0.0,
+     "allocations": [],
+     "changes": []
+    }
+   }
+  },
+  {
+   "note": "um amigato, zero jelly nova",
+   "input": {
+    "profile": {
+     "name": "um",
+     "catpals": [
+      {
+       "id": "a",
+       "name": "A",
+       "catpal_type": "Purple",
+       "current_level": 10
+      }
+     ]
+    },
+    "new_jelly": 0
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 0,
+     "total_effective_power": 2805.0
+    },
+    "keep": {
+     "available_jelly": 0,
+     "additional_jelly_spent": 0,
+     "jelly_leftover": 0,
+     "total_effective_power": 2805.0,
+     "allocations": [
+      {
+       "id": "a",
+       "catpal_type": "Purple",
+       "current_level": 10,
+       "target_level": 10,
+       "jelly_change": 0,
+       "effective_power": 2805.0
+      }
+     ],
+     "changes": []
+    },
+    "redistribute": {
+     "available_jelly": 0,
+     "additional_jelly_spent": 0,
+     "jelly_leftover": 0,
+     "total_effective_power": 2805.0,
+     "allocations": [
+      {
+       "id": "a",
+       "catpal_type": "Purple",
+       "current_level": 10,
+       "target_level": 10,
+       "jelly_change": 0,
+       "effective_power": 2805.0
+      }
+     ],
+     "changes": []
+    }
+   }
+  },
+  {
+   "note": "redistribuir deveria valer a pena",
+   "input": {
+    "profile": {
+     "name": "desbalanceado",
+     "catpals": [
+      {
+       "id": "a",
+       "name": "A",
+       "catpal_type": "Purple",
+       "current_level": 140
+      },
+      {
+       "id": "b",
+       "name": "B",
+       "catpal_type": "RedR2",
+       "current_level": 10
+      }
+     ]
+    },
+    "new_jelly": 0
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 6050,
+     "total_effective_power": 53874.0
+    },
+    "keep": {
+     "available_jelly": 0,
+     "additional_jelly_spent": 0,
+     "jelly_leftover": 0,
+     "total_effective_power": 53874.0,
+     "allocations": [
+      {
+       "id": "a",
+       "catpal_type": "Purple",
+       "current_level": 140,
+       "target_level": 140,
+       "jelly_change": 0,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "b",
+       "catpal_type": "RedR2",
+       "current_level": 10,
+       "target_level": 10,
+       "jelly_change": 0,
+       "effective_power": 31470.0
+      }
+     ],
+     "changes": []
+    },
+    "redistribute": {
+     "available_jelly": 6050,
+     "additional_jelly_spent": -55,
+     "jelly_leftover": 55,
+     "total_effective_power": 100071.0,
+     "allocations": [
+      {
+       "id": "a",
+       "catpal_type": "Purple",
+       "current_level": 140,
+       "target_level": 20,
+       "jelly_change": -5980,
+       "effective_power": 3417.0
+      },
+      {
+       "id": "b",
+       "catpal_type": "RedR2",
+       "current_level": 10,
+       "target_level": 80,
+       "jelly_change": 5925,
+       "effective_power": 96654.0
+      }
+     ],
+     "changes": [
+      "a",
+      "b"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #0",
+   "input": {
+    "profile": {
+     "name": "r0",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 60
+      }
+     ]
+    },
+    "new_jelly": 28513
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 1900,
+     "total_effective_power": 39534.0
+    },
+    "keep": {
+     "available_jelly": 28513,
+     "additional_jelly_spent": 16500,
+     "jelly_leftover": 12013,
+     "total_effective_power": 141300.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 60,
+       "target_level": "Max",
+       "jelly_change": 16500,
+       "effective_power": 141300.0
+      }
+     ],
+     "changes": [
+      "c0"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 30413,
+     "additional_jelly_spent": 16500,
+     "jelly_leftover": 12013,
+     "total_effective_power": 141300.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 60,
+       "target_level": "Max",
+       "jelly_change": 16500,
+       "effective_power": 141300.0
+      }
+     ],
+     "changes": [
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #1",
+   "input": {
+    "profile": {
+     "name": "r1",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR2",
+       "current_level": 80
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR2",
+       "current_level": 150
+      }
+     ]
+    },
+    "new_jelly": 21688
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 29925,
+     "total_effective_power": 240213.0
+    },
+    "keep": {
+     "available_jelly": 21688,
+     "additional_jelly_spent": 20775,
+     "jelly_leftover": 913,
+     "total_effective_power": 290235.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 80,
+       "target_level": 150,
+       "jelly_change": 16275,
+       "effective_power": 68223.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 160,
+       "jelly_change": 4500,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 51613,
+     "additional_jelly_spent": 20775,
+     "jelly_leftover": 913,
+     "total_effective_power": 290235.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 80,
+       "target_level": 150,
+       "jelly_change": 16275,
+       "effective_power": 68223.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 160,
+       "jelly_change": 4500,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #2",
+   "input": {
+    "profile": {
+     "name": "r2",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR1",
+       "current_level": 60
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR1",
+       "current_level": 90
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR2",
+       "current_level": 150
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR1",
+       "current_level": 140
+      }
+     ]
+    },
+    "new_jelly": 17386
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 43820,
+     "total_effective_power": 388800.0
+    },
+    "keep": {
+     "available_jelly": 17386,
+     "additional_jelly_spent": 16740,
+     "jelly_leftover": 646,
+     "total_effective_power": 499104.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": 60,
+       "target_level": 80,
+       "jelly_change": 1440,
+       "effective_power": 17526.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 90,
+       "target_level": 160,
+       "jelly_change": 11400,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 204870.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 140,
+       "target_level": 160,
+       "jelly_change": 3900,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c3"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 61206,
+     "additional_jelly_spent": 16740,
+     "jelly_leftover": 646,
+     "total_effective_power": 499104.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": 60,
+       "target_level": 80,
+       "jelly_change": 1440,
+       "effective_power": 17526.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 90,
+       "target_level": 160,
+       "jelly_change": 11400,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 140,
+       "target_level": 160,
+       "jelly_change": 3900,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 204870.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c3"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #3",
+   "input": {
+    "profile": {
+     "name": "r3",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max"
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 130
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR1",
+       "current_level": "Max"
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR2",
+       "current_level": 100
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR2",
+       "current_level": 160
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "GoldR1",
+       "current_level": 10
+      },
+      {
+       "id": "c6",
+       "name": "Cat 6",
+       "catpal_type": "Purple",
+       "current_level": 10
+      }
+     ]
+    },
+    "new_jelly": 11966
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 70010,
+     "total_effective_power": 460185.0
+    },
+    "keep": {
+     "available_jelly": 11966,
+     "additional_jelly_spent": 11925,
+     "jelly_leftover": 41,
+     "total_effective_power": 527736.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 42405.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 130,
+       "target_level": 130,
+       "jelly_change": 0,
+       "effective_power": 19953.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 42405.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR2",
+       "current_level": 100,
+       "target_level": 140,
+       "jelly_change": 11205,
+       "effective_power": 188400.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 160,
+       "target_level": 160,
+       "jelly_change": 0,
+       "effective_power": 222012.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR1",
+       "current_level": 10,
+       "target_level": 30,
+       "jelly_change": 320,
+       "effective_power": 7482.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "Purple",
+       "current_level": 10,
+       "target_level": 40,
+       "jelly_change": 400,
+       "effective_power": 5079.0
+      }
+     ],
+     "changes": [
+      "c3",
+      "c5",
+      "c6"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 81976,
+     "additional_jelly_spent": 11930,
+     "jelly_leftover": 36,
+     "total_effective_power": 547029.0,
+     "allocations": [
+      {
+       "id": "c6",
+       "catpal_type": "Purple",
+       "current_level": 10,
+       "target_level": 70,
+       "jelly_change": 1350,
+       "effective_power": 8607.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 130,
+       "target_level": 70,
+       "jelly_change": -3800,
+       "effective_power": 8607.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR1",
+       "current_level": 10,
+       "target_level": 110,
+       "jelly_change": 5840,
+       "effective_power": 26208.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": 110,
+       "jelly_change": -6880,
+       "effective_power": 26208.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": 130,
+       "jelly_change": -4560,
+       "effective_power": 33375.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR2",
+       "current_level": 100,
+       "target_level": 160,
+       "jelly_change": 19980,
+       "effective_power": 222012.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 160,
+       "target_level": 160,
+       "jelly_change": 0,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c6",
+      "c1",
+      "c5",
+      "c0",
+      "c2",
+      "c3"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #4",
+   "input": {
+    "profile": {
+     "name": "r4",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR2",
+       "current_level": "Max"
+      }
+     ]
+    },
+    "new_jelly": 8503
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 23400,
+     "total_effective_power": 69267.0
+    },
+    "keep": {
+     "available_jelly": 8503,
+     "additional_jelly_spent": 0,
+     "jelly_leftover": 8503,
+     "total_effective_power": 69267.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 69267.0
+      }
+     ],
+     "changes": []
+    },
+    "redistribute": {
+     "available_jelly": 31903,
+     "additional_jelly_spent": 0,
+     "jelly_leftover": 8503,
+     "total_effective_power": 69267.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 69267.0
+      }
+     ],
+     "changes": []
+    }
+   }
+  },
+  {
+   "note": "aleatorio #5",
+   "input": {
+    "profile": {
+     "name": "r5",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR2",
+       "current_level": 20
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR1",
+       "current_level": 100
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "Purple",
+       "current_level": 100
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "Purple",
+       "current_level": 10
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR2",
+       "current_level": 70
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "GoldR2",
+       "current_level": "Max"
+      },
+      {
+       "id": "c6",
+       "name": "Cat 6",
+       "catpal_type": "GoldR1",
+       "current_level": 10
+      }
+     ]
+    },
+    "new_jelly": 18265
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 36945,
+     "total_effective_power": 279447.0
+    },
+    "keep": {
+     "available_jelly": 18265,
+     "additional_jelly_spent": 18185,
+     "jelly_leftover": 80,
+     "total_effective_power": 431496.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 20,
+       "target_level": 100,
+       "jelly_change": 9495,
+       "effective_power": 125214.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 100,
+       "target_level": 120,
+       "jelly_change": 2900,
+       "effective_power": 87432.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 100,
+       "target_level": 100,
+       "jelly_change": 0,
+       "effective_power": 13470.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 10,
+       "target_level": 20,
+       "jelly_change": 70,
+       "effective_power": 3417.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 70,
+       "target_level": 100,
+       "jelly_change": 5400,
+       "effective_power": 125214.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR2",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 69267.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "GoldR1",
+       "current_level": 10,
+       "target_level": 30,
+       "jelly_change": 320,
+       "effective_power": 7482.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c3",
+      "c4",
+      "c6"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 55210,
+     "additional_jelly_spent": 18225,
+     "jelly_leftover": 40,
+     "total_effective_power": 527805.0,
+     "allocations": [
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 10,
+       "target_level": 30,
+       "jelly_change": 200,
+       "effective_power": 4161.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 100,
+       "target_level": 50,
+       "jelly_change": -2350,
+       "effective_power": 6141.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "GoldR1",
+       "current_level": 10,
+       "target_level": 30,
+       "jelly_change": 320,
+       "effective_power": 7482.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR2",
+       "current_level": "Max",
+       "target_level": 60,
+       "jelly_change": -20970,
+       "effective_power": 27423.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 100,
+       "target_level": 160,
+       "jelly_change": 10200,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 20,
+       "target_level": 130,
+       "jelly_change": 17460,
+       "effective_power": 172122.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 70,
+       "target_level": 130,
+       "jelly_change": 13365,
+       "effective_power": 172122.0
+      }
+     ],
+     "changes": [
+      "c3",
+      "c2",
+      "c6",
+      "c5",
+      "c1",
+      "c0",
+      "c4"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #6",
+   "input": {
+    "profile": {
+     "name": "r6",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "Purple",
+       "current_level": 60
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR1",
+       "current_level": 40
+      }
+     ]
+    },
+    "new_jelly": 21650
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 1590,
+     "total_effective_power": 16323.0
+    },
+    "keep": {
+     "available_jelly": 21650,
+     "additional_jelly_spent": 18130,
+     "jelly_leftover": 3520,
+     "total_effective_power": 65325.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 60,
+       "target_level": "Max",
+       "jelly_change": 6050,
+       "effective_power": 22920.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 40,
+       "target_level": "Max",
+       "jelly_change": 12080,
+       "effective_power": 42405.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 23240,
+     "additional_jelly_spent": 18130,
+     "jelly_leftover": 3520,
+     "total_effective_power": 65325.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 60,
+       "target_level": "Max",
+       "jelly_change": 6050,
+       "effective_power": 22920.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 40,
+       "target_level": "Max",
+       "jelly_change": 12080,
+       "effective_power": 42405.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #7",
+   "input": {
+    "profile": {
+     "name": "r7",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 60
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 10
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR2",
+       "current_level": 130
+      }
+     ]
+    },
+    "new_jelly": 12629
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 16240,
+     "total_effective_power": 100692.0
+    },
+    "keep": {
+     "available_jelly": 12629,
+     "additional_jelly_spent": 12500,
+     "jelly_leftover": 129,
+     "total_effective_power": 186750.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 60,
+       "target_level": 150,
+       "jelly_change": 12300,
+       "effective_power": 124236.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 10,
+       "target_level": 30,
+       "jelly_change": 200,
+       "effective_power": 4161.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 130,
+       "target_level": 130,
+       "jelly_change": 0,
+       "effective_power": 58353.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 28869,
+     "additional_jelly_spent": 12235,
+     "jelly_leftover": 394,
+     "total_effective_power": 200460.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 10,
+       "target_level": 140,
+       "jelly_change": 6050,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 130,
+       "target_level": 90,
+       "jelly_change": -8115,
+       "effective_power": 39702.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 60,
+       "target_level": 160,
+       "jelly_change": 14300,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c2",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #8",
+   "input": {
+    "profile": {
+     "name": "r8",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR2",
+       "current_level": 150
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR1",
+       "current_level": 70
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR1",
+       "current_level": 130
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "GoldR1",
+       "current_level": 150
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR1",
+       "current_level": 140
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "GoldR1",
+       "current_level": 90
+      }
+     ]
+    },
+    "new_jelly": 3156
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 65660,
+     "total_effective_power": 522678.0
+    },
+    "keep": {
+     "available_jelly": 3156,
+     "additional_jelly_spent": 2900,
+     "jelly_leftover": 256,
+     "total_effective_power": 542334.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 204870.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 70,
+       "target_level": 80,
+       "jelly_change": 1000,
+       "effective_power": 52500.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR1",
+       "current_level": 130,
+       "target_level": 130,
+       "jelly_change": 0,
+       "effective_power": 99024.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 41514.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 140,
+       "target_level": 150,
+       "jelly_change": 1900,
+       "effective_power": 124236.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR1",
+       "current_level": 90,
+       "target_level": 90,
+       "jelly_change": 0,
+       "effective_power": 20190.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c4"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 68816,
+     "additional_jelly_spent": 3105,
+     "jelly_leftover": 51,
+     "total_effective_power": 609744.0,
+     "allocations": [
+      {
+       "id": "c5",
+       "catpal_type": "GoldR1",
+       "current_level": 90,
+       "target_level": 30,
+       "jelly_change": -3520,
+       "effective_power": 7482.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 150,
+       "target_level": 70,
+       "jelly_change": -8960,
+       "effective_power": 15078.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 70,
+       "target_level": 160,
+       "jelly_change": 13500,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR1",
+       "current_level": 130,
+       "target_level": 160,
+       "jelly_change": 5700,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 140,
+       "target_level": 160,
+       "jelly_change": 3900,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 130,
+       "jelly_change": -7515,
+       "effective_power": 172122.0
+      }
+     ],
+     "changes": [
+      "c5",
+      "c3",
+      "c1",
+      "c2",
+      "c4",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #9",
+   "input": {
+    "profile": {
+     "name": "r9",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR2",
+       "current_level": 10
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 90
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR1",
+       "current_level": 70
+      }
+     ]
+    },
+    "new_jelly": 28602
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 5100,
+     "total_effective_power": 88923.0
+    },
+    "keep": {
+     "available_jelly": 28602,
+     "additional_jelly_spent": 28305,
+     "jelly_leftover": 297,
+     "total_effective_power": 306003.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 10,
+       "target_level": 120,
+       "jelly_change": 14805,
+       "effective_power": 156000.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 90,
+       "target_level": 90,
+       "jelly_change": 0,
+       "effective_power": 11649.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR1",
+       "current_level": 70,
+       "target_level": 160,
+       "jelly_change": 13500,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c2"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 33702,
+     "additional_jelly_spent": 28305,
+     "jelly_leftover": 297,
+     "total_effective_power": 306003.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 90,
+       "target_level": 90,
+       "jelly_change": 0,
+       "effective_power": 11649.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR1",
+       "current_level": 70,
+       "target_level": 160,
+       "jelly_change": 13500,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 10,
+       "target_level": 120,
+       "jelly_change": 14805,
+       "effective_power": 156000.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #10",
+   "input": {
+    "profile": {
+     "name": "r10",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR1",
+       "current_level": 110
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR2",
+       "current_level": 60
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "Purple",
+       "current_level": 20
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR1",
+       "current_level": 50
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "GoldR2",
+       "current_level": 150
+      }
+     ]
+    },
+    "new_jelly": 1864
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 31255,
+     "total_effective_power": 203700.0
+    },
+    "keep": {
+     "available_jelly": 1864,
+     "additional_jelly_spent": 1855,
+     "jelly_leftover": 9,
+     "total_effective_power": 218190.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": 110,
+       "target_level": 110,
+       "jelly_change": 0,
+       "effective_power": 26208.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 60,
+       "target_level": 70,
+       "jelly_change": 1275,
+       "effective_power": 83832.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 20,
+       "target_level": 50,
+       "jelly_change": 580,
+       "effective_power": 6141.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 50,
+       "target_level": 50,
+       "jelly_change": 0,
+       "effective_power": 33786.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 68223.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c2"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 33119,
+     "additional_jelly_spent": 1805,
+     "jelly_leftover": 59,
+     "total_effective_power": 329004.0,
+     "allocations": [
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 20,
+       "target_level": 20,
+       "jelly_change": 0,
+       "effective_power": 3417.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": 110,
+       "target_level": 30,
+       "jelly_change": -5520,
+       "effective_power": 7482.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 50,
+       "jelly_change": -19335,
+       "effective_power": 23751.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 50,
+       "target_level": 160,
+       "jelly_change": 14900,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 60,
+       "target_level": 120,
+       "jelly_change": 11760,
+       "effective_power": 156000.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c4",
+      "c3",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #11",
+   "input": {
+    "profile": {
+     "name": "r11",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 160
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR2",
+       "current_level": 150
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "Purple",
+       "current_level": 70
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "GoldR2",
+       "current_level": "Max"
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "Purple",
+       "current_level": 140
+      }
+     ]
+    },
+    "new_jelly": 16755
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 72200,
+     "total_effective_power": 443502.0
+    },
+    "keep": {
+     "available_jelly": 16755,
+     "additional_jelly_spent": 16350,
+     "jelly_leftover": 405,
+     "total_effective_power": 480945.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 160,
+       "target_level": "Max",
+       "jelly_change": 2200,
+       "effective_power": 141300.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": "Max",
+       "jelly_change": 9450,
+       "effective_power": 225570.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 70,
+       "target_level": 140,
+       "jelly_change": 4700,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR2",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 69267.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "Purple",
+       "current_level": 140,
+       "target_level": 140,
+       "jelly_change": 0,
+       "effective_power": 22404.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c2"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 88955,
+     "additional_jelly_spent": 16350,
+     "jelly_leftover": 405,
+     "total_effective_power": 480945.0,
+     "allocations": [
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 70,
+       "target_level": 140,
+       "jelly_change": 4700,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "Purple",
+       "current_level": 140,
+       "target_level": 140,
+       "jelly_change": 0,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR2",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 69267.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 160,
+       "target_level": "Max",
+       "jelly_change": 2200,
+       "effective_power": 141300.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": "Max",
+       "jelly_change": 9450,
+       "effective_power": 225570.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c0",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #12",
+   "input": {
+    "profile": {
+     "name": "r12",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR1",
+       "current_level": 20
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR2",
+       "current_level": 150
+      }
+     ]
+    },
+    "new_jelly": 4932
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 21112,
+     "total_effective_power": 74496.0
+    },
+    "keep": {
+     "available_jelly": 4932,
+     "additional_jelly_spent": 4688,
+     "jelly_leftover": 244,
+     "total_effective_power": 91293.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": 20,
+       "target_level": 100,
+       "jelly_change": 4688,
+       "effective_power": 23070.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 68223.0
+      }
+     ],
+     "changes": [
+      "c0"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 26044,
+     "additional_jelly_spent": 4348,
+     "jelly_leftover": 584,
+     "total_effective_power": 99867.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": 20,
+       "target_level": 150,
+       "jelly_change": 11008,
+       "effective_power": 41514.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 130,
+       "jelly_change": -6660,
+       "effective_power": 58353.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #13",
+   "input": {
+    "profile": {
+     "name": "r13",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max"
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 30
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR1",
+       "current_level": 40
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "Purple",
+       "current_level": 30
+      }
+     ]
+    },
+    "new_jelly": 3437
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 13760,
+     "total_effective_power": 59742.0
+    },
+    "keep": {
+     "available_jelly": 3437,
+     "additional_jelly_spent": 3420,
+     "jelly_leftover": 17,
+     "total_effective_power": 73398.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 42405.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 30,
+       "target_level": 70,
+       "jelly_change": 1150,
+       "effective_power": 8607.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 40,
+       "target_level": 70,
+       "jelly_change": 1520,
+       "effective_power": 15078.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 30,
+       "target_level": 60,
+       "jelly_change": 750,
+       "effective_power": 7308.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c2",
+      "c3"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 17197,
+     "additional_jelly_spent": 3410,
+     "jelly_leftover": 27,
+     "total_effective_power": 78057.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 30,
+       "target_level": 90,
+       "jelly_change": 2200,
+       "effective_power": 11649.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 30,
+       "target_level": 110,
+       "jelly_change": 3450,
+       "effective_power": 15507.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 40,
+       "target_level": 80,
+       "jelly_change": 2320,
+       "effective_power": 17526.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": 130,
+       "jelly_change": -4560,
+       "effective_power": 33375.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c3",
+      "c2",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #14",
+   "input": {
+    "profile": {
+     "name": "r14",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 20
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR2",
+       "current_level": 30
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR2",
+       "current_level": 120
+      }
+     ]
+    },
+    "new_jelly": 25548
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 12680,
+     "total_effective_power": 91548.0
+    },
+    "keep": {
+     "available_jelly": 25548,
+     "additional_jelly_spent": 25420,
+     "jelly_leftover": 128,
+     "total_effective_power": 240726.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 20,
+       "target_level": 160,
+       "jelly_change": 16060,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR2",
+       "current_level": 30,
+       "target_level": 110,
+       "jelly_change": 9360,
+       "effective_power": 48810.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 53562.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 38228,
+     "additional_jelly_spent": 25420,
+     "jelly_leftover": 128,
+     "total_effective_power": 240726.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "GoldR2",
+       "current_level": 30,
+       "target_level": 110,
+       "jelly_change": 9360,
+       "effective_power": 48810.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 53562.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 20,
+       "target_level": 160,
+       "jelly_change": 16060,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #15",
+   "input": {
+    "profile": {
+     "name": "r15",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR2",
+       "current_level": 10
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 20
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR2",
+       "current_level": 150
+      }
+     ]
+    },
+    "new_jelly": 25961
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 25270,
+     "total_effective_power": 219981.0
+    },
+    "keep": {
+     "available_jelly": 25961,
+     "additional_jelly_spent": 25770,
+     "jelly_leftover": 191,
+     "total_effective_power": 303285.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 10,
+       "target_level": 130,
+       "jelly_change": 14340,
+       "effective_power": 58353.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 20,
+       "target_level": "Max",
+       "jelly_change": 6930,
+       "effective_power": 22920.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 160,
+       "jelly_change": 4500,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c2"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 51231,
+     "additional_jelly_spent": 25770,
+     "jelly_leftover": 191,
+     "total_effective_power": 303285.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 20,
+       "target_level": "Max",
+       "jelly_change": 6930,
+       "effective_power": 22920.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 10,
+       "target_level": 130,
+       "jelly_change": 14340,
+       "effective_power": 58353.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 160,
+       "jelly_change": 4500,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c0",
+      "c2"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #16",
+   "input": {
+    "profile": {
+     "name": "r16",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 90
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 80
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR1",
+       "current_level": 70
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR1",
+       "current_level": 80
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR2",
+       "current_level": 70
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "Purple",
+       "current_level": 120
+      },
+      {
+       "id": "c6",
+       "name": "Cat 6",
+       "catpal_type": "RedR1",
+       "current_level": 120
+      }
+     ]
+    },
+    "new_jelly": 13660
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 30080,
+     "total_effective_power": 326298.0
+    },
+    "keep": {
+     "available_jelly": 13660,
+     "additional_jelly_spent": 13560,
+     "jelly_leftover": 100,
+     "total_effective_power": 423276.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 90,
+       "target_level": 140,
+       "jelly_change": 7500,
+       "effective_power": 111276.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 80,
+       "target_level": 80,
+       "jelly_change": 0,
+       "effective_power": 10008.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 70,
+       "target_level": 70,
+       "jelly_change": 0,
+       "effective_power": 15078.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 80,
+       "target_level": 90,
+       "jelly_change": 1100,
+       "effective_power": 59778.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 70,
+       "target_level": 90,
+       "jelly_change": 3360,
+       "effective_power": 110442.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "Purple",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 17670.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 130,
+       "jelly_change": 1600,
+       "effective_power": 99024.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c3",
+      "c4",
+      "c6"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 43740,
+     "additional_jelly_spent": 13660,
+     "jelly_leftover": 0,
+     "total_effective_power": 450426.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 80,
+       "target_level": 30,
+       "jelly_change": -1650,
+       "effective_power": 4161.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "Purple",
+       "current_level": 120,
+       "target_level": 30,
+       "jelly_change": -4150,
+       "effective_power": 4161.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 70,
+       "target_level": 30,
+       "jelly_change": -1840,
+       "effective_power": 7482.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 80,
+       "target_level": 90,
+       "jelly_change": 1100,
+       "effective_power": 59778.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 90,
+       "target_level": 140,
+       "jelly_change": 7500,
+       "effective_power": 111276.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 160,
+       "jelly_change": 7300,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 70,
+       "target_level": 100,
+       "jelly_change": 5400,
+       "effective_power": 125214.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c5",
+      "c2",
+      "c3",
+      "c0",
+      "c6",
+      "c4"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #17",
+   "input": {
+    "profile": {
+     "name": "r17",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "Purple",
+       "current_level": 60
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR1",
+       "current_level": 140
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR1",
+       "current_level": 40
+      }
+     ]
+    },
+    "new_jelly": 8815
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 11350,
+     "total_effective_power": 73314.0
+    },
+    "keep": {
+     "available_jelly": 8815,
+     "additional_jelly_spent": 8500,
+     "jelly_leftover": 315,
+     "total_effective_power": 133305.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 60,
+       "target_level": 70,
+       "jelly_change": 400,
+       "effective_power": 8607.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 140,
+       "target_level": 140,
+       "jelly_change": 0,
+       "effective_power": 37266.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR1",
+       "current_level": 40,
+       "target_level": 120,
+       "jelly_change": 8100,
+       "effective_power": 87432.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c2"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 20165,
+     "additional_jelly_spent": 8760,
+     "jelly_leftover": 55,
+     "total_effective_power": 163188.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 60,
+       "target_level": 60,
+       "jelly_change": 0,
+       "effective_power": 7308.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 140,
+       "target_level": 80,
+       "jelly_change": -6640,
+       "effective_power": 17526.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR1",
+       "current_level": 40,
+       "target_level": 160,
+       "jelly_change": 15400,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c2"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #18",
+   "input": {
+    "profile": {
+     "name": "r18",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 30
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 60
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR1",
+       "current_level": 130
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR2",
+       "current_level": 130
+      }
+     ]
+    },
+    "new_jelly": 21484
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 29535,
+     "total_effective_power": 303162.0
+    },
+    "keep": {
+     "available_jelly": 21484,
+     "additional_jelly_spent": 21240,
+     "jelly_leftover": 244,
+     "total_effective_power": 446637.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 30,
+       "target_level": 160,
+       "jelly_change": 15800,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 60,
+       "target_level": 70,
+       "jelly_change": 400,
+       "effective_power": 8607.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR1",
+       "current_level": 130,
+       "target_level": 140,
+       "jelly_change": 1800,
+       "effective_power": 111276.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR2",
+       "current_level": 130,
+       "target_level": 140,
+       "jelly_change": 3240,
+       "effective_power": 188400.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c2",
+      "c3"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 51019,
+     "additional_jelly_spent": 21200,
+     "jelly_leftover": 284,
+     "total_effective_power": 454971.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 60,
+       "target_level": 50,
+       "jelly_change": -300,
+       "effective_power": 6141.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 30,
+       "target_level": 160,
+       "jelly_change": 15800,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR1",
+       "current_level": 130,
+       "target_level": 160,
+       "jelly_change": 5700,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR2",
+       "current_level": 130,
+       "target_level": 130,
+       "jelly_change": 0,
+       "effective_power": 172122.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c0",
+      "c2"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #19",
+   "input": {
+    "profile": {
+     "name": "r19",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "Purple",
+       "current_level": 120
+      }
+     ]
+    },
+    "new_jelly": 6359
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 4350,
+     "total_effective_power": 17670.0
+    },
+    "keep": {
+     "available_jelly": 6359,
+     "additional_jelly_spent": 2650,
+     "jelly_leftover": 3709,
+     "total_effective_power": 22920.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 120,
+       "target_level": "Max",
+       "jelly_change": 2650,
+       "effective_power": 22920.0
+      }
+     ],
+     "changes": [
+      "c0"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 10709,
+     "additional_jelly_spent": 2650,
+     "jelly_leftover": 3709,
+     "total_effective_power": 22920.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 120,
+       "target_level": "Max",
+       "jelly_change": 2650,
+       "effective_power": 22920.0
+      }
+     ],
+     "changes": [
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #20",
+   "input": {
+    "profile": {
+     "name": "r20",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 40
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR2",
+       "current_level": 150
+      }
+     ]
+    },
+    "new_jelly": 22362
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 26000,
+     "total_effective_power": 233610.0
+    },
+    "keep": {
+     "available_jelly": 22362,
+     "additional_jelly_spent": 22100,
+     "jelly_leftover": 262,
+     "total_effective_power": 363312.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 40,
+       "target_level": "Max",
+       "jelly_change": 17600,
+       "effective_power": 141300.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 160,
+       "jelly_change": 4500,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 48362,
+     "additional_jelly_spent": 22100,
+     "jelly_leftover": 262,
+     "total_effective_power": 363312.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 40,
+       "target_level": "Max",
+       "jelly_change": 17600,
+       "effective_power": 141300.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 160,
+       "jelly_change": 4500,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #21",
+   "input": {
+    "profile": {
+     "name": "r21",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR2",
+       "current_level": 60
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR1",
+       "current_level": 120
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR2",
+       "current_level": 100
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "Purple",
+       "current_level": 100
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR2",
+       "current_level": 50
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "Purple",
+       "current_level": 120
+      }
+     ]
+    },
+    "new_jelly": 28800
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 31100,
+     "total_effective_power": 377094.0
+    },
+    "keep": {
+     "available_jelly": 28800,
+     "additional_jelly_spent": 28765,
+     "jelly_leftover": 35,
+     "total_effective_power": 590928.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 60,
+       "target_level": 110,
+       "jelly_change": 9060,
+       "effective_power": 140478.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 160,
+       "jelly_change": 7300,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 100,
+       "target_level": 110,
+       "jelly_change": 2385,
+       "effective_power": 140478.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 100,
+       "target_level": 100,
+       "jelly_change": 0,
+       "effective_power": 13470.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 50,
+       "target_level": 110,
+       "jelly_change": 10020,
+       "effective_power": 140478.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "Purple",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 17670.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c2",
+      "c4"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 59900,
+     "additional_jelly_spent": 28715,
+     "jelly_leftover": 85,
+     "total_effective_power": 605448.0,
+     "allocations": [
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 100,
+       "target_level": 60,
+       "jelly_change": -2050,
+       "effective_power": 7308.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "Purple",
+       "current_level": 120,
+       "target_level": 60,
+       "jelly_change": -3400,
+       "effective_power": 7308.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 160,
+       "jelly_change": 7300,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 50,
+       "target_level": 110,
+       "jelly_change": 10020,
+       "effective_power": 140478.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 60,
+       "target_level": 120,
+       "jelly_change": 11760,
+       "effective_power": 156000.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 100,
+       "target_level": 120,
+       "jelly_change": 5085,
+       "effective_power": 156000.0
+      }
+     ],
+     "changes": [
+      "c3",
+      "c5",
+      "c1",
+      "c4",
+      "c0",
+      "c2"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #22",
+   "input": {
+    "profile": {
+     "name": "r22",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR2",
+       "current_level": 160
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR1",
+       "current_level": 90
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR2",
+       "current_level": 120
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "Purple",
+       "current_level": 120
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR1",
+       "current_level": 30
+      }
+     ]
+    },
+    "new_jelly": 29307
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 50320,
+     "total_effective_power": 338142.0
+    },
+    "keep": {
+     "available_jelly": 29307,
+     "additional_jelly_spent": 29290,
+     "jelly_leftover": 17,
+     "total_effective_power": 485583.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 160,
+       "target_level": 160,
+       "jelly_change": 0,
+       "effective_power": 222012.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 90,
+       "target_level": 150,
+       "jelly_change": 7280,
+       "effective_power": 41514.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 120,
+       "target_level": 130,
+       "jelly_change": 2310,
+       "effective_power": 58353.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 120,
+       "target_level": 140,
+       "jelly_change": 1700,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 30,
+       "target_level": "Max",
+       "jelly_change": 18000,
+       "effective_power": 141300.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c2",
+      "c3",
+      "c4"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 79627,
+     "additional_jelly_spent": 29290,
+     "jelly_leftover": 17,
+     "total_effective_power": 485583.0,
+     "allocations": [
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 120,
+       "target_level": 140,
+       "jelly_change": 1700,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 90,
+       "target_level": 150,
+       "jelly_change": 7280,
+       "effective_power": 41514.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 120,
+       "target_level": 130,
+       "jelly_change": 2310,
+       "effective_power": 58353.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 30,
+       "target_level": "Max",
+       "jelly_change": 18000,
+       "effective_power": 141300.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 160,
+       "target_level": 160,
+       "jelly_change": 0,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c3",
+      "c1",
+      "c2",
+      "c4"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #23",
+   "input": {
+    "profile": {
+     "name": "r23",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "Purple",
+       "current_level": 80
+      }
+     ]
+    },
+    "new_jelly": 5248
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 1850,
+     "total_effective_power": 10008.0
+    },
+    "keep": {
+     "available_jelly": 5248,
+     "additional_jelly_spent": 5150,
+     "jelly_leftover": 98,
+     "total_effective_power": 22920.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 80,
+       "target_level": "Max",
+       "jelly_change": 5150,
+       "effective_power": 22920.0
+      }
+     ],
+     "changes": [
+      "c0"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 7098,
+     "additional_jelly_spent": 5150,
+     "jelly_leftover": 98,
+     "total_effective_power": 22920.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 80,
+       "target_level": "Max",
+       "jelly_change": 5150,
+       "effective_power": 22920.0
+      }
+     ],
+     "changes": [
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #24",
+   "input": {
+    "profile": {
+     "name": "r24",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR2",
+       "current_level": 110
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR1",
+       "current_level": 160
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR2",
+       "current_level": 10
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR1",
+       "current_level": 40
+      }
+     ]
+    },
+    "new_jelly": 2720
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 26870,
+     "total_effective_power": 227598.0
+    },
+    "keep": {
+     "available_jelly": 2720,
+     "additional_jelly_spent": 2410,
+     "jelly_leftover": 310,
+     "total_effective_power": 249846.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 110,
+       "target_level": 110,
+       "jelly_change": 0,
+       "effective_power": 48810.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 160,
+       "target_level": 160,
+       "jelly_change": 0,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 10,
+       "target_level": 30,
+       "jelly_change": 510,
+       "effective_power": 16878.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 40,
+       "target_level": 70,
+       "jelly_change": 1900,
+       "effective_power": 45804.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c3"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 29590,
+     "additional_jelly_spent": 2650,
+     "jelly_leftover": 70,
+     "total_effective_power": 283386.0,
+     "allocations": [
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 10,
+       "target_level": 30,
+       "jelly_change": 510,
+       "effective_power": 16878.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 110,
+       "target_level": 30,
+       "jelly_change": -9360,
+       "effective_power": 16878.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 40,
+       "target_level": 140,
+       "jelly_change": 11500,
+       "effective_power": 111276.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 160,
+       "target_level": 160,
+       "jelly_change": 0,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c0",
+      "c3"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #25",
+   "input": {
+    "profile": {
+     "name": "r25",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR2",
+       "current_level": 110
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR1",
+       "current_level": 120
+      }
+     ]
+    },
+    "new_jelly": 1454
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 21005,
+     "total_effective_power": 227910.0
+    },
+    "keep": {
+     "available_jelly": 1454,
+     "additional_jelly_spent": 0,
+     "jelly_leftover": 1454,
+     "total_effective_power": 227910.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 110,
+       "target_level": 110,
+       "jelly_change": 0,
+       "effective_power": 140478.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 87432.0
+      }
+     ],
+     "changes": []
+    },
+    "redistribute": {
+     "available_jelly": 22459,
+     "additional_jelly_spent": 1015,
+     "jelly_leftover": 439,
+     "total_effective_power": 236490.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 140,
+       "jelly_change": 3400,
+       "effective_power": 111276.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": 110,
+       "target_level": 100,
+       "jelly_change": -2385,
+       "effective_power": 125214.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #26",
+   "input": {
+    "profile": {
+     "name": "r26",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR1",
+       "current_level": 10
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR2",
+       "current_level": 160
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR1",
+       "current_level": 30
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR1",
+       "current_level": 150
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR1",
+       "current_level": 90
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "RedR1",
+       "current_level": 10
+      },
+      {
+       "id": "c6",
+       "name": "Cat 6",
+       "catpal_type": "GoldR2",
+       "current_level": 70
+      }
+     ]
+    },
+    "new_jelly": 1569
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 52470,
+     "total_effective_power": 468402.0
+    },
+    "keep": {
+     "available_jelly": 1569,
+     "additional_jelly_spent": 1412,
+     "jelly_leftover": 157,
+     "total_effective_power": 484914.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": 10,
+       "target_level": 20,
+       "jelly_change": 112,
+       "effective_power": 6273.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 160,
+       "target_level": 160,
+       "jelly_change": 0,
+       "effective_power": 222012.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 30,
+       "target_level": 30,
+       "jelly_change": 0,
+       "effective_power": 7482.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 124236.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 90,
+       "target_level": 90,
+       "jelly_change": 0,
+       "effective_power": 59778.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "RedR1",
+       "current_level": 10,
+       "target_level": 50,
+       "jelly_change": 1300,
+       "effective_power": 33786.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "GoldR2",
+       "current_level": 70,
+       "target_level": 70,
+       "jelly_change": 0,
+       "effective_power": 31347.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c5"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 54039,
+     "additional_jelly_spent": 1490,
+     "jelly_leftover": 79,
+     "total_effective_power": 533970.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": 10,
+       "target_level": 10,
+       "jelly_change": 0,
+       "effective_power": 5391.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 30,
+       "target_level": 30,
+       "jelly_change": 0,
+       "effective_power": 7482.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "GoldR2",
+       "current_level": 70,
+       "target_level": 40,
+       "jelly_change": -2430,
+       "effective_power": 20151.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "RedR1",
+       "current_level": 10,
+       "target_level": 130,
+       "jelly_change": 10500,
+       "effective_power": 99024.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 90,
+       "target_level": 160,
+       "jelly_change": 11400,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": 150,
+       "target_level": 160,
+       "jelly_change": 2000,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 160,
+       "target_level": 100,
+       "jelly_change": -19980,
+       "effective_power": 125214.0
+      }
+     ],
+     "changes": [
+      "c6",
+      "c5",
+      "c4",
+      "c3",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #27",
+   "input": {
+    "profile": {
+     "name": "r27",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR2",
+       "current_level": "Max"
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 80
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR1",
+       "current_level": 110
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "GoldR1",
+       "current_level": 30
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR2",
+       "current_level": 50
+      }
+     ]
+    },
+    "new_jelly": 28598
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 33495,
+     "total_effective_power": 174207.0
+    },
+    "keep": {
+     "available_jelly": 28598,
+     "additional_jelly_spent": 28335,
+     "jelly_leftover": 263,
+     "total_effective_power": 338358.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 69267.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 80,
+       "target_level": 80,
+       "jelly_change": 0,
+       "effective_power": 10008.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 110,
+       "target_level": 110,
+       "jelly_change": 0,
+       "effective_power": 26208.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 30,
+       "target_level": 50,
+       "jelly_change": 720,
+       "effective_power": 10863.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 50,
+       "target_level": 160,
+       "jelly_change": 27615,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c3",
+      "c4"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 62093,
+     "additional_jelly_spent": 28495,
+     "jelly_leftover": 103,
+     "total_effective_power": 361092.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 80,
+       "target_level": 130,
+       "jelly_change": 3300,
+       "effective_power": 19953.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 30,
+       "target_level": 130,
+       "jelly_change": 7840,
+       "effective_power": 33375.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 110,
+       "target_level": 150,
+       "jelly_change": 5280,
+       "effective_power": 41514.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": "Max",
+       "target_level": 100,
+       "jelly_change": -15540,
+       "effective_power": 44238.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR2",
+       "current_level": 50,
+       "target_level": 160,
+       "jelly_change": 27615,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c3",
+      "c2",
+      "c0",
+      "c4"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #28",
+   "input": {
+    "profile": {
+     "name": "r28",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max"
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": "Max"
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR2",
+       "current_level": 10
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "Purple",
+       "current_level": 90
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "GoldR1",
+       "current_level": 10
+      }
+     ]
+    },
+    "new_jelly": 10139
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 22120,
+     "total_effective_power": 94059.0
+    },
+    "keep": {
+     "available_jelly": 10139,
+     "additional_jelly_spent": 10125,
+     "jelly_leftover": 14,
+     "total_effective_power": 137208.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 42405.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 22920.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 10,
+       "target_level": 80,
+       "jelly_change": 4725,
+       "effective_power": 35343.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 90,
+       "target_level": 100,
+       "jelly_change": 600,
+       "effective_power": 13470.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "GoldR1",
+       "current_level": 10,
+       "target_level": 100,
+       "jelly_change": 4800,
+       "effective_power": 23070.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c3",
+      "c4"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 32259,
+     "additional_jelly_spent": 10125,
+     "jelly_leftover": 14,
+     "total_effective_power": 144450.0,
+     "allocations": [
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 90,
+       "target_level": 130,
+       "jelly_change": 2750,
+       "effective_power": 19953.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": "Max",
+       "target_level": 140,
+       "jelly_change": -950,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "GoldR1",
+       "current_level": 10,
+       "target_level": 130,
+       "jelly_change": 8160,
+       "effective_power": 33375.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": 130,
+       "jelly_change": -4560,
+       "effective_power": 33375.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 10,
+       "target_level": 80,
+       "jelly_change": 4725,
+       "effective_power": 35343.0
+      }
+     ],
+     "changes": [
+      "c3",
+      "c1",
+      "c4",
+      "c0",
+      "c2"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #29",
+   "input": {
+    "profile": {
+     "name": "r29",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 70
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR1",
+       "current_level": 50
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR2",
+       "current_level": 150
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR1",
+       "current_level": "Max"
+      }
+     ]
+    },
+    "new_jelly": 17790
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 43140,
+     "total_effective_power": 266190.0
+    },
+    "keep": {
+     "available_jelly": 17790,
+     "additional_jelly_spent": 17260,
+     "jelly_leftover": 530,
+     "total_effective_power": 370947.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 70,
+       "target_level": 160,
+       "jelly_change": 13500,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 50,
+       "target_level": 100,
+       "jelly_change": 3760,
+       "effective_power": 23070.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 68223.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 141300.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 60930,
+     "additional_jelly_spent": 16920,
+     "jelly_leftover": 870,
+     "total_effective_power": 379521.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 50,
+       "target_level": 150,
+       "jelly_change": 10080,
+       "effective_power": 41514.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 130,
+       "jelly_change": -6660,
+       "effective_power": 58353.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 70,
+       "target_level": 160,
+       "jelly_change": 13500,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 141300.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c2",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #30",
+   "input": {
+    "profile": {
+     "name": "r30",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "Purple",
+       "current_level": 110
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR1",
+       "current_level": 70
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "Purple",
+       "current_level": 20
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR2",
+       "current_level": 20
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR1",
+       "current_level": 140
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "GoldR1",
+       "current_level": 120
+      },
+      {
+       "id": "c6",
+       "name": "Cat 6",
+       "catpal_type": "Purple",
+       "current_level": "Max"
+      },
+      {
+       "id": "c7",
+       "name": "Cat 7",
+       "catpal_type": "RedR1",
+       "current_level": 60
+      }
+     ]
+    },
+    "new_jelly": 5482
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 34805,
+     "total_effective_power": 305202.0
+    },
+    "keep": {
+     "available_jelly": 5482,
+     "additional_jelly_spent": 5475,
+     "jelly_leftover": 7,
+     "total_effective_power": 360978.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 110,
+       "target_level": 110,
+       "jelly_change": 0,
+       "effective_power": 15507.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 70,
+       "target_level": 70,
+       "jelly_change": 0,
+       "effective_power": 45804.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 20,
+       "target_level": 50,
+       "jelly_change": 580,
+       "effective_power": 6141.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR2",
+       "current_level": 20,
+       "target_level": 70,
+       "jelly_change": 4095,
+       "effective_power": 83832.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 140,
+       "target_level": 140,
+       "jelly_change": 0,
+       "effective_power": 111276.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR1",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 29694.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "Purple",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 22920.0
+      },
+      {
+       "id": "c7",
+       "catpal_type": "RedR1",
+       "current_level": 60,
+       "target_level": 70,
+       "jelly_change": 800,
+       "effective_power": 45804.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c3",
+      "c7"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 40287,
+     "additional_jelly_spent": 5455,
+     "jelly_leftover": 27,
+     "total_effective_power": 430122.0,
+     "allocations": [
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 20,
+       "target_level": 10,
+       "jelly_change": -70,
+       "effective_power": 2805.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 110,
+       "target_level": 20,
+       "jelly_change": -3580,
+       "effective_power": 3417.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "Purple",
+       "current_level": "Max",
+       "target_level": 20,
+       "jelly_change": -6930,
+       "effective_power": 3417.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR1",
+       "current_level": 120,
+       "target_level": 10,
+       "jelly_change": -6960,
+       "effective_power": 5391.0
+      },
+      {
+       "id": "c7",
+       "catpal_type": "RedR1",
+       "current_level": 60,
+       "target_level": 80,
+       "jelly_change": 1800,
+       "effective_power": 52500.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR1",
+       "current_level": 70,
+       "target_level": 130,
+       "jelly_change": 7800,
+       "effective_power": 99024.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 140,
+       "target_level": 160,
+       "jelly_change": 3900,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR2",
+       "current_level": 20,
+       "target_level": 100,
+       "jelly_change": 9495,
+       "effective_power": 125214.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c0",
+      "c6",
+      "c5",
+      "c7",
+      "c1",
+      "c4",
+      "c3"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #31",
+   "input": {
+    "profile": {
+     "name": "r31",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 100
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR2",
+       "current_level": 80
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "Purple",
+       "current_level": 100
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "GoldR1",
+       "current_level": 40
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "GoldR1",
+       "current_level": 130
+      }
+     ]
+    },
+    "new_jelly": 23681
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 23725,
+     "total_effective_power": 220146.0
+    },
+    "keep": {
+     "available_jelly": 23681,
+     "additional_jelly_spent": 23480,
+     "jelly_leftover": 201,
+     "total_effective_power": 372399.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 100,
+       "target_level": 160,
+       "jelly_change": 10200,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 80,
+       "target_level": 130,
+       "jelly_change": 11760,
+       "effective_power": 172122.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 100,
+       "target_level": 100,
+       "jelly_change": 0,
+       "effective_power": 13470.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 40,
+       "target_level": 70,
+       "jelly_change": 1520,
+       "effective_power": 15078.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "GoldR1",
+       "current_level": 130,
+       "target_level": 130,
+       "jelly_change": 0,
+       "effective_power": 33375.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c3"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 47406,
+     "additional_jelly_spent": 23655,
+     "jelly_leftover": 26,
+     "total_effective_power": 382557.0,
+     "allocations": [
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 100,
+       "target_level": 30,
+       "jelly_change": -2800,
+       "effective_power": 4161.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 40,
+       "target_level": 40,
+       "jelly_change": 0,
+       "effective_power": 9015.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "GoldR1",
+       "current_level": 130,
+       "target_level": 40,
+       "jelly_change": -7520,
+       "effective_power": 9015.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 100,
+       "target_level": 160,
+       "jelly_change": 10200,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 80,
+       "target_level": 160,
+       "jelly_change": 23775,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c4",
+      "c0",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #32",
+   "input": {
+    "profile": {
+     "name": "r32",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR2",
+       "current_level": 90
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR2",
+       "current_level": 150
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "Purple",
+       "current_level": 50
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "GoldR1",
+       "current_level": 60
+      }
+     ]
+    },
+    "new_jelly": 29675
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 29395,
+     "total_effective_power": 126942.0
+    },
+    "keep": {
+     "available_jelly": 29675,
+     "additional_jelly_spent": 28875,
+     "jelly_leftover": 800,
+     "total_effective_power": 197913.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 90,
+       "target_level": 150,
+       "jelly_change": 14775,
+       "effective_power": 68223.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 68223.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 50,
+       "target_level": 130,
+       "jelly_change": 4500,
+       "effective_power": 19953.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 60,
+       "target_level": 150,
+       "jelly_change": 9600,
+       "effective_power": 41514.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c2",
+      "c3"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 59070,
+     "additional_jelly_spent": 28875,
+     "jelly_leftover": 800,
+     "total_effective_power": 197913.0,
+     "allocations": [
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 50,
+       "target_level": 130,
+       "jelly_change": 4500,
+       "effective_power": 19953.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 60,
+       "target_level": 150,
+       "jelly_change": 9600,
+       "effective_power": 41514.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 90,
+       "target_level": 150,
+       "jelly_change": 14775,
+       "effective_power": 68223.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 68223.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c3",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #33",
+   "input": {
+    "profile": {
+     "name": "r33",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 120
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR1",
+       "current_level": 110
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "Purple",
+       "current_level": 90
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "GoldR2",
+       "current_level": 10
+      }
+     ]
+    },
+    "new_jelly": 15126
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 17140,
+     "total_effective_power": 136983.0
+    },
+    "keep": {
+     "available_jelly": 15126,
+     "additional_jelly_spent": 15095,
+     "jelly_leftover": 31,
+     "total_effective_power": 221061.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 160,
+       "jelly_change": 7300,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 110,
+       "target_level": 120,
+       "jelly_change": 1120,
+       "effective_power": 29694.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 90,
+       "target_level": 120,
+       "jelly_change": 1950,
+       "effective_power": 17670.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR2",
+       "current_level": 10,
+       "target_level": 80,
+       "jelly_change": 4725,
+       "effective_power": 35343.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c1",
+      "c2",
+      "c3"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 32266,
+     "additional_jelly_spent": 15095,
+     "jelly_leftover": 31,
+     "total_effective_power": 221061.0,
+     "allocations": [
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 90,
+       "target_level": 120,
+       "jelly_change": 1950,
+       "effective_power": 17670.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 110,
+       "target_level": 120,
+       "jelly_change": 1120,
+       "effective_power": 29694.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR2",
+       "current_level": 10,
+       "target_level": 80,
+       "jelly_change": 4725,
+       "effective_power": 35343.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 160,
+       "jelly_change": 7300,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c1",
+      "c3",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #34",
+   "input": {
+    "profile": {
+     "name": "r34",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "Purple",
+       "current_level": 40
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 140
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "Purple",
+       "current_level": 80
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "GoldR1",
+       "current_level": 60
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "RedR1",
+       "current_level": 60
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "RedR1",
+       "current_level": 120
+      },
+      {
+       "id": "c6",
+       "name": "Cat 6",
+       "catpal_type": "GoldR2",
+       "current_level": 100
+      },
+      {
+       "id": "c7",
+       "name": "Cat 7",
+       "catpal_type": "RedR1",
+       "current_level": "Max"
+      }
+     ]
+    },
+    "new_jelly": 6167
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 46880,
+     "total_effective_power": 362871.0
+    },
+    "keep": {
+     "available_jelly": 6167,
+     "additional_jelly_spent": 6100,
+     "jelly_leftover": 67,
+     "total_effective_power": 405945.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 40,
+       "target_level": 40,
+       "jelly_change": 0,
+       "effective_power": 5079.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 140,
+       "target_level": 140,
+       "jelly_change": 0,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 80,
+       "target_level": 80,
+       "jelly_change": 0,
+       "effective_power": 10008.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 60,
+       "target_level": 60,
+       "jelly_change": 0,
+       "effective_power": 12876.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 60,
+       "target_level": 70,
+       "jelly_change": 800,
+       "effective_power": 45804.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 150,
+       "jelly_change": 5300,
+       "effective_power": 124236.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "GoldR2",
+       "current_level": 100,
+       "target_level": 100,
+       "jelly_change": 0,
+       "effective_power": 44238.0
+      },
+      {
+       "id": "c7",
+       "catpal_type": "RedR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 141300.0
+      }
+     ],
+     "changes": [
+      "c4",
+      "c5"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 53047,
+     "additional_jelly_spent": 6160,
+     "jelly_leftover": 7,
+     "total_effective_power": 467199.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 40,
+       "target_level": 20,
+       "jelly_change": -330,
+       "effective_power": 3417.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "Purple",
+       "current_level": 80,
+       "target_level": 50,
+       "jelly_change": -1200,
+       "effective_power": 6141.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 140,
+       "target_level": 50,
+       "jelly_change": -5400,
+       "effective_power": 6141.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR1",
+       "current_level": 60,
+       "target_level": 40,
+       "jelly_change": -880,
+       "effective_power": 9015.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "GoldR2",
+       "current_level": 100,
+       "target_level": 60,
+       "jelly_change": -5430,
+       "effective_power": 27423.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "RedR1",
+       "current_level": 60,
+       "target_level": 160,
+       "jelly_change": 14300,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 160,
+       "jelly_change": 7300,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c7",
+       "catpal_type": "RedR1",
+       "current_level": "Max",
+       "target_level": 160,
+       "jelly_change": -2200,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c2",
+      "c1",
+      "c3",
+      "c6",
+      "c4",
+      "c5",
+      "c7"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #35",
+   "input": {
+    "profile": {
+     "name": "r35",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR2",
+       "current_level": "Max"
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "Purple",
+       "current_level": 70
+      }
+     ]
+    },
+    "new_jelly": 1398
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 36000,
+     "total_effective_power": 234177.0
+    },
+    "keep": {
+     "available_jelly": 1398,
+     "additional_jelly_spent": 1050,
+     "jelly_leftover": 348,
+     "total_effective_power": 237219.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 225570.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 70,
+       "target_level": 90,
+       "jelly_change": 1050,
+       "effective_power": 11649.0
+      }
+     ],
+     "changes": [
+      "c1"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 37398,
+     "additional_jelly_spent": 700,
+     "jelly_leftover": 698,
+     "total_effective_power": 244932.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "Purple",
+       "current_level": 70,
+       "target_level": "Max",
+       "jelly_change": 5650,
+       "effective_power": 22920.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "RedR2",
+       "current_level": "Max",
+       "target_level": 160,
+       "jelly_change": -4950,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c1",
+      "c0"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #36",
+   "input": {
+    "profile": {
+     "name": "r36",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR2",
+       "current_level": 120
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR2",
+       "current_level": 150
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "GoldR1",
+       "current_level": 60
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "GoldR2",
+       "current_level": 30
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "GoldR2",
+       "current_level": 150
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "RedR2",
+       "current_level": 10
+      },
+      {
+       "id": "c6",
+       "name": "Cat 6",
+       "catpal_type": "GoldR1",
+       "current_level": "Max"
+      },
+      {
+       "id": "c7",
+       "name": "Cat 7",
+       "catpal_type": "RedR1",
+       "current_level": 120
+      }
+     ]
+    },
+    "new_jelly": 26845
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 81880,
+     "total_effective_power": 517716.0
+    },
+    "keep": {
+     "available_jelly": 26845,
+     "additional_jelly_spent": 26780,
+     "jelly_leftover": 65,
+     "total_effective_power": 718365.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 53562.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 204870.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 60,
+       "target_level": 70,
+       "jelly_change": 640,
+       "effective_power": 15078.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR2",
+       "current_level": 30,
+       "target_level": 50,
+       "jelly_change": 1155,
+       "effective_power": 23751.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 150,
+       "jelly_change": 0,
+       "effective_power": 68223.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "RedR2",
+       "current_level": 10,
+       "target_level": 130,
+       "jelly_change": 17685,
+       "effective_power": 172122.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 42405.0
+      },
+      {
+       "id": "c7",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 160,
+       "jelly_change": 7300,
+       "effective_power": 138354.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c3",
+      "c5",
+      "c7"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 108725,
+     "additional_jelly_spent": 26830,
+     "jelly_leftover": 15,
+     "total_effective_power": 761922.0,
+     "allocations": [
+      {
+       "id": "c2",
+       "catpal_type": "GoldR1",
+       "current_level": 60,
+       "target_level": 110,
+       "jelly_change": 4320,
+       "effective_power": 26208.0
+      },
+      {
+       "id": "c6",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": 120,
+       "jelly_change": -5760,
+       "effective_power": 29694.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "GoldR2",
+       "current_level": 30,
+       "target_level": 90,
+       "jelly_change": 5715,
+       "effective_power": 39702.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR2",
+       "current_level": 120,
+       "target_level": 90,
+       "jelly_change": -5805,
+       "effective_power": 39702.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "GoldR2",
+       "current_level": 150,
+       "target_level": 100,
+       "jelly_change": -13140,
+       "effective_power": 44238.0
+      },
+      {
+       "id": "c7",
+       "catpal_type": "RedR1",
+       "current_level": 120,
+       "target_level": 160,
+       "jelly_change": 7300,
+       "effective_power": 138354.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "RedR2",
+       "current_level": 10,
+       "target_level": 160,
+       "jelly_change": 29700,
+       "effective_power": 222012.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 150,
+       "target_level": 160,
+       "jelly_change": 4500,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c2",
+      "c6",
+      "c3",
+      "c0",
+      "c4",
+      "c7",
+      "c5",
+      "c1"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #37",
+   "input": {
+    "profile": {
+     "name": "r37",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "Purple",
+       "current_level": 30
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR2",
+       "current_level": 110
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR2",
+       "current_level": 40
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "Purple",
+       "current_level": 140
+      },
+      {
+       "id": "c4",
+       "name": "Cat 4",
+       "catpal_type": "Purple",
+       "current_level": 90
+      },
+      {
+       "id": "c5",
+       "name": "Cat 5",
+       "catpal_type": "GoldR1",
+       "current_level": 140
+      }
+     ]
+    },
+    "new_jelly": 25368
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 29410,
+     "total_effective_power": 175860.0
+    },
+    "keep": {
+     "available_jelly": 25368,
+     "additional_jelly_spent": 25260,
+     "jelly_leftover": 108,
+     "total_effective_power": 334128.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 30,
+       "target_level": 60,
+       "jelly_change": 750,
+       "effective_power": 7308.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR2",
+       "current_level": 110,
+       "target_level": 110,
+       "jelly_change": 0,
+       "effective_power": 48810.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 40,
+       "target_level": 150,
+       "jelly_change": 23910,
+       "effective_power": 204870.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 140,
+       "target_level": 140,
+       "jelly_change": 0,
+       "effective_power": 22404.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "Purple",
+       "current_level": 90,
+       "target_level": 100,
+       "jelly_change": 600,
+       "effective_power": 13470.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR1",
+       "current_level": 140,
+       "target_level": 140,
+       "jelly_change": 0,
+       "effective_power": 37266.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c2",
+      "c4"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 54778,
+     "additional_jelly_spent": 25325,
+     "jelly_leftover": 43,
+     "total_effective_power": 340644.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "Purple",
+       "current_level": 30,
+       "target_level": 80,
+       "jelly_change": 1650,
+       "effective_power": 10008.0
+      },
+      {
+       "id": "c4",
+       "catpal_type": "Purple",
+       "current_level": 90,
+       "target_level": 130,
+       "jelly_change": 2750,
+       "effective_power": 19953.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "Purple",
+       "current_level": 140,
+       "target_level": 130,
+       "jelly_change": -900,
+       "effective_power": 19953.0
+      },
+      {
+       "id": "c5",
+       "catpal_type": "GoldR1",
+       "current_level": 140,
+       "target_level": 130,
+       "jelly_change": -1440,
+       "effective_power": 33375.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR2",
+       "current_level": 110,
+       "target_level": 80,
+       "jelly_change": -5145,
+       "effective_power": 35343.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 40,
+       "target_level": 160,
+       "jelly_change": 28410,
+       "effective_power": 222012.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c4",
+      "c3",
+      "c5",
+      "c1",
+      "c2"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #38",
+   "input": {
+    "profile": {
+     "name": "r38",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "RedR1",
+       "current_level": 100
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "RedR2",
+       "current_level": 120
+      },
+      {
+       "id": "c2",
+       "name": "Cat 2",
+       "catpal_type": "RedR2",
+       "current_level": 120
+      },
+      {
+       "id": "c3",
+       "name": "Cat 3",
+       "catpal_type": "RedR2",
+       "current_level": 70
+      }
+     ]
+    },
+    "new_jelly": 14289
+   },
+   "expected": {
+    "recommendation": "redistribute",
+    "current": {
+     "invested_jelly": 39930,
+     "total_effective_power": 463464.0
+    },
+    "keep": {
+     "available_jelly": 14289,
+     "additional_jelly_spent": 14085,
+     "jelly_leftover": 204,
+     "total_effective_power": 563754.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 100,
+       "target_level": 140,
+       "jelly_change": 6300,
+       "effective_power": 111276.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 156000.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 120,
+       "target_level": 120,
+       "jelly_change": 0,
+       "effective_power": 156000.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR2",
+       "current_level": 70,
+       "target_level": 110,
+       "jelly_change": 7785,
+       "effective_power": 140478.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c3"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 54219,
+     "additional_jelly_spent": 14265,
+     "jelly_leftover": 24,
+     "total_effective_power": 564354.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "RedR1",
+       "current_level": 100,
+       "target_level": 140,
+       "jelly_change": 6300,
+       "effective_power": 111276.0
+      },
+      {
+       "id": "c3",
+       "catpal_type": "RedR2",
+       "current_level": 70,
+       "target_level": 110,
+       "jelly_change": 7785,
+       "effective_power": 140478.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "RedR2",
+       "current_level": 120,
+       "target_level": 110,
+       "jelly_change": -2700,
+       "effective_power": 140478.0
+      },
+      {
+       "id": "c2",
+       "catpal_type": "RedR2",
+       "current_level": 120,
+       "target_level": 130,
+       "jelly_change": 2880,
+       "effective_power": 172122.0
+      }
+     ],
+     "changes": [
+      "c0",
+      "c3",
+      "c1",
+      "c2"
+     ]
+    }
+   }
+  },
+  {
+   "note": "aleatorio #39",
+   "input": {
+    "profile": {
+     "name": "r39",
+     "catpals": [
+      {
+       "id": "c0",
+       "name": "Cat 0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max"
+      },
+      {
+       "id": "c1",
+       "name": "Cat 1",
+       "catpal_type": "GoldR1",
+       "current_level": 120
+      }
+     ]
+    },
+    "new_jelly": 28965
+   },
+   "expected": {
+    "recommendation": "keep",
+    "current": {
+     "invested_jelly": 19680,
+     "total_effective_power": 72099.0
+    },
+    "keep": {
+     "available_jelly": 28965,
+     "additional_jelly_spent": 5760,
+     "jelly_leftover": 23205,
+     "total_effective_power": 84810.0,
+     "allocations": [
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 42405.0
+      },
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 120,
+       "target_level": "Max",
+       "jelly_change": 5760,
+       "effective_power": 42405.0
+      }
+     ],
+     "changes": [
+      "c1"
+     ]
+    },
+    "redistribute": {
+     "available_jelly": 48645,
+     "additional_jelly_spent": 5760,
+     "jelly_leftover": 23205,
+     "total_effective_power": 84810.0,
+     "allocations": [
+      {
+       "id": "c1",
+       "catpal_type": "GoldR1",
+       "current_level": 120,
+       "target_level": "Max",
+       "jelly_change": 5760,
+       "effective_power": 42405.0
+      },
+      {
+       "id": "c0",
+       "catpal_type": "GoldR1",
+       "current_level": "Max",
+       "target_level": "Max",
+       "jelly_change": 0,
+       "effective_power": 42405.0
+      }
+     ],
+     "changes": [
+      "c1"
+     ]
+    }
+   }
+  }
+ ]
+}

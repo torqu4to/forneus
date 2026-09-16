@@ -1,5 +1,6 @@
 ---
 import Mark from './Mark.astro';
+import AccountMenu from './AccountMenu.astro';
 import { tools } from '../data/tools';
 import { useTranslations, switchLocalePath, LOCALES, type Locale } from '../i18n/utils';
 
@@ -34,7 +35,7 @@ const here = Astro.url.pathname;
         >{code.toUpperCase()}</a>
       ))}
     </div>
-    <span class="hdr__signin">{t('nav.signin')}</span>
+    <AccountMenu locale={locale} />
   </div>
 </header>
 

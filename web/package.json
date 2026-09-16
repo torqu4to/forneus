@@ -11,15 +11,21 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --experimental-strip-types --test test/solver.test.ts test/exports.test.ts",
+    "test": "node --experimental-strip-types --test test/solver.test.ts test/exports.test.ts test/profiles.test.ts test/profiles-store.test.ts",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.2"
+    "@astrojs/check": "^0.9.10",
+    "@supabase/supabase-js": "^2.116.0",
+    "astro": "^7.3.2",
+    "typescript": "^6.0.3"
   },
   "allowScripts": {
     "esbuild": true
   },
   "description": "forneus.wiki frontend",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^22.20.3"
+  }
 }
