@@ -40,17 +40,25 @@ const t = useTranslations(locale);
       const render = (account: Awaited<ReturnType<typeof currentAccount>>) => {
         signedOut.hidden = Boolean(account);
         signedIn.hidden = !account;
-        if (!account) return;
+        if (!account) {
+          // Leave nothing behind: a stale name in a hidden element is one CSS
+          // rule away from being visible again.
+          nameEl.textContent = '';
+          avatarEl.removeAttribute('src');
+          avatarEl.hidden = true;
+          return;
+        }
         nameEl.textContent = account.name;
         if (account.avatarUrl) {
           avatarEl.src = account.avatarUrl;
           avatarEl.hidden = false;
+        } else {
+          avatarEl.removeAttribute('src');
+          avatarEl.hidden = true;
         }
       };
 
-      // One subscription does both jobs: it publishes the current state as
-      // soon as it is known, and every change after that. Asking separately
-      // would mean a second round trip to learn the same thing.
+      render(await currentAccount());
       onAccountChange(render);
     }
   }

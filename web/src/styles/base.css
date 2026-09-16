@@ -6,6 +6,19 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/*
+ * `hidden` must win. The browser hides the attribute with a `display: none`
+ * of the lowest possible specificity, so ANY rule that sets `display` — a
+ * single class saying `display: flex` — silently defeats it, and the element
+ * stays on screen while the script believes it is gone.
+ *
+ * That cost us a real bug: the header showed "Entrar" and the signed-in name
+ * at the same time, and signing out left the name on screen until a reload.
+ * This is the one place `!important` is the correct tool: it restores what
+ * the attribute is supposed to mean, rather than overriding a decision.
+ */
+[hidden] { display: none !important; }
+
 html { -webkit-text-size-adjust: 100%; }
 
 body {
