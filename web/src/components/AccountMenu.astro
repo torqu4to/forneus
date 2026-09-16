@@ -48,7 +48,9 @@ const t = useTranslations(locale);
         }
       };
 
-      render(await currentAccount());
+      // One subscription does both jobs: it publishes the current state as
+      // soon as it is known, and every change after that. Asking separately
+      // would mean a second round trip to learn the same thing.
       onAccountChange(render);
     }
   }

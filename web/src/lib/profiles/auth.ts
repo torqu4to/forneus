@@ -5,6 +5,21 @@
  * this adds is a shape the UI can consume without importing Supabase types
  * everywhere, and a hard rule that every failure is a translation key rather
  * than a provider error string shown to a player.
+ *
+ * Two rules earned the hard way, both about trusting the right source:
+ *
+ *   * Being signed in is decided by the SERVER, never by what is in the
+ *     browser's storage. `onAuthStateChange` hands us a session read straight
+ *     out of `localStorage`, so anyone can forge one by typing a key into the
+ *     console and the UI would happily draw them as signed in. It reveals
+ *     nothing — Row Level Security rejects the forged token at the database —
+ *     but an interface that lies about who you are is its own bug. So every
+ *     event that claims a session is re-checked with `getUser()`.
+ *
+ *   * The listener is attached ONCE, at the moment the client is created, and
+ *     the state is reconciled right after. Supabase is loaded on demand now,
+ *     and events fired during that download would otherwise land with nobody
+ *     listening — which is how "Sair" used to need a page refresh.
  */
 import { getSupabase, accountsEnabled, hasSessionHint } from './client.ts';
 
@@ -50,31 +65,66 @@ export async function currentAccount(): Promise<Account | null> {
   return toAccount(data.user);
 }
 
+const listeners = new Set<(account: Account | null) => void>();
+let hubStarted = false;
+
+/** Last state we told listeners about, so we don't redraw for no reason. */
+let known: Account | null = null;
+let knownSet = false;
+
+function publish(account: Account | null): void {
+  if (knownSet && known?.id === account?.id) return;
+  known = account;
+  knownSet = true;
+  for (const listener of listeners) listener(account);
+}
+
 /**
- * Fires whenever the session changes, including token refreshes.
- *
- * Subscribing is deferred: with no session hint there is nothing to listen
- * to, so we do not pay for the client. Signing in navigates away and the new
- * page subscribes with a hint in hand, so nothing is missed.
- *
- * Returns synchronously so callers stay simple; unsubscribing before the
- * client has loaded cancels the subscription that was on its way.
+ * One Supabase subscription for the whole page, attached the first time
+ * anybody cares. Several components listen; they must not each create a
+ * client and a subscription of their own.
  */
+async function startHub(): Promise<void> {
+  if (hubStarted) return;
+  hubStarted = true;
+
+  if (!hasSessionHint()) {
+    publish(null);
+    return;
+  }
+
+  const supabase = await getSupabase();
+  if (!supabase) {
+    publish(null);
+    return;
+  }
+
+  supabase.auth.onAuthStateChange((event) => {
+    // Signing out needs no confirmation from anyone; believe it at once so
+    // the header updates the instant the button is pressed.
+    if (event === 'SIGNED_OUT') {
+      publish(null);
+      return;
+    }
+    // Every other event carries a session read from storage. Ask the server
+    // who that actually is before drawing anyone as signed in.
+    void currentAccount().then(publish);
+  });
+
+  // Reconcile: the subscription above may have missed events fired while the
+  // client was still downloading, and `onAuthStateChange` replays only what
+  // it knows. One authoritative check settles it either way.
+  publish(await currentAccount());
+}
+
+/** Fires whenever the session changes, including token refreshes. */
 export function onAccountChange(handler: (account: Account | null) => void): () => void {
-  let unsubscribe = () => {};
-  let cancelled = false;
-
-  void (async () => {
-    if (!hasSessionHint()) return;
-    const supabase = await getSupabase();
-    if (!supabase || cancelled) return;
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
-      handler(session?.user ? toAccount(session.user) : null);
-    });
-    unsubscribe = () => data.subscription.unsubscribe();
-  })();
-
-  return () => { cancelled = true; unsubscribe(); };
+  listeners.add(handler);
+  // A listener added after the hub settled would otherwise wait for the next
+  // event to learn anything.
+  if (knownSet) handler(known);
+  void startHub();
+  return () => { listeners.delete(handler); };
 }
 
 export async function signInWith(provider: Provider, returnTo: string):
@@ -99,4 +149,7 @@ export async function signInWith(provider: Provider, returnTo: string):
 export async function signOut(): Promise<void> {
   const supabase = await getSupabase();
   await supabase?.auth.signOut();
+  // Do not wait for the event: the button was just pressed, and the UI should
+  // answer to that, not to a round trip.
+  publish(null);
 }

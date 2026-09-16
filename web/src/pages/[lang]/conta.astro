@@ -92,10 +92,8 @@ const t = useTranslations(locale);
 
   $('signout').addEventListener('click', async () => {
     await signOut();
-    render(null);
   });
 
-  render(await currentAccount());
   onAccountChange(render);
 </script>
 
