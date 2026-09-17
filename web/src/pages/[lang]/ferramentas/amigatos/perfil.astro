@@ -409,11 +409,22 @@ const MAX_TEAM = 18;
 
   $('add').addEventListener('click', () => {
     if (!draft || total() >= maxTeam) return;
-    const level = levelsByCategory[firstCategory][0];
-    const existing = rows.find((row) => keyOf(row.type, row.level) === keyOf(firstCategory, level));
-    // Adding twice in a row should read "2 ×", not two rows saying "1 ×".
-    if (existing) existing.qty += 1;
-    else rows.push({ type: firstCategory, level, qty: 1 });
+
+    // Each click must produce a row you can actually edit, so it picks a type
+    // not on screen yet. Defaulting to the same type every time merged the
+    // new row into the existing one, and there was then no way to enter a
+    // second kind of catpal at all — you could only ever change the type of
+    // everything you had already entered.
+    const used = new Set(rows.map((row) => row.type));
+    const type = Object.keys(levelsByCategory).find((key) => !used.has(key));
+
+    if (type) {
+      rows.push({ type, level: levelsByCategory[type][0], qty: 1 });
+    } else {
+      // Every type is already on screen: nothing new to offer, so add one to
+      // the first row rather than creating a duplicate that would merge.
+      rows[0].qty += 1;
+    }
     commit();
   });
 
