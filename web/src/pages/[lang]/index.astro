@@ -78,7 +78,7 @@ const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).sl
         <li class:list={['tool', { 'tool--planned': tool.status === 'planned' }]}>
           <ToolIcon name={tool.name} size={28} class="tool__icon" />
           <div class="tool__body">
-            <h3 class="tool__name">{t(tool.titleKey)}{tool.beta && <span class="tool__beta">{t('tool.beta')}</span>}</h3>
+            <h3 class="tool__name">{t(tool.titleKey)}{tool.beta && <> <span class="tool__beta">{t('tool.beta')}</span></>}</h3>
             <p class="tool__desc">{t(tool.descriptionKey)}</p>
           </div>
           <div class="tool__tags">

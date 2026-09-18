@@ -20,7 +20,7 @@ const here = Astro.url.pathname;
         href={tool.status === 'available' ? `/${locale}/ferramentas/${tool.name}/` : undefined}
         class:list={['hdr__link', { 'is-active': active === tool.name, 'is-planned': tool.status === 'planned' }]}
         aria-current={active === tool.name ? 'page' : undefined}
-      >{t(tool.navKey)}{tool.beta && <span class="hdr__beta">{t('tool.beta')}</span>}</a>
+      >{t(tool.navKey)}{tool.beta && <> <span class="hdr__beta">{t('tool.beta')}</span></>}</a>
     ))}
   </nav>
 
