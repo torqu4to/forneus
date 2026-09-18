@@ -24,7 +24,7 @@ def test_csv_carries_one_summary_row_then_one_row_per_entity(counts, jelly):
     assert int(summary['total_leftover']) == result.totals['leftover']
     assert (float(summary['total_effective_power'].replace(',', '.'))
             == result.totals['effective_power'])
-    assert 'Silverleaf' in summary['messages'] and '4/6' in summary['messages']
+    assert 'Silverleaf' in summary['messages'] and '4/6' not in summary['messages']
 
     assert len(entities) == len(result.rows)
     for row, source in zip(entities, result.rows):
@@ -35,7 +35,7 @@ def test_csv_carries_one_summary_row_then_one_row_per_entity(counts, jelly):
         assert row['total_spent'] == ''
         assert (float(row['effective_power'].replace(',', '.'))
                 == source['effective_power'])
-        assert row['tier'] == ('4/6' if source['category'] == 'RedR2' else '6/6')
+        assert row['tier'] == '6/6'
 
 
 def test_total_and_row_columns_with_the_same_name_do_not_collide():
@@ -56,7 +56,7 @@ def test_json_preserves_result_and_data_provenance():
     assert document['meta']['counts'] == {'Purple': 1, 'RedR2': 1}
     assert document['meta']['cost_unit'] == 'fish_jelly_r1'
     assert document['meta']['cost_unit_label'] == 'Fish Jelly r1'
-    assert document['meta']['data_tiers']['RedR2'] == [4, 6]
+    assert document['meta']['data_tiers']['RedR2'] == [6, 6]
     assert document['meta']['effectiveness_rates']['RedR2'] == 0.6
     assert all(row['level'] == 'Max' for row in document['rows'])
     assert document['rows'][0]['cost'] == result.rows[0]['cost']
@@ -70,7 +70,7 @@ def test_notices_travel_as_keys_and_resolve_per_locale():
     result = solve({'RedR2': 1}, 1000)
     keys = [notice.key for notice in result.notices]
     assert 'notice.amigatos.currencies_excluded' in keys
-    assert 'notice.amigatos.provisional_tier' in keys
+    assert 'notice.amigatos.provisional_tier' not in keys
 
     portuguese = json.loads(format_json(result, 'pt-BR'))['messages']
     english = json.loads(format_json(result, 'en-US'))['messages']

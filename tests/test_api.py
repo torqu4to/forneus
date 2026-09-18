@@ -61,8 +61,8 @@ def test_notices_are_keys_and_resolved_text(client):
                        json={'counts': {'RedR2': 1}, 'total_jelly': 1000},
                        headers={'Accept-Language': 'en-US'}).json()
     keys = [notice['key'] for notice in body['notices']]
-    assert 'notice.amigatos.provisional_tier' in keys
-    assert any('tier 4/6' in message for message in body['messages'])
+    assert 'notice.amigatos.provisional_tier' not in keys
+    assert all('tier 4/6' not in message for message in body['messages'])
 
 
 @pytest.mark.parametrize('payload,expected_key', [

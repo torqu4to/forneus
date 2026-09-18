@@ -39,6 +39,16 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
   title={t('tool.amigatos.title')}
   description={t('tool.amigatos.description')}
 >
+  <div class="tool-head">
+    <div>
+      <p class="fx-kicker">Tree of Savior Neo</p>
+      <h1>{t('tool.amigatos.title')}</h1>
+    </div>
+    <a class="fx-btn fx-btn--ghost" href={`/${locale}/ferramentas/amigatos/como-usar/`}>
+      {t('how.open.guide')}
+    </a>
+  </div>
+
   <aside class="fx-notice" id="notice" data-level="warning">
     <span class="fx-notice__tag" id="notice-tag">{t('notice.tag')}</span>
     <span class="fx-notice__text" id="notice-text">{messages.join(' · ')}</span>
@@ -159,6 +169,13 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
       </div>
 
       <div class="block">
+        <h2 class="fx-label">{t('share.heading')}</h2>
+        <p class="hint">{t('share.help')}</p>
+        <button type="button" class="fx-btn fx-btn--ghost" id="share-team">{t('share.button')}</button>
+        <p class="hint" id="share-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="block">
         <h2 class="fx-label">{t('provenance.heading')}</h2>
         <dl class="prov">
           {categories.map((cat) => (
@@ -175,6 +192,24 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
 
   </form>
 </Site>
+
+<style>
+  .tool-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding: var(--space-8) var(--space-6) var(--space-6);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .tool-head h1 { margin: var(--space-2) 0 0; }
+
+  @media (max-width: 680px) {
+    .tool-head { align-items: stretch; flex-direction: column; padding-inline: var(--space-4); }
+    .tool-head .fx-btn { align-self: flex-start; }
+  }
+</style>
 
 <script>
   /* The solver runs HERE, in the visitor's browser.
@@ -209,6 +244,8 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
   const exportButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-export]')];
   const countInputs = [...document.querySelectorAll<HTMLInputElement>('[data-count]')];
   const jellyInput = document.getElementById('total_jelly') as HTMLInputElement;
+  const shareButton = document.getElementById('share-team') as HTMLButtonElement;
+  const shareStatus = document.getElementById('share-status')!;
 
   let downloads: { csv: string; json: string } | null = null;
 
@@ -265,6 +302,37 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
       counts[input.dataset.count!] = Math.trunc(Number(input.value)) || 0;
     }
     return { counts, totalJelly: Math.trunc(Number(jellyInput.value)) || 0 };
+  }
+
+  function encodeShare(data: ReturnType<typeof readForm>) {
+    const payload = JSON.stringify({ c: data.counts, j: data.totalJelly });
+    return btoa(payload).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '');
+  }
+
+  function decodeShare(value: string) {
+    const padded = value.replaceAll('-', '+').replaceAll('_', '/') + '='.repeat((4 - value.length % 4) % 4);
+    const parsed = JSON.parse(atob(padded)) as { c?: Record<string, unknown>; j?: unknown };
+    if (!parsed.c || typeof parsed.j !== 'number' || !Number.isInteger(parsed.j) || parsed.j < 0) return null;
+    const counts: Record<string, number> = {};
+    for (const input of countInputs) {
+      const value = parsed.c[input.dataset.count!];
+      if (typeof value !== 'number' || !Number.isInteger(value) || value < 0) return null;
+      counts[input.dataset.count!] = value;
+    }
+    return { counts, totalJelly: parsed.j };
+  }
+
+  function loadSharedTeam() {
+    const value = new URLSearchParams(location.hash.slice(1)).get('team');
+    if (!value) return;
+    try {
+      const shared = decodeShare(value);
+      if (!shared) return;
+      for (const input of countInputs) input.value = String(shared.counts[input.dataset.count!]);
+      jellyInput.value = String(shared.totalJelly);
+      updateTeamSize();
+      status.textContent = t('share.loaded');
+    } catch { /* Ignore malformed links and leave the example untouched. */ }
   }
 
   function updateTeamSize() {
@@ -347,6 +415,18 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
     });
   }
 
+  shareButton.addEventListener('click', async () => {
+    const url = new URL(location.href);
+    url.hash = `team=${encodeShare(readForm())}`;
+    try {
+      await navigator.clipboard.writeText(url.href);
+      shareStatus.textContent = t('share.copied');
+    } catch {
+      shareStatus.textContent = url.href;
+    }
+  });
+
+  loadSharedTeam();
   updateTeamSize();
 </script>
 

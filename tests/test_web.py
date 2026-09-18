@@ -118,7 +118,7 @@ def test_home_has_accessible_form_and_data_warnings():
     assert 'lang="pt-BR"' in html
     assert 'name="Purple"' in html
     assert 'name="total_jelly"' in html
-    assert '4/6' in html
+    assert '6/6' in html
     assert 'Silverleaf' in html and 'Dried Fish' in html
 
 

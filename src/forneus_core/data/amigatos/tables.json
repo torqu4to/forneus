@@ -2,7 +2,7 @@
   "schema_version": 1,
   "tool": "amigatos",
   "cost_unit": "fish_jelly_r1",
-  "captured_at": "2026-05-01",
+  "captured_at": "2026-09-17",
   "game_version": "unknown",
   "categories": {
     "Purple": {
@@ -369,94 +369,94 @@
       "display_name": "Red r2",
       "effectiveness_rate": 0.6,
       "tier": [
-        4,
+        6,
         6
       ],
       "levels": [
         {
           "level": 10,
           "bracket_cost": 0,
-          "raw_power": 52450
+          "raw_power": 75110
         },
         {
           "level": 20,
           "bracket_cost": 225,
-          "raw_power": 61750
+          "raw_power": 85060
         },
         {
           "level": 30,
           "bracket_cost": 420,
-          "raw_power": 72970
+          "raw_power": 97060
         },
         {
           "level": 40,
           "bracket_cost": 645,
-          "raw_power": 85950
+          "raw_power": 111000
         },
         {
           "level": 50,
           "bracket_cost": 795,
-          "raw_power": 102070
+          "raw_power": 128270
         },
         {
           "level": 60,
           "bracket_cost": 960,
-          "raw_power": 120110
+          "raw_power": 147570
         },
         {
           "level": 70,
           "bracket_cost": 1275,
-          "raw_power": 139720
+          "raw_power": 168590
         },
         {
           "level": 80,
           "bracket_cost": 1605,
-          "raw_power": 161090
+          "raw_power": 191500
         },
         {
           "level": 90,
           "bracket_cost": 1755,
-          "raw_power": 184070
+          "raw_power": 216100
         },
         {
           "level": 100,
           "bracket_cost": 2040,
-          "raw_power": 208690
+          "raw_power": 242500
         },
         {
           "level": 110,
           "bracket_cost": 2385,
-          "raw_power": 234130
+          "raw_power": 269750
         },
         {
           "level": 120,
           "bracket_cost": 2700,
-          "raw_power": 260000
+          "raw_power": 297450
         },
         {
           "level": 130,
           "bracket_cost": 2880,
-          "raw_power": 286870
+          "raw_power": 326260
         },
         {
           "level": 140,
           "bracket_cost": 3240,
-          "raw_power": 314000
+          "raw_power": 355320
         },
         {
           "level": 150,
           "bracket_cost": 4275,
-          "raw_power": 341450
+          "raw_power": 384740
         },
         {
           "level": 160,
           "bracket_cost": 4500,
-          "raw_power": 370020
+          "raw_power": 415330
         },
         {
           "level": "Max",
           "bracket_cost": 4950,
-          "raw_power": 375950
+          "raw_power": 421700
         }
       ]
     }

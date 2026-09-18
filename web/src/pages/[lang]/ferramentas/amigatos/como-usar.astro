@@ -1,0 +1,56 @@
+---
+import Site from '../../../../layouts/Site.astro';
+import { useTranslations, LOCALES, type Locale } from '../../../../i18n/utils';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+---
+
+<Site locale={locale} active="amigatos" title={t('how.amigatos.title')} description={t('how.amigatos.description')}>
+  <article class="how-to">
+    <a class="how-to__back" href={`/${locale}/ferramentas/amigatos/`}>← {t('how.back')}</a>
+    <header class="how-to__hero">
+      <p class="fx-kicker">{t('how.amigatos.kicker')}</p>
+      <h1>{t('how.amigatos.title')}</h1>
+      <p class="how-to__lead">{t('how.amigatos.intro')}</p>
+    </header>
+
+    <div class="how-to__grid">
+      {[1, 2, 3, 4].map((step) => (
+        <section class="how-to__step">
+          <span class="how-to__number">{String(step).padStart(2, '0')}</span>
+          <div>
+            <h2>{t(`how.amigatos.step${step}.title` as never)}</h2>
+            <p>{t(`how.amigatos.step${step}.text` as never)}</p>
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <aside class="how-to__note">
+      <span class="fx-notice__tag">{t('how.note.label')}</span>
+      <p>{t('how.note.text')}</p>
+    </aside>
+
+    <a class="fx-btn" href={`/${locale}/ferramentas/amigatos/`}>{t('how.open.tool')}</a>
+  </article>
+</Site>
+
+<style>
+  .how-to { padding: var(--space-8) var(--space-6) var(--space-10); max-width: 960px; margin: 0 auto; }
+  .how-to__back { color: var(--muted); font: 500 .82rem var(--font-mono); text-transform: uppercase; letter-spacing: .08em; }
+  .how-to__hero { border-bottom: 1px solid var(--line); padding: var(--space-8) 0; max-width: 720px; }
+  .how-to__hero h1 { margin: var(--space-3) 0; }
+  .how-to__lead { color: var(--muted); font-size: 1.15rem; line-height: 1.6; }
+  .how-to__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: var(--space-8) 0; background: var(--line); border: 1px solid var(--line); }
+  .how-to__step { display: grid; grid-template-columns: auto 1fr; gap: var(--space-5); background: var(--panel); padding: var(--space-7); }
+  .how-to__number { color: var(--accent); font: 600 1.25rem var(--font-mono); }
+  .how-to__step h2 { margin: 0 0 var(--space-3); font-size: 1.15rem; }
+  .how-to__step p, .how-to__note p { margin: 0; color: var(--muted); line-height: 1.6; }
+  .how-to__note { display: flex; gap: var(--space-4); align-items: baseline; border-left: 2px solid var(--accent); background: var(--panel); padding: var(--space-5) var(--space-6); margin-bottom: var(--space-7); }
+  @media (max-width: 680px) { .how-to { padding-inline: var(--space-4); } .how-to__grid { grid-template-columns: 1fr; } }
+</style>

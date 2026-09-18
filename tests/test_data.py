@@ -9,12 +9,13 @@ from forneus_core.dataio import (DATA_ROOT, SCHEMA_PATH, DataError,
                                  validate_dataset)
 
 
-def test_amigatos_dataset_loads_and_is_provisional_only_for_red_r2():
+def test_amigatos_dataset_loads_at_maximum_tier():
     dataset = load_dataset('amigatos')
     assert dataset['cost_unit'] == 'fish_jelly_r1'
     assert set(dataset['categories']) == {'Purple', 'GoldR1', 'GoldR2',
                                           'RedR1', 'RedR2'}
-    assert provisional_categories(dataset) == ['RedR2']
+    assert all(category['tier'] == [6, 6]
+               for category in dataset['categories'].values())
 
 
 def test_python_data_module_holds_no_numbers_of_its_own():

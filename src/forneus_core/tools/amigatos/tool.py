@@ -11,7 +11,7 @@ from ...contract import Notice, ToolError, ToolResult, ToolSpec
 from ...registry import register
 from .data import (COST_UNIT, COST_UNIT_KEY, DATA_TIER, DISPLAY_NAMES,
                    DISPLAY_ORDER, EFFECTIVENESS_RATE, MAX_SAFE_INTEGER,
-                   MAX_TEAM_SIZE, PROVISIONAL, TABLES)
+                   MAX_TEAM_SIZE, TABLES)
 from .optimizer import optimize
 
 COLUMNS = ['display_name', 'level', 'cost', 'effective_power']
@@ -20,14 +20,7 @@ NUMERIC_COLUMNS = ['cost', 'raw_power', 'effective_power']
 
 def data_notices():
     """Caveats that apply to every amigatos result, as translation keys."""
-    notices = [Notice('notice.amigatos.currencies_excluded', level='warning')]
-    for key in PROVISIONAL:
-        captured, maximum = DATA_TIER[key]
-        notices.append(Notice('notice.amigatos.provisional_tier', {
-            'display_name': DISPLAY_NAMES[key],
-            'captured': captured, 'max': maximum,
-        }, level='warning'))
-    return notices
+    return [Notice('notice.amigatos.currencies_excluded', level='warning')]
 
 
 def _validated(counts, total_jelly):

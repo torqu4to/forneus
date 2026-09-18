@@ -83,10 +83,8 @@ result is optimal for the given data, not a greedy approximation.
 
 ### Known data limitations
 
-- **Red r2 is captured at tier 4 of 6**; everything else is at tier 6 of 6.
-  Its numbers may shift once tier 6 data is available, which would also change
-  how much jelly the optimizer allocates to Red r2 relative to the rest. Every
-  result carries this caveat as a notice.
+- **All current categories use the maximum tier (6/6).** The dataset is still
+  versioned and should be reviewed after future game rebalances.
 - **Only Fish Jelly is modeled.** Silverleaf and Dried Fish costs are not
   considered anywhere. Treat results as jelly-optimal, not globally optimal.
 
@@ -106,9 +104,10 @@ pip install -e ".[web]"
 python -m forneus_core.web        # http://127.0.0.1:5000
 ```
 
-It binds to localhost with debug disabled and is for local use only. Public
-deployment is Phase 2: a production ASGI server, rate limits and a concurrency
-strategy for the CPU-bound solvers.
+It binds to localhost with debug disabled and is for local use only. The public
+frontend is deployed as static assets on Cloudflare Workers; the FastAPI app is
+kept in the repository for future account-backed features and does not run in
+the current free deployment.
 
 The CLI is unchanged apart from its name:
 
@@ -132,14 +131,25 @@ print(format_json(result, "en-US"))
 
 - [x] Phase 0 - hub foundation: package rename, JSON game data, tool contract,
       translation keys
-- [ ] Phase 1 - Astro frontend, design system, bilingual landing page
-- [ ] Phase 2 - production deploy, CI, rate limits
+- [x] Phase 1 - Astro frontend, design system, bilingual landing page
+- [x] Phase 2 - static production deploy on Cloudflare Workers
 - [ ] Phase 3 - accounts (Discord, Google, e-mail) and saved profiles
-- [ ] Phase 4 - Fantasmas optimizer
-- [ ] Phase 5 - Guardiões Florais
-- [ ] Recapture Red r2 data at tier 6 of 6
+
+### Launch priority - Amigatos
+
+- [x] Complete and validate the Amigatos dataset at the maximum tier (6)
+- [x] Add the "How to use" page for the Amigatos optimizer
+- [x] Add team sharing by link
+- [ ] Review bilingual copy and responsive behavior for the Amigatos flow
+- [ ] Add and validate the Amigatos visual assets
 - [ ] Model Silverleaf and Dried Fish costs (turns the solver into a
       multidimensional knapsack)
+
+### Later tools
+
+- [ ] Phase 4 - Fantasmas optimizer
+- [ ] Phase 5 - Guardiões Florais
+- [ ] Recapture Red r2 data at tier 6 of 6, if the data becomes available
 
 ## License
 

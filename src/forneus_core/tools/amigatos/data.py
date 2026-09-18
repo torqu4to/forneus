@@ -12,7 +12,7 @@ Each level row's cost is the cost OF THAT BRACKET (the marginal cost to
 reach that level), not a cumulative total. The extra "Max" row is one more
 step beyond the last numbered level.
 """
-from ...dataio import load_dataset, provisional_categories
+from ...dataio import load_dataset
 
 DATASET = load_dataset('amigatos')
 COST_UNIT = DATASET['cost_unit']
@@ -34,10 +34,6 @@ DATA_TIER = {key: tuple(category['tier'])
              for key, category in DATASET['categories'].items()}
 
 DISPLAY_ORDER = list(DATASET['display_order'])
-
-#: Categories whose numbers were captured below the maximum tier and may
-#: still shift. The UI must surface these; see `tool.data_notices()`.
-PROVISIONAL = provisional_categories(DATASET)
 
 MAX_TEAM_SIZE = 18
 MAX_SAFE_INTEGER = 9_007_199_254_740_991
