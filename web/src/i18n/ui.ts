@@ -142,15 +142,15 @@ export const ui = {
     'share.copied': 'Link copiado.',
     'share.loaded': 'Equipe carregada a partir do link compartilhado.',
 
-    'why.1.label': '01 · Resultado exato',
+    'why.1.label': '01 · Monte seu cenário',
     'why.1.text':
-      'O problema é um knapsack de múltipla escolha, resolvido por programação dinâmica. Para os dados fornecidos, o resultado é ótimo — não uma aproximação gulosa.',
-    'why.2.label': '02 · Dados com procedência',
+      'Informe os amigatos que você possui e o orçamento disponível para evolução.',
+    'why.2.label': '02 · Compare as possibilidades',
     'why.2.text':
-      'Cada tabela carrega o tier em que foi capturada. Onde o dado é provisório, o aviso aparece junto do resultado — não escondido num rodapé.',
-    'why.3.label': '03 · Seus números saem daqui',
+      'O Forneus testa as combinações possíveis para encontrar a distribuição mais eficiente.',
+    'why.3.label': '03 · Encontre a melhor distribuição',
     'why.3.text':
-      'Todo resultado exporta em CSV e JSON, com os mesmos avisos embutidos. Nada fica preso na página.',
+      'Receba um plano de evolução otimizado, com o melhor nível para cada amigato e o maior poder possível dentro do seu orçamento.',
 
     'form.team': 'Sua equipe',
     'form.budget': 'Gelatina de peixe disponível',
@@ -317,15 +317,15 @@ export const ui = {
     'share.copied': 'Link copied.',
     'share.loaded': 'Team loaded from the shared link.',
 
-    'why.1.label': '01 · Exact result',
+    'why.1.label': '01 · Build your scenario',
     'why.1.text':
-      'The problem is a multiple-choice knapsack, solved with dynamic programming. For the given data the result is optimal — not a greedy approximation.',
-    'why.2.label': '02 · Data with provenance',
+      'Enter the catpals you have and the budget available for upgrades.',
+    'why.2.label': '02 · Compare the possibilities',
     'why.2.text':
-      'Every table carries the tier it was captured at. Where the data is provisional, the caveat sits next to the result — not buried in a footer.',
-    'why.3.label': '03 · Your numbers leave with you',
+      'Forneus tests the possible combinations to find the most efficient allocation.',
+    'why.3.label': '03 · Find the best allocation',
     'why.3.text':
-      'Every result exports to CSV and JSON, caveats included. Nothing is trapped in the page.',
+      'Get an optimized upgrade plan with the best level for each catpal and the highest possible power within your budget.',
 
     'form.team': 'Your team',
     'form.budget': 'Fish Jelly available',
