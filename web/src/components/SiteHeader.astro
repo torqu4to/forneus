@@ -20,7 +20,7 @@ const here = Astro.url.pathname;
         href={tool.status === 'available' ? `/${locale}/ferramentas/${tool.name}/` : undefined}
         class:list={['hdr__link', { 'is-active': active === tool.name, 'is-planned': tool.status === 'planned' }]}
         aria-current={active === tool.name ? 'page' : undefined}
-      >{t(tool.navKey)}</a>
+      >{t(tool.navKey)}{tool.beta && <span class="hdr__beta">{t('tool.beta')}</span>}</a>
     ))}
   </nav>
 
@@ -67,6 +67,12 @@ const here = Astro.url.pathname;
   /* A tool with no page yet is not a link and must not look like one. */
   .hdr__link.is-planned { color: var(--text-disabled); cursor: default; }
   .hdr__link.is-planned:hover { color: var(--text-disabled); }
+  .hdr__beta {
+    margin-inline-start: var(--space-2); padding: 2px 4px;
+    color: var(--accent); border: 1px solid currentColor;
+    font: 600 .58rem var(--font-mono); letter-spacing: .08em;
+    vertical-align: middle;
+  }
 
   .hdr__end {
     display: flex; align-items: center; gap: var(--space-6);

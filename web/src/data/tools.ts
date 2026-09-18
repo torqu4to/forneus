@@ -19,6 +19,7 @@ export interface Tool {
   navKey: UIKey;
   descriptionKey: UIKey;
   status: ToolStatus;
+  beta?: boolean;
   /** Short mono chips shown next to an available tool. Not translated: they
    *  are proper nouns or format names. */
   tags?: string[];
@@ -31,6 +32,7 @@ export const tools: Tool[] = [
     navKey: 'nav.tool.amigatos',
     descriptionKey: 'tool.amigatos.description',
     status: 'available',
+    beta: true,
     tags: ['KNAPSACK EXATO', 'CSV / JSON', 'PERFIS'],
   },
   {

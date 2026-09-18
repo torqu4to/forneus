@@ -78,7 +78,7 @@ const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).sl
         <li class:list={['tool', { 'tool--planned': tool.status === 'planned' }]}>
           <ToolIcon name={tool.name} size={28} class="tool__icon" />
           <div class="tool__body">
-            <h3 class="tool__name">{t(tool.titleKey)}</h3>
+            <h3 class="tool__name">{t(tool.titleKey)}{tool.beta && <span class="tool__beta">{t('tool.beta')}</span>}</h3>
             <p class="tool__desc">{t(tool.descriptionKey)}</p>
           </div>
           <div class="tool__tags">
@@ -152,6 +152,12 @@ const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).sl
   .tool__name {
     font-size: var(--size-display-m); font-weight: 600;
     letter-spacing: var(--track-display); text-transform: uppercase;
+  }
+  .tool__beta {
+    display: inline-block; margin-inline-start: var(--space-3); padding: 3px 6px;
+    color: var(--accent); border: 1px solid currentColor;
+    font: 600 .62rem var(--font-mono); letter-spacing: .08em;
+    vertical-align: middle;
   }
   .tool__desc { font-size: var(--size-body-s); color: var(--text-muted); }
   .tool__tags { display: flex; gap: var(--space-2); flex-wrap: wrap; }
