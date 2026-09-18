@@ -77,8 +77,8 @@ export const ui = {
 
     /* ── comparador ────────────────────────────────────────────── */
     'compare.heading': 'Manter ou redistribuir?',
-    'compare.lead': 'Informe quanta Fish Jelly nova você conseguiu desde a última vez. Comparamos gastar só ela contra resetar tudo e redistribuir do zero.',
-    'compare.new_jelly': 'Fish Jelly nova',
+    'compare.lead': 'Informe quanta gelatina de peixe nova você conseguiu desde a última vez. Comparamos gastar só ela contra resetar tudo e redistribuir do zero.',
+    'compare.new_jelly': 'Gelatina de peixe nova',
     'compare.run': 'Comparar',
     'compare.keep': 'Manter os níveis atuais',
     'compare.keep.desc': 'Gasta apenas a Jelly nova. Nada é resetado.',
@@ -111,27 +111,27 @@ export const ui = {
     'tools.soon': 'Em breve',
 
     'tool.amigatos.title': 'Otimizador de amigatos',
+    'tool.beta': 'Beta',
     'tool.amigatos.description':
-      'Distribuição ótima de Fish Jelly entre os amigatos dos assist slots.',
+      'Distribuição ótima de gelatina de peixe entre os amigatos dos assist slots.',
     'tool.fantasmas.title': 'Otimizador de fantasmas',
-    'tool.fantasmas.description':
-      'Em coleta de dados. Modelagem do problema ainda em definição.',
+    'tool.fantasmas.description': 'Em breve',
     'tool.florais.title': 'Guardiões florais',
-    'tool.florais.description': 'Escopo ainda não definido.',
+    'tool.florais.description': 'Em breve',
 
     'how.back': 'Voltar ao otimizador',
     'how.open.tool': 'Abrir o otimizador',
     'how.open.guide': 'Como usar',
     'how.note.label': 'Importante',
-    'how.note.text': 'O resultado usa os valores de Fish Jelly e poder atualmente catalogados. Confira os números no jogo antes de confirmar uma evolução.',
+    'how.note.text': 'O resultado usa os valores de gelatina de peixe e poder atualmente catalogados. Confira os números no jogo antes de confirmar uma evolução.',
     'how.amigatos.kicker': 'Guia rápido · Amigatos',
     'how.amigatos.title': 'Como usar o otimizador de amigatos',
-    'how.amigatos.description': 'Aprenda a informar sua equipe e encontrar a melhor distribuição de Fish Jelly.',
-    'how.amigatos.intro': 'Informe o que você tem nos assist slots, quanto de Fish Jelly está disponível e deixe o Forneus calcular a distribuição ótima.',
+    'how.amigatos.description': 'Aprenda a informar sua equipe e encontrar a melhor distribuição de gelatina de peixe.',
+    'how.amigatos.intro': 'Informe o que você tem nos assist slots, quanto de gelatina de peixe está disponível e deixe o Forneus calcular a distribuição ótima.',
     'how.amigatos.step1.title': 'Conte sua equipe',
     'how.amigatos.step1.text': 'Em Sua equipe, informe quantos amigatos você possui de cada categoria. A soma deve respeitar o limite de assist slots.',
     'how.amigatos.step2.title': 'Informe a Jelly',
-    'how.amigatos.step2.text': 'Digite o total de Fish Jelly disponível em unidades r1. Silverleaf e Dried Fish não entram no cálculo por enquanto.',
+    'how.amigatos.step2.text': 'Digite o total de gelatina de peixe disponível em unidades r1. Silverleaf e Dried Fish não entram no cálculo por enquanto.',
     'how.amigatos.step3.title': 'Calcule a distribuição',
     'how.amigatos.step3.text': 'Clique em Calcular. O resultado mostra o nível recomendado para cada amigato, o poder efetivo, o custo e o restante.',
     'how.amigatos.step4.title': 'Confira antes de evoluir',
@@ -153,7 +153,7 @@ export const ui = {
       'Todo resultado exporta em CSV e JSON, com os mesmos avisos embutidos. Nada fica preso na página.',
 
     'form.team': 'Sua equipe',
-    'form.budget': 'Fish Jelly disponível',
+    'form.budget': 'Gelatina de peixe disponível',
     'form.budget.unit': 'em unidades r1',
     'form.budget.help': 'Converta tudo para r1 no jogo antes de informar o total.',
     'form.submit': 'Calcular',
@@ -201,7 +201,7 @@ export const ui = {
     'error.jelly.range': 'Informe Jelly inteira entre 0 e {max}.',
     'error.jelly.insufficient': 'Jelly insuficiente para o custo de entrada da equipe.',
     'notice.amigatos.currencies_excluded':
-      'Silverleaf e Dried Fish não são considerados; o resultado é ótimo apenas para Fish Jelly e estas tabelas.',
+      'Silverleaf e Dried Fish não são considerados; o resultado é ótimo apenas para gelatina de peixe e estas tabelas.',
     'notice.amigatos.provisional_tier': '{display_name} usa dados do tier {captured}/{max}.',
 
     'footer.independent': 'forneus.wiki · projeto independente, sem vínculo com a IMC Games',
@@ -212,7 +212,7 @@ export const ui = {
     'site.tagline': 'Optimization tools for Tree of Savior Neo',
     'nav.tools': 'Tools',
     'nav.tool.amigatos': 'Catpals',
-    'nav.tool.fantasmas': 'Ghosts',
+    'nav.tool.fantasmas': 'Phantom',
     'nav.tool.florais': 'Guardians',
     'nav.data': 'About the data',
     'nav.signin': 'Sign in',
@@ -288,11 +288,11 @@ export const ui = {
     'tool.amigatos.title': 'Catpal optimizer',
     'tool.amigatos.description':
       'Optimal Fish Jelly allocation across the catpals in your assist slots.',
-    'tool.fantasmas.title': 'Ghost optimizer',
-    'tool.fantasmas.description':
-      'Collecting data. How to model the problem is still being decided.',
+    'tool.beta': 'Beta',
+    'tool.fantasmas.title': 'Phantom optimizer',
+    'tool.fantasmas.description': 'Coming soon',
     'tool.florais.title': 'Floral guardians',
-    'tool.florais.description': 'Scope not defined yet.',
+    'tool.florais.description': 'Coming soon',
 
     'how.back': 'Back to optimizer',
     'how.open.tool': 'Open the optimizer',
