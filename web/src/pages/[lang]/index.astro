@@ -1,7 +1,7 @@
 ---
 import Site from '../../layouts/Site.astro';
-import ToolIcon from '../../components/ToolIcon.astro';
-import { tools, availableTools, plannedTools } from '../../data/tools';
+import ToolCards from '../../components/ToolCards.astro';
+import { availableTools, plannedTools } from '../../data/tools';
 import { solve } from '../../lib/solver/index.ts';
 import { EXAMPLE_TEAM, EXAMPLE_BUDGET } from '../../data/example-team';
 import { groupRows, categoryClass } from '../../lib/rows.ts';
@@ -29,16 +29,23 @@ const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).sl
 <Site locale={locale} title={t('tool.amigatos.title')} description={t('site.tagline')}>
 
   <section class="hero">
+    <div class="hero__art" aria-hidden="true"></div>
     <div class="hero__copy">
       <span class="fx-meta hero__eyebrow">{t('hero.eyebrow')}</span>
-      <h1>{t('hero.title.1')}<br />{t('hero.title.2')}</h1>
+      <h1><span>{t('hero.title.1')}</span><br /><span class="hero__title-accent">{t('hero.title.2')}</span></h1>
       <p class="hero__lead">{t('hero.lead')}</p>
       <div class="hero__cta">
         <a class="fx-btn" href={`/${locale}/ferramentas/amigatos/`}>
           {t('hero.cta')}
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M13 6l6 6-6 6"></path></svg>
         </a>
-        <span class="fx-meta">{t('hero.noaccount')}</span>
+        <div class="hero__benefits">
+          <span>{t('hero.noaccount')}</span>
+          <span aria-hidden="true">·</span>
+          <span>{t('hero.free')}</span>
+          <span aria-hidden="true">·</span>
+          <span>{t('hero.exact')}</span>
+        </div>
       </div>
     </div>
 
@@ -73,49 +80,80 @@ const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).sl
       <span class="fx-meta">{t('tools.count', { available: availableTools.length, planned: plannedTools.length })}</span>
     </div>
 
-    <ul class="tools__list">
-      {tools.map((tool) => (
-        <li class:list={['tool', { 'tool--planned': tool.status === 'planned' }]}>
-          <ToolIcon name={tool.name} size={28} class="tool__icon" />
-          <div class="tool__body">
-            <h3 class="tool__name">{t(tool.titleKey)}{tool.beta && <> <span class="tool__beta">{t('tool.beta')}</span></>}</h3>
-            <p class="tool__desc">{t(tool.descriptionKey)}</p>
-          </div>
-          <div class="tool__tags">
-            {tool.tags?.map((tag) => <span class="tool__tag">{tag}</span>)}
-          </div>
-          {tool.status === 'available' ? (
-            <a class="fx-btn tool__action" href={`/${locale}/ferramentas/${tool.name}/`}>{t('tools.open')}</a>
-          ) : (
-            <span class="tool__action tool__action--soon">{t('tools.soon')}</span>
-          )}
-        </li>
-      ))}
-    </ul>
+    <ToolCards locale={locale} />
   </section>
 
-  <section class="why">
-    {([1, 2, 3] as const).map((i) => (
-      <div class="why__cell">
-        <span class="fx-meta why__label">{t(`why.${i}.label` as never)}</span>
-        <p class="why__text">{t(`why.${i}.text` as never)}</p>
+  <section class="showcase" aria-labelledby="showcase-heading">
+    <a class="showcase__capture" href={`/${locale}/ferramentas/amigatos/`}>
+      <div class="showcase__screen">
+        <div class="showcase__screen-bar" aria-hidden="true"><i></i><b>FORNEUS</b><small>{t('showcase.tool')}</small></div>
+        <img src={`/assets/forneus-table-hd-${locale}.png`} width="1972" height="792" loading="lazy" alt={locale === 'pt' ? 'Tabela real do otimizador com amigatos, níveis, gelatina e poder efetivo.' : 'Actual optimizer table with catpals, levels, jelly and effective power.'} />
+        <div class="showcase__screen-chin" aria-hidden="true"><i></i></div>
       </div>
-    ))}
+      <div class="showcase__screen-stand" aria-hidden="true"></div>
+      <span>{t('hero.sample')} · {t('hero.cta')} →</span>
+    </a>
+    <div class="showcase__copy">
+      <span class="fx-meta hero__eyebrow">{t('showcase.eyebrow')}</span>
+      <h2 id="showcase-heading">{t('showcase.title')}</h2>
+      <p>{t('showcase.lead')}</p>
+      <ul>
+        <li>{t('showcase.point1')}</li>
+        <li>{t('showcase.point2')}</li>
+        <li>{t('showcase.point3')}</li>
+        <li>{t('showcase.point4')}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="process" aria-labelledby="process-heading">
+    <div class="section-intro">
+      <span class="fx-meta hero__eyebrow">{t('process.eyebrow')}</span>
+      <h2 id="process-heading">{t('process.title')}</h2>
+      <p>{t('process.lead')}</p>
+    </div>
+    <div class="process__steps">
+      {[1, 2, 3].map((step) => (
+        <article class="process__step">
+          <div class="process__step-top">
+            <span class="process__number">0{step}</span>
+            {step < 3 && <span class="process__connector" aria-hidden="true"></span>}
+          </div>
+          <div class="process__step-copy">
+            <h3>{t(`process.${step}.title` as never)}</h3>
+            <p>{t(`process.${step}.text` as never)}</p>
+          </div>
+        </article>
+      ))}
+    </div>
   </section>
 
 </Site>
 
 <style>
   .hero {
-    display: grid; grid-template-columns: minmax(0, 1fr) 420px;
-    gap: var(--space-11); align-items: center;
-    padding: var(--space-12) var(--page-pad) var(--space-11);
+    display: grid; grid-template-columns: minmax(0, 720px);
+    min-height: 315px; align-items: center;
+    padding: var(--space-7) var(--page-pad) var(--space-7);
     border-bottom: var(--border) solid var(--line-hard);
+    position: relative; overflow: hidden;
+    background: var(--bg-page);
   }
+  .hero__art {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(5, 10, 9, .97) 0%, rgba(5, 10, 9, .88) 27%, rgba(5, 10, 9, .22) 70%, rgba(5, 10, 9, .48) 100%), url('/assets/hero-forneus.jpg') center / cover no-repeat;
+    opacity: .94; pointer-events: none;
+  }
+  .hero > *:not(.hero__art) { position: relative; z-index: 1; }
+  .hero > .preview { display: none; }
   .hero__copy { display: flex; flex-direction: column; gap: var(--space-8); }
+  .hero h1 { font-family: Georgia, 'Times New Roman', serif !important; font-size: clamp(2.7rem, 5vw, 4.6rem); line-height: .98; letter-spacing: -.045em; font-weight: 600; }
+  .hero__title-accent { color: #52d7a7 !important; }
   .hero__eyebrow { color: var(--accent); letter-spacing: var(--track-label-wide); }
   .hero__lead { font-size: var(--size-body-l); color: var(--text-muted); max-width: 620px; }
   .hero__cta { display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+  .hero__benefits { display: flex; gap: var(--space-3); flex-wrap: wrap; color: var(--text-muted); font-family: var(--font-body); font-size: var(--size-label); }
+  .hero__cta .fx-btn { padding-left: var(--space-5); padding-right: var(--space-4); gap: var(--space-2); background: linear-gradient(135deg, #48d8a4, #1da878); color: #04100b; box-shadow: 0 8px 26px rgba(43, 213, 157, .22); }
 
   .preview { margin: 0; background: var(--bg-panel); border: var(--border) solid var(--line-hard); }
   .preview__head, .preview__foot {
@@ -140,44 +178,56 @@ const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).sl
     display: flex; align-items: center; justify-content: space-between;
     padding: var(--space-6) var(--page-pad); background: var(--bg-page);
   }
-  .tools__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--border); }
 
-  .tool {
-    display: grid; grid-template-columns: 44px minmax(0, 1fr) 300px 150px;
-    gap: var(--space-8); align-items: center;
-    padding: var(--space-8) var(--page-pad); background: var(--bg-panel);
-  }
-  .tool__icon { color: var(--accent); }
-  .tool__body { display: flex; flex-direction: column; gap: var(--space-1); }
-  .tool__name {
-    font-size: var(--size-display-m); font-weight: 600;
-    letter-spacing: var(--track-display); text-transform: uppercase;
-  }
-  .tool__beta {
-    display: inline-block; margin-inline-start: var(--space-3); padding: 3px 6px;
-    color: var(--accent); border: 1px solid currentColor;
-    font: 600 .62rem var(--font-mono); letter-spacing: .08em;
-    vertical-align: middle;
-  }
-  .tool__desc { font-size: var(--size-body-s); color: var(--text-muted); }
-  .tool__tags { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-  .tool__tag {
-    padding: 3px var(--space-2); font-family: var(--font-mono);
-    font-size: var(--size-label-xs); color: var(--text-muted);
-    border: var(--border) solid var(--line-control);
-  }
-  .tool__action { width: 100%; }
-  .tool__action--soon {
-    display: inline-flex; align-items: center; justify-content: center;
-    height: var(--control-h); font-family: var(--font-mono);
-    font-size: var(--size-label); letter-spacing: var(--track-label);
-    text-transform: uppercase; color: var(--text-faint);
-    border: var(--border) solid var(--line-control);
-  }
-  .tool--planned { background: var(--bg-inset); }
-  .tool--planned .tool__icon { color: var(--text-disabled); }
-  .tool--planned .tool__name { color: var(--text-muted); }
-  .tool--planned .tool__desc { color: var(--text-faint); }
+
+  .showcase { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(300px, .82fr); gap: clamp(40px, 7vw, 112px); align-items: center; max-width: 1200px; margin-inline: auto; padding: 56px var(--page-pad) 64px; background: var(--bg-inset); border-top: var(--border) solid var(--line-hard); }
+  .showcase__capture { display: block; min-width: 0; color: inherit; }
+  .showcase__screen { overflow: hidden; padding: 8px 8px 0; border: 1px solid #394044; border-radius: 14px; background: #171b1e; box-shadow: 0 18px 42px rgba(0,0,0,.34); }
+  .showcase__screen-bar { display: flex; align-items: center; gap: 10px; padding: 8px 10px 12px; color: var(--text-muted); font: .65rem var(--font-mono); }
+  .showcase__screen-bar i { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .showcase__screen-bar small { margin-left: auto; font: inherit; }
+  .showcase__screen-chin { display: grid; place-items: center; height: 22px; }
+  .showcase__screen-chin i { width: 18px; height: 2px; background: var(--accent); opacity: .6; }
+  .showcase__screen-stand { width: 26%; height: 26px; margin: 0 auto 12px; border-bottom: 4px solid #394044; background: linear-gradient(#171b1e, #2a3034); clip-path: polygon(34% 0,66% 0,72% 80%,100% 86%,100% 100%,0 100%,0 86%,28% 80%); }
+  .showcase__capture img { display: block; width: 100%; height: auto; }
+  .showcase__capture span { display: block; padding: var(--space-3) var(--space-2); border-top: 1px solid var(--line); color: var(--accent); font-size: var(--size-body-s); }
+  .showcase__capture:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .mockup__bar { display: flex; justify-content: space-between; padding: var(--space-3) var(--space-5); color: var(--text-faint); font: 500 .68rem var(--font-mono); border-bottom: 1px solid var(--line-control); }
+  .mockup__body { display: grid; grid-template-columns: .75fr 1.25fr; gap: var(--space-5); padding: var(--space-6); }
+  .mockup__resources, .mockup__result { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-5); background: var(--bg-panel); border: 1px solid var(--line); }
+  .mockup__resources strong { color: var(--accent); font: 600 var(--size-figure) var(--font-mono); }
+  .mockup__resource-line { height: 26px; border: 1px solid var(--line-control); background: linear-gradient(90deg, rgba(74, 215, 169, .22) 0 62%, transparent 62%); }
+  .mockup__resource-line--short { background: linear-gradient(90deg, rgba(222, 176, 82, .25) 0 38%, transparent 38%); }
+  .mockup__result strong { color: var(--accent); font: 600 clamp(1.6rem, 4vw, 2.8rem) var(--font-mono); }
+  .mockup__gain { color: var(--accent); font: 500 .7rem var(--font-mono); }
+  .mockup__rows { display: flex; flex-direction: column; gap: var(--border); margin-top: var(--space-3); }
+  .mockup__row { display: flex; justify-content: space-between; gap: var(--space-3); padding: var(--space-2) 0; color: var(--text-muted); font-size: var(--size-body-s); border-bottom: 1px solid var(--line); }
+  .showcase__copy { max-width: 500px; }
+  .showcase__copy h2 { margin: var(--space-4) 0 var(--space-5); font-size: clamp(2rem, 3vw, 2.8rem); line-height: 1.08; }
+  .showcase__copy > p { color: var(--text-muted); line-height: var(--leading-relaxed); }
+  .showcase__copy ul { display: grid; gap: var(--space-5); margin: var(--space-8) 0 0; padding: 0; list-style: none; color: var(--text-muted); }
+  .showcase__copy li { display: flex; gap: var(--space-4); align-items: baseline; }
+  .showcase__copy li::before { content: '✓'; flex: none; color: var(--accent); font-family: var(--font-mono); }
+  .process, .wiki { padding: clamp(56px, 8vw, 96px) var(--page-pad); border-top: var(--border) solid var(--line-hard); }
+  .process { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: clamp(48px, 8vw, 128px); align-items: start; background: var(--bg-page); }
+  .section-intro { max-width: 520px; }
+  .section-intro h2 { margin: var(--space-4) 0 var(--space-3); }
+  .section-intro p { color: var(--text-muted); line-height: var(--leading-relaxed); }
+  .process__steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-top: var(--space-3); }
+  .process__step { position: relative; min-width: 0; }
+  .process__step-top { display: flex; align-items: center; height: 28px; }
+  .process__number { display: grid; place-items: center; width: 28px; height: 28px; flex: none; color: var(--bg-page); background: var(--accent); font: 600 .72rem var(--font-mono); }
+  .process__connector { display: block; width: 100%; height: 1px; background: var(--line-control); }
+  .process__step-copy { padding: var(--space-6) var(--space-6) 0 0; }
+  .process__step h3 { margin: 0 0 var(--space-3); font-size: var(--size-display-s); line-height: 1.12; }
+  .process__step p { max-width: 230px; color: var(--text-muted); line-height: var(--leading-relaxed); }
+  .wiki { background: var(--bg-page); }
+  .wiki__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); margin-top: var(--space-9); }
+  .wiki__card { min-height: 180px; display: flex; flex-direction: column; padding: var(--space-6); background: var(--bg-panel); border: 1px solid var(--line-control); transition: border-color 180ms ease, transform 180ms ease; }
+  .wiki__card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .wiki__card h3 { margin: var(--space-7) 0 var(--space-3); font-size: var(--size-display-s); }
+  .wiki__card p { color: var(--text-muted); line-height: var(--leading-relaxed); }
+  .wiki__link { margin-top: auto; padding-top: var(--space-5); color: var(--accent); font: 500 .72rem var(--font-mono); text-transform: uppercase; }
 
   .why {
     display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -193,14 +243,28 @@ const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).sl
 
   @media (max-width: 1100px) {
     .hero { grid-template-columns: minmax(0, 1fr); gap: var(--space-9); }
-    .tool { grid-template-columns: 32px minmax(0, 1fr) 150px; }
-    .tool__tags { display: none; }
-    .why { grid-template-columns: minmax(0, 1fr); }
+    .why, .showcase, .process { grid-template-columns: minmax(0, 1fr); }
+    .wiki__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .process__steps { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+    .process__step { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: var(--space-5); }
+    .process__step-top { display: block; height: auto; }
+    .process__connector { width: 1px; height: calc(100% + var(--space-8)); margin: 0 auto; }
+    .process__step-copy { padding: 0; }
+    .process__step p { max-width: 520px; }
   }
   @media (max-width: 640px) {
     .hero { padding-block: var(--space-9); }
     .hero h1 { font-size: var(--size-display-l); }
-    .tool { grid-template-columns: 32px minmax(0, 1fr); row-gap: var(--space-5); }
-    .tool__action, .tool__action--soon { grid-column: 2; }
+    .showcase { padding-block: var(--space-9); }
+    .mockup__body { grid-template-columns: 1fr; }
+    .wiki__grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .showcase { gap: var(--space-10); padding-block: var(--space-10); }
+    .showcase__copy h2 { font-size: var(--size-display-l); }
+  }
+
+  @media (max-width: 600px) {
+    .tools__head { align-items: flex-start; flex-direction: column; gap: var(--space-2); }
   }
 </style>

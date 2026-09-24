@@ -41,6 +41,7 @@ export const tools: Tool[] = [
     navKey: 'nav.tool.fantasmas',
     descriptionKey: 'tool.fantasmas.description',
     status: 'planned',
+    tags: ['TIPOS', 'HABILIDADES', 'COMBINAÇÕES'],
   },
   {
     name: 'florais',
@@ -48,6 +49,7 @@ export const tools: Tool[] = [
     navKey: 'nav.tool.florais',
     descriptionKey: 'tool.florais.description',
     status: 'planned',
+    tags: ['RARIDADES', 'EVOLUÇÃO', 'BÔNUS'],
   },
 ];
 

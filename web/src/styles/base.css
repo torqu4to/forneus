@@ -19,7 +19,7 @@
  */
 [hidden] { display: none !important; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; color-scheme: dark; }
 
 body {
   margin: 0;
@@ -109,6 +109,9 @@ a:hover { color: var(--accent-hover); }
   border-radius: var(--radius);
 }
 .fx-field:hover { border-color: var(--accent-dim); }
+@media (max-width: 720px), (pointer: coarse) {
+  .fx-field { font-size: 16px; }
+}
 .fx-field[aria-invalid="true"] { border-color: var(--danger); color: var(--danger); }
 
 .fx-btn {
@@ -126,7 +129,7 @@ a:hover { color: var(--accent-hover); }
   color: var(--accent-ink);
   background: var(--accent);
   border: var(--border) solid var(--accent);
-  border-radius: var(--radius);
+  border-radius: 0;
   cursor: pointer;
 }
 .fx-btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); }

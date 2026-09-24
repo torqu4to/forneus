@@ -1,0 +1,131 @@
+---
+import ToolIcon from './ToolIcon.astro';
+import { tools } from '../data/tools';
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const art: Record<string, string> = {
+  amigatos: '/assets/characters/catpal-chair.png',
+  fantasmas: '/assets/characters/phantom-forest.png',
+  florais: '/assets/characters/floral-strawberry.png',
+};
+---
+<ul class="companions">
+  {tools.map((tool) => (
+    <li class:list={['companion', `companion--${tool.name}`, { 'companion--available': tool.status === 'available' }]}>
+      <div class="companion__top">
+        <span class="companion__emblem" aria-hidden="true"><ToolIcon name={tool.name} size={24} /></span>
+        <span class="companion__status">{t(tool.status === 'available' ? 'tools.available' : 'tools.soon')}</span>
+      </div>
+      <div class="companion__portrait" aria-hidden="true">
+        <div class="companion__frame"></div>
+        <img src={art[tool.name]} alt="" width="320" height="260" loading="lazy" decoding="async" />
+      </div>
+      <div class="companion__body">
+        <div class="companion__title">
+          <h3 id={`card-${tool.name}`}>{t(tool.navKey)}</h3>
+          {tool.beta && <span class="companion__beta">{t('tool.beta')}</span>}
+        </div>
+        <p>{t(tool.descriptionKey)}</p>
+      </div>
+      <div class="companion__footer">
+        {tool.status === 'available' ? (
+          <a class="companion__action" href={`/${locale}/ferramentas/${tool.name}/`} aria-describedby={`card-${tool.name}`}>
+            <span>{t('cards.open')}</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7" /></svg>
+          </a>
+        ) : (
+          <p class="companion__features">{t(tool.name === 'fantasmas' ? 'cards.phantoms.features' : 'cards.florals.features')}</p>
+        )}
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .companions {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-7);
+    list-style: none; margin: 0; padding: var(--space-3) var(--page-pad) var(--space-10);
+    background: var(--bg-page);
+  }
+  .companion {
+    --card-accent: var(--accent);
+    display: flex; flex-direction: column; min-width: 0; position: relative;
+    background: var(--bg-panel); border: 1px solid var(--line-control);
+    border-top: 3px solid color-mix(in srgb, var(--card-accent) 45%, var(--line-control));
+    border-radius: 4px 4px 16px 4px;
+  }
+  .companion--fantasmas { --card-accent: var(--card-phantom); }
+  .companion--florais { --card-accent: var(--cat-gold); }
+  .companion--available { border-color: var(--accent-dim); border-top-color: var(--accent); }
+  .companion--available:focus-within { border-color: var(--accent); }
+  .companion__top {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-5);
+    padding: var(--space-7) var(--space-8) 0;
+  }
+  .companion__emblem { display: flex; color: var(--card-accent); }
+  .companion__status { font: 500 var(--size-body-s) var(--font-body); color: var(--text-muted); }
+  .companion--available .companion__status { color: var(--accent); }
+  .companion--available .companion__status::before {
+    content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 8px;
+    border-radius: 50%; background: currentColor; vertical-align: middle;
+  }
+  .companion__portrait {
+    position: relative; isolation: isolate; display: grid; place-items: center;
+    height: 230px; margin: var(--space-5) var(--space-8) 0;
+  }
+  .companion__frame {
+    position: absolute; z-index: -1; inset: 12px 12% 0;
+    border: 1px solid color-mix(in srgb, var(--card-accent) 25%, var(--line-control));
+    border-radius: 120px 120px 0 0;
+    background: color-mix(in srgb, var(--card-accent) 6%, var(--bg-panel));
+  }
+  .companion__frame::after {
+    content: ''; position: absolute; inset: 7px; border: 1px solid color-mix(in srgb, var(--card-accent) 9%, transparent);
+    border-radius: inherit;
+  }
+  .companion__portrait img {
+    display: block; width: 100%; max-width: 300px; height: 230px;
+    object-fit: contain; object-position: center bottom;
+    transition: transform 220ms ease; transform-origin: center bottom;
+  }
+  .companion__body { padding: var(--space-8) var(--space-8) var(--space-7); flex: 1; }
+  .companion__title { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); }
+  h3 { font-size: 36px; letter-spacing: .01em; line-height: 1.1; text-transform: none; }
+  .companion__beta { color: var(--card-accent); border: 1px solid var(--accent-dim); padding: 2px 6px; font-size: 11px; }
+  .companion__body p { font-size: var(--size-body); line-height: var(--leading-body); color: var(--text-muted); max-width: 42ch; }
+  .companion__footer { margin: 0 var(--space-8); padding: var(--space-7) 0 var(--space-8); border-top: 1px solid var(--line-hard); }
+  .companion__action {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-5);
+    min-height: 48px; padding: var(--space-5) var(--space-7);
+    color: var(--accent-ink); background: var(--accent);
+    font: 600 var(--size-body) var(--font-body); border-radius: 0;
+    touch-action: manipulation;
+  }
+  .companion__action:hover { background: var(--accent-hover); }
+  .companion__action:focus-visible { outline: var(--focus-ring); outline-offset: 4px; }
+  .companion__action svg { flex: none; }
+  .companion__features { display: flex; align-items: center; min-height: 48px; font-size: var(--size-body-s); color: var(--text-muted); }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .companion--available:hover .companion__portrait img { transform: translateY(-4px); }
+  }
+  @media (max-width: 900px) {
+    .companions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .companion--available { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .companion--available .companion__top { grid-column: 1 / -1; }
+    .companion--available .companion__portrait { grid-column: 1; grid-row: 2 / 4; height: 260px; align-self: end; }
+    .companion--available .companion__portrait img { height: 260px; }
+    .companion--available .companion__body { grid-column: 2; align-self: center; padding-top: var(--space-9); }
+    .companion--available .companion__footer { grid-column: 2; }
+  }
+  @media (max-width: 600px) {
+    .companions { grid-template-columns: minmax(0, 1fr); }
+    .companion--available { display: flex; grid-column: auto; }
+    .companion--available .companion__portrait { height: 230px; align-self: stretch; }
+    .companion--available .companion__portrait img { height: 230px; }
+    .companion--available .companion__body { align-self: stretch; padding-top: var(--space-8); }
+    .companion__portrait { margin-inline: var(--space-9); }
+  }
+</style>
