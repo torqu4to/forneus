@@ -72,4 +72,7 @@ const t = useTranslations(locale);
   }
   .acct__link:hover, .acct__user:hover { color: var(--accent); }
   .acct__avatar { border-radius: 50%; }
+  @media (max-width: 720px), (pointer: coarse) {
+    .acct__link, .acct__user { min-height: 44px; min-width: 44px; justify-content: center; }
+  }
 </style>

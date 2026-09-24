@@ -24,6 +24,7 @@ const indexable = site.host === PRODUCTION_HOST || site.host === `www.${PRODUCTI
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0b0d" />
     <title>{title} · Forneus</title>
     <meta name="description" content={description ?? t('site.tagline')} />
     {!indexable && <meta name="robots" content="noindex, nofollow" />}

@@ -1,35 +1,85 @@
 ---
 import { useTranslations, type Locale } from '../i18n/utils';
+import Brand from './Brand.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 <footer class="ftr">
-  {/* The rule and the background span the window; the text lines up with the
-      page content above it. Without the inner wrapper the two lines end up
-      pinned to the far corners of a wide monitor, far from anything else. */}
   <div class="ftr__inner">
-    <span>{t('footer.independent')}</span>
-    <span>{t('footer.check')}</span>
+    <div class="ftr__brand">
+      <a class="ftr__logo" href={`/${locale}/`} aria-label="Forneus"><Brand /></a>
+      <span class="ftr__kicker">{t('footer.tools')}</span>
+      <p>{t('footer.description')}</p>
+      <small>{t('footer.independent')}</small>
+    </div>
+    <div class="ftr__col"><strong>{t('footer.tools')}</strong><a href={`/${locale}/ferramentas/amigatos/`}>Amigatos</a><span>Phantoms</span><span>{t('nav.tool.florais')}</span></div>
+    <div class="ftr__col"><strong>{t('footer.resources')}</strong><span>{t('footer.guides')}</span><span>{t('nav.data')}</span><span>{t('footer.about')}</span></div>
+    <div class="ftr__col ftr__note"><strong>{t('footer.community')}</strong><p>{t('footer.check')}</p><span class="ftr__signal"><i aria-hidden="true"></i> forneus.wiki</span></div>
   </div>
+  <div class="ftr__bottom"><span>© 2026 Forneus</span><span>{t('footer.disclaimer')}</span><a href={`/${locale}/`}>{locale === 'pt' ? 'Português' : 'English'}</a></div>
 </footer>
 
 <style>
   .ftr {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     border-top: var(--border) solid var(--line-hard);
     font-family: var(--font-mono);
     font-size: var(--size-label);
     color: var(--text-disabled);
-    text-transform: uppercase;
+  }
+  .ftr::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    background: url('/assets/footer-forneus.png') center center / cover no-repeat;
+    opacity: .48;
+    filter: none;
+  }
+  .ftr::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(5, 8, 10, .97) 0%, rgba(5, 8, 10, .9) 34%, rgba(5, 8, 10, .7) 70%, rgba(5, 8, 10, .78) 100%);
   }
   .ftr__inner {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: var(--space-8);
+    display: grid; align-items: start;
+    gap: clamp(32px, 6vw, 96px);
     max-width: var(--page-max);
     margin-inline: auto;
-    padding: var(--space-7) var(--page-pad);
+    padding: clamp(40px, 5vw, 64px) var(--page-pad) var(--space-7);
+    grid-template-columns: minmax(230px, 1.2fr) repeat(3, minmax(120px, .65fr));
+    position: relative;
+    z-index: 1;
   }
-  @media (max-width: 720px) {
-    .ftr__inner { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .ftr__brand { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .ftr__logo { color: var(--accent); }
+  .ftr__logo :global(.brandmark) { color: var(--text-strong); }
+  .ftr__logo :global(svg) { width: 28px; height: 32px; }
+  .ftr__kicker { color: var(--accent); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; }
+  .ftr__brand p { max-width: 260px; margin: 0; color: var(--text-muted); line-height: var(--leading-relaxed); }
+  .ftr__brand small { max-width: 280px; color: var(--text-disabled); font-size: .62rem; line-height: 1.5; }
+  .ftr__col { display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; padding-top: var(--space-2); }
+  .ftr__col strong { margin-bottom: .35rem; color: var(--text-strong); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+  .ftr__col span, .ftr__col a { color: var(--text-disabled); text-decoration: none; }
+  .ftr__col a:hover, .ftr__col a:focus-visible { color: var(--accent); }
+  .ftr__note p { max-width: 190px; margin: 0; color: var(--text-muted); line-height: 1.5; text-transform: none; }
+  .ftr__signal { display: inline-flex; align-items: center; gap: .45rem; margin-top: var(--space-3); color: var(--accent) !important; font-size: .62rem; }
+  .ftr__signal i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
+  .ftr__bottom { display: flex; align-items: center; justify-content: flex-start; gap: var(--space-8); max-width: var(--page-max); margin: auto; padding: var(--space-4) var(--page-pad); border-top: 1px solid var(--line); font-size: .62rem;
+    position: relative; z-index: 1;
+  }
+  .ftr__bottom span:nth-child(2) { margin-right: auto; }
+  .ftr__bottom a { color: var(--text-muted); text-decoration: none; }
+  .ftr__bottom a:hover, .ftr__bottom a:focus-visible { color: var(--accent); }
+  @media (max-width: 900px) {
+    .ftr__inner { grid-template-columns: repeat(2, 1fr); gap: var(--space-8) var(--space-5); }
+    .ftr__brand { grid-column: 1 / -1; }
+    .ftr__bottom { flex-direction: column; gap: var(--space-2); }
+    .ftr__bottom span:nth-child(2) { margin-right: 0; }
   }
 </style>

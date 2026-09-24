@@ -1,6 +1,6 @@
 ---
-import Mark from './Mark.astro';
 import AccountMenu from './AccountMenu.astro';
+import Brand from './Brand.astro';
 import { tools } from '../data/tools';
 import { useTranslations, switchLocalePath, LOCALES, type Locale } from '../i18n/utils';
 
@@ -10,11 +10,13 @@ const t = useTranslations(locale);
 const here = Astro.url.pathname;
 ---
 <header class="hdr">
-  <nav class="hdr__nav" aria-label={t('nav.tools')}>
+  <nav id="site-navigation" class="hdr__nav" aria-label={t('nav.tools')}>
     <a href={`/${locale}/`} class="brand">
-      <Mark size={20} />
-      <span class="brand__word">FORNEUS</span>
+      <Brand />
     </a>
+    <button class="hdr__menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-navigation" data-menu>
+      <img src="/assets/forneus-menu-mark.png" width="1280" height="1280" alt="" aria-hidden="true" />
+    </button>
     {tools.map((tool) => (
       <a
         href={tool.status === 'available' ? `/${locale}/ferramentas/${tool.name}/` : undefined}
@@ -48,12 +50,10 @@ const here = Astro.url.pathname;
     border-bottom: var(--border) solid var(--line-hard);
   }
   .hdr__nav { display: flex; align-items: center; gap: var(--space-9); min-width: 0; }
-  .brand { display: flex; align-items: center; gap: var(--space-3); color: var(--accent); }
+  .hdr__menu { display: none; }
+  .brand { display: flex; align-items: center; color: var(--accent); }
   .brand:hover { color: var(--accent-hover); }
-  .brand__word {
-    font-family: var(--font-display); font-size: var(--size-display-m);
-    font-weight: 700; letter-spacing: 0.1em;
-  }
+  .brand__logo { width: 220px; height: 48px; object-fit: contain; object-position: left center; transform: scale(1.35); transform-origin: left center; }
   .hdr__link {
     display: inline-flex; align-items: center; gap: var(--space-2);
     font-size: var(--size-body-s); color: var(--text-faint);
@@ -90,12 +90,33 @@ const here = Astro.url.pathname;
     color: var(--text-faint);
   }
   .lang__opt:hover { color: var(--text-strong); }
+  @media (max-width: 720px), (pointer: coarse) {
+    .lang__opt { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+    .hdr { height: auto; min-height: var(--nav-h); flex-wrap: wrap; }
+  }
   .lang__opt.is-active { color: var(--text-strong); }
   .hdr__signin { font-size: var(--size-body-s); color: var(--text-default); }
 
   @media (max-width: 720px) {
-    .hdr { height: auto; flex-wrap: wrap; padding-block: var(--space-4); }
-    .hdr__nav { gap: var(--space-6); flex-wrap: wrap; }
+    .hdr { height: auto; min-height: var(--nav-h); flex-wrap: wrap; padding-block: var(--space-2); }
+    .hdr__nav { flex: 1; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+    .hdr__menu { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 7px; color: var(--text-default); background: transparent; border: 0; cursor: pointer; }
+    .hdr__menu img { display: block; width: 30px; height: 30px; object-fit: contain; transition: transform 180ms ease; }
+    .hdr__menu[aria-expanded="true"] img { transform: rotate(45deg) scale(.9); }
+    .hdr__link { display: none; flex-basis: 100%; min-height: 44px; }
+    .hdr__nav[data-open="true"] .hdr__link { display: inline-flex; }
     .hdr__link.is-active { padding-block: var(--space-2); }
+    .brand__logo { width: 180px; height: 42px; transform: scale(1.15); }
   }
 </style>
+
+<script>
+  const menu = document.querySelector<HTMLButtonElement>('[data-menu]');
+  const navigation = document.getElementById('site-navigation');
+  menu?.addEventListener('click', () => {
+    const open = menu.getAttribute('aria-expanded') === 'true';
+    menu.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-label', open ? 'Abrir menu' : 'Fechar menu');
+    navigation?.toggleAttribute('data-open', !open);
+  });
+</script>
