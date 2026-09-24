@@ -63,3 +63,15 @@ export function categoryClass(category: string): string {
   if (category.startsWith('Gold')) return 'fx-cat--gold';
   return 'fx-cat--purple';
 }
+
+/** The small Roman numeral shown on the in-game catpal badge. */
+export function categoryRoman(category: string): 'I' | 'II' {
+  const normalized = category.toLowerCase();
+  return normalized === 'purple' || normalized.endsWith('r1') ? 'I' : 'II';
+}
+
+export function categoryRomanClass(category: string): string {
+  if (category.startsWith('Red')) return 'cat-roman--red';
+  if (category.startsWith('Gold')) return 'cat-roman--gold';
+  return 'cat-roman--purple';
+}

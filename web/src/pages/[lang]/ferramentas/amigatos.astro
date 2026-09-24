@@ -2,7 +2,7 @@
 import Site from '../../../layouts/Site.astro';
 import { solve } from '../../../lib/solver/index.ts';
 import { EXAMPLE_TEAM, EXAMPLE_BUDGET } from '../../../data/example-team';
-import { groupRows, categoryClass, isProvisional } from '../../../lib/rows.ts';
+import { groupRows, categoryClass, categoryRoman, categoryRomanClass, isProvisional } from '../../../lib/rows.ts';
 import { useTranslations, formatNumber, LOCALES, type Locale } from '../../../i18n/utils';
 import { LOCALE_TAG } from '../../../i18n/ui';
 
@@ -69,8 +69,7 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
           <span class="fx-meta"><span id="team-size">{teamSize}</span> / {meta.max_team_size}</span>
         </div>
         <div class="profile">
-          <span class="profile__name">{t('form.profile.current')}</span>
-          <button type="button" class="fx-btn fx-btn--ghost">{t('form.profile.new')}</button>
+          <a class="fx-btn fx-btn--ghost" href={`/${locale}/ferramentas/amigatos/perfil/`}>{t('profile.heading')}</a>
         </div>
         <p class="hint">{t('form.profile.help')}</p>
       </div>
@@ -96,14 +95,19 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
         </div>
 
         <div class="budget">
-          <label class="fx-label budget__label" for="total_jelly">{t('form.budget')}</label>
-          <span class="budget__unit">{t('form.budget.unit')}</span>
+          <div class="budget__heading">
+            <span class="jelly-icon" aria-hidden="true"></span>
+            <div>
+              <label class="fx-label budget__label" for="total_jelly">{t('form.budget')}</label>
+              <span class="budget__unit">{t('form.budget.unit')}</span>
+            </div>
+          </div>
           <input
             class="fx-field budget__field" id="total_jelly" name="total_jelly"
             type="number" inputmode="numeric" min="0" step="1"
             value={totals.budget} aria-describedby="budget-help"
           />
-          <p class="hint" id="budget-help">{t('form.budget.help')}</p>
+          <p class="hint budget__help" id="budget-help"><strong>{t('form.budget.help')}</strong></p>
         </div>
 
         <button type="submit" class="fx-btn" id="calculate">{t('form.submit')}</button>
@@ -143,6 +147,7 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
           {rows.map((row) => (
             <tr>
               <td class={categoryClass(row.category)}>
+                <span class:list={['cat-roman', categoryRomanClass(row.category)]} aria-label={`Tier ${categoryRoman(row.category)}`}>{categoryRoman(row.category)}</span>
                 {row.display_name}
                 {isProvisional(row) && (
                   <span class="fx-tier" data-provisional="true"> {row.tier[0]}/{row.tier[1]}</span>
@@ -181,6 +186,10 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
       <div class="block">
         <h2 class="fx-label">{t('provenance.heading')}</h2>
         <dl class="prov">
+          <div class="prov__head" aria-hidden="true">
+            <span></span>
+            <span>{t('provenance.tier')}</span>
+          </div>
           {categories.map((cat) => (
             <div class="prov__row">
               <dt class="prov__key">{cat.label}</dt>
@@ -231,7 +240,7 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
      rendered a complete example result. */
   import { solve, ToolError } from '../../../lib/solver/index.ts';
   import { formatCsv, formatJson } from '../../../lib/exports.ts';
-  import { groupRows, categoryClass, isProvisional } from '../../../lib/rows.ts';
+  import { groupRows, categoryClass, categoryRoman, categoryRomanClass, isProvisional } from '../../../lib/rows.ts';
   import { useTranslations, formatNumber, type Locale } from '../../../i18n/utils';
 
   const form = document.getElementById('solver') as HTMLFormElement;
@@ -256,6 +265,26 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
   const shareStatus = document.getElementById('share-status')!;
 
   let downloads: { csv: string; json: string } | null = null;
+  function clearFieldErrors() {
+    for (const input of [...countInputs, jellyInput]) {
+      input.removeAttribute('aria-invalid');
+      const ids = (input.getAttribute('aria-describedby') ?? '').split(' ').filter((id) => id && id !== 'status');
+      if (ids.length) input.setAttribute('aria-describedby', ids.join(' '));
+      else input.removeAttribute('aria-describedby');
+    }
+    status.textContent = '';
+  }
+  function focusFieldError(error: ToolError) {
+    const field = error.key.startsWith('error.jelly.') ? jellyInput
+      : error.key === 'error.team.too_large' ? countInputs.find((input) => Number(input.value) > 0)
+      : error.key === 'error.counts.range' ? countInputs.find((input) => !input.validity.valid)
+      : undefined;
+    if (!field) return;
+    status.textContent = t(error.key as never, error.params);
+    field.setAttribute('aria-invalid', 'true');
+    field.setAttribute('aria-describedby', `${field.getAttribute('aria-describedby') ?? ''} status`.trim());
+    field.focus();
+  }
 
   function showNotice(level: 'warning' | 'error', messages: string[]) {
     notice.hidden = messages.length === 0;
@@ -279,6 +308,11 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
 
       const name = document.createElement('td');
       name.className = categoryClass(row.category);
+      const roman = document.createElement('span');
+      roman.className = `cat-roman ${categoryRomanClass(row.category)}`;
+      roman.setAttribute('aria-label', `Tier ${categoryRoman(row.category)}`);
+      roman.textContent = categoryRoman(row.category);
+      name.append(roman);
       name.append(row.display_name);
       if (isProvisional(row)) {
         const tier = document.createElement('span');
@@ -354,6 +388,7 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
      exportable is how someone downloads numbers for a team they no longer
      have. */
   function markStale() {
+    clearFieldErrors();
     updateTeamSize();
     if (!downloads) return;
     downloads = null;
@@ -367,6 +402,7 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    clearFieldErrors();
 
     const { counts, totalJelly } = readForm();
     button.disabled = true;
@@ -397,6 +433,7 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
         status.textContent = '';
         if (error instanceof ToolError) {
           showNotice('error', [t(error.key as never, error.params)]);
+          focusFieldError(error);
         } else {
           showNotice('error', [t('error.unexpected')]);
           throw error;   // a real bug belongs in the console, not swallowed
@@ -480,22 +517,39 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
   .row__field { width: 64px; text-align: right; }
 
   .budget { display: flex; flex-direction: column; gap: var(--space-1); }
+  .budget__heading { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-3); }
+  .jelly-icon { display: block; width: 42px; height: 42px; flex: none; background: url('/assets/ui/resource-icons.png') 100% center / 300% 100% no-repeat; filter: drop-shadow(0 4px 8px rgba(21, 185, 223, .2)); }
   .budget__label { line-height: var(--leading-snug); }
   .budget__unit {
-    font-family: var(--font-mono); font-size: var(--size-label-xs);
-    color: var(--text-faint); letter-spacing: 0; margin-bottom: var(--space-2);
+    display: block; width: fit-content; margin-top: var(--space-2); padding: 3px 7px;
+    color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent);
+    font: 600 var(--size-label) var(--font-mono); letter-spacing: .04em;
   }
   .budget__field { font-size: var(--size-figure); text-align: right; }
+  .budget__help { margin-top: var(--space-3); padding: var(--space-3) var(--space-4); color: var(--text-strong); background: rgba(74, 215, 169, .08); border-left: 2px solid var(--accent); }
+  .budget__help strong { color: var(--accent); font-weight: 600; }
 
   .hint { font-size: var(--size-label); line-height: var(--leading-snug); color: var(--text-faint); }
 
   .fx-stats { border-bottom: var(--border) solid var(--line-hard); }
   .cost { color: var(--text-muted); }
+  .cat-roman {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 1.35rem; height: 1.35rem; margin-right: var(--space-2);
+    color: #fff; border-radius: 4px 4px 7px 7px;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.18), 0 2px 5px rgba(0,0,0,.28);
+    font: 700 .7rem Georgia, serif; vertical-align: middle;
+    clip-path: polygon(50% 0%, 61% 17%, 80% 9%, 79% 29%, 100% 34%, 83% 50%, 100% 66%, 79% 71%, 80% 91%, 61% 83%, 50% 100%, 39% 83%, 20% 91%, 21% 71%, 0% 66%, 17% 50%, 0% 34%, 21% 29%, 20% 9%, 39% 17%);
+  }
+  .cat-roman--purple { background: linear-gradient(145deg, #a975cf, #56316f); border: 1px solid #d4a6ef; }
+  .cat-roman--gold { color: #fff4c9; background: linear-gradient(145deg, #e3b852, #8e5b1b); border: 1px solid #f3d47c; }
+  .cat-roman--red { background: linear-gradient(145deg, #d96759, #762c2a); border: 1px solid #f19a85; }
 
   .exports { display: flex; gap: var(--space-3); }
   .exports .fx-btn { flex-grow: 1; }
 
   .prov { margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .prov__head { display: flex; justify-content: space-between; padding-bottom: var(--space-1); color: var(--text-faint); font: 600 var(--size-label-xs) var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
   .prov__row { display: flex; align-items: center; justify-content: space-between; }
   .prov__key { font-size: var(--size-body-s); color: var(--text-muted); }
   .prov__val { margin: 0; }

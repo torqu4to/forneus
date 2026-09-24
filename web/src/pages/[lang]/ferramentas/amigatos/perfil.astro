@@ -200,7 +200,6 @@ const MAX_TEAM = 18;
 
   const levelsByCategory: Record<string, Level[]> =
     JSON.parse(document.getElementById('levels-by-category')!.textContent!);
-  const firstCategory = Object.keys(levelsByCategory)[0];
 
   const $ = <T extends HTMLElement>(name: string) =>
     root.querySelector<T>(`[data-${name}]`)!;
@@ -216,6 +215,20 @@ const MAX_TEAM = 18;
   const manager = new ProfileManager();
   /** The profile being edited. Null means nothing is selected. */
   let draft: Profile | null = null;
+  let dirty = false;
+  let saving = false;
+  const saveButton = $<HTMLButtonElement>('save');
+  function markDirty() {
+    dirty = true;
+    statusEl.textContent = t('profile.unsaved');
+  }
+  nameEl.addEventListener('input', markDirty);
+  catpalsEl.addEventListener('input', markDirty);
+  window.addEventListener('beforeunload', (event) => {
+    if (!dirty && !saving) return;
+    event.preventDefault();
+    event.returnValue = '';
+  });
 
   /* ── team list ──────────────────────────────────────────────── */
 
@@ -226,6 +239,7 @@ const MAX_TEAM = 18;
       const li = document.createElement('li');
       const button = document.createElement('button');
       button.type = 'button';
+      button.disabled = saving;
       if (draft?.id === profile.id) button.setAttribute('aria-current', 'true');
 
       const name = document.createElement('span');
@@ -244,8 +258,10 @@ const MAX_TEAM = 18;
   /* ── editor ─────────────────────────────────────────────────── */
 
   function select(profile: Profile) {
+    if (saving || (dirty && !confirm(t('profile.discard.confirm')))) return;
     // Edit a copy: abandoning an edit must not mutate what is stored.
     draft = structuredClone(profile);
+    dirty = false;
     nameEl.value = draft.name;
     rows = rowsFromDraft();
     renderCatpals();
@@ -253,6 +269,8 @@ const MAX_TEAM = 18;
     compareEl.hidden = false;
     statusEl.textContent = '';
     renderList(manager.state.profiles);
+    currentEl.hidden = scenariosEl.hidden = changesTableEl.hidden = resetWarningEl.hidden = true;
+    nameEl.focus();
   }
 
   function levelOptions(select: HTMLSelectElement, category: string, current?: Level) {
@@ -344,6 +362,8 @@ const MAX_TEAM = 18;
 
   /** Every edit funnels through here, so nothing can drift out of sync. */
   function commit(): void {
+    markDirty();
+    currentEl.hidden = scenariosEl.hidden = changesTableEl.hidden = resetWarningEl.hidden = true;
     mergeRows();
     syncDraft();
     renderCatpals();
@@ -351,6 +371,10 @@ const MAX_TEAM = 18;
 
   function renderCatpals() {
     if (!draft) return;
+    const focused = document.activeElement as HTMLElement | null;
+    const focusedRow = focused?.closest('.catpal');
+    const focusIndex = focusedRow ? [...catpalsEl.children].indexOf(focusedRow) : -1;
+    const focusKey = ['qty', 'type', 'level', 'remove'].find((key) => focused?.hasAttribute(`data-${key}`));
     const count = total();
     teamEmptyEl.hidden = count > 0;
     countEl.textContent = t('profile.count', { count, max: maxTeam });
@@ -403,6 +427,10 @@ const MAX_TEAM = 18;
 
       return node;
     }));
+    if (focusIndex >= 0 && focusKey) {
+      const row = catpalsEl.children[Math.min(focusIndex, catpalsEl.children.length - 1)];
+      (row?.querySelector<HTMLElement>(`[data-${focusKey}]`) ?? $('add')).focus();
+    }
   }
 
   $('new').addEventListener('click', () => select(emptyProfile('')));
@@ -429,16 +457,35 @@ const MAX_TEAM = 18;
   });
 
   $('save').addEventListener('click', async () => {
-    if (!draft) return;
+    if (!draft || saving) return;
     draft.name = nameEl.value.trim();
+    saving = true;
+    dirty = true;
+    const controls = [...root.querySelectorAll<HTMLInputElement | HTMLButtonElement | HTMLSelectElement>('input, button, select')];
+    const disabled = controls.map((control) => control.disabled);
+    controls.forEach((control) => { control.disabled = true; });
+    editorEl.setAttribute('aria-busy', 'true');
+    saveButton.textContent = t('profile.saving');
+    statusEl.textContent = t('profile.saving');
     try {
-      const stored = await manager.save(draft);
+      const stored = await manager.save(structuredClone(draft));
+      const persisted = manager.state.profiles.find((profile) => profile.id === stored.id);
+      if (!persisted || JSON.stringify(persisted) !== JSON.stringify(stored)) {
+        throw new Error('Profile was not persisted');
+      }
       draft = structuredClone(stored);
+      nameEl.value = draft.name;
+      dirty = false;
       statusEl.textContent = t('profile.saved');
     } catch {
-      // The account rejected the write. The local copy still has it, which is
-      // what the message promises — do not claim it was saved.
       statusEl.textContent = t('error.profile.save_failed');
+    } finally {
+      saving = false;
+      controls.forEach((control, index) => { control.disabled = disabled[index]; });
+      editorEl.removeAttribute('aria-busy');
+      saveButton.textContent = t('profile.save');
+      renderList(manager.state.profiles);
+      saveButton.focus();
     }
   });
 
@@ -447,8 +494,10 @@ const MAX_TEAM = 18;
     if (!confirm(t('profile.delete.confirm', { name: draft.name || '—' }))) return;
     await manager.remove(draft.id);
     draft = null;
+    dirty = false;
     editorEl.hidden = true;
     compareEl.hidden = true;
+    $('new').focus();
   });
 
   /* ── comparison ─────────────────────────────────────────────── */
@@ -556,6 +605,8 @@ const MAX_TEAM = 18;
   .teams button:hover { background: var(--bg-chrome); color: var(--text-strong); }
   .teams button[aria-current="true"] { color: var(--accent); box-shadow: inset 2px 0 0 var(--accent); }
   .teams .meta { font-family: var(--font-mono); font-size: var(--size-label-xs); color: var(--text-faint); }
+  .teams button > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+  .teams .meta { flex-shrink: 0; }
 
   .catpals { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
   .catpal {
@@ -581,10 +632,10 @@ const MAX_TEAM = 18;
   .compare__input { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-3); align-items: end; }
   .compare__input .fx-label { grid-column: 1 / -1; }
 
-  .scenarios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5); }
+  .scenarios { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--space-5); }
   .scenario { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-7); background: var(--bg-raised); border: var(--border) solid var(--line-control); }
   .scenario[data-recommended="true"] { border-color: var(--accent-dim); background: var(--accent-wash); }
-  .scenario__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+  .scenario__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); }
   .scenario__title { font-size: var(--size-display-m); font-weight: 600; letter-spacing: var(--track-display); text-transform: uppercase; }
   .scenario__power { font-size: var(--size-figure-xl); font-weight: 600; color: var(--text-strong); }
   .scenario[data-recommended="true"] .scenario__power { color: var(--accent); }
