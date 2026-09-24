@@ -533,7 +533,7 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
 
   .fx-stats { border-bottom: var(--border) solid var(--line-hard); }
   .cost { color: var(--text-muted); }
-  .cat-roman {
+  :global(.cat-roman) {
     display: inline-flex; align-items: center; justify-content: center;
     width: 1.35rem; height: 1.35rem; margin-right: var(--space-2);
     color: #fff; border-radius: 4px 4px 7px 7px;
@@ -541,9 +541,9 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
     font: 700 .7rem Georgia, serif; vertical-align: middle;
     clip-path: polygon(50% 0%, 61% 17%, 80% 9%, 79% 29%, 100% 34%, 83% 50%, 100% 66%, 79% 71%, 80% 91%, 61% 83%, 50% 100%, 39% 83%, 20% 91%, 21% 71%, 0% 66%, 17% 50%, 0% 34%, 21% 29%, 20% 9%, 39% 17%);
   }
-  .cat-roman--purple { background: linear-gradient(145deg, #a975cf, #56316f); border: 1px solid #d4a6ef; }
-  .cat-roman--gold { color: #fff4c9; background: linear-gradient(145deg, #e3b852, #8e5b1b); border: 1px solid #f3d47c; }
-  .cat-roman--red { background: linear-gradient(145deg, #d96759, #762c2a); border: 1px solid #f19a85; }
+  :global(.cat-roman--purple) { background: linear-gradient(145deg, #a975cf, #56316f); border: 1px solid #d4a6ef; }
+  :global(.cat-roman--gold) { color: #fff4c9; background: linear-gradient(145deg, #e3b852, #8e5b1b); border: 1px solid #f3d47c; }
+  :global(.cat-roman--red) { background: linear-gradient(145deg, #d96759, #762c2a); border: 1px solid #f19a85; }
 
   .exports { display: flex; gap: var(--space-3); }
   .exports .fx-btn { flex-grow: 1; }
