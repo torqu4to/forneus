@@ -8,106 +8,61 @@ interface Props { locale: Locale; active?: string }
 const { locale, active } = Astro.props;
 const t = useTranslations(locale);
 const here = Astro.url.pathname;
+const menuLabel = locale === 'pt' ? 'Abrir menu' : 'Open menu';
 ---
 <header class="hdr">
-  <nav id="site-navigation" class="hdr__nav" aria-label={t('nav.tools')}>
-    <a href={`/${locale}/`} class="brand">
-      <Brand />
-    </a>
-    <button class="hdr__menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-navigation" data-menu>
-      <img src="/assets/forneus-menu-mark.png" width="1280" height="1280" alt="" aria-hidden="true" />
-    </button>
-    {tools.map((tool) => (
-      <a
-        href={tool.status === 'available' ? `/${locale}/ferramentas/${tool.name}/` : undefined}
-        class:list={['hdr__link', { 'is-active': active === tool.name, 'is-planned': tool.status === 'planned' }]}
-        aria-current={active === tool.name ? 'page' : undefined}
-      >{t(tool.navKey)}{tool.beta && <> <span class="hdr__beta">{t('tool.beta')}</span></>}</a>
-    ))}
-  </nav>
-
-  <div class="hdr__end">
-    <div class="lang" role="group" aria-label="Idioma / Language">
-      {LOCALES.map((code) => (
-        <a
-          href={switchLocalePath(here, code)}
-          class:list={['lang__opt', { 'is-active': code === locale }]}
-          aria-current={code === locale ? 'true' : undefined}
-          lang={code}
-        >{code.toUpperCase()}</a>
+  <div class="hdr__inner">
+    <a href={`/${locale}/`} class="hdr__brand" aria-label={`Forneus, ${locale === 'pt' ? 'início' : 'home'}`}><Brand /></a>
+    <nav id="site-navigation" class="hdr__nav" aria-label={t('nav.tools')}>
+      {tools.map((tool) => tool.status === 'available' ? (
+        <a href={`/${locale}/ferramentas/${tool.name}/`} class:list={['hdr__link', { 'is-active': active === tool.name }]} aria-current={active === tool.name ? 'page' : undefined}>{t(tool.navKey)}{tool.beta && <span class="hdr__beta">{t('tool.beta')}</span>}</a>
+      ) : (
+        <span class="hdr__link hdr__link--planned" aria-disabled="true">{t(tool.navKey)}</span>
       ))}
+    </nav>
+    <div class="hdr__end">
+      <div class="hdr__lang" role="group" aria-label="Idioma / Language">
+        {LOCALES.map((code) => <a href={switchLocalePath(here, code)} class:list={['hdr__locale', { 'is-active': code === locale }]} aria-current={code === locale ? 'true' : undefined} lang={code}>{code.toUpperCase()}</a>)}
+      </div>
+      <AccountMenu locale={locale} />
+      <button class="hdr__menu" type="button" aria-label={menuLabel} aria-expanded="false" aria-controls="site-navigation" data-menu><span></span><span></span><span></span></button>
     </div>
-    <AccountMenu locale={locale} />
   </div>
 </header>
 
 <style>
-  .hdr {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: var(--space-8);
-    height: var(--nav-h); padding: 0 var(--page-pad);
-    background: var(--bg-raised);
-    border-bottom: var(--border) solid var(--line-hard);
+  .hdr { position:relative; z-index:var(--z-header); background:#0e1715; color:#f1eee2; }
+  .hdr__inner { display:flex; align-items:center; gap:clamp(24px,3vw,50px); min-height:72px; max-width:var(--page-max); margin:auto; padding:0 var(--page-pad); }
+  .hdr__brand { display:flex; flex:none; align-items:center; color:#f1eee2; }
+  .hdr__brand:hover { color:var(--accent); }
+  .hdr__brand :global(.brandmark) { color:#f1eee2; font-size:1.45rem; }
+  .hdr__nav { display:flex; align-items:center; gap:clamp(16px,2vw,34px); min-width:0; }
+  .hdr__link { display:inline-flex; align-items:center; gap:5px; min-height:44px; color:#d6e0d8; font-size:14px; font-weight:600; white-space:nowrap; }
+  .hdr__link:hover,.hdr__link.is-active { color:#79dfbd; }
+  .hdr__link.is-active { text-decoration:underline; text-underline-offset:12px; text-decoration-thickness:2px; }
+  .hdr__link--planned { color:#8ea69b; }
+  .hdr__beta { padding:2px 4px; color:#79dfbd; font-size:13px; line-height:1; border:1px solid currentColor; }
+  .hdr__end { display:flex; align-items:center; gap:22px; margin-left:auto; }
+  .hdr__lang { display:flex; align-items:center; gap:8px; }
+  .hdr__locale { display:inline-flex; align-items:center; justify-content:center; min-width:28px; min-height:44px; color:#9eb7a8; font-size:13px; font-weight:700; }
+  .hdr__locale:hover,.hdr__locale.is-active { color:#f1eee2; }
+  .hdr__menu { display:none; }
+  @media (max-width:850px) {
+    .hdr__inner { min-height:66px; flex-wrap:wrap; gap:0; }
+    .hdr__brand :global(.brandmark) { font-size:1.3rem; }
+    .hdr__end { gap:12px; }
+    .hdr__menu { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:44px; height:44px; margin-right:-8px; border:0; background:transparent; cursor:pointer; }
+    .hdr__menu span { display:block; width:22px; height:2px; background:#f1eee2; transition:transform .2s ease,opacity .2s ease; }
+    .hdr__menu[aria-expanded='true'] span:first-child { transform:translateY(7px) rotate(45deg); }
+    .hdr__menu[aria-expanded='true'] span:nth-child(2) { opacity:0; }
+    .hdr__menu[aria-expanded='true'] span:last-child { transform:translateY(-7px) rotate(-45deg); }
+    .hdr__nav { display:none; order:3; flex-basis:100%; flex-direction:column; align-items:stretch; gap:0; padding:10px 0 18px; }
+    .hdr__nav[data-open] { display:flex; }
+    .hdr__link { min-height:50px; padding:0 4px; border-top:1px solid #30483e; }
+    .hdr__link.is-active { text-decoration:none; }
   }
-  .hdr__nav { display: flex; align-items: center; gap: var(--space-9); min-width: 0; }
-  .hdr__menu { display: none; }
-  .brand { display: flex; align-items: center; color: var(--accent); }
-  .brand:hover { color: var(--accent-hover); }
-  .brand__logo { width: 220px; height: 48px; object-fit: contain; object-position: left center; transform: scale(1.35); transform-origin: left center; }
-  .hdr__link {
-    display: inline-flex; align-items: center; gap: var(--space-2);
-    font-size: var(--size-body-s); color: var(--text-faint);
-    text-transform: uppercase; white-space: nowrap;
-  }
-  .hdr__link:hover { color: var(--text-strong); }
-  .hdr__link.is-active {
-    color: var(--text-strong); font-weight: 600;
-    box-shadow: inset 0 -2px 0 var(--accent);
-    padding-block: calc((var(--nav-h) - 20px) / 2);
-  }
-  /* A tool with no page yet is not a link and must not look like one. */
-  .hdr__link.is-planned { color: var(--text-disabled); cursor: default; }
-  .hdr__link.is-planned:hover { color: var(--text-disabled); }
-  .hdr__beta {
-    padding: 1px 3px;
-    color: var(--accent); border: 1px solid currentColor;
-    font: 600 .54rem var(--font-mono); letter-spacing: .06em;
-    line-height: 1;
-  }
-
-  .hdr__end {
-    display: flex; align-items: center; gap: var(--space-6);
-    /* The bar spans the window, but this block lines up with the page
-       content instead of hugging the window edge. The percentage resolves
-       against the body's content box, so a visible scrollbar does not shift
-       it — `100vw` would, by the scrollbar's width. max() keeps it put below
-       --page-max, where there is no gutter to reclaim. */
-    margin-inline-end: max(0px, calc((100% - var(--page-max)) / 2));
-  }
-  .lang { display: flex; gap: var(--space-2); }
-  .lang__opt {
-    font-family: var(--font-mono); font-size: var(--size-label);
-    color: var(--text-faint);
-  }
-  .lang__opt:hover { color: var(--text-strong); }
-  @media (max-width: 720px), (pointer: coarse) {
-    .lang__opt { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
-    .hdr { height: auto; min-height: var(--nav-h); flex-wrap: wrap; }
-  }
-  .lang__opt.is-active { color: var(--text-strong); }
-  .hdr__signin { font-size: var(--size-body-s); color: var(--text-default); }
-
-  @media (max-width: 720px) {
-    .hdr { height: auto; min-height: var(--nav-h); flex-wrap: wrap; padding-block: var(--space-2); }
-    .hdr__nav { flex: 1; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
-    .hdr__menu { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 7px; color: var(--text-default); background: transparent; border: 0; cursor: pointer; }
-    .hdr__menu img { display: block; width: 30px; height: 30px; object-fit: contain; transition: transform 180ms ease; }
-    .hdr__menu[aria-expanded="true"] img { transform: rotate(45deg) scale(.9); }
-    .hdr__link { display: none; flex-basis: 100%; min-height: 44px; }
-    .hdr__nav[data-open="true"] .hdr__link { display: inline-flex; }
-    .hdr__link.is-active { padding-block: var(--space-2); }
-    .brand__logo { width: 180px; height: 42px; transform: scale(1.15); }
-  }
+  @media (max-width:420px) { .hdr__inner { padding-inline:14px; } .hdr__end { gap:5px; } .hdr__lang { gap:0; } .hdr__locale { min-width:27px; } }
+  @media (prefers-reduced-motion:reduce) { .hdr__menu span { transition:none; } }
 </style>
 
 <script>
@@ -116,7 +71,7 @@ const here = Astro.url.pathname;
   menu?.addEventListener('click', () => {
     const open = menu.getAttribute('aria-expanded') === 'true';
     menu.setAttribute('aria-expanded', String(!open));
-    menu.setAttribute('aria-label', open ? 'Abrir menu' : 'Fechar menu');
+    menu.setAttribute('aria-label', open ? (document.documentElement.lang.startsWith('pt') ? 'Abrir menu' : 'Open menu') : (document.documentElement.lang.startsWith('pt') ? 'Fechar menu' : 'Close menu'));
     navigation?.toggleAttribute('data-open', !open);
   });
 </script>

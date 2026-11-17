@@ -1,0 +1,51 @@
+# PRD: Forneus Wiki — Otimizacao, Paridade de Solvers e Experiencia do Usuario
+
+## 1. Visao Geral do Produto
+O Forneus (forneus.wiki) e uma plataforma de ferramentas de otimizacao para Tree of Savior Neo.
+Composto por:
+- Core Python (src/forneus_core/): Referencia algoritmica de calculo e modelos de dados.
+- Frontend Astro/TypeScript (web/): Renderizacao estatica com solver executado 100% no navegador do usuario (Client-side Web Worker / TypeScript puro).
+- Modulos principais: Amigatos (alocacao otima de recursos e progressao) e Florais (planejador e recomendador de guardioes/atributos).
+
+---
+
+## 2. Diagnostico e Problemas Identificados
+
+### 2.1. Divergencia Algoritmica (Python vs TypeScript)
+- Ha testes falhando na suite web/test/solver.test.ts por discrepancias de arredondamento e calculo de raw_power e leveling_cost entre a implementacao TypeScript e os fixtures gerados em Python.
+- Ha um teste quebrando no Pytest (tests/test_optimizer.py::test_matches_known_scenario) devido a mudancas nas tabelas de dados ou formulas de poder efetivo (565347 != 540123).
+
+### 2.2. Paridade e Atualizacao de Fixtures
+- Como citado em DEV.md, o Python e o gabarito. Se as tabelas JSON ou as formulas mudam, e mandatorio rodar python scripts/generate_fixtures.py para sincronizar os testes do TypeScript.
+
+### 2.3. Formatacao e Localizacao de Exportacoes (CSV / JSON)
+- Testes de exportacao em web/test/exports.test.ts apontam falhas em separadores decimais (virgula em pt-BR vs ponto em en-US) e serializacao de avisos ja resolvidos.
+
+### 2.4. Limpeza e Higiene do Repositorio
+- Existem scripts e arquivos temporarios nao versionados soltos na pasta web/ (_inspect_amigato_anim_tmp.py, _amigato_prefab_hits_tmp.txt, gallery-server.cjs).
+- Devem ser movidos para pasta apropriada ou adicionados ao .gitignore.
+
+### 2.5. Experiencia de Desenvolvimento (DX) e Execucao
+- O modo daemon padrao do Astro 7 no Windows apresentava encerramento silencioso do processo filho. O fluxo de desenvolvimento precisa de script simplificado (ex: npm script foreground ou script cross-platform).
+
+---
+
+## 3. Epicos e Requisitos Estruturados
+
+### Epico 1: Correcao de Integridade e Paridade Algoritmica (Prioridade Alta)
+- Requisito 1.1: Regenerar Fixtures e Sincronizar Solver Python
+  Ajustar o teste test_matches_known_scenario em Python para refletir os valores oficiais vigentes e executar scripts/generate_fixtures.py.
+- Requisito 1.2: Harmonizacao do Solver TypeScript com o Core Python
+  Ajustar a logica de calculo em web/src/lib/solver/ para casar perfeitamente com os novos fixtures do Python e zerar os erros no npm test.
+
+### Epico 2: Localizacao, Formatacao e Exportacao (Prioridade Media)
+- Requisito 2.1: Correcao de Exportacao CSV e JSON
+  Implementar formatacao decimal estrita por locale (pt-BR usa virgula, en-US usa ponto) nos utilitarios de exportacao e preservar estado de avisos no JSON exportado.
+
+### Epico 3: Higiene de Codigo e Governanca do Repositorio (Prioridade Media)
+- Requisito 3.1: Limpeza de Artefatos Temporarios e Ajuste do .gitignore
+  Mover ou remover scripts temporarios de extracao (web/_inspect_*) e padronizar organizacao de arquivos.
+
+### Epico 4: Experiencia do Usuario (UI/UX) e Otimizacao de Performance (Prioridade Baixa)
+- Requisito 4.1: Melhorias de Acessibilidade e Performance dos Calculadores
+  Otimizar reatividade dos Web Workers de Florais (florais-planner.worker.ts, florais-recommend.worker.ts) e garantir feedback de carregamento em calculos longos.

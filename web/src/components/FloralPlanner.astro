@@ -1,0 +1,7 @@
+---
+const { locale } = Astro.props;
+---
+<section id="floral-planner" class="floral-panel floral-results" aria-labelledby="floral-planner-title">
+  <h2 id="floral-planner-title">{locale === 'pt' ? 'Planejar a partir do inventário' : 'Plan from your inventory'}</h2>
+  <div id="floral-planner-content"></div>
+</section>

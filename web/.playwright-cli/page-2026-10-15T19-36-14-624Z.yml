@@ -1,0 +1,626 @@
+- generic [active] [ref=e1]:
+  - link "Pular para o conteúdo" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Forneus, início" [ref=e5] [cursor=pointer]:
+        - /url: /pt/
+        - generic [ref=e6]: FORNEUS
+      - navigation "Ferramentas" [ref=e11]:
+        - link "Amigatos Beta" [ref=e12] [cursor=pointer]:
+          - /url: /pt/ferramentas/amigatos/
+          - text: Amigatos
+          - generic [ref=e13]: Beta
+        - generic [ref=e14]: Fantasmas
+        - link "Florais Beta" [ref=e15] [cursor=pointer]:
+          - /url: /pt/ferramentas/florais/
+          - text: Florais
+          - generic [ref=e16]: Beta
+      - generic [ref=e17]:
+        - group "Idioma / Language" [ref=e18]:
+          - link "PT" [ref=e19] [cursor=pointer]:
+            - /url: /pt/ferramentas/amigatos/progressao/
+          - link "EN" [ref=e20] [cursor=pointer]:
+            - /url: /en/ferramentas/amigatos/progressao/
+        - link "Entrar" [ref=e22] [cursor=pointer]:
+          - /url: /pt/conta/
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e26]:
+        - paragraph [ref=e27]: TREE OF SAVIOR NEO / AMIGATOS
+        - heading "Progressão de Amigatos" [level=1] [ref=e28]
+        - paragraph [ref=e29]: Consulte cada gasto antes de evoluir. Os valores abaixo vêm da configuração portuguesa extraída em 14/10/2026.
+        - link "← Voltar à calculadora de equipe" [ref=e30] [cursor=pointer]:
+          - /url: /pt/ferramentas/amigatos/
+      - note [ref=e31]:
+        - strong [ref=e32]: Escopo dos dados
+        - paragraph [ref=e33]: Os nomes, variantes e IDs de estrela foram vinculados pela tabela de itens do jogo. Os custos são da configuração local, não uma previsão do servidor. Há retratos confirmados para 29 dos 74 Amigatos; os demais aparecem pelo nome. Confira o custo no jogo antes de gastar.
+      - region [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: COLEÇÃO DE AMIGATOS
+          - heading "Escolha seu Amigato" [level=2] [ref=e37]
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - generic [ref=e40]: Buscar pelo nome
+            - searchbox "Buscar pelo nome" [ref=e41]
+            - group "Lista de Amigatos" [ref=e42]:
+              - button "Acorn Q3" [ref=e43] [cursor=pointer]:
+                - generic [ref=e45]: Acorn
+                - generic [ref=e46]: Q3
+              - button "Acrobata Q3" [ref=e47] [cursor=pointer]:
+                - generic [ref=e49]: Acrobata
+                - generic [ref=e50]: Q3
+              - button "Agumon Q6" [ref=e51] [cursor=pointer]:
+                - generic [ref=e53]: Agumon
+                - generic [ref=e54]: Q6
+              - button "Alpie Q4" [ref=e55] [cursor=pointer]:
+                - generic [ref=e57]: Alpie
+                - generic [ref=e58]: Q4
+              - button "Apache Q3" [ref=e59] [cursor=pointer]:
+                - generic [ref=e61]: Apache
+                - generic [ref=e62]: Q3
+              - button "Baldy Q4" [ref=e63] [cursor=pointer]:
+                - generic [ref=e65]: Baldy
+                - generic [ref=e66]: Q4
+              - button "Bamboo Q7" [ref=e67] [cursor=pointer]:
+                - generic [ref=e69]: Bamboo
+                - generic [ref=e70]: Q7
+              - button "Banner Q4" [ref=e71] [cursor=pointer]:
+                - generic [ref=e73]: Banner
+                - generic [ref=e74]: Q4
+              - button "Bob Q4" [ref=e75] [cursor=pointer]:
+                - generic [ref=e77]: Bob
+                - generic [ref=e78]: Q4
+              - button "Boxin Q3" [ref=e79] [cursor=pointer]:
+                - generic [ref=e81]: Boxin
+                - generic [ref=e82]: Q3
+              - button "Carton Q6" [ref=e83] [cursor=pointer]:
+                - generic [ref=e85]: Carton
+                - generic [ref=e86]: Q6
+              - button "Chiara Q7" [ref=e87] [cursor=pointer]:
+                - generic [ref=e89]: Chiara
+                - generic [ref=e90]: Q7
+              - button "Cowpur Q3" [ref=e91] [cursor=pointer]:
+                - generic [ref=e93]: Cowpur
+                - generic [ref=e94]: Q3
+              - button "Dev Q6" [ref=e95] [cursor=pointer]:
+                - generic [ref=e97]: Dev
+                - generic [ref=e98]: Q6
+              - button "Fader Q6" [ref=e99] [cursor=pointer]:
+                - generic [ref=e101]: Fader
+                - generic [ref=e102]: Q6
+              - button "Fanning Q6" [ref=e103] [cursor=pointer]:
+                - generic [ref=e105]: Fanning
+                - generic [ref=e106]: Q6
+              - button "Felicite Q4" [ref=e107] [cursor=pointer]:
+                - generic [ref=e109]: Felicite
+                - generic [ref=e110]: Q4
+              - button "Fireeye Q6" [ref=e111] [cursor=pointer]:
+                - generic [ref=e113]: Fireeye
+                - generic [ref=e114]: Q6
+              - button "Fishie Q3" [ref=e115] [cursor=pointer]:
+                - generic [ref=e117]: Fishie
+                - generic [ref=e118]: Q3
+              - button "Flem Q7" [ref=e119] [cursor=pointer]:
+                - generic [ref=e121]: Flem
+                - generic [ref=e122]: Q7
+              - button "Flora Q7" [pressed] [ref=e123] [cursor=pointer]:
+                - generic [ref=e125]: Flora
+                - generic [ref=e126]: Q7
+              - button "Fluffy Q4" [ref=e127] [cursor=pointer]:
+                - generic [ref=e129]: Fluffy
+                - generic [ref=e130]: Q4
+              - button "Fluffy Q4" [ref=e131] [cursor=pointer]:
+                - generic [ref=e133]: Fluffy
+                - generic [ref=e134]: Q4
+              - button "Fluffy Q4" [ref=e135] [cursor=pointer]:
+                - generic [ref=e137]: Fluffy
+                - generic [ref=e138]: Q4
+              - button "Foodie Q4" [ref=e139] [cursor=pointer]:
+                - generic [ref=e141]: Foodie
+                - generic [ref=e142]: Q4
+              - button "Gabumon Q6" [ref=e143] [cursor=pointer]:
+                - generic [ref=e145]: Gabumon
+                - generic [ref=e146]: Q6
+              - button "Gabumon Q6" [ref=e147] [cursor=pointer]:
+                - generic [ref=e149]: Gabumon
+                - generic [ref=e150]: Q6
+              - button "Garland Q3" [ref=e151] [cursor=pointer]:
+                - generic [ref=e153]: Garland
+                - generic [ref=e154]: Q3
+              - button "Gras Q6" [ref=e155] [cursor=pointer]:
+                - generic [ref=e157]: Gras
+                - generic [ref=e158]: Q6
+              - button "Hammer Q3" [ref=e159] [cursor=pointer]:
+                - generic [ref=e161]: Hammer
+                - generic [ref=e162]: Q3
+              - button "Hante Q4" [ref=e163] [cursor=pointer]:
+                - generic [ref=e165]: Hante
+                - generic [ref=e166]: Q4
+              - button "Jogozen Q6" [ref=e167] [cursor=pointer]:
+                - generic [ref=e169]: Jogozen
+                - generic [ref=e170]: Q6
+              - button "Kalachakra Q7" [ref=e171] [cursor=pointer]:
+                - generic [ref=e173]: Kalachakra
+                - generic [ref=e174]: Q7
+              - button "Kapton Q4" [ref=e175] [cursor=pointer]:
+                - generic [ref=e177]: Kapton
+                - generic [ref=e178]: Q4
+              - button "Kunai Q3" [ref=e179] [cursor=pointer]:
+                - generic [ref=e181]: Kunai
+                - generic [ref=e182]: Q3
+              - button "Lamballe Q6" [ref=e183] [cursor=pointer]:
+                - generic [ref=e185]: Lamballe
+                - generic [ref=e186]: Q6
+              - button "Luculia Q7" [ref=e187] [cursor=pointer]:
+                - generic [ref=e189]: Luculia
+                - generic [ref=e190]: Q7
+              - button "Lótus Q7" [ref=e191] [cursor=pointer]:
+                - generic [ref=e193]: Lótus
+                - generic [ref=e194]: Q7
+              - button "Madison Q3" [ref=e195] [cursor=pointer]:
+                - generic [ref=e197]: Madison
+                - generic [ref=e198]: Q3
+              - button "Mallet Q3" [ref=e199] [cursor=pointer]:
+                - generic [ref=e201]: Mallet
+                - generic [ref=e202]: Q3
+              - button "Melusine Q6" [ref=e203] [cursor=pointer]:
+                - generic [ref=e205]: Melusine
+                - generic [ref=e206]: Q6
+              - button "MetalGarurumon Q7" [ref=e207] [cursor=pointer]:
+                - generic [ref=e209]: MetalGarurumon
+                - generic [ref=e210]: Q7
+              - button "MetalGarurumon Q7" [ref=e211] [cursor=pointer]:
+                - generic [ref=e213]: MetalGarurumon
+                - generic [ref=e214]: Q7
+              - button "Mitty Q6" [ref=e215] [cursor=pointer]:
+                - generic [ref=e217]: Mitty
+                - generic [ref=e218]: Q6
+              - button "Mummie Q6" [ref=e219] [cursor=pointer]:
+                - generic [ref=e221]: Mummie
+                - generic [ref=e222]: Q6
+              - button "Nerdy Q6" [ref=e223] [cursor=pointer]:
+                - generic [ref=e225]: Nerdy
+                - generic [ref=e226]: Q6
+              - button "Ninja Q6" [ref=e227] [cursor=pointer]:
+                - generic [ref=e229]: Ninja
+                - generic [ref=e230]: Q6
+              - button "Onmyoji Q6" [ref=e231] [cursor=pointer]:
+                - generic [ref=e233]: Onmyoji
+                - generic [ref=e234]: Q6
+              - button "Opret Q6" [ref=e235] [cursor=pointer]:
+                - generic [ref=e237]: Opret
+                - generic [ref=e238]: Q6
+              - button "Paladin Q6" [ref=e239] [cursor=pointer]:
+                - generic [ref=e241]: Paladin
+                - generic [ref=e242]: Q6
+              - button "Palmela Q7" [ref=e243] [cursor=pointer]:
+                - generic [ref=e245]: Palmela
+                - generic [ref=e246]: Q7
+              - button "Panda Q4" [ref=e247] [cursor=pointer]:
+                - generic [ref=e249]: Panda
+                - generic [ref=e250]: Q4
+              - button "Pepe Q4" [ref=e251] [cursor=pointer]:
+                - generic [ref=e253]: Pepe
+                - generic [ref=e254]: Q4
+              - button "Rocket Q4" [ref=e255] [cursor=pointer]:
+                - generic [ref=e257]: Rocket
+                - generic [ref=e258]: Q4
+              - button "Saint Q4" [ref=e259] [cursor=pointer]:
+                - generic [ref=e261]: Saint
+                - generic [ref=e262]: Q4
+              - button "Sakurako Q7" [ref=e263] [cursor=pointer]:
+                - generic [ref=e265]: Sakurako
+                - generic [ref=e266]: Q7
+              - button "Samurai Q6" [ref=e267] [cursor=pointer]:
+                - generic [ref=e269]: Samurai
+                - generic [ref=e270]: Q6
+              - button "Shadow Q4" [ref=e271] [cursor=pointer]:
+                - generic [ref=e273]: Shadow
+                - generic [ref=e274]: Q4
+              - button "Shogun Q6" [ref=e275] [cursor=pointer]:
+                - generic [ref=e277]: Shogun
+                - generic [ref=e278]: Q6
+              - button "Skadi Q7" [ref=e279] [cursor=pointer]:
+                - generic [ref=e281]: Skadi
+                - generic [ref=e282]: Q7
+              - button "Snek Q4" [ref=e283] [cursor=pointer]:
+                - generic [ref=e285]: Snek
+                - generic [ref=e286]: Q4
+              - button "Snow Q4" [ref=e287] [cursor=pointer]:
+                - generic [ref=e289]: Snow
+                - generic [ref=e290]: Q4
+              - button "Supreme Q4" [ref=e291] [cursor=pointer]:
+                - generic [ref=e293]: Supreme
+                - generic [ref=e294]: Q4
+              - button "Sweety Q6" [ref=e295] [cursor=pointer]:
+                - generic [ref=e297]: Sweety
+                - generic [ref=e298]: Q6
+              - button "Sylas Q7" [ref=e299] [cursor=pointer]:
+                - generic [ref=e301]: Sylas
+                - generic [ref=e302]: Q7
+              - button "Taiou Q6" [ref=e303] [cursor=pointer]:
+                - generic [ref=e305]: Taiou
+                - generic [ref=e306]: Q6
+              - button "Teamaid Q6" [ref=e307] [cursor=pointer]:
+                - generic [ref=e309]: Teamaid
+                - generic [ref=e310]: Q6
+              - button "Viajante Q6" [ref=e311] [cursor=pointer]:
+                - generic [ref=e313]: Viajante
+                - generic [ref=e314]: Q6
+              - button "Wander Q3" [ref=e315] [cursor=pointer]:
+                - generic [ref=e317]: Wander
+                - generic [ref=e318]: Q3
+              - button "WarGreymon Q7" [ref=e319] [cursor=pointer]:
+                - generic [ref=e321]: WarGreymon
+                - generic [ref=e322]: Q7
+              - button "WarGreymon Q7" [ref=e323] [cursor=pointer]:
+                - generic [ref=e325]: WarGreymon
+                - generic [ref=e326]: Q7
+              - button "Yueli Q7" [ref=e327] [cursor=pointer]:
+                - generic [ref=e329]: Yueli
+                - generic [ref=e330]: Q7
+              - button "碧海潮姬·蓝汐 Q7" [ref=e331] [cursor=pointer]:
+                - generic [ref=e333]: 碧海潮姬·蓝汐
+                - generic [ref=e334]: Q7
+              - button "祭司咪·索拉 Q6" [ref=e335] [cursor=pointer]:
+                - generic [ref=e337]: 祭司咪·索拉
+                - generic [ref=e338]: Q6
+          - generic [ref=e339]:
+            - generic [ref=e340]: Retrato não encontrado na extração
+            - generic [ref=e342]:
+              - text: AMIGATO SELECIONADO
+              - heading "Flora" [level=3] [ref=e343]
+              - generic [ref=e344]:
+                - generic [ref=e345]: Qualidade 7
+                - generic [ref=e346]: Variante 2
+              - paragraph [ref=e347]: Custos, estrela e espírito acompanham esta escolha.
+      - region [ref=e348]:
+        - generic [ref=e349]:
+          - text: 01 / MATERIAIS
+          - heading "Custo por etapa" [level=2] [ref=e350]
+          - paragraph [ref=e351]: Selecione uma etapa ou uma faixa para somar todos os materiais.
+        - generic [ref=e352]:
+          - generic [ref=e353]: "Exemplos conferidos em tela:"
+          - button "Flora · 15" [ref=e354] [cursor=pointer]
+          - button "Sakurako · 12" [ref=e355] [cursor=pointer]
+        - generic [ref=e356]:
+          - generic [ref=e357]:
+            - text: Sistema
+            - combobox "Sistema" [ref=e358]:
+              - option "Melhoria"
+              - option "Despertar" [selected]
+              - option "Estrela"
+          - generic [ref=e359]:
+            - text: Primeira etapa
+            - combobox "Primeira etapa" [ref=e360]:
+              - option "0"
+              - option "1"
+              - option "2"
+              - option "3"
+              - option "4"
+              - option "5"
+              - option "6"
+              - option "7"
+              - option "8"
+              - option "9"
+              - option "10"
+              - option "11"
+              - option "12"
+              - option "13"
+              - option "14"
+              - option "15" [selected]
+          - generic [ref=e361]:
+            - text: Última etapa
+            - combobox "Última etapa" [ref=e362]:
+              - option "15" [selected]
+        - generic [ref=e363]:
+          - generic [ref=e364]: Flora · Despertar · 15
+          - strong [ref=e365]: 1 etapa
+        - region "Materiais necessários" [ref=e366]:
+          - table [ref=e367]:
+            - caption [ref=e368]: Materiais necessários
+            - rowgroup [ref=e369]:
+              - row [ref=e370]:
+                - columnheader "Material" [ref=e371]
+                - columnheader "ID" [ref=e372]
+                - columnheader "Necessário" [ref=e373]
+                - columnheader "Você tem" [ref=e374]
+                - columnheader "Falta" [ref=e375]
+            - rowgroup [ref=e376]:
+              - row [ref=e377]:
+                - rowheader "Folha Prateada" [ref=e378]
+                - cell "1001" [ref=e379]
+                - cell "13.500" [ref=e380]
+                - cell [ref=e381]:
+                  - spinbutton "Saldo de Folha Prateada" [ref=e382]: "0"
+                - cell "13.500" [ref=e383]
+              - row [ref=e384]:
+                - rowheader "Gelatina de Peixe - R2" [ref=e385]
+                - cell "1202" [ref=e386]
+                - cell "3.300" [ref=e387]
+                - cell [ref=e388]:
+                  - spinbutton "Saldo de Gelatina de Peixe - R2" [ref=e389]: "0"
+                - cell "3.300" [ref=e390]
+        - paragraph [ref=e391]: "Nível de personagem exigido: 100"
+        - paragraph [ref=e392]: A quantidade de fragmentos para estrela é exibida separadamente; a tabela não identifica qual fragmento pertence a cada Amigato.
+      - generic [ref=e393]:
+        - region [ref=e394]:
+          - generic [ref=e395]:
+            - text: 02 / ESTRELA
+            - heading "Bônus de estrela" [level=2] [ref=e396]
+            - paragraph [ref=e397]: Bônus do Amigato escolhido.
+          - generic [ref=e399]:
+            - text: Estrela
+            - combobox "Estrela" [ref=e400]:
+              - option "1"
+              - option "2" [selected]
+              - option "3"
+              - option "4"
+              - option "5"
+              - option "6"
+          - paragraph [ref=e401]:
+            - generic [ref=e402]: Flora · 2 ★ · habilidade 2
+          - list [ref=e403]:
+            - listitem [ref=e404]:
+              - text: Agilidade
+              - strong [ref=e405]: "+105"
+            - listitem [ref=e406]:
+              - text: Resistência
+              - strong [ref=e407]: "+105"
+            - listitem [ref=e408]:
+              - text: Força
+              - strong [ref=e409]: "+105"
+            - listitem [ref=e410]:
+              - text: Moral
+              - strong [ref=e411]: "+105"
+            - listitem [ref=e412]:
+              - text: Sabedoria
+              - strong [ref=e413]: "+105"
+          - paragraph [ref=e414]: Bônus de atributo; não convertido em poder total.
+        - region [ref=e415]:
+          - generic [ref=e416]:
+            - text: 03 / ESPÍRITO
+            - heading "Nível do espírito" [level=2] [ref=e417]
+            - paragraph [ref=e418]: Experiência e atributos configurados para cada nível.
+          - generic [ref=e420]:
+            - text: Nível
+            - spinbutton "Nível" [ref=e421]: "1"
+          - paragraph [ref=e422]:
+            - generic [ref=e423]: Qualidade 7 · nível 1
+          - list [ref=e424]:
+            - listitem [ref=e425]:
+              - text: DEF
+              - strong [ref=e426]: "+8"
+            - listitem [ref=e427]:
+              - text: ATQ
+              - strong [ref=e428]: "+4"
+          - paragraph [ref=e429]: EXP 600 · nível de personagem 1
+      - region [ref=e430]:
+        - generic [ref=e431]:
+          - text: 04 / ATLAS
+          - heading "Avanço do Atlas" [level=2] [ref=e432]
+          - paragraph [ref=e433]: Incrementos e experiência da etapa selecionada. São 185 níveis na extração.
+        - generic [ref=e435]:
+          - text: Nível do Atlas
+          - combobox "Nível do Atlas" [ref=e436]:
+            - option "1" [selected]
+            - option "2"
+            - option "3"
+            - option "4"
+            - option "5"
+            - option "6"
+            - option "7"
+            - option "8"
+            - option "9"
+            - option "10"
+            - option "11"
+            - option "12"
+            - option "13"
+            - option "14"
+            - option "15"
+            - option "16"
+            - option "17"
+            - option "18"
+            - option "19"
+            - option "20"
+            - option "21"
+            - option "22"
+            - option "23"
+            - option "24"
+            - option "25"
+            - option "26"
+            - option "27"
+            - option "28"
+            - option "29"
+            - option "30"
+            - option "31"
+            - option "32"
+            - option "33"
+            - option "34"
+            - option "35"
+            - option "36"
+            - option "37"
+            - option "38"
+            - option "39"
+            - option "40"
+            - option "41"
+            - option "42"
+            - option "43"
+            - option "44"
+            - option "45"
+            - option "46"
+            - option "47"
+            - option "48"
+            - option "49"
+            - option "50"
+            - option "51"
+            - option "52"
+            - option "53"
+            - option "54"
+            - option "55"
+            - option "56"
+            - option "57"
+            - option "58"
+            - option "59"
+            - option "60"
+            - option "61"
+            - option "62"
+            - option "63"
+            - option "64"
+            - option "65"
+            - option "66"
+            - option "67"
+            - option "68"
+            - option "69"
+            - option "70"
+            - option "71"
+            - option "72"
+            - option "73"
+            - option "74"
+            - option "75"
+            - option "76"
+            - option "77"
+            - option "78"
+            - option "79"
+            - option "80"
+            - option "81"
+            - option "82"
+            - option "83"
+            - option "84"
+            - option "85"
+            - option "86"
+            - option "87"
+            - option "88"
+            - option "89"
+            - option "90"
+            - option "91"
+            - option "92"
+            - option "93"
+            - option "94"
+            - option "95"
+            - option "96"
+            - option "97"
+            - option "98"
+            - option "99"
+            - option "100"
+            - option "101"
+            - option "102"
+            - option "103"
+            - option "104"
+            - option "105"
+            - option "106"
+            - option "107"
+            - option "108"
+            - option "109"
+            - option "110"
+            - option "111"
+            - option "112"
+            - option "113"
+            - option "114"
+            - option "115"
+            - option "116"
+            - option "117"
+            - option "118"
+            - option "119"
+            - option "120"
+            - option "121"
+            - option "122"
+            - option "123"
+            - option "124"
+            - option "125"
+            - option "126"
+            - option "127"
+            - option "128"
+            - option "129"
+            - option "130"
+            - option "131"
+            - option "132"
+            - option "133"
+            - option "134"
+            - option "135"
+            - option "136"
+            - option "137"
+            - option "138"
+            - option "139"
+            - option "140"
+            - option "141"
+            - option "142"
+            - option "143"
+            - option "144"
+            - option "145"
+            - option "146"
+            - option "147"
+            - option "148"
+            - option "149"
+            - option "150"
+            - option "151"
+            - option "152"
+            - option "153"
+            - option "154"
+            - option "155"
+            - option "156"
+            - option "157"
+            - option "158"
+            - option "159"
+            - option "160"
+            - option "161"
+            - option "162"
+            - option "163"
+            - option "164"
+            - option "165"
+            - option "166"
+            - option "167"
+            - option "168"
+            - option "169"
+            - option "170"
+            - option "171"
+            - option "172"
+            - option "173"
+            - option "174"
+            - option "175"
+            - option "176"
+            - option "177"
+            - option "178"
+            - option "179"
+            - option "180"
+            - option "181"
+            - option "182"
+            - option "183"
+            - option "184"
+            - option "185"
+        - paragraph [ref=e437]:
+          - generic [ref=e438]: Nível 1 · EXP 4
+        - list [ref=e439]:
+          - listitem [ref=e440]:
+            - generic [ref=e441]: DEF Física
+            - strong [ref=e442]: "+15"
+      - generic [ref=e443]:
+        - generic [ref=e444]: Fotografia dos dados · 14/10/2026
+        - code [ref=e445]: config_eu_pt.cw · 1869fd6f3d3a…
+        - link "Abrir calculadora de equipe →" [ref=e446] [cursor=pointer]:
+          - /url: /pt/ferramentas/amigatos/
+  - contentinfo [ref=e447]:
+    - generic [ref=e448]:
+      - generic [ref=e449]:
+        - link "Forneus, início" [ref=e450] [cursor=pointer]:
+          - /url: /pt/
+          - generic [ref=e451]: FORNEUS
+        - paragraph [ref=e456]: Ferramentas e dados para Tree of Savior Neo.
+        - generic [ref=e457]: forneus.wiki · projeto independente, sem vínculo com a IMC Games
+      - generic [ref=e458]:
+        - heading "Ferramentas" [level=2] [ref=e459]
+        - link "Amigatos" [ref=e460] [cursor=pointer]:
+          - /url: /pt/ferramentas/amigatos/
+          - text: Amigatos
+          - generic [aria-hidden] [ref=e461]: ↗
+        - link "Florais" [ref=e462] [cursor=pointer]:
+          - /url: /pt/ferramentas/florais/
+          - text: Florais
+          - generic [aria-hidden] [ref=e463]: ↗
+        - paragraph [ref=e464]: Confira os dados no jogo antes de gastar seus recursos.
+    - generic [ref=e465]:
+      - generic [ref=e466]: © 2026 Forneus
+      - generic [ref=e467]: Projeto independente, sem vínculo com a IMC Games.
+      - link "forneus.wiki" [ref=e468] [cursor=pointer]:
+        - /url: /pt/

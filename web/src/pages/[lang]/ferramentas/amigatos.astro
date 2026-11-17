@@ -3,6 +3,7 @@ import Site from '../../../layouts/Site.astro';
 import { solve } from '../../../lib/solver/index.ts';
 import { EXAMPLE_TEAM, EXAMPLE_BUDGET } from '../../../data/example-team';
 import { groupRows, categoryClass, categoryRoman, categoryRomanClass, isProvisional } from '../../../lib/rows.ts';
+import { dataset } from '../../../lib/solver/dataset.ts';
 import { useTranslations, formatNumber, LOCALES, type Locale } from '../../../i18n/utils';
 import { LOCALE_TAG } from '../../../i18n/ui';
 
@@ -28,6 +29,7 @@ const categories = meta.display_order.map((key) => ({
   tier: meta.data_tiers[key],
   rate: Math.round((meta.effectiveness_rates[key] ?? 0) * 100),
   label: result.rows.find((row) => row.category === key)?.display_name ?? key,
+  levels: dataset.categories[key].levels.map((row) => row.level),
 }));
 
 const teamSize = Object.values(meta.counts).reduce((sum, value) => sum + value, 0);
@@ -39,18 +41,24 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
   title={t('tool.amigatos.title')}
   description={t('tool.amigatos.description')}
 >
-  <div class="tool-head">
-    <div>
-      <p class="fx-kicker">Tree of Savior Neo</p>
+  <header class="tool-head">
+    <div class="tool-head__content">
+      <p class="tool-head__eyebrow"><span class="tool-head__line"></span> Tree of Savior Neo <span class="tool-head__dot">/</span> {locale === 'pt' ? 'Ferramenta de evolução' : 'Upgrade tool'}</p>
       <h1>{t('tool.amigatos.title')}</h1>
+      <p class="tool-head__intro">{t('tool.amigatos.description')}</p>
+      <div class="tool-head__actions">
+        <a class="tool-head__start" href="#solver">{locale === 'pt' ? 'Montar minha equipe' : 'Build my team'} <span aria-hidden="true">↗</span></a>
+        <a class="tool-head__guide" href={`/${locale}/ferramentas/amigatos/como-usar/`}>{t('how.open.guide')} <span aria-hidden="true">→</span></a>
+        <a class="tool-head__guide" href={`/${locale}/ferramentas/amigatos/progressao/`}>{locale === 'pt' ? 'Consultar custos e progressão' : 'Explore costs and progression'} <span aria-hidden="true">→</span></a>
+      </div>
     </div>
-    <div class="tool-head__actions">
-      <span class="tool-beta">{t('tool.beta')}</span>
-      <a class="fx-btn fx-btn--ghost" href={`/${locale}/ferramentas/amigatos/como-usar/`}>
-        {t('how.open.guide')}
-      </a>
+    <div class="tool-head__art" aria-hidden="true">
+      <span class="tool-head__orbit tool-head__orbit--outer"></span>
+      <span class="tool-head__orbit tool-head__orbit--inner"></span>
+      <img src="/assets/characters/catpal.png" alt="" width="1200" height="1310" fetchpriority="high" />
+      <span class="tool-head__art-label">ASSIST <strong>01 / 01</strong></span>
     </div>
-  </div>
+  </header>
 
   <aside class="fx-notice" id="notice" data-level="warning">
     <span class="fx-notice__tag" id="notice-tag">{t('notice.tag')}</span>
@@ -62,14 +70,46 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
     data-locale-tag={LOCALE_TAG[locale]}
     data-max-team={meta.max_team_size}>
 
-    <section class="col" aria-labelledby="team-heading">
+    <section class="col col--setup" aria-labelledby="team-heading">
+      <div class="section-label"><span>01</span><span>{locale === 'pt' ? 'CONFIGURAÇÃO' : 'SETUP'}</span></div>
       <div class="block">
         <div class="block__head">
           <h2 class="fx-label">{t('form.profile')}</h2>
           <span class="fx-meta"><span id="team-size">{teamSize}</span> / {meta.max_team_size}</span>
         </div>
         <div class="profile">
-          <a class="fx-btn fx-btn--ghost" href={`/${locale}/ferramentas/amigatos/perfil/`}>{t('profile.heading')}</a>
+          <button
+            class="fx-btn fx-btn--ghost profile__toggle"
+            type="button"
+            id="saved-teams-toggle"
+            aria-controls="saved-teams"
+            aria-expanded="false"
+          >{t('profile.heading')}</button>
+          <div class="profile-picker" id="saved-teams" hidden>
+            <p class="hint profile-picker__storage" data-profile-storage>{t('auth.local_only')}</p>
+            <button type="button" class="fx-btn fx-btn--ghost" data-profile-new>{t('profile.new')}</button>
+            <p class="hint" data-profile-empty tabindex="-1">{t('profile.none')}</p>
+            <ul class="profile-picker__list" data-profile-list hidden></ul>
+            <div class="profile-editor" data-profile-editor hidden>
+              <label class="fx-label" for="profile-name">{t('profile.name')}</label>
+              <input
+                class="fx-field" id="profile-name" data-profile-name type="text" maxlength="60"
+                placeholder={t('profile.name.placeholder')}
+              />
+              <div class="profile-editor__head">
+                <span class="fx-meta" data-profile-count></span>
+                <button type="button" class="fx-btn fx-btn--ghost" data-profile-add>{t('profile.add_catpal')}</button>
+              </div>
+              <p class="hint" data-profile-team-empty>{t('profile.empty_team')}</p>
+              <ul class="profile-editor__rows" data-profile-rows></ul>
+              <p class="hint" data-profile-full hidden>{t('profile.full', { max: meta.max_team_size })}</p>
+              <div class="profile-editor__actions">
+                <button type="button" class="fx-btn" data-profile-save>{t('profile.save')}</button>
+                <button type="button" class="fx-btn fx-btn--ghost" data-profile-cancel>{t('profile.cancel')}</button>
+              </div>
+            </div>
+            <p class="hint" role="status" aria-live="polite" data-profile-status></p>
+          </div>
         </div>
         <p class="hint">{t('form.profile.help')}</p>
       </div>
@@ -116,7 +156,11 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
     </section>
 
     <section class="col col--wide" aria-labelledby="result-heading">
-      <h2 id="result-heading" class="visually-hidden">{t('result.heading')}</h2>
+      <div class="result-head">
+        <span class="result-head__index">02 / {locale === 'pt' ? 'RESULTADO' : 'RESULT'}</span>
+        <h2 id="result-heading">{t('result.heading')}</h2>
+        <p>{locale === 'pt' ? 'A melhor distribuição possível para os recursos da sua equipe.' : 'The best possible allocation for your team’s resources.'}</p>
+      </div>
 
       <div class="fx-stats">
         <div class="fx-stat fx-stat--primary">
@@ -133,11 +177,13 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
         </div>
       </div>
 
-      <table class="fx-table">
+      <p class="table-hint">{locale === 'pt' ? 'Deslize a tabela para ver todas as colunas →' : 'Scroll the table to see every column →'}</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label={t('result.heading')}><table class="fx-table">
         <caption class="visually-hidden">{t('result.heading')}</caption>
         <thead>
           <tr>
             <th scope="col">{t('result.col.entity')}</th>
+            <th scope="col" data-align="end">{t('result.col.tier')}</th>
             <th scope="col" data-align="end">{t('result.col.level')}</th>
             <th scope="col" data-align="end">{t('result.col.cost')}</th>
             <th scope="col" data-align="end">{t('result.col.power')}</th>
@@ -154,18 +200,21 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
                 )}
                 {row.count > 1 && <span class="fx-count"> ×{row.count}</span>}
               </td>
+              <td class="fx-num" data-align="end">6</td>
               <td class="fx-num" data-align="end">{row.level}</td>
               <td class="fx-num cost" data-align="end">{n(row.cost)}</td>
               <td class="fx-num fx-value" data-align="end">{n(row.effective_power)}</td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </table></div>
 
       <p class="hint">{t('result.grouped')} {t('result.costnote')}</p>
+      <p class="result-disclaimer" role="note">{t('result.disclaimer')}</p>
     </section>
 
-    <aside class="col">
+    <aside class="col col--actions">
+      <div class="section-label"><span>03</span><span>{locale === 'pt' ? 'LEVAR COM VOCÊ' : 'TAKE IT WITH YOU'}</span></div>
       <div class="block">
         <h2 class="fx-label">{t('export.heading')}</h2>
         <div class="exports">
@@ -183,48 +232,53 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
         <p class="hint" id="share-status" role="status" aria-live="polite"></p>
       </div>
 
-      <div class="block">
-        <h2 class="fx-label">{t('provenance.heading')}</h2>
-        <dl class="prov">
-          <div class="prov__head" aria-hidden="true">
-            <span></span>
-            <span>{t('provenance.tier')}</span>
-          </div>
-          {categories.map((cat) => (
-            <div class="prov__row">
-              <dt class="prov__key">{cat.label}</dt>
-              <dd class="prov__val fx-tier" data-provisional={String(cat.tier[0] !== cat.tier[1])}>
-                {cat.tier[0]}/{cat.tier[1]}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
     </aside>
 
   </form>
+
+  <script type="application/json" id="calculator-profile-levels" is:inline set:html={JSON.stringify(
+    Object.fromEntries(categories.map((category) => [category.key, category.levels]))
+  )}></script>
 </Site>
 
 <style>
   .tool-head {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: var(--space-5);
-    padding: var(--space-8) var(--space-6) var(--space-6);
-    border-bottom: 1px solid var(--line);
+    position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr);
+    min-height: 360px; overflow: hidden; isolation: isolate;
+    background: var(--bg-panel); border-bottom: 1px solid var(--line-hard);
   }
-
-  .tool-head h1 { margin: var(--space-2) 0 0; }
-  .tool-head__actions { display: flex; align-items: center; gap: var(--space-3); }
-  .tool-beta {
-    padding: 3px 7px; border: 1px solid var(--accent); color: var(--accent);
-    font: 600 .68rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase;
+  .tool-head::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; opacity: .38;
+    background: linear-gradient(115deg, var(--bg-panel) 15%, var(--bg-chrome) 100%);
   }
-
-  @media (max-width: 680px) {
-    .tool-head { align-items: stretch; flex-direction: column; padding-inline: var(--space-4); }
-    .tool-head__actions { align-self: flex-start; }
+  .tool-head__content { position: relative; z-index: 2; padding: clamp(32px, 5vw, 72px) 24px clamp(36px, 4vw, 56px) clamp(24px, 5vw, 72px); }
+  .tool-head__eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; color: var(--accent); font: 600 11px var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+  .tool-head__line { width: 26px; height: 1px; background: currentColor; }
+  .tool-head__dot { color: var(--text-faint); }
+  .tool-head h1 { max-width: 760px; font-size: clamp(48px, 6vw, 88px); line-height: .94; letter-spacing: .005em; text-transform: uppercase; }
+  .tool-head__intro { max-width: 470px; margin-top: 22px; color: var(--text-muted); font-size: 16px; line-height: 1.55; }
+  .tool-head__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; margin-top: 30px; }
+  .tool-head__start { display: inline-flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 46px; padding: 0 16px; background: var(--accent); color: var(--accent-ink); font: 700 16px var(--font-display); letter-spacing: .035em; text-transform: uppercase; }
+  .tool-head__start:hover { background: var(--accent-hover); color: var(--accent-ink); }
+  .tool-head__guide { display: inline-flex; gap: 10px; align-items: center; color: var(--text-strong); font: 600 13px var(--font-body); text-decoration: underline; text-underline-offset: 5px; }
+  .tool-head__guide:hover { color: var(--accent); }
+  .tool-head__art { position: relative; min-width: 0; overflow: hidden; background: radial-gradient(circle at 50% 46%, var(--bg-chrome), var(--bg-panel) 70%); }
+  .tool-head__orbit { position: absolute; left: 50%; top: 51%; transform: translate(-50%, -50%); border: 1px solid var(--line-control); border-radius: 50%; opacity: .56; }
+  .tool-head__orbit--outer { width: 540px; height: 540px; }
+  .tool-head__orbit--inner { width: 380px; height: 380px; }
+  .tool-head__art img { position: absolute; z-index: 1; left: 50%; bottom: -135px; width: min(560px, 108%); height: auto; transform: translateX(-50%); filter: drop-shadow(0 20px 30px var(--bg-page)); }
+  .tool-head__art-label { position: absolute; right: 26px; bottom: 20px; z-index: 2; display: flex; gap: 14px; color: var(--text-faint); font: 11px var(--font-mono); letter-spacing: .14em; }
+  .tool-head__art-label strong { color: var(--accent); font-weight: 500; }
+  @media (max-width: 760px) {
+    .tool-head { display: flex; flex-direction: column; min-height: 0; }
+    .tool-head__content { padding: 32px 24px 26px; }
+    .tool-head h1 { font-size: clamp(48px, 12vw, 72px); }
+    .tool-head__intro { margin-top: 16px; }
+    .tool-head__actions { margin-top: 24px; gap: 16px; }
+    .tool-head__art { height: 250px; }
+    .tool-head__art img { width: 330px; bottom: -145px; }
+    .tool-head__orbit--outer { width: 360px; height: 360px; }
+    .tool-head__orbit--inner { width: 240px; height: 240px; }
   }
 </style>
 
@@ -242,6 +296,8 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
   import { formatCsv, formatJson } from '../../../lib/exports.ts';
   import { groupRows, categoryClass, categoryRoman, categoryRomanClass, isProvisional } from '../../../lib/rows.ts';
   import { useTranslations, formatNumber, type Locale } from '../../../i18n/utils';
+  import { ProfileManager } from '../../../lib/profiles/manager.ts';
+  import { emptyProfile, newId, type Profile, type SavedCatpal } from '../../../lib/profiles/types.ts';
 
   const form = document.getElementById('solver') as HTMLFormElement;
   const locale = form.dataset.locale as Locale;
@@ -263,6 +319,35 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
   const jellyInput = document.getElementById('total_jelly') as HTMLInputElement;
   const shareButton = document.getElementById('share-team') as HTMLButtonElement;
   const shareStatus = document.getElementById('share-status')!;
+  const savedTeamsToggle = document.getElementById('saved-teams-toggle') as HTMLButtonElement;
+  const savedTeams = document.getElementById('saved-teams')!;
+  const profileList = savedTeams.querySelector<HTMLElement>('[data-profile-list]')!;
+  const profileEmpty = savedTeams.querySelector<HTMLElement>('[data-profile-empty]')!;
+  const profileStorage = savedTeams.querySelector<HTMLElement>('[data-profile-storage]')!;
+  const profileStatus = savedTeams.querySelector<HTMLElement>('[data-profile-status]')!;
+  const profileNew = savedTeams.querySelector<HTMLButtonElement>('[data-profile-new]')!;
+  const profileEditor = savedTeams.querySelector<HTMLElement>('[data-profile-editor]')!;
+  const profileName = savedTeams.querySelector<HTMLInputElement>('[data-profile-name]')!;
+  const profileCount = savedTeams.querySelector<HTMLElement>('[data-profile-count]')!;
+  const profileRows = savedTeams.querySelector<HTMLElement>('[data-profile-rows]')!;
+  const profileTeamEmpty = savedTeams.querySelector<HTMLElement>('[data-profile-team-empty]')!;
+  const profileFull = savedTeams.querySelector<HTMLElement>('[data-profile-full]')!;
+  const profileAdd = savedTeams.querySelector<HTMLButtonElement>('[data-profile-add]')!;
+  const profileSave = savedTeams.querySelector<HTMLButtonElement>('[data-profile-save]')!;
+  const profileCancel = savedTeams.querySelector<HTMLButtonElement>('[data-profile-cancel]')!;
+
+  type ProfileLevel = SavedCatpal['current_level'];
+  interface ProfileRow { type: string; level: ProfileLevel; qty: number }
+  const profileLevels: Record<string, ProfileLevel[]> = JSON.parse(
+    document.getElementById('calculator-profile-levels')!.textContent!,
+  );
+  const profileTypes = Object.keys(profileLevels);
+  const profileLabels = new Map(countInputs.map((input) => [
+    input.dataset.count!,
+    document.querySelector<HTMLLabelElement>(`label[for="${input.id}"] span`)?.textContent ?? input.dataset.count!,
+  ]));
+  let profileDraft: Profile | null = null;
+  let profileEditorRows: ProfileRow[] = [];
 
   let downloads: { csv: string; json: string } | null = null;
   function clearFieldErrors() {
@@ -329,6 +414,7 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
       }
       tr.append(
         name,
+        cell('6', 'fx-num'),
         // "Max" is a level NAME, not a number — it must not reach Intl.
         cell(typeof row.level === 'number' ? fmt(row.level) : String(row.level), 'fx-num'),
         cell(fmt(row.cost), 'fx-num cost'),
@@ -383,6 +469,192 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
     teamSizeOut.textContent = fmt(total);
     teamSizeOut.parentElement?.classList.toggle('is-over', total > maxTeam);
   }
+
+  function loadProfile(profile: Profile) {
+    const counts = new Map<string, number>();
+    for (const catpal of profile.catpals) {
+      counts.set(catpal.catpal_type, (counts.get(catpal.catpal_type) ?? 0) + 1);
+    }
+    for (const input of countInputs) {
+      input.value = String(counts.get(input.dataset.count!) ?? 0);
+    }
+    markStale();
+    profileStatus.textContent = t('profile.loaded', { name: profile.name || t('profile.new') });
+  }
+
+  function renderProfiles(profiles: Profile[]) {
+    profileEmpty.hidden = profiles.length > 0;
+    profileList.hidden = profiles.length === 0;
+    profileList.replaceChildren(...profiles.map((profile) => {
+      const item = document.createElement('li');
+      const choose = document.createElement('button');
+      choose.type = 'button';
+
+      const name = document.createElement('span');
+      name.textContent = profile.name || t('profile.new');
+      const count = document.createElement('span');
+      count.className = 'profile-picker__count';
+      count.textContent = t('profile.count', { count: profile.catpals.length, max: maxTeam });
+
+      choose.append(name, count);
+      choose.addEventListener('click', () => loadProfile(profile));
+      item.append(choose);
+      return item;
+    }));
+  }
+
+  function profileTotal() {
+    return profileEditorRows.reduce((sum, row) => sum + row.qty, 0);
+  }
+
+  function renderProfileEditor() {
+    const total = profileTotal();
+    profileCount.textContent = t('profile.count', { count: total, max: maxTeam });
+    profileTeamEmpty.hidden = total > 0;
+    profileFull.hidden = total < maxTeam;
+    profileAdd.disabled = total >= maxTeam;
+    profileSave.disabled = total === 0;
+
+    profileRows.replaceChildren(...profileEditorRows.map((row, index) => {
+      const item = document.createElement('li');
+      item.className = 'profile-editor__row';
+
+      const qty = document.createElement('input');
+      qty.className = 'fx-field profile-editor__qty';
+      qty.type = 'number';
+      qty.inputMode = 'numeric';
+      qty.min = '1';
+      qty.max = String(row.qty + maxTeam - total);
+      qty.value = String(row.qty);
+      qty.setAttribute('aria-label', t('profile.qty'));
+
+      const type = document.createElement('select');
+      type.className = 'fx-field';
+      type.setAttribute('aria-label', t('result.col.entity'));
+      type.replaceChildren(...profileTypes.map((key) => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = profileLabels.get(key) ?? key;
+        option.selected = key === row.type;
+        return option;
+      }));
+
+      const level = document.createElement('select');
+      level.className = 'fx-field';
+      level.setAttribute('aria-label', t('profile.catpal_level'));
+      level.replaceChildren(...profileLevels[row.type].map((value) => {
+        const option = document.createElement('option');
+        option.value = String(value);
+        option.textContent = String(value);
+        option.selected = String(value) === String(row.level);
+        return option;
+      }));
+
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'fx-btn fx-btn--ghost profile-editor__remove';
+      remove.textContent = '×';
+      remove.setAttribute('aria-label', t('profile.remove_catpal'));
+
+      qty.addEventListener('change', () => {
+        const wanted = Math.floor(Number(qty.value));
+        if (!Number.isFinite(wanted) || wanted < 1) profileEditorRows.splice(index, 1);
+        else profileEditorRows[index].qty = Math.min(wanted, row.qty + maxTeam - total);
+        renderProfileEditor();
+      });
+      type.addEventListener('change', () => {
+        row.type = type.value;
+        row.level = profileLevels[type.value][0];
+        renderProfileEditor();
+      });
+      level.addEventListener('change', () => {
+        row.level = level.value === 'Max' ? 'Max' : Number(level.value);
+      });
+      remove.addEventListener('click', () => {
+        profileEditorRows.splice(index, 1);
+        renderProfileEditor();
+      });
+
+      item.append(qty, type, level, remove);
+      return item;
+    }));
+  }
+
+  function openProfileEditor() {
+    profileDraft = emptyProfile('');
+    profileEditorRows = [];
+    profileName.value = '';
+    profileStatus.textContent = '';
+    profileEditor.hidden = false;
+    renderProfileEditor();
+    profileName.focus();
+  }
+
+  profileNew.addEventListener('click', openProfileEditor);
+  profileCancel.addEventListener('click', () => {
+    profileDraft = null;
+    profileEditorRows = [];
+    profileEditor.hidden = true;
+    profileNew.focus();
+  });
+  profileAdd.addEventListener('click', () => {
+    if (profileTotal() >= maxTeam) return;
+    const used = new Set(profileEditorRows.map((row) => row.type));
+    const type = profileTypes.find((key) => !used.has(key)) ?? profileTypes[0];
+    profileEditorRows.push({ type, level: profileLevels[type][0], qty: 1 });
+    renderProfileEditor();
+  });
+  profileSave.addEventListener('click', async () => {
+    if (!profileDraft || profileTotal() === 0) return;
+    profileDraft.name = profileName.value.trim();
+    profileDraft.catpals = profileEditorRows.flatMap((row) =>
+      Array.from({ length: row.qty }, (): SavedCatpal => ({
+        id: newId(), name: '', catpal_type: row.type, current_level: row.level,
+      })),
+    );
+    profileSave.disabled = true;
+    profileSave.textContent = t('profile.saving');
+    profileStatus.textContent = t('profile.saving');
+    try {
+      await profileManager.save(structuredClone(profileDraft));
+      profileStatus.textContent = t('profile.saved');
+      profileDraft = null;
+      profileEditor.hidden = true;
+      profileNew.focus();
+    } catch {
+      profileStatus.textContent = t('error.profile.save_failed');
+    } finally {
+      profileSave.disabled = false;
+      profileSave.textContent = t('profile.save');
+    }
+  });
+
+  savedTeamsToggle.addEventListener('click', () => {
+    const opening = savedTeams.hidden;
+    savedTeams.hidden = !opening;
+    savedTeamsToggle.setAttribute('aria-expanded', String(opening));
+    if (opening) {
+      const firstTeam = profileList.querySelector<HTMLButtonElement>('button');
+      (firstTeam ?? profileEmpty).focus({ preventScroll: true });
+    }
+  });
+  savedTeams.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    savedTeams.hidden = true;
+    savedTeamsToggle.setAttribute('aria-expanded', 'false');
+    savedTeamsToggle.focus();
+  });
+
+  const profileManager = new ProfileManager();
+  profileManager.subscribe((state) => {
+    renderProfiles(state.profiles);
+    profileStorage.textContent = state.syncing
+      ? t('auth.syncing')
+      : state.account
+        ? t('auth.signed_in_as', { name: state.account.name })
+        : t('auth.local_only');
+  });
+  void profileManager.start();
 
   /* Editing the form invalidates what is on screen. Leaving a stale table
      exportable is how someone downloads numbers for a team they no longer
@@ -477,29 +749,123 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
 
 <style>
   .work {
-    display: grid;
-    grid-template-columns: var(--sidebar-w) minmax(0, 1fr) var(--aside-w);
-    gap: var(--border);
-    background: var(--line-hard);
+    display: grid; grid-template-columns: minmax(310px, 370px) minmax(0, 1fr);
+    gap: 1px; background: var(--line-hard); border-top: 1px solid var(--line-hard);
   }
   .work > * { min-width: 0; }
   .col {
-    display: flex; flex-direction: column; gap: var(--border);
-    background: var(--line-hard); min-width: 0;
+    display: flex; flex-direction: column; min-width: 0; background: var(--bg-panel);
   }
-  .col--wide {
-    display: flex; flex-direction: column; gap: var(--space-7);
-    padding: 0 0 var(--space-8); background: var(--bg-panel);
+  .col--setup { padding: 26px; gap: 24px; background: var(--bg-inset); }
+  .col--wide { gap: 24px; padding: 26px 32px 34px; }
+  .col--actions { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 370px) 1fr 1fr; align-items: stretch; gap: 1px; background: var(--line-hard); border-top: 1px solid var(--line-hard); }
+  .section-label { display: flex; align-items: center; gap: 14px; color: var(--text-faint); font: 600 11px var(--font-mono); letter-spacing: .14em; }
+  .section-label span:first-child { color: var(--accent); font-size: 13px; }
+  .col--actions > .section-label { align-self: stretch; padding: 25px 26px; background: var(--bg-chrome); }
+  .result-head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 4px 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line-hard); }
+  .result-head__index { grid-column: 1 / -1; margin-bottom: 8px; color: var(--accent); font: 600 11px var(--font-mono); letter-spacing: .14em; }
+  .result-head h2 { font-size: clamp(30px, 3vw, 42px); line-height: 1; text-transform: uppercase; }
+  .result-head p { max-width: 255px; color: var(--text-faint); font-size: 12px; line-height: 1.35; text-align: right; }
+  .table-scroll { max-width: 100%; overflow-x: auto; }
+  .table-scroll:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+  .table-hint { display: none; margin-bottom: -14px; color: var(--text-faint); font: 11px var(--font-mono); }
+  .table-scroll .fx-table { min-width: 540px; }
+  .table-scroll .fx-table th { padding-block: 12px; background: var(--bg-raised); }
+  .table-scroll .fx-table td { padding-block: 11px; }
+  .table-scroll .fx-table tbody tr:hover { background: var(--bg-raised); }
+  .table-scroll .fx-table td:first-child { color: var(--text-strong); font-weight: 500; }
+  .table-scroll .fx-table .fx-value { font-weight: 600; }
+  .col--wide > .hint, .col--wide > .result-disclaimer { margin-inline: 0; }
+  .col--wide > .hint { padding-top: 4px; }
+  .col--actions .block { padding: 25px 28px; background: var(--bg-panel); }
+  .col--actions .block .fx-label { color: var(--text-strong); }
+  .col--actions .fx-btn { min-height: 40px; }
+  .col--actions .hint { max-width: 390px; }
+  .col--actions .exports { max-width: 320px; }
+  .col--actions .exports .fx-btn { min-width: 88px; }
+  .col--actions #share-team { align-self: flex-start; }
+  .col--setup #calculate { width: 100%; height: 48px; font-size: 17px; }
+  .col--setup #status { min-height: 1em; }
+  .col--setup .fx-field { height: 42px; background: var(--bg-panel); }
+  .col--setup .fx-field:focus { border-color: var(--accent); }
+  .col--setup .fx-label { color: var(--text-strong); }
+  .col--setup .fx-meta { color: var(--accent); }
+  .col--setup .block { padding: 0; background: transparent; flex-grow: 0; }
+  .col--setup .block + .block { padding-top: 24px; border-top: 1px solid var(--line-hard); }
+  .col--setup .block > .fx-label { font-size: 20px; }
+  .col--setup .block__head .fx-label { font-size: 20px; }
+  .col--setup .profile__toggle { width: 100%; justify-content: space-between; height: 42px; background: var(--bg-raised); font-size: 12px; }
+  .col--setup .profile__toggle::after { content: '↗'; color: var(--accent); font-size: 16px; }
+  .col--setup .profile__toggle:hover { background: var(--bg-chrome); }
+  .col--setup .budget { margin-top: 7px; padding: 20px; border: 1px solid var(--line-control); background: var(--bg-raised); }
+  .col--setup .budget__field { height: 50px; font-size: 22px; }
+  .col--setup .budget__help { background: var(--bg-panel); border-color: var(--accent-dim); }
+  .col--setup .budget__unit { background: var(--accent-wash); border-color: var(--accent-dim); }
+  .col--setup .row { min-height: 67px; padding: 9px 12px; background: var(--bg-raised); border: 1px solid var(--line-hard); }
+  .col--setup .rows { gap: 5px; background: transparent; }
+  .col--setup .row__label { min-width: 0; font-size: 14px; font-weight: 600; }
+  .col--setup .row__label .fx-tier { font-size: 10px; font-weight: 400; }
+  .col--setup .row__field { flex: none; width: 68px; height: 42px; font-size: 16px; }
+  .col--setup .row:focus-within { border-color: var(--accent); }
+  .col--setup .row:hover { background: var(--bg-chrome); }
+  .col--wide .fx-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line-hard); border: 1px solid var(--line-hard); }
+  .col--wide .fx-stat { min-height: 116px; padding: 20px; background: var(--bg-raised); }
+  .col--wide .fx-stat--primary { background: var(--accent-wash); }
+  .col--wide .fx-stat__value { font-size: clamp(23px, 2.6vw, 36px); line-height: 1.1; }
+  .col--wide .fx-stat--primary .fx-stat__value { color: var(--accent); }
+  .col--wide .fx-meta { color: var(--text-muted); }
+  .col--wide .fx-stat--primary .fx-meta { color: var(--accent); }
+  .col--wide .result-disclaimer { background: var(--warn-bg); border-color: var(--warn-line); border-left-color: var(--warn); box-shadow: none; }
+  @media (max-width: 1040px) {
+    .work { grid-template-columns: minmax(280px, 330px) minmax(0, 1fr); }
+    .col--setup { padding: 22px; }
+    .col--wide { padding: 22px; }
+    .col--actions { grid-template-columns: minmax(0, 330px) 1fr 1fr; }
   }
 
-  .block {
-    display: flex; flex-direction: column; gap: var(--space-6);
-    padding: var(--space-7); background: var(--bg-panel); flex-grow: 1;
-  }
+  .block { display: flex; flex-direction: column; gap: var(--space-6); }
   .block__head { display: flex; align-items: center; justify-content: space-between; }
   .block__head .is-over { color: var(--danger); }
 
-  .profile { display: flex; gap: var(--space-3); }
+  .profile { display: flex; flex-direction: column; gap: var(--space-3); }
+  .profile__toggle[aria-expanded="true"] { color: var(--accent); border-color: var(--accent); }
+  .profile-picker {
+    padding: var(--space-4); background: var(--bg-raised);
+    border: var(--border) solid var(--line-control);
+  }
+  .profile-picker__storage { margin: 0 0 var(--space-4); }
+  .profile-picker__list {
+    display: flex; flex-direction: column; gap: var(--border);
+    margin: 0; padding: 0; list-style: none; background: var(--line-soft);
+  }
+  .profile-picker__list button {
+    width: 100%; display: flex; flex-direction: column; align-items: flex-start;
+    gap: var(--space-1); padding: var(--space-3) var(--space-4);
+    color: var(--text-strong); background: var(--bg-panel); border: 0;
+    font: inherit; text-align: left; cursor: pointer;
+  }
+  .profile-picker__list button:hover { color: var(--accent); background: var(--bg-chrome); }
+  .profile-picker__list button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .profile-picker__count { color: var(--text-faint); font: var(--size-label-xs) var(--font-mono); }
+  .profile-editor {
+    display: flex; flex-direction: column; gap: var(--space-3);
+    margin-top: var(--space-4); padding-top: var(--space-4);
+    border-top: var(--border) solid var(--line-control);
+  }
+  .profile-editor__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+  .profile-editor__rows {
+    display: flex; flex-direction: column; gap: var(--space-3);
+    margin: 0; padding: 0; list-style: none;
+  }
+  .profile-editor__row {
+    display: grid; grid-template-columns: 50px minmax(0, 1fr) 66px 36px;
+    gap: var(--space-2); align-items: center;
+  }
+  .profile-editor__qty { text-align: end; }
+  .profile-editor__remove { padding: 0; }
+  .profile-editor__actions { display: flex; gap: var(--space-3); }
+  .profile-editor__actions .fx-btn { flex: 1; }
+  .profile-editor[hidden] { display: none; }
   .profile__name {
     flex-grow: 1; display: flex; align-items: center;
     height: var(--control-h); padding: 0 var(--space-4);
@@ -526,8 +892,10 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
     font: 600 var(--size-label) var(--font-mono); letter-spacing: .04em;
   }
   .budget__field { font-size: var(--size-figure); text-align: right; }
-  .budget__help { margin-top: var(--space-3); padding: var(--space-3) var(--space-4); color: var(--text-strong); background: rgba(74, 215, 169, .08); border-left: 2px solid var(--accent); }
+  .budget__help { margin-top: var(--space-3); padding: var(--space-3) var(--space-4); color: var(--text-strong); border-left: 2px solid var(--accent); }
   .budget__help strong { color: var(--accent); font-weight: 600; }
+
+  .result-disclaimer { margin: var(--space-6) 0 0; padding: var(--space-4) var(--space-5); color: var(--text-strong); border: 1px solid var(--warn-line); border-left: 4px solid var(--warn); font-size: var(--size-body-s); font-weight: 600; line-height: var(--leading-relaxed); }
 
   .hint { font-size: var(--size-label); line-height: var(--leading-snug); color: var(--text-faint); }
 
@@ -548,24 +916,33 @@ const messages = notices.map((notice) => t(notice.key as never, notice.params));
   .exports { display: flex; gap: var(--space-3); }
   .exports .fx-btn { flex-grow: 1; }
 
-  .prov { margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
-  .prov__head { display: flex; justify-content: space-between; padding-bottom: var(--space-1); color: var(--text-faint); font: 600 var(--size-label-xs) var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
-  .prov__row { display: flex; align-items: center; justify-content: space-between; }
-  .prov__key { font-size: var(--size-body-s); color: var(--text-muted); }
-  .prov__val { margin: 0; }
-
   .visually-hidden {
     position: absolute; width: 1px; height: 1px; margin: -1px;
     padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
   }
 
-  @media (max-width: 1200px) {
-    .work { grid-template-columns: var(--sidebar-w) minmax(0, 1fr); }
-    .work > aside { grid-column: 1 / -1; }
-    .work > aside .block { flex-grow: 0; }
-  }
-  @media (max-width: 860px) {
+  @media (max-width: 820px) {
     .work { grid-template-columns: minmax(0, 1fr); }
-    .fx-table { display: block; overflow-x: auto; }
+    .col--setup { padding: 24px; }
+    .col--wide { padding: 24px; }
+    .col--actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .col--actions > .section-label { grid-column: 1 / -1; }
+    .result-head p { max-width: 220px; }
+    .table-hint { display: block; }
+  }
+  @media (max-width: 560px) {
+    .col--setup, .col--wide { padding: 20px 16px; }
+    .result-head { grid-template-columns: 1fr; }
+    .result-head p { max-width: none; text-align: left; }
+    .col--wide .fx-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .col--wide .fx-stat:first-child { grid-column: 1 / -1; }
+    .col--wide .fx-stats > .fx-stat:last-child { grid-column: auto; }
+    .col--wide .fx-stat { min-height: 95px; padding: 14px; }
+    .col--wide .fx-stat__value { font-size: 23px; }
+    .col--actions { grid-template-columns: 1fr; }
+    .col--actions > .section-label { grid-column: auto; }
+    .col--actions .block { padding: 20px 16px; }
+    .profile-editor__row { grid-template-columns: 44px minmax(0, 1fr) 62px 36px; }
+    .profile-editor__row .fx-field { padding-inline: 5px; }
   }
 </style>

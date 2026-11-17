@@ -1,0 +1,172 @@
+---
+import Brand from '../../../components/Brand.astro';
+import { tools } from '../../../data/tools';
+import { solve } from '../../../lib/solver/index.ts';
+import { EXAMPLE_TEAM, EXAMPLE_BUDGET } from '../../../data/example-team';
+import { useTranslations, formatNumber, LOCALES, type Locale } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const n = (value: number) => formatNumber(value, locale);
+const budgetValues = [Math.round(EXAMPLE_BUDGET * .5), EXAMPLE_BUDGET, Math.round(EXAMPLE_BUDGET * 1.5)];
+const scenarios = budgetValues.map((budget) => ({ budget, power: solve(EXAMPLE_TEAM, budget).totals.effective_power }));
+const teamSize = Object.values(EXAMPLE_TEAM).reduce((sum, count) => sum + count, 0);
+const orderedTools = ['amigatos', 'florais', 'fantasmas'].map((name) => tools.find((tool) => tool.name === name)!);
+const portraits: Record<string, string> = {
+  amigatos: '/assets/characters/catpal.png',
+  florais: '/assets/characters/floral-strawberry.png',
+  fantasmas: '/assets/characters/phantom-forest.png',
+};
+const copy = locale === 'pt' ? {
+  preview: 'Prévia de conceito', current: 'Ver versão atual',
+  navTools: 'Ferramentas', navDemo: 'Teste o plano',
+  heroTag: 'Seu inventário tem potencial', heroTitleA: 'Jogue com', heroTitleB: 'um plano.',
+  heroText: 'Amigatos, florais e recursos em um só lugar. O Forneus transforma suas escolhas em estratégia para Tree of Savior Neo.',
+  heroAction: 'Planejar meus amigatos', heroExplore: 'Explorar ferramentas',
+  metricTeam: 'amigatos no exemplo', metricBudget: 'gelatinas de peixe', metricPower: 'poder efetivo',
+  toolsKicker: 'Seu arsenal', toolsTitle: 'Escolha sua ferramenta.',
+  toolsText: 'Cada sistema do jogo pede uma decisão diferente. Escolha por onde começar.',
+  available: 'DISPONÍVEL', planned: 'EM PREPARAÇÃO', open: 'Abrir ferramenta',
+  demoKicker: 'Teste de campo', demoTitle: 'Recursos mudam tudo.',
+  demoText: 'Um exemplo real calculado pelo otimizador de amigatos. A equipe permanece igual; escolha outro orçamento de gelatina de peixe.',
+  budget: 'Gelatina disponível', team: 'Equipe do exemplo', result: 'Poder efetivo',
+  demoAction: 'Calcular com minha equipe',
+  closingTag: 'A próxima decisão é sua', closingTitle: 'Entre preparado.',
+  closingText: 'Organize seus companheiros e descubra onde vale investir antes de voltar ao jogo.',
+  closingAction: 'Começar agora', footerCurrent: 'Voltar ao site atual',
+} : {
+  preview: 'Concept preview', current: 'View current version',
+  navTools: 'Tools', navDemo: 'Try the planner',
+  heroTag: 'Your inventory has potential', heroTitleA: 'Play with', heroTitleB: 'a plan.',
+  heroText: 'Catpals, florals, and resources in one place. Forneus turns your choices into a strategy for Tree of Savior Neo.',
+  heroAction: 'Plan my catpals', heroExplore: 'Explore tools',
+  metricTeam: 'catpals in the example', metricBudget: 'Fish Jelly', metricPower: 'effective power',
+  toolsKicker: 'Your arsenal', toolsTitle: 'Choose your tool.',
+  toolsText: 'Every game system calls for a different decision. Pick your starting point.',
+  available: 'AVAILABLE', planned: 'IN PREPARATION', open: 'Open tool',
+  demoKicker: 'Field test', demoTitle: 'Resources change everything.',
+  demoText: 'A real example calculated by the catpal optimizer. The team stays the same; choose another Fish Jelly budget.',
+  budget: 'Available Fish Jelly', team: 'Example team', result: 'Effective power',
+  demoAction: 'Calculate for my team',
+  closingTag: 'Your next move', closingTitle: 'Enter prepared.',
+  closingText: 'Organize your companions and see where to invest before you head back into the game.',
+  closingAction: 'Start now', footerCurrent: 'Back to current site',
+};
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090712" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={copy.heroText} />
+    <title>{locale === 'pt' ? 'Forneus — Conceito gamer' : 'Forneus — Gamer concept'}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">{locale === 'pt' ? 'Ir para o conteúdo' : 'Skip to content'}</a>
+    <div class="preview-ribbon"><span class="preview-ribbon__light" aria-hidden="true"></span>{copy.preview}<span class="preview-ribbon__separator" aria-hidden="true">/</span><a href={`/${locale}/`}>{copy.current} ↗</a></div>
+    <header class="header">
+      <a class="header__brand" href={`/${locale}/`} aria-label="Forneus — home"><Brand /></a>
+      <nav aria-label={locale === 'pt' ? 'Navegação principal' : 'Main navigation'}>
+        <a href="#ferramentas">{copy.navTools}</a><a href="#simulador">{copy.navDemo}</a>
+      </nav>
+      <a class="header__language" href={`/${locale === 'pt' ? 'en' : 'pt'}/conceitos/gamer/`} hreflang={locale === 'pt' ? 'en' : 'pt'}>{locale === 'pt' ? 'EN' : 'PT'}</a>
+    </header>
+    <main id="conteudo">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__scene" aria-hidden="true"></div>
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="hero__content">
+          <p class="hero__eyebrow"><span class="hero__diamond" aria-hidden="true"></span>{copy.heroTag}</p>
+          <h1 id="hero-title">{copy.heroTitleA}<br /><em>{copy.heroTitleB}</em></h1>
+          <p class="hero__text">{copy.heroText}</p>
+          <div class="hero__actions"><a class="action action--primary" href={`/${locale}/ferramentas/amigatos/`}>{copy.heroAction}<span aria-hidden="true">↗</span></a><a class="action action--text" href="#ferramentas">{copy.heroExplore}<span aria-hidden="true">↓</span></a></div>
+        </div>
+        <img class="hero__cat" src="/assets/characters/catpal.png" width="850" height="870" alt="" fetchpriority="high" />
+        <div class="hero__stats" data-ui>
+          <div><strong>{teamSize}</strong><span>{copy.metricTeam}</span></div>
+          <div><strong>{n(EXAMPLE_BUDGET)}</strong><span>{copy.metricBudget}</span></div>
+          <div><strong>{n(scenarios[1].power)}</strong><span>{copy.metricPower}</span></div>
+        </div>
+      </section>
+
+      <section class="arsenal section-wrap" id="ferramentas" aria-labelledby="tools-title">
+        <div class="section-head"><div><span class="section-kicker">{copy.toolsKicker}</span><h2 id="tools-title">{copy.toolsTitle}</h2></div><p>{copy.toolsText}</p></div>
+        <div class="tool-grid">
+          {orderedTools.map((tool) => <article class:list={['tool-card', `tool-card--${tool.name}`]}>
+            <div class="tool-card__top"><span class:list={['tool-card__status', { 'tool-card__status--planned': tool.status === 'planned' }]}><span aria-hidden="true"></span>{tool.status === 'available' ? copy.available : copy.planned}</span></div>
+            <img src={portraits[tool.name]} width="800" height="800" alt="" loading="lazy" />
+            <div class="tool-card__body"><h3>{t(tool.navKey)}</h3><p>{t(tool.descriptionKey)}</p>{tool.status === 'available' ? <a href={`/${locale}/ferramentas/${tool.name}/`}>{copy.open}<span aria-hidden="true">↗</span></a> : <span class="tool-card__planned">{copy.planned}</span>}</div>
+          </article>)}
+        </div>
+      </section>
+
+      <section class="simulation" id="simulador" aria-labelledby="demo-title">
+        <div class="simulation__inner section-wrap">
+          <div class="simulation__intro"><span class="section-kicker">{copy.demoKicker}</span><h2 id="demo-title">{copy.demoTitle}</h2><p>{copy.demoText}</p><img src="/assets/characters/catpal-chair.png" width="320" height="360" alt="" loading="lazy" /></div>
+          <div class="console" data-demo data-ui>
+            <div class="console__bar"><span><i aria-hidden="true"></i> FORNEUS / AMIGATOS</span><span>● ● ●</span></div>
+            <div class="console__team"><span>{copy.team}</span><strong>{teamSize} <small>{locale === 'pt' ? 'amigatos' : 'catpals'}</small></strong></div>
+            <div class="console__budget"><span>{copy.budget}</span><div role="group" aria-label={copy.budget}>{scenarios.map((scenario, index) => <button type="button" class:list={['console__choice', { 'is-selected': index === 1 }]} aria-pressed={index === 1 ? 'true' : 'false'} data-budget={index}>{n(scenario.budget)}</button>)}</div></div>
+            <div class="console__result"><span>{copy.result}</span>{scenarios.map((scenario, index) => <div data-result={index} hidden={index !== 1}><strong>{n(scenario.power)}</strong><div class="console__meter" aria-hidden="true"><span style={`--fill:${scenario.power / scenarios[2].power}`}></span></div></div>)}</div>
+            <a class="console__link" href={`/${locale}/ferramentas/amigatos/`}>{copy.demoAction}<span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing section-wrap" aria-labelledby="closing-title"><div class="closing__art" aria-hidden="true"><img src="/assets/characters/floral-citrus.png" width="800" height="800" alt="" loading="lazy" /></div><div class="closing__content"><span class="section-kicker">{copy.closingTag}</span><h2 id="closing-title">{copy.closingTitle}</h2><p>{copy.closingText}</p><a class="action action--primary" href={`/${locale}/ferramentas/amigatos/`}>{copy.closingAction}<span aria-hidden="true">↗</span></a></div></section>
+    </main>
+    <footer class="footer"><span>FORNEUS <small>· TREE OF SAVIOR NEO</small></span><a href={`/${locale}/`}>{copy.footerCurrent} ↗</a></footer>
+    <script>
+      const demo = document.querySelector<HTMLElement>('[data-demo]');
+      demo?.querySelectorAll<HTMLButtonElement>('[data-budget]').forEach((button) => button.addEventListener('click', () => {
+        const index = button.dataset.budget;
+        demo.querySelectorAll<HTMLButtonElement>('[data-budget]').forEach((choice) => {
+          const selected = choice.dataset.budget === index;
+          choice.classList.toggle('is-selected', selected);
+          choice.setAttribute('aria-pressed', String(selected));
+        });
+        demo.querySelectorAll<HTMLElement>('[data-result]').forEach((result) => { result.hidden = result.dataset.result !== index; });
+      }));
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const element = entry.target as HTMLElement;
+            element.animate([{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 650, easing: 'cubic-bezier(.2,.7,.2,1)' });
+            observer.unobserve(element);
+          }
+        }, { threshold: .18 });
+        document.querySelectorAll('.section-head, .tool-card, .simulation__intro, .console, .closing__content').forEach((element) => observer.observe(element));
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root{color-scheme:dark;--bg:#090712;--panel:#151021;--line:#493761;--text:#f7f2ff;--muted:#b6a9c8;--violet:#b88aff;--violet-bright:#d3afff;--font-display:'Barlow Condensed',Impact,sans-serif;--font-body:Barlow,Arial,sans-serif;--font-ui:'IBM Plex Mono',monospace}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px}a{color:inherit;text-decoration:none}button{font:inherit}a:focus-visible,button:focus-visible{outline:2px solid #e4caff;outline-offset:4px}.skip{position:absolute;top:-100px;left:1rem;z-index:100;background:#fff;color:#111;padding:.7rem}.skip:focus{top:1rem}[hidden]{display:none!important}
+  .preview-ribbon{min-height:32px;display:flex;align-items:center;justify-content:center;gap:12px;background:#241437;color:#dac1fa;font:500 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase}.preview-ribbon__light{width:6px;height:6px;border-radius:50%;background:#c087ff;box-shadow:0 0 10px #c087ff}.preview-ribbon a{text-decoration:underline;text-underline-offset:3px}.preview-ribbon__separator{opacity:.45}
+  .header{height:78px;position:absolute;z-index:20;top:32px;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,5vw,80px);border-bottom:1px solid #c7a5f22b;background:linear-gradient(#090712ab,#09071200)}.header__brand{display:flex;align-items:center;--text-strong:#fff;--accent:#bc88ff}.header nav{display:flex;gap:34px;color:#dfd5e8;font:600 13px var(--font-body);letter-spacing:.05em}.header nav a:hover,.header__language:hover{color:var(--violet-bright)}.header__language{font:600 12px var(--font-ui);border:1px solid #8c68a5;padding:9px 11px;color:#eee0ff}
+  .hero{position:relative;min-height:min(870px,100svh);min-height:max(690px,min(870px,100svh));overflow:hidden;background:#0c071a}.hero__scene{position:absolute;inset:0;background:url('/assets/concepts/gamer-night-gate.png') center 45%/cover no-repeat;filter:saturate(1.03)}.hero__glow{position:absolute;inset:0;background:linear-gradient(90deg,#090712 0%,#090712ec 21%,#0907129c 43%,#09071218 72%),linear-gradient(0deg,#090712 0%,transparent 25%,transparent 83%,#09071272 100%)}.hero__content{position:relative;z-index:3;width:min(640px,58%);padding:clamp(210px,20vw,250px) 0 185px clamp(22px,7.5vw,120px)}.hero__eyebrow{display:flex;align-items:center;gap:13px;margin:0 0 22px;color:var(--violet-bright);font:600 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase}.hero__diamond{width:7px;height:7px;background:var(--violet);transform:rotate(45deg);box-shadow:0 0 14px var(--violet)}h1,h2,h3,p{margin-top:0}.hero h1{margin-bottom:21px;font:800 clamp(76px,8.5vw,144px)/.81 var(--font-display);letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance}.hero h1 em{color:var(--violet);font-style:normal;text-shadow:0 0 34px #9c59fd47}.hero__text{max-width:490px;font-size:18px;line-height:1.6;color:#d7cbe3}.hero__actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:28px}.action{display:inline-flex;justify-content:space-between;align-items:center;gap:26px;min-height:52px;font:700 13px var(--font-body);letter-spacing:.04em}.action--primary{background:var(--violet);color:#170d25;padding:0 20px;box-shadow:0 10px 35px #9e5ee536;transition:transform .2s,background .2s}.action--primary:hover{background:#d1aaff;transform:translateY(-3px)}.action--text{color:#eee3f8}.action--text:hover{color:var(--violet-bright)}.hero__cat{position:absolute;z-index:2;right:clamp(-20px,2vw,44px);bottom:91px;width:clamp(280px,35vw,510px);height:auto;filter:drop-shadow(0 8px 35px #020104) drop-shadow(0 0 25px #aa6bfa80);animation:float 7s ease-in-out infinite}.hero__stats{position:absolute;z-index:4;left:clamp(22px,5vw,80px);right:clamp(22px,5vw,80px);bottom:26px;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #9771b86e;background:#0c0915d9;backdrop-filter:blur(16px);box-shadow:0 20px 55px #0008}.hero__stats>div{min-height:92px;display:flex;align-items:center;gap:13px;padding:16px 24px}.hero__stats>div+div{border-left:1px solid #9771b844}.hero__stats-icon{font-size:19px;color:var(--violet)}.hero__stats strong{font:600 clamp(23px,2.7vw,36px) var(--font-display);letter-spacing:.025em}.hero__stats div>span:last-child{max-width:130px;color:#bcaccd;font:500 10px/1.3 var(--font-ui);text-transform:uppercase;letter-spacing:.05em}
+  .section-wrap{max-width:1480px;margin:auto;padding-left:clamp(22px,5vw,80px);padding-right:clamp(22px,5vw,80px)}.arsenal{padding-top:108px;padding-bottom:122px;background:radial-gradient(ellipse at 88% 0%,#241533 0%,transparent 45%)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:36px}.section-kicker{display:block;color:var(--violet);font:600 11px var(--font-ui);letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px}h2{font:700 clamp(50px,6vw,82px)/.92 var(--font-display);letter-spacing:-.01em;text-transform:uppercase}.section-head h2{max-width:700px;margin-bottom:0}.section-head>p{max-width:305px;color:var(--muted);line-height:1.55;margin-bottom:4px}.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tool-card{position:relative;min-height:500px;overflow:hidden;border:1px solid #58436e;background:radial-gradient(circle at 50% 43%,#4f2b7450,transparent 47%),#171022;transition:transform .25s,border-color .25s}.tool-card:hover{transform:translateY(-5px);border-color:#ab7fe0}.tool-card--florais{background:radial-gradient(circle at 50% 42%,#7e3c775c,transparent 49%),#1a1024}.tool-card--fantasmas{background:radial-gradient(circle at 50% 42%,#5e457160,transparent 49%),#15101f}.tool-card__top{position:absolute;z-index:2;top:23px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:center}.tool-card__number{font:600 13px var(--font-ui);color:#d8baf8}.tool-card__status{display:flex;gap:7px;align-items:center;color:#cba5f7;font:600 10px var(--font-ui);letter-spacing:.04em}.tool-card__status span{width:5px;height:5px;border-radius:50%;background:#c98cff;box-shadow:0 0 7px #ba74ff}.tool-card__status--planned{color:#b5a6c2}.tool-card__status--planned span{background:#8d8195;box-shadow:none}.tool-card img{position:absolute;width:min(80%,335px);height:auto;left:50%;top:15px;transform:translateX(-50%);filter:drop-shadow(0 16px 24px #0503088c)}.tool-card--florais img{top:5px;width:min(90%,355px)}.tool-card--fantasmas img{top:22px;width:min(80%,320px)}.tool-card__body{position:absolute;z-index:2;left:0;bottom:0;right:0;min-height:205px;padding:28px 25px 25px;background:linear-gradient(transparent,#0d0918 17%,#0d0918 100%)}.tool-card h3{font:700 38px/.9 var(--font-display);text-transform:uppercase;margin-bottom:10px}.tool-card p{color:#c5b9d2;font-size:14px;line-height:1.5;max-width:340px;margin-bottom:15px}.tool-card a,.tool-card__planned{font:700 12px var(--font-body);letter-spacing:.04em;color:#d5aeff}.tool-card a{display:inline-flex;gap:28px;border-bottom:1px solid #ad78e2;padding-bottom:5px}.tool-card a:hover{color:#fff}.tool-card__planned{color:#a395b0}
+  .simulation{border-top:1px solid #3f3054;border-bottom:1px solid #3f3054;background:radial-gradient(circle at 28% 50%,#211333,#0d0a17 59%)}.simulation__inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(35px,8vw,130px);min-height:620px;padding-top:90px;padding-bottom:90px}.simulation__intro{position:relative;align-self:stretch}.simulation__intro h2{max-width:560px;margin-bottom:18px}.simulation__intro p{max-width:460px;color:var(--muted);font-size:17px;line-height:1.6}.simulation__intro img{position:absolute;width:185px;height:auto;bottom:-90px;right:0;opacity:.92;filter:drop-shadow(0 0 24px #733ca877)}.console{position:relative;z-index:2;border:1px solid #8c67a9;background:#120e1ecf;box-shadow:0 25px 80px #0007,0 0 35px #7547ae2b}.console__bar{display:flex;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #5b426e;color:#b7a7c7;font:600 10px var(--font-ui);letter-spacing:.09em}.console__bar i{display:inline-block;width:7px;height:7px;margin-right:6px;background:#b77afb;box-shadow:0 0 10px #b77afb}.console__bar span:last-child{color:#906cab;letter-spacing:5px}.console__team,.console__budget,.console__result{padding:26px 28px;border-bottom:1px solid #463752}.console__team{display:flex;justify-content:space-between;align-items:center}.console__team>span,.console__budget>span,.console__result>span{font:600 11px var(--font-ui);color:#baa9cb;text-transform:uppercase;letter-spacing:.06em}.console__team strong{font:600 30px var(--font-display)}.console__team small{font:500 12px var(--font-body);color:#ab9ab9}.console__budget>div{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:17px}.console__choice{cursor:pointer;padding:12px 4px;border:1px solid #624c77;color:#c9b8d9;background:#1d1528;font:600 13px var(--font-ui);transition:background .2s,border-color .2s}.console__choice:hover{border-color:#c490f4}.console__choice.is-selected{background:#a77adb;color:#130b20;border-color:#c7a1f2}.console__result{background:#21162f}.console__result strong{display:block;margin:5px 0 14px;font:700 clamp(54px,6vw,78px)/1 var(--font-display);color:#f7eeff}.console__meter{height:7px;background:#463353}.console__meter span{display:block;width:calc(var(--fill)*100%);height:100%;background:linear-gradient(90deg,#7353a8,#d5afff);box-shadow:0 0 12px #b88aff}.console__link{display:flex;justify-content:space-between;padding:19px 28px;color:#d2adfc;font:700 12px var(--font-body);letter-spacing:.04em}.console__link:hover{background:#291b3a;color:white}
+  .closing{position:relative;min-height:400px;margin-top:108px;margin-bottom:105px;display:flex;align-items:center;overflow:hidden;border:1px solid #574269;background:linear-gradient(90deg,#1a1028 12%,#1d1230 61%,#302046);isolation:isolate}.closing::before{content:'';position:absolute;inset:0;background:url('/assets/concepts/gamer-night-gate.png') center 59%/cover;opacity:.16;z-index:-1}.closing__art{width:42%;height:100%;position:absolute;left:0;bottom:0;display:flex;justify-content:center;align-items:end;background:radial-gradient(circle at 55% 82%,#8454bc77,transparent 61%)}.closing__art img{height:115%;width:auto;max-width:95%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 12px 30px #0008)}.closing__content{position:relative;margin-left:43%;padding:48px 60px 48px 0}.closing h2{margin-bottom:12px}.closing p{max-width:460px;color:#dacde9;font-size:17px;line-height:1.5}.footer{display:flex;justify-content:space-between;gap:25px;padding:28px clamp(22px,5vw,80px);border-top:1px solid #3b2c4d;color:#9c8aad;font:600 11px var(--font-ui);letter-spacing:.06em}.footer small{font:inherit}.footer a:hover{color:#e4cbff}
+  @keyframes float{50%{transform:translateY(-13px)}}
+  @media(max-width:950px){.hero__content{width:70%;padding-top:210px}.hero h1{font-size:clamp(70px,10vw,110px)}.hero__cat{right:-70px;width:42vw}.tool-card{min-height:460px}.tool-card img{top:45px}.tool-card__body{min-height:220px}.simulation__inner{gap:35px}.simulation__intro img{width:145px}}
+  @media(max-width:700px){.header{height:64px;padding:0 20px}.header nav{display:none}.header__brand .brandmark{font-size:1.05rem}.hero{min-height:790px}.hero__scene{background-position:66% center}.hero__glow{background:linear-gradient(90deg,#090712e8,#0907127a 72%),linear-gradient(0deg,#090712 0%,transparent 35%,#09071255 100%)}.hero__content{width:100%;padding:160px 24px 0}.hero__eyebrow{font-size:10px}.hero h1{font-size:clamp(66px,16vw,96px)}.hero__text{font-size:16px;max-width:430px}.hero__actions{gap:18px}.hero__cat{width:290px;right:-32px;bottom:140px;opacity:.94}.hero__stats{left:15px;right:15px;bottom:15px;grid-template-columns:repeat(3,1fr)}.hero__stats>div{min-height:88px;display:block;padding:12px 8px;text-align:center}.hero__stats-icon{display:none}.hero__stats strong{display:block;font-size:25px}.hero__stats div>span:last-child{display:block;font-size:8px;margin:3px auto 0}.arsenal{padding-top:75px;padding-bottom:85px}.section-head{display:block}.section-head p{margin-top:18px}.tool-grid{grid-template-columns:1fr}.tool-card{min-height:410px}.tool-card img{width:260px;top:-15px}.tool-card--florais img{width:290px;top:-20px}.tool-card--fantasmas img{width:265px;top:-5px}.tool-card__body{min-height:155px}.tool-card h3{font-size:33px}.tool-card p{max-width:400px}.simulation__inner{display:block;padding-top:70px;padding-bottom:75px}.simulation__intro{padding-bottom:40px}.simulation__intro img{display:none}.console__choice{font-size:11px}.closing{margin-top:70px;margin-bottom:70px;min-height:500px;align-items:start}.closing__art{width:100%;height:260px;top:0;bottom:auto;justify-content:end;opacity:.7}.closing__art img{height:310px;margin-right:-35px}.closing__content{margin:0;padding:260px 25px 30px}.closing h2{font-size:59px}.footer{flex-direction:column}.footer small{display:none}}
+  @media(max-width:400px){.preview-ribbon{font-size:9px}.hero{min-height:820px}.hero__actions{align-items:start;flex-direction:column;gap:12px}.hero__cat{width:250px;bottom:130px}.hero__stats strong{font-size:21px}.console__team,.console__budget,.console__result{padding-left:18px;padding-right:18px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero__cat{animation:none}.action--primary,.tool-card,.console__choice{transition:none}}
+  :root{--font-ui:Barlow,Arial,sans-serif}.hero__eyebrow,.section-kicker{font-size:13px;letter-spacing:.06em}.section-kicker{text-transform:none}.tool-card__top{justify-content:flex-end}.tool-card p{font-size:16px}.tool-card__status,.tool-card a,.tool-card__planned,.console__link{font-size:13px}.console__team>span,.console__budget>span,.console__result>span{font-size:13px}.hero__stats>div{justify-content:center}.hero__stats div>span:last-child{font-size:12px}.hero h1 em{text-shadow:none}.action--primary{box-shadow:none}.console__choice{font-size:14px}
+  .preview-ribbon,.header__language,.console__bar,.footer,.console__team small,.hero__stats div>span:last-child{font-size:13px}
+  @media(max-width:700px){.preview-ribbon,.hero__stats div>span:last-child{font-size:13px}}
+</style>

@@ -1,0 +1,123 @@
+---
+import Site from '../../../layouts/Site.astro';
+import FloralPlanner from '../../../components/FloralPlanner.astro';
+import { LOCALES, type Locale } from '../../../i18n/utils';
+import { floralText, slotNames, guardianName } from '../../../i18n/florais';
+import { data } from '../../../lib/florais';
+import '../../../styles/florais.css';
+export function getStaticPaths() { return LOCALES.map(lang => ({ params: { lang } })); }
+const locale = Astro.params.lang as Locale;
+const t = floralText[locale];
+---
+<Site locale={locale} active="florais" title={t.title} description={t.lead}>
+  <div class="floral-app" data-locale={locale}>
+    <header class="floral-head">
+      <div><h1>{t.title} <span class="floral-beta">BETA</span></h1><p>{t.lead}</p></div>
+      <a class="fx-btn fx-btn--ghost" href="#floral-guide">{t.help}</a>
+    </header>
+    <p class="floral-source">{t.source} <a href={data.provenance.url} target="_blank" rel="noopener noreferrer">Flowerguard Online</a> · {t.date} <time datetime={data.provenance.retrievedAt}>{new Date(data.provenance.retrievedAt).toLocaleDateString(locale === 'pt' ? 'pt-BR' : 'en-US', { timeZone: 'UTC' })}</time>. {t.caveat}</p>
+    <noscript><p>{locale === 'pt' ? 'Ative JavaScript para montar e calcular seu jardim.' : 'Enable JavaScript to build and calculate your garden.'}</p></noscript>
+    <div class="floral-actions floral-library">
+      <label>{t.savedGardens}<select id="floral-gardens"></select></label>
+      <button type="button" class="fx-btn fx-btn--ghost" id="floral-new">{t.newGarden}</button>
+      <button type="button" class="fx-btn" id="floral-share">{t.share}</button>
+    </div>
+    <div class="floral-toolbar">
+      <fieldset class="floral-class"><legend>{t.classLabel}</legend>
+        <label><input type="radio" name="floral-class" value="physical" />{t.physical}</label>
+        <label><input type="radio" name="floral-class" value="magic" checked />{t.magic}</label>
+      </fieldset>
+      <div class="floral-actions">
+        <button type="button" class="fx-btn fx-btn--ghost" id="floral-export">{t.export}</button>
+        <button type="button" class="fx-btn fx-btn--ghost" id="floral-import">{t.import}</button>
+        <input type="file" accept=".json,application/json" id="floral-file" hidden />
+        <button type="button" class="fx-btn fx-btn--ghost" id="floral-reset">{t.reset}</button>
+      </div>
+    </div>
+    <p class="floral-status" id="floral-status" role="status" aria-live="polite"></p>
+    <div class="floral-layout">
+      <section class="floral-panel floral-garden" aria-labelledby="floral-garden-title">
+        <div class="floral-panel-head"><h2 id="floral-garden-title">{t.garden}</h2><span id="floral-count">0 / 9</span></div>
+        <p>{t.hint}</p>
+        <div class="floral-grid-scroll" tabindex="0" role="region" aria-label={t.garden}>
+          <div class="floral-grid">
+            {data.gridLayout.map(cell => (
+              <button type="button" class:list={['floral-cell', { 'floral-cell--guardian': cell.type === 'flowerguard' }]} data-cell={cell.id} style={`grid-column:${cell.col + 1};grid-row:${cell.row + 1}`} aria-label={`${slotNames[locale][cell.id] ?? cell.id}: ${cell.type === 'flowerguard' ? t.guardian : 'Spiritus'} — ${t.empty}`}>
+                <span class="floral-cell-empty">{cell.type === 'flowerguard' ? '✿' : '+'}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div class="floral-legend"><span>✿ {t.guardian}</span><span>◇ Spiritus</span><span id="floral-selection">{t.choose}</span></div>
+        <p class="floral-note">{t.powerMissing}</p>
+      </section>
+      <aside class="floral-panel floral-overview" aria-labelledby="floral-total-title">
+        <h2 id="floral-total-title">{t.totals}</h2><div id="floral-totals"></div>
+        <p id="floral-limited" class="floral-warning" hidden>{t.limited}</p>
+        <h2>{t.materials}</h2><div id="floral-costs"></div><p class="floral-note">{t.costNote}</p>
+        <h2>{t.inventory}</h2><div id="floral-inventory"></div>
+      </aside>
+    </div>
+    <FloralPlanner locale={locale} />
+    <details class="floral-panel floral-results floral-guide">
+      <summary>{locale === 'pt' ? 'Reorganizar somente o jardim atual' : 'Rearrange the current garden only'}</summary>
+      <h2 id="floral-recommend-title">{t.recommend}</h2><p class="floral-note">{t.recommendNote}</p>
+      <div class="floral-actions floral-library">
+        <label>{t.priority}<select id="floral-priority"></select></label>
+        <button type="button" class="fx-btn" id="floral-recommend">{t.recommend}</button>
+      </div>
+      <p id="floral-recommend-status" role="status"></p>
+      <div id="floral-comparison"></div>
+      <button type="button" class="fx-btn" id="floral-save-suggestion" hidden>{t.saveSuggestion}</button>
+    </details>
+    <section class="floral-panel floral-results" aria-labelledby="floral-skills-title"><h2 id="floral-skills-title">{t.skills}</h2><div id="floral-skills"></div></section>
+    <details class="floral-panel floral-guide" id="floral-guide"><summary>{t.help}</summary><ol>{t.guide.map(step => <li>{step}</li>)}</ol><p>{t.guideNote}</p></details>
+
+    <dialog id="floral-editor" class="floral-dialog" aria-labelledby="floral-editor-title">
+      <form id="floral-edit-form">
+        <h2 id="floral-editor-title"></h2>
+        <fieldset id="floral-guardian-fields">
+          <select id="floral-name" hidden aria-label={t.guardian}>{data.flowerguards.map(f => <option value={f.name}>{guardianName(f.name, locale)} · {f.tier}</option>)}</select>
+          <fieldset class="floral-picker"><legend>{t.guardian}</legend>
+            <div class="floral-picker-options">{data.flowerguards.map(f => (
+              <label class="floral-picker-option">
+                <input type="radio" name="floral-guardian" value={f.name} />
+                <img src={data.icons.flowerguards[f.name]} alt="" width="36" height="36" />
+                <span>{guardianName(f.name, locale)}<small>{f.tier}</small></span>
+              </label>
+            ))}</div>
+          </fieldset>
+          <label>{t.cultivation}<select id="floral-cult">{Array.from({ length: 13 }, (_, i) => <option value={i + 1}>{i + 1}</option>)}</select></label>
+          <label>{t.stars}<select id="floral-stars">{Array.from({ length: 6 }, (_, i) => <option value={i + 1}>{i + 1} ★</option>)}</select></label>
+          <p class="floral-note" id="floral-requirements"></p>
+        </fieldset>
+        <fieldset id="floral-spiritus-fields">
+          <label>{t.stat1}<select id="floral-stat1"></select></label>
+          <label>{t.stat2}<select id="floral-stat2"></select></label>
+          <label>Tier<select id="floral-tier"><option>R1</option><option>R2</option></select></label>
+          <label>{t.level}<select id="floral-level">{Array.from({ length: 10 }, (_, i) => <option value={i}>{i}</option>)}</select></label>
+        </fieldset>
+        <div class="floral-actions"><button type="button" class="fx-btn fx-btn--ghost" id="floral-cancel">{t.cancel}</button><button type="button" class="fx-btn fx-btn--ghost" id="floral-remove">{t.remove}</button><button type="submit" class="fx-btn">{t.save}</button></div>
+      </form>
+    </dialog>
+    <dialog id="floral-new-dialog" class="floral-dialog" aria-labelledby="floral-new-title">
+      <form id="floral-new-form"><h2 id="floral-new-title">{t.newGarden}</h2>
+        <label>{t.gardenName}<input id="floral-new-name" required maxlength="60" /></label>
+        <div class="floral-actions"><button type="button" class="fx-btn fx-btn--ghost" id="floral-new-cancel">{t.cancel}</button><button type="submit" class="fx-btn">{t.create}</button></div>
+      </form>
+    </dialog>
+    <dialog id="floral-share-dialog" class="floral-dialog" aria-labelledby="floral-share-title">
+      <h2 id="floral-share-title">{t.share}</h2><p>{t.shareHint}</p>
+      <p id="floral-local-link" class="floral-warning" hidden>{t.localLink}</p>
+      <label>{t.share}<textarea id="floral-share-url" readonly rows="3"></textarea></label>
+      <p id="floral-copy-status" role="status"></p>
+      <div class="floral-actions"><button type="button" class="fx-btn" id="floral-copy">{t.copyLink}</button><button type="button" class="fx-btn fx-btn--ghost" id="floral-share-close">{t.close}</button></div>
+    </dialog>
+    <dialog id="floral-confirm" class="floral-dialog" aria-labelledby="floral-confirm-title">
+      <h2 id="floral-confirm-title">{t.resetTitle}</h2><p>{t.resetHint}</p><div class="floral-actions"><button type="button" id="floral-keep" class="fx-btn fx-btn--ghost">{t.cancel}</button><button type="button" id="floral-clear" class="fx-btn">{t.confirm}</button></div>
+    </dialog>
+  </div>
+</Site>
+<script>
+  import '../../../lib/florais-ui';
+</script>

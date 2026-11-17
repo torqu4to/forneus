@@ -1,0 +1,52 @@
+[
+  {
+    "name": "bg_loading_13",
+    "source_relative": "StreamingAssets/patches/fa64162300853eba.png.j",
+    "path_id": "-2571973096171412516",
+    "source_image": "5c1a4403a818/-2571973096171412516_Sprite_bg_loading_13.png",
+    "source_sha256": "a871507ac95b867226665355b3b5b14e41a1f6f1d9b84e8c6d329c61541dce3e",
+    "output": "world-tree.webp",
+    "width": 2044,
+    "height": 1363
+  },
+  {
+    "name": "bg_plantingmain",
+    "source_relative": "StreamingAssets/patches/04709da71c620286.png.j",
+    "path_id": "2176248162384067240",
+    "source_image": "ff05b7a7de1f/2176248162384067240_Sprite_bg_plantingmain.png",
+    "source_sha256": "0712e46e4be9e056c540a13cacb1c2f3eec3466779c8b5f10ee5bc90b9b4544b",
+    "output": "garden.webp",
+    "width": 1943,
+    "height": 1000
+  },
+  {
+    "name": "bg_springtraveldiary",
+    "source_relative": "StreamingAssets/patches/12fe43b19fde7363.png.j",
+    "path_id": "6586890957194490860",
+    "source_image": "001a21a467ef/6586890957194490860_Sprite_bg_springtraveldiary.png",
+    "source_sha256": "55d94384df7ffd2681fb4efedb6a9cb83619c3cf00caa5fcbb52e554337fdd6b",
+    "output": "journey.webp",
+    "width": 1302,
+    "height": 487
+  },
+  {
+    "name": "system_icon_flower",
+    "source_relative": "StreamingAssets/patches/aebad011228933f5.asset.j",
+    "path_id": "6226563943576791975",
+    "source_image": "ac8bc8fd1b49/6226563943576791975_Sprite_system_icon_flower.png",
+    "source_sha256": "9db51d7daf31f48f10475c2ef31dfdca1a038d6b1063d3606b251c3c37157b57",
+    "output": "flower-icon.webp",
+    "width": 100,
+    "height": 100
+  },
+  {
+    "name": "system_icon_pet",
+    "source_relative": "StreamingAssets/patches/aebad011228933f5.asset.j",
+    "path_id": "2151772039418309543",
+    "source_image": "ac8bc8fd1b49/2151772039418309543_Sprite_system_icon_pet.png",
+    "source_sha256": "35e158155c74c25e0cc7740492ee79abe20ac8d6718e393033efd71fba94dd47",
+    "output": "pet-icon.webp",
+    "width": 98,
+    "height": 112
+  }
+]

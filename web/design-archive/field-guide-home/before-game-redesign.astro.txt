@@ -1,0 +1,330 @@
+---
+import Site from '../../layouts/Site.astro';
+import { tools } from '../../data/tools';
+import { solve } from '../../lib/solver/index.ts';
+import { EXAMPLE_TEAM, EXAMPLE_BUDGET } from '../../data/example-team';
+import { groupRows } from '../../lib/rows.ts';
+import { useTranslations, formatNumber, LOCALES, type Locale } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const n = (value: number) => formatNumber(value, locale);
+const copy = locale === 'pt' ? {
+  edition: 'Guia de campo para Tree of Savior Neo',
+  heroTitle: 'Planeje sua aventura.',
+  heroText: 'Organize seus companheiros, descubra onde investir e leve uma estratégia clara para o jogo.',
+  primary: 'Planejar meus amigatos',
+  secondary: 'Explorar ferramentas',
+  folio: 'Seu próximo passo começa aqui',
+  folioNote: 'Ferramentas gratuitas, feitas para comparar escolhas com os dados do jogo.',
+  proof: 'Cálculo exato. Decisão sua.',
+  proofText: 'O Forneus encontra a distribuição mais forte para os recursos que você informar. O exemplo abaixo é calculado pelo mesmo otimizador que você vai usar.',
+  sampleTitle: 'Experimente outro orçamento',
+  sampleText: 'A equipe é a mesma; mude apenas a gelatina de peixe disponível e veja como o resultado responde.',
+  budget: 'Gelatina disponível',
+  power: 'Poder efetivo',
+  level: 'Nível',
+  fullResult: 'Calcular com minha equipe',
+  chaptersTitle: 'Escolha o seu caminho',
+  chaptersText: 'Cada ferramenta acompanha uma parte diferente da sua jornada.',
+  ready: 'Abrir ferramenta',
+  later: 'Em preparação',
+  wayTitle: 'Da mochila ao melhor plano',
+  wayText: 'Você traz os dados da sua equipe. O Forneus organiza as possibilidades para você decidir com confiança.',
+  steps: [
+    ['Sua equipe', 'Informe os companheiros e os níveis que você já tem.'],
+    ['Seus recursos', 'Adicione o que está disponível para investir.'],
+    ['Seu plano', 'Confira a distribuição recomendada antes de evoluir no jogo.'],
+  ],
+  endTitle: 'Próxima jornada?',
+  endText: 'Abra uma ferramenta e transforme seus recursos em uma escolha clara.',
+  endAction: 'Começar com amigatos',
+} : {
+  edition: 'A field guide for Tree of Savior Neo',
+  heroTitle: 'Plan your adventure.',
+  heroText: 'Organize your companions, find where to invest, and take a clear strategy into the game.',
+  primary: 'Plan my catpals',
+  secondary: 'Explore tools',
+  folio: 'Your next move starts here',
+  folioNote: 'Free tools to compare choices using game data.',
+  proof: 'Exact calculation. Your decision.',
+  proofText: 'Forneus finds the strongest allocation for the resources you enter. The example below is calculated by the same optimizer you will use.',
+  sampleTitle: 'Try a different budget',
+  sampleText: 'The team stays the same. Change only the available Fish Jelly to see how the result responds.',
+  budget: 'Available Fish Jelly',
+  power: 'Effective power',
+  level: 'Level',
+  fullResult: 'Calculate for my team',
+  chaptersTitle: 'Choose your path',
+  chaptersText: 'Each tool supports a different part of your journey.',
+  ready: 'Open tool',
+  later: 'In preparation',
+  wayTitle: 'From inventory to plan',
+  wayText: 'Bring your team data. Forneus sorts through the possibilities so you can decide with confidence.',
+  steps: [
+    ['Your team', 'Enter the companions and levels you already have.'],
+    ['Your resources', 'Add what you can invest.'],
+    ['Your plan', 'Review the recommended allocation before upgrading in game.'],
+  ],
+  endTitle: 'Your next journey?',
+  endText: 'Open a tool and turn your resources into a clear choice.',
+  endAction: 'Start with catpals',
+};
+
+const budgets = [Math.round(EXAMPLE_BUDGET * 0.5), EXAMPLE_BUDGET, Math.round(EXAMPLE_BUDGET * 1.5)];
+const scenarios = budgets.map((budget) => {
+  const result = solve(EXAMPLE_TEAM, budget);
+  return {
+    budget,
+    power: result.totals.effective_power,
+    rows: groupRows(result.rows, result.meta.display_order).slice(0, 5),
+  };
+});
+const sampleTeamSize = Object.values(EXAMPLE_TEAM).reduce((sum, count) => sum + count, 0);
+const samplePower = scenarios[1].power;
+const portraits: Record<string, string> = {
+  amigatos: '/assets/characters/catpal.png',
+  florais: '/assets/characters/floral-strawberry.png',
+  fantasmas: '/assets/characters/phantom-forest.png',
+};
+const orderedTools = ['amigatos', 'florais', 'fantasmas'].map((name) => tools.find((tool) => tool.name === name)!);
+---
+<Site locale={locale} title={locale === 'pt' ? 'Guia de campo' : 'Field guide'} description={t('site.tagline')}>
+  <div class="landing">
+    <section class="cover" aria-labelledby="cover-title">
+      <div class="cover__world" aria-hidden="true"></div>
+      <div class="cover__sheet">
+        <div class="cover__top"><span>FORNEUS</span></div>
+        <div class="cover__body">
+          <div class="cover__words">
+            <h1 id="cover-title">{copy.heroTitle}</h1>
+            <p>{copy.heroText}</p>
+            <a class="paper-action" href={`/${locale}/ferramentas/amigatos/`}>{copy.primary}<span aria-hidden="true">↗</span></a>
+            <a class="cover__explore" href="#ferramentas">{copy.secondary} ↓</a>
+          </div>
+          <img class="cover__cat" src="/assets/characters/catpal.png" width="850" height="870" alt="" fetchpriority="high" />
+        </div>
+        <div class="cover__bottom"><span>{copy.edition}</span><span>forneus.wiki</span></div>
+      </div>
+    </section>
+
+    <section class="proof" aria-labelledby="proof-title">
+      <div class="proof__intro">
+        <div class="proof__sticky">
+          <h2 id="proof-title">{copy.proof}</h2>
+          <p>{copy.proofText}</p>
+          <div class="proof__aside">
+            <div class="proof__example"><strong>{sampleTeamSize}</strong><small>{locale === 'pt' ? 'amigatos no exemplo' : 'catpals in this example'}</small><p>{copy.folioNote}</p></div>
+            <img src="/assets/characters/catpal-chair.png" width="320" height="360" alt="" loading="lazy" />
+          </div>
+        </div>
+      </div>
+      <div class="sample" data-sample data-ui>
+        <div class="sample__head">
+          <h3>{copy.sampleTitle}</h3>
+          <p>{copy.sampleText}</p>
+        </div>
+        <div class="sample__choices" role="group" aria-label={copy.budget}>
+          {scenarios.map((scenario, index) => (
+            <button type="button" class:list={['sample__choice', { 'is-current': index === 1 }]} aria-pressed={index === 1 ? 'true' : 'false'} data-sample-choice={index}>{n(scenario.budget)}</button>
+          ))}
+        </div>
+        {scenarios.map((scenario, index) => (
+          <div class="sample__result" data-sample-result={index} hidden={index !== 1} aria-live="polite">
+            <div class="sample__total"><span>{copy.power}</span><strong>{n(scenario.power)}</strong></div>
+            <div class="sample__meter" aria-hidden="true"><span style={`--meter:${scenario.power / scenarios[2].power}`}></span></div>
+            <table>
+              <thead><tr><th scope="col">{locale === 'pt' ? 'Amigato' : 'Catpal'}</th><th scope="col">{copy.level}</th><th scope="col">{copy.power}</th></tr></thead>
+              <tbody>{scenario.rows.map((row) => <tr><td>{row.display_name}{row.count > 1 && <small> ×{row.count}</small>}</td><td>{row.level}</td><td>{n(row.effective_power)}</td></tr>)}</tbody>
+            </table>
+          </div>
+        ))}
+        <a class="sample__link" href={`/${locale}/ferramentas/amigatos/`}>{copy.fullResult}<span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="chapters" id="ferramentas" aria-labelledby="chapters-title">
+      <div class="chapters__heading"><h2 id="chapters-title">{copy.chaptersTitle}</h2><p>{copy.chaptersText}</p></div>
+      <div class="chapters__list">
+        {orderedTools.map((tool) => (
+          <article class:list={['chapter', `chapter--${tool.name}`]}>
+            <div class="chapter__art"><img src={portraits[tool.name]} width="800" height="800" alt="" loading="lazy" /></div>
+            <div class="chapter__content"><h3>{t(tool.navKey)}</h3><div class="chapter__status">{tool.status === 'available' ? t('tools.available') : copy.later}</div><p>{t(tool.descriptionKey)}</p>{tool.status === 'available' ? <a href={`/${locale}/ferramentas/${tool.name}/`}>{copy.ready}<span aria-hidden="true">↗</span></a> : <span class="chapter__pending">{copy.later}</span>}</div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="way" aria-labelledby="way-title">
+      <div class="way__copy"><h2 id="way-title">{copy.wayTitle}</h2><p>{copy.wayText}</p>
+        <div class="way__example" data-ui aria-label={locale === 'pt' ? `Exemplo: ${sampleTeamSize} amigatos e ${n(EXAMPLE_BUDGET)} gelatinas geram ${n(samplePower)} de poder efetivo` : `Example: ${sampleTeamSize} catpals and ${n(EXAMPLE_BUDGET)} Fish Jelly yield ${n(samplePower)} effective power`}>
+          <div class="way__example-item"><img src="/assets/characters/catpal.png" width="96" height="105" alt="" loading="lazy" /><span><strong>{sampleTeamSize}</strong><small>{locale === 'pt' ? 'amigatos' : 'catpals'}</small></span></div>
+          <span class="way__operator" aria-hidden="true">+</span>
+          <div class="way__example-item"><span class="way__jelly" aria-hidden="true"></span><span><strong>{n(EXAMPLE_BUDGET)}</strong><small>{locale === 'pt' ? 'gelatina' : 'Fish Jelly'}</small></span></div>
+          <span class="way__operator" aria-hidden="true">→</span>
+          <div class="way__example-item way__example-item--result"><span><strong>{n(samplePower)}</strong><small>{copy.power.toLowerCase()}</small></span></div>
+        </div>
+      </div>
+      <div class="way__slip">{copy.steps.map(([title, description]) => <div class="way__step"><h3>{title}</h3><p>{description}</p></div>)}<div class="way__slip-end">{copy.folio}</div></div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title"><div class="closing__art"><img src="/assets/characters/floral-citrus.png" width="800" height="800" alt="" loading="lazy" /></div><div class="closing__panel"><h2 id="closing-title">{copy.endTitle}</h2><p>{copy.endText}</p><a class="paper-action" href={`/${locale}/ferramentas/amigatos/`}>{copy.endAction}<span aria-hidden="true">↗</span></a></div><div class="closing__side" aria-hidden="true"></div></section>
+  </div>
+</Site>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-sample]').forEach((sample) => {
+    const buttons = [...sample.querySelectorAll<HTMLButtonElement>('[data-sample-choice]')];
+    const results = [...sample.querySelectorAll<HTMLElement>('[data-sample-result]')];
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      const selected = button.dataset.sampleChoice;
+      buttons.forEach((choice) => {
+        const current = choice.dataset.sampleChoice === selected;
+        choice.classList.toggle('is-current', current);
+        choice.setAttribute('aria-pressed', String(current));
+      });
+      results.forEach((result) => { result.hidden = result.dataset.sampleResult !== selected; });
+    }));
+  });
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const reveals = document.querySelectorAll<HTMLElement>('.cover__top, .cover h1, .cover__words p, .cover .paper-action, .proof h2, .proof__intro>div>p, .proof__aside, .sample__head, .sample__choices, .chapters__heading, .chapter, .way__copy, .way__example, .way__slip, .closing__panel');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px 90px 0px', threshold: 0.04 });
+    reveals.forEach((element) => { element.classList.add('reveal-ready'); observer.observe(element); });
+  }
+</script>
+
+<style>
+  .landing { --paper:#e9e4d5; --paper-deep:#d8d2bd; --ink:#173d38; --forest:#102923; --sea:#6dd4b6; --gold:#d6b871; color:var(--ink); font-family:var(--font-body); }
+  .landing h1,.landing h2,.landing h3 { color:inherit; font-family:Georgia,'Times New Roman',serif; font-weight:600; letter-spacing:-.045em; text-transform:none; }
+  .landing a { text-decoration:none; }
+  .cover { min-height:calc(100svh - var(--nav-h)); padding:clamp(18px,3vw,42px); display:grid; place-items:center; position:relative; overflow:hidden; background:var(--forest); }
+  .cover__world { position:absolute; inset:-2%; background:url('/assets/hero-forneus.jpg') center/cover no-repeat; filter:brightness(.42) saturate(.75); }
+  .cover__sheet { position:relative; width:min(1040px,100%); min-height:min(620px,82svh); display:flex; flex-direction:column; padding:clamp(22px,3vw,44px); background:var(--paper); clip-path:polygon(0 0,100% 0,100% calc(100% - 18px),98% 100%,96% calc(100% - 18px),94% 100%,92% calc(100% - 18px),90% 100%,88% calc(100% - 18px),86% 100%,84% calc(100% - 18px),82% 100%,80% calc(100% - 18px),78% 100%,76% calc(100% - 18px),74% 100%,72% calc(100% - 18px),70% 100%,68% calc(100% - 18px),66% 100%,64% calc(100% - 18px),62% 100%,60% calc(100% - 18px),58% 100%,56% calc(100% - 18px),54% 100%,52% calc(100% - 18px),50% 100%,48% calc(100% - 18px),46% 100%,44% calc(100% - 18px),42% 100%,40% calc(100% - 18px),38% 100%,36% calc(100% - 18px),34% 100%,32% calc(100% - 18px),30% 100%,28% calc(100% - 18px),26% 100%,24% calc(100% - 18px),22% 100%,20% calc(100% - 18px),18% 100%,16% calc(100% - 18px),14% 100%,12% calc(100% - 18px),10% 100%,8% calc(100% - 18px),6% 100%,4% calc(100% - 18px),2% 100%,0 calc(100% - 18px)); }
+  .cover__top,.cover__bottom { display:flex; justify-content:space-between; gap:20px; font-size:14px; font-weight:700; }
+  .cover__top span:first-child { font-family:var(--font-display); letter-spacing:.06em; font-size:20px; }
+  .cover__body { position:relative; flex:1; display:flex; align-items:center; }
+  .cover__words { position:relative; z-index:1; width:64%; padding:42px 0 58px; }
+  .cover h1 { max-width:14ch; font-size:clamp(54px,6.4vw,90px); line-height:.93; color:var(--ink); text-wrap:balance; }
+  .cover__words p { max-width:34ch; margin:30px 0; font-size:clamp(18px,1.7vw,22px); line-height:1.45; }
+  .paper-action { min-height:54px; display:inline-flex; align-items:center; justify-content:space-between; gap:34px; padding:14px 20px; background:var(--ink); color:var(--paper)!important; font-size:16px; font-weight:700; transition:transform .2s ease,background .2s ease; }
+  .paper-action:hover { background:#265e53; transform:translateY(-2px); }
+  .paper-action span { font-size:24px; line-height:1; }
+  .cover__explore { display:block; width:max-content; margin-top:24px; color:var(--ink)!important; font-size:15px; font-weight:700; }
+  .cover__explore:hover { text-decoration:underline; }
+  .cover__cat { position:absolute; width:min(51%,490px); height:auto; right:-5%; bottom:-3%; object-fit:contain; }
+  .cover__bottom { margin-top:auto; padding-bottom:22px; color:#48635a; }
+  .proof { display:grid; grid-template-columns:1fr 1fr; background:var(--paper); }
+  .proof__intro { padding:clamp(42px,5vw,76px); background:var(--paper-deep); }
+  .proof__sticky { position:sticky; top:96px; }
+  .proof h2,.chapters h2,.way h2,.closing h2 { font-size:clamp(42px,5vw,72px); line-height:1.02; }
+  .proof__intro p,.chapters__heading p,.way__copy p,.closing__panel p { max-width:43ch; margin-top:24px; font-size:18px; line-height:1.6; }
+  .proof__aside { display:flex; align-items:end; justify-content:space-between; gap:8px; max-width:570px; margin-top:38px; color:#37584e; }
+  .proof__example { flex:1; min-width:0; padding-bottom:12px; }
+  .proof__example strong { display:block; color:var(--ink); font-family:Georgia,'Times New Roman',serif; font-size:clamp(48px,5vw,70px); font-weight:600; letter-spacing:-.06em; line-height:.95; white-space:nowrap; }
+  .proof__example small { display:block; margin-top:10px; font-family:var(--font-body); font-size:18px; font-weight:500; letter-spacing:0; }
+  .proof__example p { max-width:26ch; margin-top:25px; font-size:14px; line-height:1.5; }
+  .proof__aside img { width:clamp(180px,19vw,290px); height:auto; object-fit:contain; }
+  .sample { padding:clamp(36px,5vw,66px); background:var(--forest); color:var(--paper); }
+  .sample h3 { margin-top:14px; color:var(--paper); font-size:clamp(30px,3vw,44px); line-height:1.1; }
+  .sample__head p { max-width:40ch; margin-top:12px; font-size:16px; line-height:1.55; color:#d4e5da; }
+  .sample__choices { display:flex; flex-wrap:wrap; gap:8px; margin:32px 0 22px; }
+  .sample__choice { min-height:46px; padding:10px 16px; border:0; background:#26483a; color:var(--paper); font:600 16px var(--font-body); cursor:pointer; transition:background-color .18s ease,color .18s ease,transform .14s ease; }
+  .sample__choice:hover,.sample__choice.is-current { background:var(--paper); color:var(--forest); }
+  .sample__choice:active { transform:scale(.96); }
+  .sample__total { display:flex; justify-content:space-between; align-items:end; gap:16px; padding:20px 0; color:var(--sea); }
+  .sample__total span { font-size:16px; }
+  .sample__total strong { font-size:clamp(27px,3vw,42px); line-height:1; font-variant-numeric:tabular-nums; }
+  .sample__meter { height:6px; margin:1px 0 18px; overflow:hidden; background:#26483a; }
+  .sample__meter span { display:block; width:100%; height:100%; background:var(--sea); transform:scaleX(var(--meter)); transform-origin:left center; }
+  .sample table { width:100%; border-collapse:collapse; font-size:15px; }
+  .sample th { padding:10px 4px; color:#d4e5da; font-weight:500; text-align:left; }
+  .sample td { padding:12px 4px; border-top:1px solid #48675c; }
+  .sample th:not(:first-child),.sample td:not(:first-child) { text-align:right; }
+  .sample td:last-child { color:var(--sea); font-variant-numeric:tabular-nums; }
+  .sample small { color:#d4e5da; }
+  .sample__link { display:flex; justify-content:space-between; gap:16px; margin-top:26px; padding:15px 0; color:var(--sea)!important; border-top:2px solid currentColor; font-weight:700; }
+  .sample__link span { font-size:22px; }
+  .chapters { padding:clamp(58px,7vw,96px) clamp(24px,6vw,96px); background:#f0ecdf; }
+  .chapters__heading { display:flex; justify-content:space-between; align-items:end; gap:40px; margin-bottom:48px; }
+  .chapters__heading p { margin:0; }
+  .chapters__list { display:grid; gap:14px; }
+  .chapter { display:grid; grid-template-columns:minmax(210px,35%) 1fr; min-height:260px; background:var(--paper-deep); overflow:hidden; }
+  .chapter:nth-child(2) { background:#cfddd0; }
+  .chapter:nth-child(3) { background:#d0d9d7; }
+  .chapter__art { display:grid; place-items:center; overflow:hidden; background:var(--forest); }
+  .chapter:nth-child(2) .chapter__art { background:#315b4b; }
+  .chapter:nth-child(3) .chapter__art { background:#416669; }
+  .chapter__art img { width:min(86%,290px); height:250px; object-fit:contain; transition:transform .55s cubic-bezier(.22,1,.36,1); }
+  .chapter:hover .chapter__art img,.chapter:focus-within .chapter__art img { transform:scale(1.09) rotate(-2deg); }
+  .chapter__content { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding:clamp(26px,4vw,58px); }
+  .chapter__status { font-size:14px; font-weight:700; }
+  .chapter h3 { margin:0 0 12px; font-size:clamp(38px,5vw,64px); line-height:1; }
+  .chapter p { max-width:48ch; font-size:17px; line-height:1.5; }
+  .chapter a,.chapter__pending { display:inline-flex; gap:40px; margin-top:25px; color:var(--ink); font-size:16px; font-weight:700; }
+  .chapter a span { transition:transform .18s ease; }
+  .chapter a:hover span,.chapter a:focus-visible span { transform:translate(3px,-3px); }
+  .chapter a:hover { text-decoration:underline; }
+  .chapter__pending { color:#406358; }
+  .way { display:grid; grid-template-columns:1fr 1fr; gap:clamp(35px,7vw,110px); align-items:center; padding:clamp(60px,7vw,96px) clamp(24px,7vw,110px); background:var(--forest); color:var(--paper); }
+  .way h2 { color:var(--paper); }
+  .way__copy p { color:#d1e3d7; }
+  .way__example { display:flex; align-items:center; flex-wrap:wrap; gap:10px 16px; max-width:600px; margin-top:46px; padding-top:25px; border-top:2px solid #315b4b; }
+  .way__example-item { display:flex; align-items:center; gap:9px; }
+  .way__example-item img { width:58px; height:64px; object-fit:contain; }
+  .way__example-item span:not(.way__jelly) { display:flex; flex-direction:column; }
+  .way__example-item strong { color:var(--paper); font-size:clamp(20px,2.2vw,27px); font-variant-numeric:tabular-nums; line-height:1.1; }
+  .way__example-item small { margin-top:4px; color:#d1e3d7; font-size:13px; }
+  .way__jelly { display:block; width:48px; height:48px; flex:none; background:url('/assets/ui/resource-icons.png') 100% center/300% 100% no-repeat; }
+  .way__operator { color:var(--sea); font-size:25px; font-weight:700; }
+  .way__example-item--result { flex-basis:100%; margin-top:12px; padding:16px 0 0 18px; border-left:4px solid var(--sea); }
+  .way__example-item--result strong { color:var(--sea); font-size:clamp(32px,3vw,44px); }
+  .way__slip { padding:clamp(26px,4vw,48px); background:var(--paper); color:var(--ink); clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),97% 100%,94% calc(100% - 14px),91% 100%,88% calc(100% - 14px),85% 100%,82% calc(100% - 14px),79% 100%,76% calc(100% - 14px),73% 100%,70% calc(100% - 14px),67% 100%,64% calc(100% - 14px),61% 100%,58% calc(100% - 14px),55% 100%,52% calc(100% - 14px),49% 100%,46% calc(100% - 14px),43% 100%,40% calc(100% - 14px),37% 100%,34% calc(100% - 14px),31% 100%,28% calc(100% - 14px),25% 100%,22% calc(100% - 14px),19% 100%,16% calc(100% - 14px),13% 100%,10% calc(100% - 14px),7% 100%,4% calc(100% - 14px),0 100%); }
+  .way__slip-top { display:flex; justify-content:space-between; gap:20px; font-weight:700; }
+  .way__step { padding:27px 0; border-bottom:2px dotted #8ca299; }
+  .way__step h3 { font-size:29px; }
+  .way__step p { margin-top:6px; font-size:16px; line-height:1.5; }
+  .way__slip-end { margin:25px -16px 0; padding:16px; background:var(--ink); color:var(--paper); font-size:16px; font-weight:700; text-align:center; }
+  .closing { display:grid; grid-template-columns:minmax(260px,.8fr) minmax(0,1.8fr); gap:12px; padding:48px 0; background:var(--paper-deep); }
+  .closing__art,.closing__side { background:#315b4b; overflow:hidden; }
+  .closing__art { display:grid; place-items:center; }
+  .closing__art img { width:115%; max-width:none; height:340px; object-fit:contain; }
+  .closing__panel { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; min-height:340px; padding:clamp(30px,5vw,70px); background:var(--ink); color:var(--paper); }
+  .closing__side { display:none; }
+  .closing h2 { color:var(--paper); }
+  .closing__panel p { margin:16px 0 24px; }
+  .closing .paper-action { background:var(--paper); color:var(--ink)!important; }
+  .closing .paper-action:hover { background:#fff; }
+  .reveal-ready { opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1); }
+  .reveal-ready.is-visible { opacity:1; transform:none; }
+  .chapter:nth-child(2).reveal-ready { transition-delay:80ms; }
+  .chapter:nth-child(3).reveal-ready { transition-delay:160ms; }
+  .chapter { transition:transform .25s cubic-bezier(.22,1,.36,1); }
+  .chapter:hover,.chapter:focus-within { transform:translateY(-3px); }
+  .sample__result:not([hidden]) .sample__meter span { animation:meter-in .65s cubic-bezier(.22,1,.36,1) both; }
+  .sample__result:not([hidden]) .sample__total strong { animation:result-in .45s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes meter-in { from { transform:scaleX(0); } to { transform:scaleX(var(--meter)); } }
+  @keyframes result-in { from { opacity:.3; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion:no-preference) {
+    .cover__world { animation:world-drift 18s ease-in-out infinite alternate; }
+    .cover__cat { animation:cat-drift 5s ease-in-out infinite; }
+    .closing__art img { animation:closing-drift 7s ease-in-out infinite alternate; }
+  }
+  @keyframes world-drift { from { transform:scale(1); } to { transform:scale(1.045) translateY(-6px); } }
+  @keyframes cat-drift { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+  @keyframes closing-drift { from { transform:translateY(7px) rotate(-2deg); } to { transform:translateY(-7px) rotate(2deg); } }
+  @media (max-width:900px) { .cover__sheet { min-height:610px; } .cover__words { width:62%; } .proof { grid-template-columns:1fr; } .proof__sticky { position:static; } .proof__aside { max-width:620px; } .proof__aside img { width:190px; } .chapters__heading { display:block; } .chapters__heading p { margin-top:20px; } .way { grid-template-columns:1fr; } .closing { grid-template-columns:1fr 2fr; } }
+  @media (max-width:600px) { .cover { padding:12px; min-height:690px; align-items:start; } .cover__sheet { min-height:660px; padding:22px; } .cover__body { align-items:flex-start; } .cover__words { width:100%; padding:34px 0 210px; } .cover h1 { font-size:clamp(48px,13vw,72px); max-width:10ch; } .cover__words p { max-width:29ch; margin:18px 0 22px; font-size:17px; } .cover__cat { width:60%; right:-8%; bottom:0; max-height:290px; } .cover__bottom { font-size:13px; } .proof__intro,.sample { padding:40px 24px; } .proof__aside { margin-top:28px; } .proof__aside img { width:118px; } .proof__example strong { font-size:45px; } .proof__example small { font-size:15px; } .proof__example p { margin-top:14px; font-size:13px; } .sample__choices { flex-wrap:nowrap; } .sample__choice { flex:1; padding-inline:5px; font-size:13px; } .sample table { font-size:13px; } .chapters { padding:56px 16px; } .chapter { grid-template-columns:1fr; } .chapter__art { height:210px; } .chapter__art img { height:230px; } .chapter__content { padding:28px; } .way { padding:60px 16px; } .way__example { display:grid; grid-template-columns:1fr 1fr; gap:18px 8px; margin-top:30px; } .way__example-item { gap:5px; } .way__example-item img { width:36px; height:42px; } .way__jelly { width:36px; height:36px; } .way__operator { display:none; } .way__example-item strong { font-size:20px; } .way__example-item--result { grid-column:1 / -1; margin:0; } .closing { grid-template-columns:1fr; padding:0; } .closing__art { height:150px; } .closing__panel { min-height:310px; } }
+  @media (max-width:600px) { .closing__art img { height:190px; } }
+  @media (prefers-reduced-motion:reduce) { .landing * { scroll-behavior:auto!important; transition:none!important; animation:none!important; } .reveal-ready { opacity:1; transform:none; } }
+</style>

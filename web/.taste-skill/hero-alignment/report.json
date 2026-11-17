@@ -1,0 +1,1900 @@
+{
+ "url": "http://localhost:4323/pt/",
+ "at": "2026-10-16T18:49:06.020Z",
+ "allow": [
+  "palette-cream",
+  "still-page"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.86,
+    0.68,
+    0.58,
+    0.68
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 0,
+    "transitions": 3,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2893,
+     "screens": 3.2,
+     "words": 243,
+     "img": 17,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "world-tree.webp",
+      "world-tree.webp",
+      "journey.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Sua equipe, seu plano.",
+     "words": 4,
+     "chars": 22,
+     "lines": 2,
+     "size": 88,
+     "vw": 6.1,
+     "font": "Bree Serif",
+     "weight": 400,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.32,
+     "top": 175,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Sua equipe, seu plano.",
+     "words": 4,
+     "lines": 2,
+     "size": 88,
+     "font": "Bree Serif"
+    },
+    "headings": [
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.03,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.1,
+      "top": 25,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Sua equipe, seu plano.",
+      "words": 4,
+      "chars": 22,
+      "lines": 2,
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.32,
+      "top": 175,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Prepare sua equipe",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.25,
+      "top": 764,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Quem merece o próximo nível?",
+      "words": 5,
+      "chars": 28,
+      "lines": 2,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.25,
+      "top": 963,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Teste antes de investir",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 1439,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 1613,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano acompanha você.",
+      "words": 4,
+      "chars": 25,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 2262,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ferramentas",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.23,
+      "top": 2528,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.16,
+      "top": 2569,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "Bree Serif",
+       "share": 0.09,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      14,
+      16,
+      18,
+      32,
+      44,
+      88
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.3
+     },
+     "measureChars": 53,
+     "max": {
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bree Serif",
+      "text": "Sua equipe, seu plano."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#e9ecd9",
+     "bodyBgHsl": {
+      "h": 69,
+      "s": 0.33,
+      "l": 0.89
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f6efd9",
+       "top": 82,
+       "hsl": {
+        "h": 46,
+        "s": 0.62,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#e9ecd9",
+       "top": 82,
+       "hsl": {
+        "h": 69,
+        "s": 0.33,
+        "l": 0.89
+       }
+      },
+      {
+       "color": "#3f6249",
+       "top": 2468,
+       "hsl": {
+        "h": 137,
+        "s": 0.22,
+        "l": 0.32
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#443e2d",
+       "share": 0.45
+      },
+      {
+       "color": "#615b45",
+       "share": 0.22
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.13
+      },
+      {
+       "color": "#fff9e9",
+       "share": 0.06
+      },
+      {
+       "color": "#f1eee2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#3f6249",
+      "hsl": {
+       "h": 137,
+       "s": 0.22,
+       "l": 0.32
+      },
+      "fg": "#fff9e9"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 5,
+     "radius": 5,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus Amigatos",
+      "Amigatos",
+      "Florais",
+      "Fantasmas"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 2,
+     "roundedMedia": 1,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.37
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 82,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "bree serif"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 1024,
+   "height": 768,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.93,
+    0.66,
+    0.57,
+    0.73
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 0,
+    "transitions": 3,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1024,
+     "h": 768
+    },
+    "page": {
+     "height": 2877,
+     "screens": 3.7,
+     "words": 243,
+     "img": 17,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "world-tree.webp",
+      "world-tree.webp",
+      "journey.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Sua equipe, seu plano.",
+     "words": 4,
+     "chars": 22,
+     "lines": 2,
+     "size": 65.5,
+     "vw": 6.4,
+     "font": "Bree Serif",
+     "weight": 400,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.37,
+     "top": 198,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Sua equipe, seu plano.",
+     "words": 4,
+     "lines": 2,
+     "size": 65.5,
+     "font": "Bree Serif"
+    },
+    "headings": [
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 3.1,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.03,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.14,
+      "top": 25,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Sua equipe, seu plano.",
+      "words": 4,
+      "chars": 22,
+      "lines": 2,
+      "size": 65.5,
+      "vw": 6.4,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 198,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Prepare sua equipe",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 34.8,
+      "vw": 3.4,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 764,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Quem merece o próximo nível?",
+      "words": 5,
+      "chars": 28,
+      "lines": 2,
+      "size": 32,
+      "vw": 3.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 953,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Teste antes de investir",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 34.8,
+      "vw": 3.4,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 1423,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 4.3,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.36,
+      "top": 1597,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano acompanha você.",
+      "words": 4,
+      "chars": 25,
+      "lines": 1,
+      "size": 32,
+      "vw": 3.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 2246,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ferramentas",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 32,
+      "vw": 3.1,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.27,
+      "top": 2512,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 4.3,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 2553,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "Bree Serif",
+       "share": 0.09,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      14,
+      16,
+      18,
+      32,
+      35,
+      44,
+      66
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.3
+     },
+     "measureChars": 53,
+     "max": {
+      "size": 65.5,
+      "vw": 6.4,
+      "font": "Bree Serif",
+      "text": "Sua equipe, seu plano."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#e9ecd9",
+     "bodyBgHsl": {
+      "h": 69,
+      "s": 0.33,
+      "l": 0.89
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f6efd9",
+       "top": 82,
+       "hsl": {
+        "h": 46,
+        "s": 0.62,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#e9ecd9",
+       "top": 82,
+       "hsl": {
+        "h": 69,
+        "s": 0.33,
+        "l": 0.89
+       }
+      },
+      {
+       "color": "#3f6249",
+       "top": 2452,
+       "hsl": {
+        "h": 137,
+        "s": 0.22,
+        "l": 0.32
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#443e2d",
+       "share": 0.45
+      },
+      {
+       "color": "#615b45",
+       "share": 0.22
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.13
+      },
+      {
+       "color": "#fff9e9",
+       "share": 0.06
+      },
+      {
+       "color": "#f1eee2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#3f6249",
+      "hsl": {
+       "h": 137,
+       "s": 0.22,
+       "l": 0.32
+      },
+      "fg": "#fff9e9"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 2,
+     "radius": 5,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus Amigatos"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 2,
+     "roundedMedia": 1,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.43
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 82,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "bree serif"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.87,
+    0.57,
+    0.73
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 0,
+    "transitions": 3,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 2881,
+     "screens": 2.8,
+     "words": 238,
+     "img": 17,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "world-tree.webp",
+      "world-tree.webp",
+      "journey.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Sua equipe, seu plano.",
+     "words": 4,
+     "chars": 22,
+     "lines": 2,
+     "size": 49.2,
+     "vw": 6.4,
+     "font": "Bree Serif",
+     "weight": 400,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.36,
+     "top": 180,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Sua equipe, seu plano.",
+     "words": 4,
+     "lines": 2,
+     "size": 49.2,
+     "font": "Bree Serif"
+    },
+    "headings": [
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.03,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 25,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Sua equipe, seu plano.",
+      "words": 4,
+      "chars": 22,
+      "lines": 2,
+      "size": 49.2,
+      "vw": 6.4,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 180,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Prepare sua equipe",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.34,
+      "top": 694,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Quem merece o próximo nível?",
+      "words": 5,
+      "chars": 28,
+      "lines": 2,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 870,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Teste antes de investir",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 1350,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 5.7,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.34,
+      "top": 1524,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano acompanha você.",
+      "words": 4,
+      "chars": 25,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.62,
+      "top": 2173,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ferramentas",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.29,
+      "top": 2516,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 5.7,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 2557,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "Bree Serif",
+       "share": 0.09,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      14,
+      16,
+      18,
+      32,
+      44,
+      49
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.3
+     },
+     "measureChars": 41,
+     "max": {
+      "size": 49.2,
+      "vw": 6.4,
+      "font": "Bree Serif",
+      "text": "Sua equipe, seu plano."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#e9ecd9",
+     "bodyBgHsl": {
+      "h": 69,
+      "s": 0.33,
+      "l": 0.89
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f6efd9",
+       "top": 82,
+       "hsl": {
+        "h": 46,
+        "s": 0.62,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#3f6249",
+       "top": 2456,
+       "hsl": {
+        "h": 137,
+        "s": 0.22,
+        "l": 0.32
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#443e2d",
+       "share": 0.46
+      },
+      {
+       "color": "#615b45",
+       "share": 0.21
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.14
+      },
+      {
+       "color": "#fff9e9",
+       "share": 0.07
+      },
+      {
+       "color": "#f1eee2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#3f6249",
+      "hsl": {
+       "h": 137,
+       "s": 0.22,
+       "l": 0.32
+      },
+      "fg": "#fff9e9"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 5,
+     "radius": 5,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus Amigatos",
+      "Amigatos",
+      "Florais",
+      "Fantasmas"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 1,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.29
+     },
+     {
+      "type": "img",
+      "ratio": 0.08
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 82,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "bree serif"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.97,
+    0.84,
+    0.79,
+    0.86,
+    0.91
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 0,
+    "transitions": 3,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3834,
+     "screens": 4.5,
+     "words": 238,
+     "img": 17,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "world-tree.webp",
+      "world-tree.webp",
+      "journey.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Sua equipe, seu plano.",
+     "words": 4,
+     "chars": 22,
+     "lines": 2,
+     "size": 54,
+     "vw": 13.8,
+     "font": "Bree Serif",
+     "weight": 400,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 106,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Sua equipe, seu plano.",
+     "words": 4,
+     "lines": 2,
+     "size": 54,
+     "font": "Bree Serif"
+    },
+    "headings": [
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.03,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 19,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Sua equipe, seu plano.",
+      "words": 4,
+      "chars": 22,
+      "lines": 2,
+      "size": 54,
+      "vw": 13.8,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 106,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Prepare sua equipe",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.91,
+      "top": 750,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Quem merece o próximo nível?",
+      "words": 5,
+      "chars": 28,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 960,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Teste antes de investir",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1593,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 2177,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano acompanha você.",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.59,
+      "top": 2772,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.6,
+      "top": 3160,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Ferramentas",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 3376,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "Bree Serif",
+       "share": 0.09,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      14,
+      16,
+      18,
+      28,
+      32,
+      44,
+      54
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.3
+     },
+     "measureChars": 43,
+     "max": {
+      "size": 54,
+      "vw": 13.8,
+      "font": "Bree Serif",
+      "text": "Sua equipe, seu plano."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#e9ecd9",
+     "bodyBgHsl": {
+      "h": 69,
+      "s": 0.33,
+      "l": 0.89
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f6efd9",
+       "top": 70,
+       "hsl": {
+        "h": 46,
+        "s": 0.62,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#e9ecd9",
+       "top": 446,
+       "hsl": {
+        "h": 69,
+        "s": 0.33,
+        "l": 0.89
+       }
+      },
+      {
+       "color": "#3f6249",
+       "top": 3059,
+       "hsl": {
+        "h": 137,
+        "s": 0.22,
+        "l": 0.32
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#443e2d",
+       "share": 0.46
+      },
+      {
+       "color": "#615b45",
+       "share": 0.21
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.14
+      },
+      {
+       "color": "#fff9e9",
+       "share": 0.07
+      },
+      {
+       "color": "#f1eee2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#3f6249",
+      "hsl": {
+       "h": 137,
+       "s": 0.22,
+       "l": 0.32
+      },
+      "fg": "#fff9e9"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 8,
+     "inHero": 2,
+     "radius": 5,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus Amigatos"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 1,
+     "mediaRadius": 10,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.31
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 70,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "bree serif"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "E:\\Github\\forneus\\web\\.taste-skill\\hero-alignment\\desktop-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\web\\.taste-skill\\hero-alignment\\desktop-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 1024,
+   "fold": "E:\\Github\\forneus\\web\\.taste-skill\\hero-alignment\\tablet-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\web\\.taste-skill\\hero-alignment\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "E:\\Github\\forneus\\web\\.taste-skill\\hero-alignment\\tablet-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\web\\.taste-skill\\hero-alignment\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "E:\\Github\\forneus\\web\\.taste-skill\\hero-alignment\\mobile-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\web\\.taste-skill\\hero-alignment\\mobile-page-01.jpg"
+   ]
+  }
+ ]
+}

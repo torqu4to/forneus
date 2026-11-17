@@ -1,0 +1,1203 @@
+{
+  "provenance": {
+    "url": "https://flowerguard.online/",
+    "retrievedAt": "2026-09-27T03:01:24.582Z",
+    "sha256": "b6d8396f2e67d3d40c2572d9253d085fa73370ddb9c76edcd11392ad5c992e6d",
+    "note": "Community data, not verified against the game. Names and skill labels retained as published."
+  },
+  "flowerguards": [
+    {
+      "name": "Kumquat",
+      "tier": "R1",
+      "spiritus1_physical": "Stamina",
+      "spiritus2_physical": "Strength",
+      "spiritus1_magic": "Stamina",
+      "spiritus2_magic": "Morale",
+      "primary_stat": "Block DMG RED",
+      "secondary_stat": "Blessing"
+    },
+    {
+      "name": "Lacecap",
+      "tier": "R1",
+      "spiritus1_physical": "Stamina",
+      "spiritus2_physical": "Agility",
+      "spiritus1_magic": "Stamina",
+      "spiritus2_magic": "Wisdom",
+      "primary_stat": "Haste",
+      "secondary_stat": "PvP HP"
+    },
+    {
+      "name": "Lacordini",
+      "tier": "R1",
+      "spiritus1_physical": "Strength",
+      "spiritus2_physical": "Agility",
+      "spiritus1_magic": "Wisdom",
+      "spiritus2_magic": "Morale",
+      "primary_stat": "Haste",
+      "secondary_stat": "PvP HP"
+    },
+    {
+      "name": "Lullashroom",
+      "tier": "R1",
+      "spiritus1_physical": "Strength",
+      "spiritus2_physical": "Agility",
+      "spiritus1_magic": "Morale",
+      "spiritus2_magic": "Wisdom",
+      "primary_stat": "Block DMG RED",
+      "secondary_stat": "Blessing"
+    },
+    {
+      "name": "Morning Glory",
+      "tier": "R1",
+      "spiritus1_physical": "Agility",
+      "spiritus2_physical": "Stamina",
+      "spiritus1_magic": "Wisdom",
+      "spiritus2_magic": "Stamina",
+      "primary_stat": "Haste",
+      "secondary_stat": "PvP HP"
+    },
+    {
+      "name": "Passion Coconut",
+      "tier": "R1",
+      "spiritus1_physical": "Strength",
+      "spiritus2_physical": "Stamina",
+      "spiritus1_magic": "Wisdom",
+      "spiritus2_magic": "Stamina",
+      "primary_stat": "CRIT DMG",
+      "secondary_stat": "Malediction"
+    },
+    {
+      "name": "Strawbie",
+      "tier": "R1",
+      "spiritus1_physical": "Agility",
+      "spiritus2_physical": "Stamina",
+      "spiritus1_magic": "Morale",
+      "spiritus2_magic": "Stamina",
+      "primary_stat": "Block DMG RED",
+      "secondary_stat": "Blessing"
+    },
+    {
+      "name": "Sweet Cherry",
+      "tier": "R1",
+      "spiritus1_physical": "Agility",
+      "spiritus2_physical": "Strength",
+      "spiritus1_magic": "Morale",
+      "spiritus2_magic": "Wisdom",
+      "primary_stat": "Windwalk",
+      "secondary_stat": "PvP ATK"
+    },
+    {
+      "name": "Wind Chime",
+      "tier": "R1",
+      "spiritus1_physical": "Agility",
+      "spiritus2_physical": "Strength",
+      "spiritus1_magic": "Wisdom",
+      "spiritus2_magic": "Morale",
+      "primary_stat": "CRIT DMG",
+      "secondary_stat": "Malediction"
+    },
+    {
+      "name": "Frost Lily",
+      "tier": "R2",
+      "spiritus1_physical": "Strength",
+      "spiritus2_physical": "Stamina",
+      "spiritus1_magic": "Morale",
+      "spiritus2_magic": "Stamina",
+      "primary_stat": "Windwalk",
+      "secondary_stat": "PvP ATK"
+    },
+    {
+      "name": "Kitsune",
+      "tier": "R2",
+      "spiritus1_physical": "Strength",
+      "spiritus2_physical": "Agility",
+      "spiritus1_magic": "Wisdom",
+      "spiritus2_magic": "Morale",
+      "primary_stat": "Haste",
+      "secondary_stat": "PvP HP"
+    },
+    {
+      "name": "Sleepy Waterlily",
+      "tier": "R2",
+      "spiritus1_physical": "Stamina",
+      "spiritus2_physical": "Agility",
+      "spiritus1_magic": "Stamina",
+      "spiritus2_magic": "Morale",
+      "primary_stat": "Windwalk",
+      "secondary_stat": "PvP ATK"
+    },
+    {
+      "name": "Tradescantia",
+      "tier": "R2",
+      "spiritus1_physical": "Stamina",
+      "spiritus2_physical": "Strength",
+      "spiritus1_magic": "Stamina",
+      "spiritus2_magic": "Wisdom",
+      "primary_stat": "CRIT DMG",
+      "secondary_stat": "Malediction"
+    },
+    {
+      "name": "Velvet Futon",
+      "tier": "R2",
+      "spiritus1_physical": "Agility",
+      "spiritus2_physical": "Strength",
+      "spiritus1_magic": "Wisdom",
+      "spiritus2_magic": "Morale",
+      "primary_stat": "CRIT DMG",
+      "secondary_stat": "Malediction"
+    },
+    {
+      "name": "Macadamia",
+      "tier": "R2",
+      "spiritus1_physical": "Strength",
+      "spiritus2_physical": "Stamina",
+      "spiritus1_magic": "Wisdom",
+      "spiritus2_magic": "Stamina",
+      "primary_stat": "CRIT DMG",
+      "secondary_stat": "Malediction"
+    }
+  ],
+  "spiritusValues": {
+    "R1": {
+      "Single": {
+        "0": 20,
+        "1": 40,
+        "2": 60,
+        "3": 80,
+        "4": 110,
+        "5": 130,
+        "6": 150,
+        "7": 190,
+        "8": 250,
+        "9": 340
+      },
+      "Dual": {
+        "0": 12,
+        "1": 24,
+        "2": 36,
+        "3": 48,
+        "4": 66,
+        "5": 78,
+        "6": 90,
+        "7": 114,
+        "8": 144,
+        "9": 189
+      }
+    },
+    "R2": {
+      "Single": {
+        "0": 30,
+        "1": 60,
+        "2": 90,
+        "3": 120,
+        "4": 170,
+        "5": 200,
+        "6": 230,
+        "7": 290,
+        "8": 390,
+        "9": 520
+      },
+      "Dual": {
+        "0": 18,
+        "1": 36,
+        "2": 48,
+        "3": 72,
+        "4": 102,
+        "5": 120,
+        "6": 138,
+        "7": 174,
+        "8": 224,
+        "9": 289
+      }
+    }
+  },
+  "thresholds": {
+    "R1": {
+      "Primary": {
+        "0": 0,
+        "1": 75,
+        "2": 190,
+        "3": 380,
+        "4": 605,
+        "5": 910,
+        "6": 1215,
+        "7": 1520,
+        "8": 1650,
+        "9": 1800
+      },
+      "Secondary": {
+        "0": 0,
+        "1": 75,
+        "2": 190,
+        "3": 380,
+        "4": 605,
+        "5": 910,
+        "6": 1140,
+        "7": 1365
+      }
+    },
+    "R2": {
+      "Primary": {
+        "0": 0,
+        "1": 75,
+        "2": 190,
+        "3": 380,
+        "4": 605,
+        "5": 910,
+        "6": 1215,
+        "7": 1520,
+        "8": 1650,
+        "9": 1800,
+        "10": 2060,
+        "11": 2320,
+        "12": 2520,
+        "13": 2760
+      },
+      "Secondary": {
+        "0": 0,
+        "1": 75,
+        "2": 190,
+        "3": 380,
+        "4": 605,
+        "5": 910,
+        "6": 1140,
+        "7": 1365,
+        "8": 1565,
+        "9": 1740,
+        "10": 1910,
+        "11": 2085
+      }
+    }
+  },
+  "gridAdjacency": {
+    "Top": {
+      "N": "S02",
+      "S": "S12",
+      "E": "S07",
+      "W": "S06",
+      "NW": "S01",
+      "NE": "S03",
+      "SW": "S11",
+      "SE": "S13"
+    },
+    "TopLeft": {
+      "N": "S05",
+      "S": "S17",
+      "E": "S11",
+      "W": "S10",
+      "NW": "S04",
+      "NE": "S06",
+      "SW": "S16",
+      "SE": "S18"
+    },
+    "TopRight": {
+      "N": "S08",
+      "S": "S21",
+      "E": "S14",
+      "W": "S13",
+      "NW": "S07",
+      "NE": "S09",
+      "SW": "S20",
+      "SE": "S22"
+    },
+    "Left": {
+      "N": "S16",
+      "S": "S31",
+      "E": "S25",
+      "W": "S24",
+      "NW": "S15",
+      "NE": "S17",
+      "SW": "S30",
+      "SE": "S32"
+    },
+    "Center": {
+      "N": "S19",
+      "S": "S34",
+      "E": "S27",
+      "W": "S26",
+      "NW": "S18",
+      "NE": "S20",
+      "SW": "S33",
+      "SE": "S35"
+    },
+    "Right": {
+      "N": "S22",
+      "S": "S37",
+      "E": "S29",
+      "W": "S28",
+      "NW": "S21",
+      "NE": "S23",
+      "SW": "S36",
+      "SE": "S38"
+    },
+    "BottomLeft": {
+      "N": "S32",
+      "S": "S45",
+      "E": "S40",
+      "W": "S39",
+      "NW": "S31",
+      "NE": "S33",
+      "SW": "S44",
+      "SE": "S46"
+    },
+    "BottomRight": {
+      "N": "S36",
+      "S": "S48",
+      "E": "S43",
+      "W": "S42",
+      "NW": "S35",
+      "NE": "S37",
+      "SW": "S47",
+      "SE": "S49"
+    },
+    "Bottom": {
+      "N": "S41",
+      "S": "S51",
+      "E": "S47",
+      "W": "S46",
+      "NW": "S40",
+      "NE": "S42",
+      "SW": "S50",
+      "SE": "S52"
+    }
+  },
+  "directionUnlockLevel": {
+    "N": 1,
+    "E": 1,
+    "S": 1,
+    "W": 1,
+    "NW": 3,
+    "NE": 5,
+    "SW": 7,
+    "SE": 9
+  },
+  "flowerguardSlots": [
+    "Top",
+    "TopLeft",
+    "TopRight",
+    "Left",
+    "Center",
+    "Right",
+    "BottomLeft",
+    "BottomRight",
+    "Bottom"
+  ],
+  "gridLayout": [
+    {
+      "col": 3,
+      "row": 0,
+      "id": "S01",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 0,
+      "id": "S02",
+      "type": "spiritus"
+    },
+    {
+      "col": 5,
+      "row": 0,
+      "id": "S03",
+      "type": "spiritus"
+    },
+    {
+      "col": 1,
+      "row": 1,
+      "id": "S04",
+      "type": "spiritus"
+    },
+    {
+      "col": 2,
+      "row": 1,
+      "id": "S05",
+      "type": "spiritus"
+    },
+    {
+      "col": 3,
+      "row": 1,
+      "id": "S06",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 1,
+      "id": "Top",
+      "type": "flowerguard"
+    },
+    {
+      "col": 5,
+      "row": 1,
+      "id": "S07",
+      "type": "spiritus"
+    },
+    {
+      "col": 6,
+      "row": 1,
+      "id": "S08",
+      "type": "spiritus"
+    },
+    {
+      "col": 7,
+      "row": 1,
+      "id": "S09",
+      "type": "spiritus"
+    },
+    {
+      "col": 1,
+      "row": 2,
+      "id": "S10",
+      "type": "spiritus"
+    },
+    {
+      "col": 2,
+      "row": 2,
+      "id": "TopLeft",
+      "type": "flowerguard"
+    },
+    {
+      "col": 3,
+      "row": 2,
+      "id": "S11",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 2,
+      "id": "S12",
+      "type": "spiritus"
+    },
+    {
+      "col": 5,
+      "row": 2,
+      "id": "S13",
+      "type": "spiritus"
+    },
+    {
+      "col": 6,
+      "row": 2,
+      "id": "TopRight",
+      "type": "flowerguard"
+    },
+    {
+      "col": 7,
+      "row": 2,
+      "id": "S14",
+      "type": "spiritus"
+    },
+    {
+      "col": 0,
+      "row": 3,
+      "id": "S15",
+      "type": "spiritus"
+    },
+    {
+      "col": 1,
+      "row": 3,
+      "id": "S16",
+      "type": "spiritus"
+    },
+    {
+      "col": 2,
+      "row": 3,
+      "id": "S17",
+      "type": "spiritus"
+    },
+    {
+      "col": 3,
+      "row": 3,
+      "id": "S18",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 3,
+      "id": "S19",
+      "type": "spiritus"
+    },
+    {
+      "col": 5,
+      "row": 3,
+      "id": "S20",
+      "type": "spiritus"
+    },
+    {
+      "col": 6,
+      "row": 3,
+      "id": "S21",
+      "type": "spiritus"
+    },
+    {
+      "col": 7,
+      "row": 3,
+      "id": "S22",
+      "type": "spiritus"
+    },
+    {
+      "col": 8,
+      "row": 3,
+      "id": "S23",
+      "type": "spiritus"
+    },
+    {
+      "col": 0,
+      "row": 4,
+      "id": "S24",
+      "type": "spiritus"
+    },
+    {
+      "col": 1,
+      "row": 4,
+      "id": "Left",
+      "type": "flowerguard"
+    },
+    {
+      "col": 2,
+      "row": 4,
+      "id": "S25",
+      "type": "spiritus"
+    },
+    {
+      "col": 3,
+      "row": 4,
+      "id": "S26",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 4,
+      "id": "Center",
+      "type": "flowerguard"
+    },
+    {
+      "col": 5,
+      "row": 4,
+      "id": "S27",
+      "type": "spiritus"
+    },
+    {
+      "col": 6,
+      "row": 4,
+      "id": "S28",
+      "type": "spiritus"
+    },
+    {
+      "col": 7,
+      "row": 4,
+      "id": "Right",
+      "type": "flowerguard"
+    },
+    {
+      "col": 8,
+      "row": 4,
+      "id": "S29",
+      "type": "spiritus"
+    },
+    {
+      "col": 0,
+      "row": 5,
+      "id": "S30",
+      "type": "spiritus"
+    },
+    {
+      "col": 1,
+      "row": 5,
+      "id": "S31",
+      "type": "spiritus"
+    },
+    {
+      "col": 2,
+      "row": 5,
+      "id": "S32",
+      "type": "spiritus"
+    },
+    {
+      "col": 3,
+      "row": 5,
+      "id": "S33",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 5,
+      "id": "S34",
+      "type": "spiritus"
+    },
+    {
+      "col": 5,
+      "row": 5,
+      "id": "S35",
+      "type": "spiritus"
+    },
+    {
+      "col": 6,
+      "row": 5,
+      "id": "S36",
+      "type": "spiritus"
+    },
+    {
+      "col": 7,
+      "row": 5,
+      "id": "S37",
+      "type": "spiritus"
+    },
+    {
+      "col": 8,
+      "row": 5,
+      "id": "S38",
+      "type": "spiritus"
+    },
+    {
+      "col": 1,
+      "row": 6,
+      "id": "S39",
+      "type": "spiritus"
+    },
+    {
+      "col": 2,
+      "row": 6,
+      "id": "BottomLeft",
+      "type": "flowerguard"
+    },
+    {
+      "col": 3,
+      "row": 6,
+      "id": "S40",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 6,
+      "id": "S41",
+      "type": "spiritus"
+    },
+    {
+      "col": 5,
+      "row": 6,
+      "id": "S42",
+      "type": "spiritus"
+    },
+    {
+      "col": 6,
+      "row": 6,
+      "id": "BottomRight",
+      "type": "flowerguard"
+    },
+    {
+      "col": 7,
+      "row": 6,
+      "id": "S43",
+      "type": "spiritus"
+    },
+    {
+      "col": 1,
+      "row": 7,
+      "id": "S44",
+      "type": "spiritus"
+    },
+    {
+      "col": 2,
+      "row": 7,
+      "id": "S45",
+      "type": "spiritus"
+    },
+    {
+      "col": 3,
+      "row": 7,
+      "id": "S46",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 7,
+      "id": "Bottom",
+      "type": "flowerguard"
+    },
+    {
+      "col": 5,
+      "row": 7,
+      "id": "S47",
+      "type": "spiritus"
+    },
+    {
+      "col": 6,
+      "row": 7,
+      "id": "S48",
+      "type": "spiritus"
+    },
+    {
+      "col": 7,
+      "row": 7,
+      "id": "S49",
+      "type": "spiritus"
+    },
+    {
+      "col": 3,
+      "row": 8,
+      "id": "S50",
+      "type": "spiritus"
+    },
+    {
+      "col": 4,
+      "row": 8,
+      "id": "S51",
+      "type": "spiritus"
+    },
+    {
+      "col": 5,
+      "row": 8,
+      "id": "S52",
+      "type": "spiritus"
+    }
+  ],
+  "statBonusTables": {
+    "Blessing": {
+      "R1": {
+        "1": 405,
+        "2": 810,
+        "3": 1350,
+        "4": 2024,
+        "5": 2699,
+        "6": 2902,
+        "7": 3104,
+        "8": 3307,
+        "9": 3509
+      }
+    },
+    "Block DMG RED": {
+      "R1": {
+        "1": 45,
+        "2": 101,
+        "3": 157,
+        "4": 225,
+        "5": 292,
+        "6": 360,
+        "7": 450,
+        "8": 495,
+        "9": 540,
+        "10": 585,
+        "11": 630
+      }
+    },
+    "CRIT DMG": {
+      "R1": {
+        "1": 135,
+        "2": 304,
+        "3": 472,
+        "4": 675,
+        "5": 877,
+        "6": 1080,
+        "7": 1350,
+        "8": 1485,
+        "9": 1620,
+        "10": 1754,
+        "11": 1889
+      },
+      "R2": {
+        "1": 214,
+        "2": 429,
+        "3": 643,
+        "4": 885,
+        "5": 1126,
+        "6": 1367,
+        "7": 1676,
+        "8": 1957,
+        "9": 2239,
+        "10": 2520,
+        "11": 2767,
+        "12": 3013,
+        "13": 3260,
+        "14": 3507
+      }
+    },
+    "Haste": {
+      "R1": {
+        "1": 135,
+        "2": 304,
+        "3": 472,
+        "4": 675,
+        "5": 877,
+        "6": 1080,
+        "7": 1350,
+        "8": 1485,
+        "9": 1620,
+        "10": 1754,
+        "11": 1889
+      },
+      "R2": {
+        "1": 214,
+        "2": 429,
+        "3": 643,
+        "4": 885,
+        "5": 1126,
+        "6": 1367,
+        "7": 1676,
+        "8": 1957,
+        "9": 2239,
+        "10": 2520,
+        "11": 2767,
+        "12": 3013,
+        "13": 3260,
+        "14": 3507
+      }
+    },
+    "Malediction": {
+      "R1": {
+        "1": 405,
+        "2": 810,
+        "3": 1350,
+        "4": 2024,
+        "5": 2699,
+        "6": 2902,
+        "7": 3104,
+        "8": 3307,
+        "9": 3509
+      },
+      "R2": {
+        "1": 536,
+        "2": 1072,
+        "3": 1823,
+        "4": 2574,
+        "5": 3351,
+        "6": 3887,
+        "7": 4424,
+        "8": 4960,
+        "9": 5362,
+        "10": 5764,
+        "11": 6166,
+        "12": 6568
+      }
+    },
+    "PvP ATK": {
+      "R1": {
+        "1": 2429,
+        "2": 4859,
+        "3": 8098,
+        "4": 12146,
+        "5": 16195,
+        "6": 17410,
+        "7": 18625,
+        "8": 19839,
+        "9": 21054
+      },
+      "R2": {
+        "1": 3217,
+        "2": 6434,
+        "3": 10938,
+        "4": 15443,
+        "5": 20107,
+        "6": 23325,
+        "7": 26542,
+        "8": 29759,
+        "9": 32172,
+        "10": 34585,
+        "11": 36998
+      }
+    },
+    "PvP HP": {
+      "R1": {
+        "1": 48590,
+        "2": 97170,
+        "3": 161950,
+        "4": 242930,
+        "5": 323910,
+        "6": 348200,
+        "7": 372490,
+        "8": 396780,
+        "9": 421080
+      },
+      "R2": {
+        "1": 64340,
+        "2": 128690,
+        "3": 218770,
+        "4": 308850,
+        "5": 402150,
+        "6": 466490,
+        "7": 530840,
+        "8": 595180,
+        "9": 643440,
+        "10": 691700,
+        "11": 739950
+      }
+    },
+    "Windwalk": {
+      "R1": {
+        "1": 135,
+        "2": 304,
+        "3": 472,
+        "4": 675,
+        "5": 877,
+        "6": 1080,
+        "7": 1350,
+        "8": 1485,
+        "9": 1620,
+        "10": 1754,
+        "11": 1889
+      },
+      "R2": {
+        "1": 214,
+        "2": 429,
+        "3": 643,
+        "4": 885,
+        "5": 1126,
+        "6": 1367,
+        "7": 1676,
+        "8": 1957,
+        "9": 2239,
+        "10": 2520,
+        "11": 2767,
+        "12": 3013,
+        "13": 3260,
+        "14": 3507
+      }
+    }
+  },
+  "cultivationCaps": {
+    "R1": {
+      "1": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "2": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "3": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "4": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "5": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "6": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "7": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "8": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "9": {
+        "primary": 7,
+        "secondary": 5
+      },
+      "10": {
+        "primary": 8,
+        "secondary": 5
+      },
+      "11": {
+        "primary": 8,
+        "secondary": 6
+      },
+      "12": {
+        "primary": 9,
+        "secondary": 6
+      },
+      "13": {
+        "primary": 9,
+        "secondary": 7
+      }
+    },
+    "R2": {
+      "1": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "2": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "3": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "4": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "5": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "6": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "7": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "8": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "9": {
+        "primary": 11,
+        "secondary": 9
+      },
+      "10": {
+        "primary": 12,
+        "secondary": 9
+      },
+      "11": {
+        "primary": 12,
+        "secondary": 10
+      },
+      "12": {
+        "primary": 13,
+        "secondary": 10
+      },
+      "13": {
+        "primary": 13,
+        "secondary": 11
+      }
+    }
+  },
+  "cultivationCosts": {
+    "R1": {
+      "1": {
+        "powder": 275,
+        "oil": 50
+      },
+      "2": {
+        "powder": 330,
+        "oil": 80
+      },
+      "3": {
+        "powder": 700,
+        "oil": 120
+      },
+      "4": {
+        "powder": 800,
+        "oil": 160
+      },
+      "5": {
+        "powder": 1800,
+        "oil": 200
+      },
+      "6": {
+        "powder": 2000,
+        "oil": 250
+      },
+      "7": {
+        "powder": 3300,
+        "oil": 300
+      },
+      "8": {
+        "powder": 3600,
+        "oil": 400
+      },
+      "9": {
+        "powder": 4680,
+        "oil": 500
+      },
+      "10": {
+        "powder": 5600,
+        "oil": 600
+      },
+      "11": {
+        "powder": 6400,
+        "oil": 700
+      },
+      "12": {
+        "powder": 7200,
+        "oil": 800
+      }
+    },
+    "R2": {
+      "1": {
+        "powder": 275,
+        "oil": 50
+      },
+      "2": {
+        "powder": 330,
+        "oil": 80
+      },
+      "3": {
+        "powder": 700,
+        "oil": 120
+      },
+      "4": {
+        "powder": 800,
+        "oil": 160
+      },
+      "5": {
+        "powder": 1800,
+        "oil": 200
+      },
+      "6": {
+        "powder": 2000,
+        "oil": 250
+      },
+      "7": {
+        "powder": 3300,
+        "oil": 300
+      },
+      "8": {
+        "powder": 3600,
+        "oil": 400
+      },
+      "9": {
+        "powder": 5850,
+        "oil": 550
+      },
+      "10": {
+        "powder": 7600,
+        "oil": 700
+      },
+      "11": {
+        "powder": 9200,
+        "oil": 950
+      },
+      "12": {
+        "powder": 10800,
+        "oil": 1200
+      }
+    }
+  },
+  "icons": {
+    "flowerguards": {
+      "Frost Lily": "/assets/florais/flowerguards-frost-lily.png",
+      "Kitsune": "/assets/florais/flowerguards-kitsune.png",
+      "Kumquat": "/assets/florais/flowerguards-kumquat.png",
+      "Lacecap": "/assets/florais/flowerguards-lacecap.png",
+      "Lacordini": "/assets/florais/flowerguards-lacordini.png",
+      "Lullashroom": "/assets/florais/flowerguards-lullashroom.png",
+      "Morning Glory": "/assets/florais/flowerguards-morning-glory.png",
+      "Passion Coconut": "/assets/florais/flowerguards-passion-coconut.png",
+      "Sleepy Waterlily": "/assets/florais/flowerguards-sleepy-waterlily.png",
+      "Strawbie": "/assets/florais/flowerguards-strawbie.png",
+      "Sweet Cherry": "/assets/florais/flowerguards-sweet-cherry.png",
+      "Tradescantia": "/assets/florais/flowerguards-tradescantia.png",
+      "Velvet Futon": "/assets/florais/flowerguards-velvet-futon.png",
+      "Wind Chime": "/assets/florais/flowerguards-wind-chime.png",
+      "Macadamia": "/assets/florais/flowerguards-macadamia.png"
+    },
+    "spiritus": {
+      "Agility": "/assets/florais/spiritus-agility.png",
+      "Morale": "/assets/florais/spiritus-morale.png",
+      "Stamina": "/assets/florais/spiritus-stamina.png",
+      "Strength": "/assets/florais/spiritus-strength.png",
+      "Wisdom": "/assets/florais/spiritus-wisdom.png",
+      "Agility+Morale": "/assets/florais/spiritus-agility-morale.png",
+      "Agility+Strength": "/assets/florais/spiritus-agility-strength.png",
+      "Agility+Wisdom": "/assets/florais/spiritus-agility-wisdom.png",
+      "Morale+Wisdom": "/assets/florais/spiritus-morale-wisdom.png",
+      "Morale+Strength": "/assets/florais/spiritus-morale-strength.png",
+      "Agility+Stamina": "/assets/florais/spiritus-agility-stamina.png",
+      "Morale+Stamina": "/assets/florais/spiritus-morale-stamina.png",
+      "Stamina+Strength": "/assets/florais/spiritus-stamina-strength.png",
+      "Stamina+Wisdom": "/assets/florais/spiritus-stamina-wisdom.png",
+      "Strength+Wisdom": "/assets/florais/spiritus-strength-wisdom.png"
+    }
+  }
+}

@@ -1,0 +1,2200 @@
+{
+ "url": "http://127.0.0.1:4321/pt/",
+ "at": "2026-10-14T00:43:13.363Z",
+ "allow": [
+  "still-page"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.99,
+    0.99,
+    0.99,
+    0.99,
+    0.99,
+    1
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 0,
+    "transitions": 3,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 4819,
+     "screens": 5.4,
+     "words": 343,
+     "img": 8,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 2,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal-chair.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Planeje sua aventura.",
+     "words": 3,
+     "chars": 21,
+     "lines": 2,
+     "size": 90,
+     "vw": 6.3,
+     "font": "Georgia",
+     "weight": 600,
+     "tracking": -0.045,
+     "leading": 0.93,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.42,
+     "top": 271,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Planeje sua aventura.",
+     "words": 3,
+     "lines": 2,
+     "size": 90,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "Planeje sua aventura.",
+      "words": 3,
+      "chars": 21,
+      "lines": 2,
+      "size": 90,
+      "vw": 6.3,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 0.93,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.42,
+      "top": 271,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Cálculo exato. Decisão sua.",
+      "words": 4,
+      "chars": 27,
+      "lines": 2,
+      "size": 72,
+      "vw": 5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.4,
+      "top": 996,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Experimente outro orçamento",
+      "words": 3,
+      "chars": 27,
+      "lines": 2,
+      "size": 43.2,
+      "vw": 3,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.41,
+      "top": 1004,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 42,
+      "vw": 2.9,
+      "font": "Barlow",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.1,
+      "top": 1281,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "16",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 70,
+      "vw": 4.9,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.06,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.2,
+      "top": 1375,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Escolha o seu caminho",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 72,
+      "vw": 5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.54,
+      "top": 1912,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Amigatos",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.2,
+      "top": 2091,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Florais",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.15,
+      "top": 2420,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Fantasmas",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.23,
+      "top": 2749,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Da mochila ao melhor plano",
+      "words": 5,
+      "chars": 26,
+      "lines": 2,
+      "size": 72,
+      "vw": 5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 3236,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Sua equipe",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 29,
+      "vw": 2,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 3274,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Seus recursos",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 29,
+      "vw": 2,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 3397,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 29,
+      "vw": 2,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 3521,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 43.2,
+      "vw": 3,
+      "font": "Barlow",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.11,
+      "top": 3639,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Próxima jornada?",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 72,
+      "vw": 5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.43,
+      "top": 3962,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.2,
+      "top": 4477,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Ferramentas e dados para Tree of Savior Neo.",
+      "words": 8,
+      "chars": 44,
+      "lines": 2,
+      "size": 31,
+      "vw": 2.2,
+      "font": "Barlow",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.34,
+      "top": 4525,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 17,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.89,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.1,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      22,
+      23,
+      24,
+      25,
+      29,
+      31,
+      56,
+      64,
+      70,
+      72,
+      90
+     ],
+     "sizeCount": 18,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.9
+     },
+     "measureChars": 49,
+     "max": {
+      "size": 90,
+      "vw": 6.3,
+      "font": "Georgia",
+      "text": "Planeje sua aventura."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0d1916",
+     "bodyBgHsl": {
+      "h": 165,
+      "s": 0.32,
+      "l": 0.07
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#102923",
+       "top": 72,
+       "hsl": {
+        "h": 166,
+        "s": 0.44,
+        "l": 0.11
+       }
+      },
+      {
+       "color": "#e9e4d5",
+       "top": 154,
+       "hsl": {
+        "h": 45,
+        "s": 0.31,
+        "l": 0.87
+       }
+      },
+      {
+       "color": "#d8d2bd",
+       "top": 924,
+       "hsl": {
+        "h": 47,
+        "s": 0.26,
+        "l": 0.79
+       }
+      },
+      {
+       "color": "#f0ecdf",
+       "top": 1816,
+       "hsl": {
+        "h": 46,
+        "s": 0.36,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#cfddd0",
+       "top": 2362,
+       "hsl": {
+        "h": 124,
+        "s": 0.17,
+        "l": 0.84
+       }
+      },
+      {
+       "color": "#d0d9d7",
+       "top": 2692,
+       "hsl": {
+        "h": 167,
+        "s": 0.11,
+        "l": 0.83
+       }
+      },
+      {
+       "color": "#0e1715",
+       "top": 4305,
+       "hsl": {
+        "h": 167,
+        "s": 0.24,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#173d38",
+       "share": 0.46
+      },
+      {
+       "color": "#e9e4d5",
+       "share": 0.12
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.09
+      },
+      {
+       "color": "#d1e3d7",
+       "share": 0.06
+      },
+      {
+       "color": "#d4e5da",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#26483a",
+      "hsl": {
+       "h": 155,
+       "s": 0.31,
+       "l": 0.22
+      },
+      "fg": "#e9e4d5"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 7,
+     "inHero": 2,
+     "radius": 0,
+     "height": 46,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 3,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 7,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 2033
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.94
+     },
+     {
+      "type": "img",
+      "ratio": 0.2
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 72,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.98,
+    0.99,
+    0.98,
+    0.98,
+    0.98,
+    1
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 0,
+    "transitions": 3,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 5308,
+     "screens": 5.2,
+     "words": 338,
+     "img": 8,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal-chair.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Planeje sua aventura.",
+     "words": 3,
+     "chars": 21,
+     "lines": 2,
+     "size": 54,
+     "vw": 7,
+     "font": "Georgia",
+     "weight": 600,
+     "tracking": -0.045,
+     "leading": 0.93,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.55,
+     "top": 369,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Planeje sua aventura.",
+     "words": 3,
+     "lines": 2,
+     "size": 54,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "Planeje sua aventura.",
+      "words": 3,
+      "chars": 21,
+      "lines": 2,
+      "size": 54,
+      "vw": 7,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 0.93,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.55,
+      "top": 369,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Cálculo exato. Decisão sua.",
+      "words": 4,
+      "chars": 27,
+      "lines": 1,
+      "size": 42,
+      "vw": 5.5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 1084,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "16",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.06,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.55,
+      "top": 1291,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Experimente outro orçamento",
+      "words": 3,
+      "chars": 27,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 1570,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 27,
+      "vw": 3.5,
+      "font": "Barlow",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.12,
+      "top": 1785,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Escolha o seu caminho",
+      "words": 4,
+      "chars": 21,
+      "lines": 1,
+      "size": 42,
+      "vw": 5.5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 2335,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Amigatos",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 38.4,
+      "vw": 5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.22,
+      "top": 2546,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Florais",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 38.4,
+      "vw": 5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.17,
+      "top": 2820,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Fantasmas",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 38.4,
+      "vw": 5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.26,
+      "top": 3094,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Da mochila ao melhor plano",
+      "words": 5,
+      "chars": 26,
+      "lines": 1,
+      "size": 42,
+      "vw": 5.5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.86,
+      "top": 3430,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Barlow",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.15,
+      "top": 3729,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Sua equipe",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 29,
+      "vw": 3.8,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 3901,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Seus recursos",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 29,
+      "vw": 3.8,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 4024,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 29,
+      "vw": 3.8,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 4148,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Próxima jornada?",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 42,
+      "vw": 5.5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.47,
+      "top": 4539,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 4965,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 16,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.89,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.1,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22,
+      24,
+      25,
+      29,
+      32,
+      38,
+      42,
+      48,
+      54
+     ],
+     "sizeCount": 17,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.45,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.4
+     },
+     "measureChars": 49,
+     "max": {
+      "size": 54,
+      "vw": 7,
+      "font": "Georgia",
+      "text": "Planeje sua aventura."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0d1916",
+     "bodyBgHsl": {
+      "h": 165,
+      "s": 0.32,
+      "l": 0.07
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#102923",
+       "top": 66,
+       "hsl": {
+        "h": 166,
+        "s": 0.44,
+        "l": 0.11
+       }
+      },
+      {
+       "color": "#e9e4d5",
+       "top": 249,
+       "hsl": {
+        "h": 45,
+        "s": 0.31,
+        "l": 0.87
+       }
+      },
+      {
+       "color": "#d8d2bd",
+       "top": 1042,
+       "hsl": {
+        "h": 47,
+        "s": 0.26,
+        "l": 0.79
+       }
+      },
+      {
+       "color": "#f0ecdf",
+       "top": 2277,
+       "hsl": {
+        "h": 46,
+        "s": 0.36,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#0e1715",
+       "top": 4854,
+       "hsl": {
+        "h": 167,
+        "s": 0.24,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#173d38",
+       "share": 0.47
+      },
+      {
+       "color": "#e9e4d5",
+       "share": 0.13
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.09
+      },
+      {
+       "color": "#d1e3d7",
+       "share": 0.07
+      },
+      {
+       "color": "#d4e5da",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#26483a",
+      "hsl": {
+       "h": 155,
+       "s": 0.31,
+       "l": 0.22
+      },
+      "fg": "#e9e4d5"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 7,
+     "inHero": 2,
+     "radius": 0,
+     "height": 46,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 3,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 2504
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.95
+     },
+     {
+      "type": "img",
+      "ratio": 0.17
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 66,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 8,
+   "filled": [
+    1,
+    0.97,
+    0.97,
+    0.97,
+    0.97,
+    0.99,
+    0.97,
+    0.97
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 0,
+    "transitions": 3,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 6042,
+     "screens": 7.2,
+     "words": 336,
+     "img": 8,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Planeje sua aventura.",
+     "words": 3,
+     "chars": 21,
+     "lines": 2,
+     "size": 50.7,
+     "vw": 13,
+     "font": "Georgia",
+     "weight": 600,
+     "tracking": -0.045,
+     "leading": 0.93,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.83,
+     "top": 166,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Planeje sua aventura.",
+     "words": 3,
+     "lines": 2,
+     "size": 50.7,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "Planeje sua aventura.",
+      "words": 3,
+      "chars": 21,
+      "lines": 2,
+      "size": 50.7,
+      "vw": 13,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 0.93,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.83,
+      "top": 166,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "↗",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Barlow",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 389,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Cálculo exato. Decisão sua.",
+      "words": 4,
+      "chars": 27,
+      "lines": 2,
+      "size": 42,
+      "vw": 10.8,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 803,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "16",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 45,
+      "vw": 11.5,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.06,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.55,
+      "top": 1056,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Experimente outro orçamento",
+      "words": 3,
+      "chars": 27,
+      "lines": 2,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1311,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 27,
+      "vw": 6.9,
+      "font": "Barlow",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.24,
+      "top": 1583,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "↗",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Barlow",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.04,
+      "top": 1968,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Escolha o seu caminho",
+      "words": 4,
+      "chars": 21,
+      "lines": 2,
+      "size": 42,
+      "vw": 10.8,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 2114,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Amigatos",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 38,
+      "vw": 9.7,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 2564,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Florais",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 38,
+      "vw": 9.7,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.32,
+      "top": 3018,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Fantasmas",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 38,
+      "vw": 9.7,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.5,
+      "top": 3472,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Da mochila ao melhor plano",
+      "words": 5,
+      "chars": 26,
+      "lines": 2,
+      "size": 42,
+      "vw": 10.8,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3790,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Sua equipe",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 29,
+      "vw": 7.4,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 4258,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Seus recursos",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 29,
+      "vw": 7.4,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 4406,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 29,
+      "vw": 7.4,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 4530,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Próxima jornada?",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 42,
+      "vw": 10.8,
+      "font": "Georgia",
+      "weight": 600,
+      "tracking": -0.045,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 5017,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "↗",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Barlow",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 5216,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.48,
+      "top": 5402,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Ferramentas",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 25,
+      "vw": 6.4,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 5617,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Amigatos ↗",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 5669,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Florais ↗",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 5733,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 21,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.89,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.1,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22,
+      24,
+      25,
+      29,
+      32,
+      38,
+      42,
+      45,
+      51
+     ],
+     "sizeCount": 17,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.9
+     },
+     "measureChars": 38,
+     "max": {
+      "size": 50.7,
+      "vw": 13,
+      "font": "Georgia",
+      "text": "Planeje sua aventura."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.02,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0d1916",
+     "bodyBgHsl": {
+      "h": 165,
+      "s": 0.32,
+      "l": 0.07
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#102923",
+       "top": 66,
+       "hsl": {
+        "h": 166,
+        "s": 0.44,
+        "l": 0.11
+       }
+      },
+      {
+       "color": "#e9e4d5",
+       "top": 78,
+       "hsl": {
+        "h": 45,
+        "s": 0.31,
+        "l": 0.87
+       }
+      },
+      {
+       "color": "#d8d2bd",
+       "top": 763,
+       "hsl": {
+        "h": 47,
+        "s": 0.26,
+        "l": 0.79
+       }
+      },
+      {
+       "color": "#f0ecdf",
+       "top": 2058,
+       "hsl": {
+        "h": 46,
+        "s": 0.36,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#cfddd0",
+       "top": 2780,
+       "hsl": {
+        "h": 124,
+        "s": 0.17,
+        "l": 0.84
+       }
+      },
+      {
+       "color": "#d0d9d7",
+       "top": 3234,
+       "hsl": {
+        "h": 167,
+        "s": 0.11,
+        "l": 0.83
+       }
+      },
+      {
+       "color": "#173d38",
+       "top": 4981,
+       "hsl": {
+        "h": 172,
+        "s": 0.45,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#0e1715",
+       "top": 5291,
+       "hsl": {
+        "h": 167,
+        "s": 0.24,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#173d38",
+       "share": 0.47
+      },
+      {
+       "color": "#e9e4d5",
+       "share": 0.13
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.09
+      },
+      {
+       "color": "#d1e3d7",
+       "share": 0.07
+      },
+      {
+       "color": "#d4e5da",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#26483a",
+      "hsl": {
+       "h": 155,
+       "s": 0.31,
+       "l": 0.22
+      },
+      "fg": "#e9e4d5"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 7,
+     "inHero": 2,
+     "radius": 0,
+     "height": 46,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 3,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 5,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.86
+     },
+     {
+      "type": "img",
+      "ratio": 0.12
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 66,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "dashed",
+   "width": 1440,
+   "message": "3 dashed/dotted border(s).",
+   "fix": "Remove unless it is a real drop zone.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (section #f0ecdf).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "18 different font sizes (13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 29, 31, 56, 64, 70, 72, 90).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect\\desktop-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect\\desktop-page-01.jpg",
+    "E:\\Github\\forneus\\.taste-skill\\inspect\\desktop-page-02.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect\\tablet-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect\\mobile-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect\\mobile-page-01.jpg"
+   ]
+  }
+ ]
+}

@@ -48,8 +48,9 @@ export const tools: Tool[] = [
     titleKey: 'tool.florais.title',
     navKey: 'nav.tool.florais',
     descriptionKey: 'tool.florais.description',
-    status: 'planned',
-    tags: ['RARIDADES', 'EVOLUÇÃO', 'BÔNUS'],
+    status: 'available',
+    beta: true,
+    tags: ['R1 / R2', 'SPIRITUS', 'BÔNUS'],
   },
 ];
 

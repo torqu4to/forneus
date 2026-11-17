@@ -11,7 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node --experimental-strip-types --test test/solver.test.ts test/exports.test.ts test/profiles.test.ts test/profiles-store.test.ts",
+    "test": "node --experimental-strip-types --test test/solver.test.ts test/exports.test.ts test/profiles.test.ts test/profiles-store.test.ts test/florais.test.ts test/florais-saved.test.ts test/florais-recommend.test.ts test/florais-planner.test.ts test/amigatos-progression.test.ts",
     "astro": "astro"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
   "description": "forneus.wiki frontend",
   "private": true,
   "devDependencies": {
+    "@playwright/cli": "^0.1.22",
     "@types/node": "^22.20.3"
   }
 }

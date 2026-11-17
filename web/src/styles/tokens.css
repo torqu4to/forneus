@@ -1,8 +1,9 @@
 /*
  * Forneus design system — tokens.
  *
- * Direction: "dark técnico". High density, condensed display type, tabular
- * mono for every number, one brand accent.
+ * Direction: a field guide outside the tools, an instrument panel inside.
+ * The interface keeps dense, aligned data while sharing the landing's forest
+ * palette and warm paper text.
  *
  * Rules for anyone adding to this file:
  *   1. Components reference tokens, never raw hex. A hex outside this file
@@ -18,36 +19,36 @@
   /* ── surfaces ─────────────────────────────────────────────────────
      Five steps from the page floor up. Panels sit ABOVE the page, chrome
      (headers, table heads) sits above panels. */
-  --bg-page:        #0a0b0d;
-  --bg-panel:       #0d0f11;
-  --bg-raised:      #111316;
-  --bg-chrome:      #15181b;
-  --bg-inset:       #0b0c0e;
+  --bg-page:        #0d1916;
+  --bg-panel:       #11221d;
+  --bg-raised:      #182b24;
+  --bg-chrome:      #20372e;
+  --bg-inset:       #0f211b;
 
   /* ── lines ────────────────────────────────────────────────────────
      --line-hard separates regions; --line-soft separates rows inside one
      region. Using hard between table rows makes a dense table look caged. */
-  --line-hard:      #1e2126;
-  --line-soft:      #16191c;
+  --line-hard:      #2a4338;
+  --line-soft:      #1d342b;
   --line:           var(--line-hard);
-  --line-control:   #23282e;
+  --line-control:   #456154;
 
   /* ── text ─────────────────────────────────────────────────────────
      Four steps. Anything below --text-faint fails contrast on --bg-page. */
-  --text-strong:    #f1f4f6;
-  --text-default:   #c3c9cf;
-  --text-muted:     #8a939c;
-  --text-faint:     #7c868f;   /* 5.3:1 — the floor for readable label text */
-  --text-disabled:  #5a646d;   /* UI only: disabled controls, never content */
+  --text-strong:    #f4f0e4;
+  --text-default:   #d5e3d9;
+  --text-muted:     #a9c0b1;
+  --text-faint:     #94ac9d;
+  --text-disabled:  #6e8578;   /* UI only: disabled controls, never content */
 
   /* ── brand accent ─────────────────────────────────────────────────
      One accent, three roles: primary action, active state, the number that
      matters. --accent-ink is what goes ON the accent (never white). */
-  --accent:         #5fe3c0;
-  --accent-hover:   #8ff0d6;
-  --accent-dim:     #2e7a68;
-  --accent-ink:     #06120f;
-  --accent-wash:    #0f1f1c;
+  --accent:         #75d9b7;
+  --accent-hover:   #a0ebce;
+  --accent-dim:     #3a8a70;
+  --accent-ink:     #0c241b;
+  --accent-wash:    #19372a;
 
   /* ── semantic state ───────────────────────────────────────────────
      Deliberately NOT mint. Warning carries the tier caveat, which is the

@@ -1,0 +1,1970 @@
+{
+ "url": "http://127.0.0.1:4321/pt/conceitos/gamer/",
+ "at": "2026-10-14T02:06:00.298Z",
+ "allow": [
+  "palette",
+  "mono",
+  "eyebrow",
+  "shadow",
+  "gradient",
+  "hairline",
+  "outlined-box",
+  "emoji"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.99,
+    0.99,
+    0.86,
+    0.75
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 3217,
+     "screens": 3.6,
+     "words": 228,
+     "img": 6,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "catpal-chair.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "✦"
+     ]
+    },
+    "hero": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "chars": 19,
+     "lines": 2,
+     "size": 122.4,
+     "vw": 8.5,
+     "font": "Barlow Condensed",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 0.81,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.37,
+     "top": 319,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "lines": 2,
+     "size": 122.4,
+     "font": "Barlow Condensed"
+    },
+    "headings": [
+     {
+      "text": "JOGUE COM UM PLANO.",
+      "words": 4,
+      "chars": 19,
+      "lines": 2,
+      "size": 122.4,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 0.81,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 319,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "16",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.02,
+      "top": 808,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "43.671",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.06,
+      "top": 808,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.07,
+      "top": 808,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "FERRAMENTAS PARA CADA JORNADA.",
+      "words": 4,
+      "chars": 30,
+      "lines": 2,
+      "size": 82,
+      "vw": 5.7,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.49,
+      "top": 1042,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "AMIGATOS",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 38,
+      "vw": 2.6,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 1551,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FLORAIS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 38,
+      "vw": 2.6,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.26,
+      "top": 1551,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FANTASMAS",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 38,
+      "vw": 2.6,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.26,
+      "top": 1551,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "MUDE OS RECURSOS. VEJA O IMPACTO.",
+      "words": 6,
+      "chars": 33,
+      "lines": 3,
+      "size": 82,
+      "vw": 5.7,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 1974,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "16 amigatos",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 2015,
+      "mixedFonts": [
+       "Barlow Condensed",
+       "Barlow"
+      ],
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 78,
+      "vw": 5.4,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.37,
+      "top": 2260,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "ENTRE PREPARADO.",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 82,
+      "vw": 5.7,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.39,
+      "top": 2752,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 1
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.62,
+       "mono": false
+      },
+      {
+       "family": "IBM Plex Mono",
+       "share": 0.27,
+       "mono": true
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.12,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      17,
+      18,
+      21,
+      38,
+      82,
+      122
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 54,
+     "max": {
+      "size": 122.4,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "text": "Jogue com"
+     },
+     "monoShare": 0.27,
+     "monoProseShare": 0.27,
+     "monoFamilies": [
+      "IBM Plex Mono"
+     ],
+     "monoSamples": [
+      "Prévia de conceito",
+      "/",
+      "Ver versão atual ↗",
+      "EN",
+      "Seu inventário tem potencial",
+      "amigatos no exemplo"
+     ],
+     "microLabels": 8,
+     "microLabelShare": 0.1,
+     "microSamples": [
+      "Prévia de conceito",
+      "/",
+      "Seu inventário tem potencial",
+      "01 / SEU ARSENAL",
+      "02 / TESTE DE CAMPO",
+      "A próxima decisão é sua"
+     ],
+     "upperShare": 0.33,
+     "centerShare": 0.01,
+     "smallText": 12
+    },
+    "eyebrows": [
+     {
+      "text": "Seu inventário tem potencial",
+      "above": "JOGUE COM UM PLANO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 12,
+      "top": 282
+     },
+     {
+      "text": "01 / SEU ARSENAL",
+      "above": "FERRAMENTAS PARA CADA JORNADA.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 1010
+     },
+     {
+      "text": "02 / TESTE DE CAMPO",
+      "above": "MUDE OS RECURSOS. VEJA O IMPACTO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 1942
+     },
+     {
+      "text": "A próxima decisão é sua",
+      "above": "ENTRE PREPARADO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 2720
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01 / SEU ARSENAL",
+      "size": 11,
+      "top": 1010
+     },
+     {
+      "text": "01",
+      "size": 13,
+      "top": 1253
+     },
+     {
+      "text": "02",
+      "size": 13,
+      "top": 1253
+     },
+     {
+      "text": "03",
+      "size": 13,
+      "top": 1253
+     },
+     {
+      "text": "02 / TESTE DE CAMPO",
+      "size": 11,
+      "top": 1942
+     }
+    ],
+    "color": {
+     "bodyBg": "#090712",
+     "bodyBgHsl": {
+      "h": 251,
+      "s": 0.44,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c071a",
+       "top": 32,
+       "hsl": {
+        "h": 256,
+        "s": 0.58,
+        "l": 0.06
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#c5b9d2",
+       "share": 0.18
+      },
+      {
+       "color": "#b6a9c8",
+       "share": 0.15
+      },
+      {
+       "color": "#f7f2ff",
+       "share": 0.1
+      },
+      {
+       "color": "#d7cbe3",
+       "share": 0.09
+      },
+      {
+       "color": "#dacde9",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#b88aff",
+      "hsl": {
+       "h": 264,
+       "s": 1,
+       "l": 0.77
+      },
+      "fg": "#170d25"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 2,
+     "radius": 0,
+     "height": 43,
+     "withShadow": 2,
+     "withGradient": 0,
+     "mono": 3,
+     "upper": 0,
+     "heroLabels": [
+      "Ir para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 3,
+     "shadowSamples": [
+      "a.action.action--primary → rgba(158, 94, 229, 0.21) 0px 10px 35px 0px",
+      "a.action.action--primary → rgba(158, 94, 229, 0.21) 0px 10px 35px 0px"
+     ],
+     "gradients": 10,
+     "scrims": 2,
+     "gradientSamples": [
+      "section#ferramentas.arsenal.section-wrap → radial-gradient(at 88% 0%, rgb(36, 21, 51) 0%, rgba(0, 0, 0, 0) 45%)",
+      "article.tool-card.tool-card--amigatos → radial-gradient(circle at 50% 43%, rgba(79, 43, 116, 0.314), rgba(0, 0, 0, 0) 47%), none",
+      "div.tool-card__body → linear-gradient(rgba(0, 0, 0, 0), rgb(13, 9, 24) 17%, rgb(13, 9, 24) 100%)",
+      "article.tool-card.tool-card--florais → radial-gradient(circle at 50% 42%, rgba(126, 60, 119, 0.36), rgba(0, 0, 0, 0) 49%), none"
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "header.header 1440px",
+      "section#simulador.simulation 1440px",
+      "footer.footer 1440px"
+     ],
+     "outlinedBoxes": 4,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 1,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1229
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.96
+     },
+     {
+      "type": "img",
+      "ratio": 0.21
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 78,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "ibm plex mono"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.98,
+    0.99,
+    0.73,
+    0.7
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3094,
+     "screens": 3,
+     "words": 228,
+     "img": 6,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "catpal-chair.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "✦"
+     ]
+    },
+    "hero": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "chars": 19,
+     "lines": 2,
+     "size": 76.8,
+     "vw": 10,
+     "font": "Barlow Condensed",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 0.81,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.63,
+     "top": 279,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "lines": 2,
+     "size": 76.8,
+     "font": "Barlow Condensed"
+    },
+    "headings": [
+     {
+      "text": "JOGUE COM UM PLANO.",
+      "words": 4,
+      "chars": 19,
+      "lines": 2,
+      "size": 76.8,
+      "vw": 10,
+      "font": "Barlow Condensed",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 0.81,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.63,
+      "top": 279,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "FERRAMENTAS PARA CADA JORNADA.",
+      "words": 4,
+      "chars": 30,
+      "lines": 2,
+      "size": 50,
+      "vw": 6.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.46,
+      "top": 1042,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FLORAIS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 38,
+      "vw": 4.9,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.22,
+      "top": 1435,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "AMIGATOS",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 38,
+      "vw": 4.9,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.22,
+      "top": 1437,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FANTASMAS",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 38,
+      "vw": 4.9,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.22,
+      "top": 1437,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "MUDE OS RECURSOS. VEJA O IMPACTO.",
+      "words": 6,
+      "chars": 33,
+      "lines": 3,
+      "size": 50,
+      "vw": 6.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 1875,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "16 amigatos",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.1,
+      "top": 1916,
+      "mixedFonts": [
+       "Barlow Condensed",
+       "Barlow"
+      ],
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 54,
+      "vw": 7,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.35,
+      "top": 2161,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "ENTRE PREPARADO.",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 50,
+      "vw": 6.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.43,
+      "top": 2621,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 1
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.62,
+       "mono": false
+      },
+      {
+       "family": "IBM Plex Mono",
+       "share": 0.27,
+       "mono": true
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.12,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      17,
+      18,
+      21,
+      38,
+      50,
+      77
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 39,
+     "max": {
+      "size": 76.8,
+      "vw": 10,
+      "font": "Barlow Condensed",
+      "text": "Jogue com"
+     },
+     "monoShare": 0.27,
+     "monoProseShare": 0.27,
+     "monoFamilies": [
+      "IBM Plex Mono"
+     ],
+     "monoSamples": [
+      "Prévia de conceito",
+      "/",
+      "Ver versão atual ↗",
+      "EN",
+      "Seu inventário tem potencial",
+      "amigatos no exemplo"
+     ],
+     "microLabels": 8,
+     "microLabelShare": 0.1,
+     "microSamples": [
+      "Prévia de conceito",
+      "/",
+      "Seu inventário tem potencial",
+      "01 / SEU ARSENAL",
+      "02 / TESTE DE CAMPO",
+      "A próxima decisão é sua"
+     ],
+     "upperShare": 0.33,
+     "centerShare": 0.01,
+     "smallText": 12
+    },
+    "eyebrows": [
+     {
+      "text": "Seu inventário tem potencial",
+      "above": "JOGUE COM UM PLANO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 12,
+      "top": 242
+     },
+     {
+      "text": "01 / SEU ARSENAL",
+      "above": "FERRAMENTAS PARA CADA JORNADA.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 1010
+     },
+     {
+      "text": "02 / TESTE DE CAMPO",
+      "above": "MUDE OS RECURSOS. VEJA O IMPACTO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 1843
+     },
+     {
+      "text": "A próxima decisão é sua",
+      "above": "ENTRE PREPARADO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 2589
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01 / SEU ARSENAL",
+      "size": 11,
+      "top": 1010
+     },
+     {
+      "text": "01",
+      "size": 13,
+      "top": 1194
+     },
+     {
+      "text": "02",
+      "size": 13,
+      "top": 1194
+     },
+     {
+      "text": "03",
+      "size": 13,
+      "top": 1194
+     },
+     {
+      "text": "02 / TESTE DE CAMPO",
+      "size": 11,
+      "top": 1843
+     }
+    ],
+    "color": {
+     "bodyBg": "#090712",
+     "bodyBgHsl": {
+      "h": 251,
+      "s": 0.44,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c071a",
+       "top": 32,
+       "hsl": {
+        "h": 256,
+        "s": 0.58,
+        "l": 0.06
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#c5b9d2",
+       "share": 0.18
+      },
+      {
+       "color": "#b6a9c8",
+       "share": 0.15
+      },
+      {
+       "color": "#f7f2ff",
+       "share": 0.1
+      },
+      {
+       "color": "#d7cbe3",
+       "share": 0.09
+      },
+      {
+       "color": "#dacde9",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#b88aff",
+      "hsl": {
+       "h": 264,
+       "s": 1,
+       "l": 0.77
+      },
+      "fg": "#170d25"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 2,
+     "radius": 0,
+     "height": 43,
+     "withShadow": 2,
+     "withGradient": 0,
+     "mono": 3,
+     "upper": 0,
+     "heroLabels": [
+      "Ir para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 2,
+     "shadowSamples": [
+      "a.action.action--primary → rgba(158, 94, 229, 0.21) 0px 10px 35px 0px",
+      "a.action.action--primary → rgba(158, 94, 229, 0.21) 0px 10px 35px 0px"
+     ],
+     "gradients": 10,
+     "scrims": 2,
+     "gradientSamples": [
+      "section#ferramentas.arsenal.section-wrap → radial-gradient(at 88% 0%, rgb(36, 21, 51) 0%, rgba(0, 0, 0, 0) 45%)",
+      "article.tool-card.tool-card--amigatos → radial-gradient(circle at 50% 43%, rgba(79, 43, 116, 0.314), rgba(0, 0, 0, 0) 47%), none",
+      "div.tool-card__body → linear-gradient(rgba(0, 0, 0, 0), rgb(13, 9, 24) 17%, rgb(13, 9, 24) 100%)",
+      "article.tool-card.tool-card--florais → radial-gradient(circle at 50% 42%, rgba(126, 60, 119, 0.36), rgba(0, 0, 0, 0) 49%), none"
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "header.header 768px",
+      "section#simulador.simulation 768px",
+      "footer.footer 768px"
+     ],
+     "outlinedBoxes": 4,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 3,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 1,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1170
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.85
+     },
+     {
+      "type": "img",
+      "ratio": 0.11
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 78,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "ibm plex mono"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.97,
+    0.97,
+    0.97,
+    0.97,
+    0.87,
+    0.78
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 4330,
+     "screens": 5.1,
+     "words": 216,
+     "img": 6,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "chars": 19,
+     "lines": 2,
+     "size": 66,
+     "vw": 16.9,
+     "font": "Barlow Condensed",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 0.81,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 227,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "lines": 2,
+     "size": 66,
+     "font": "Barlow Condensed"
+    },
+    "headings": [
+     {
+      "text": "JOGUE COM UM PLANO.",
+      "words": 4,
+      "chars": 19,
+      "lines": 2,
+      "size": 66,
+      "vw": 16.9,
+      "font": "Barlow Condensed",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 0.81,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 227,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "FERRAMENTAS PARA CADA JORNADA.",
+      "words": 4,
+      "chars": 30,
+      "lines": 3,
+      "size": 50,
+      "vw": 12.8,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 959,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "AMIGATOS",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 33,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 1462,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FLORAIS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 33,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 1886,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FANTASMAS",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 33,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 2317,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "MUDE OS RECURSOS. VEJA O IMPACTO.",
+      "words": 6,
+      "chars": 33,
+      "lines": 3,
+      "size": 50,
+      "vw": 12.8,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 2647,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "16 amigatos",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.19,
+      "top": 3014,
+      "mixedFonts": [
+       "Barlow Condensed",
+       "Barlow"
+      ],
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 54,
+      "vw": 13.8,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 3256,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "ENTRE PREPARADO.",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 59,
+      "vw": 15.1,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 3852,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 3,
+     "over2Lines": 2,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 1
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.62,
+       "mono": false
+      },
+      {
+       "family": "IBM Plex Mono",
+       "share": 0.26,
+       "mono": true
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.12,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      17,
+      33,
+      50,
+      59,
+      66
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 41,
+     "max": {
+      "size": 66,
+      "vw": 16.9,
+      "font": "Barlow Condensed",
+      "text": "Jogue com"
+     },
+     "monoShare": 0.26,
+     "monoProseShare": 0.26,
+     "monoFamilies": [
+      "IBM Plex Mono"
+     ],
+     "monoSamples": [
+      "Prévia de conceito",
+      "/",
+      "Ver versão atual ↗",
+      "EN",
+      "Seu inventário tem potencial",
+      "amigatos no exemplo"
+     ],
+     "microLabels": 7,
+     "microLabelShare": 0.088,
+     "microSamples": [
+      "Prévia de conceito",
+      "/",
+      "Seu inventário tem potencial",
+      "01 / SEU ARSENAL",
+      "02 / TESTE DE CAMPO",
+      "A próxima decisão é sua"
+     ],
+     "upperShare": 0.33,
+     "centerShare": 0.07,
+     "smallText": 11
+    },
+    "eyebrows": [
+     {
+      "text": "Seu inventário tem potencial",
+      "above": "JOGUE COM UM PLANO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10,
+      "top": 192
+     },
+     {
+      "text": "01 / SEU ARSENAL",
+      "above": "FERRAMENTAS PARA CADA JORNADA.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 927
+     },
+     {
+      "text": "02 / TESTE DE CAMPO",
+      "above": "MUDE OS RECURSOS. VEJA O IMPACTO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 2615
+     },
+     {
+      "text": "A próxima decisão é sua",
+      "above": "ENTRE PREPARADO.",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 3820
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01 / SEU ARSENAL",
+      "size": 11,
+      "top": 927
+     },
+     {
+      "text": "01",
+      "size": 13,
+      "top": 1225
+     },
+     {
+      "text": "02",
+      "size": 13,
+      "top": 1649
+     },
+     {
+      "text": "03",
+      "size": 13,
+      "top": 2073
+     },
+     {
+      "text": "02 / TESTE DE CAMPO",
+      "size": 11,
+      "top": 2615
+     }
+    ],
+    "color": {
+     "bodyBg": "#090712",
+     "bodyBgHsl": {
+      "h": 251,
+      "s": 0.44,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c071a",
+       "top": 32,
+       "hsl": {
+        "h": 256,
+        "s": 0.58,
+        "l": 0.06
+       }
+      },
+      {
+       "color": "#171022",
+       "top": 1201,
+       "hsl": {
+        "h": 263,
+        "s": 0.36,
+        "l": 0.1
+       }
+      },
+      {
+       "color": "#1a1024",
+       "top": 1625,
+       "hsl": {
+        "h": 270,
+        "s": 0.38,
+        "l": 0.1
+       }
+      },
+      {
+       "color": "#15101f",
+       "top": 2049,
+       "hsl": {
+        "h": 260,
+        "s": 0.32,
+        "l": 0.09
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#c5b9d2",
+       "share": 0.18
+      },
+      {
+       "color": "#b6a9c8",
+       "share": 0.16
+      },
+      {
+       "color": "#f7f2ff",
+       "share": 0.1
+      },
+      {
+       "color": "#d7cbe3",
+       "share": 0.09
+      },
+      {
+       "color": "#dacde9",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#b88aff",
+      "hsl": {
+       "h": 264,
+       "s": 1,
+       "l": 0.77
+      },
+      "fg": "#170d25"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 2,
+     "radius": 0,
+     "height": 40,
+     "withShadow": 2,
+     "withGradient": 0,
+     "mono": 3,
+     "upper": 0,
+     "heroLabels": [
+      "Ir para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 2,
+     "shadowOverlay": 2,
+     "shadowSamples": [
+      "a.action.action--primary → rgba(158, 94, 229, 0.21) 0px 10px 35px 0px",
+      "a.action.action--primary → rgba(158, 94, 229, 0.21) 0px 10px 35px 0px"
+     ],
+     "gradients": 10,
+     "scrims": 2,
+     "gradientSamples": [
+      "section#ferramentas.arsenal.section-wrap → radial-gradient(at 88% 0%, rgb(36, 21, 51) 0%, rgba(0, 0, 0, 0) 45%)",
+      "article.tool-card.tool-card--amigatos → radial-gradient(circle at 50% 43%, rgba(79, 43, 116, 0.314), rgba(0, 0, 0, 0) 47%), none",
+      "div.tool-card__body → linear-gradient(rgba(0, 0, 0, 0), rgb(13, 9, 24) 17%, rgb(13, 9, 24) 100%)",
+      "article.tool-card.tool-card--florais → radial-gradient(circle at 50% 42%, rgba(126, 60, 119, 0.36), rgba(0, 0, 0, 0) 49%), none"
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "header.header 390px",
+      "section#simulador.simulation 390px",
+      "footer.footer 390px"
+     ],
+     "outlinedBoxes": 4,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 1,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1201
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.96
+     },
+     {
+      "type": "img",
+      "ratio": 0.18
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": false,
+     "height": 64,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "ibm plex mono"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"MUDE OS RECURSOS. VEJA O IMPACTO.\" → 3 lines (6 words, 82px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "mixed-font-headline",
+   "width": 1440,
+   "message": "1 headline(s) switch typeface or to italic mid-line (the \"one italic serif word\" move).",
+   "fix": "Set the whole headline in one face. Emphasis comes from the words.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "numbering",
+   "width": 1440,
+   "message": "Decorative index numbers: \"01 / SEU ARSENAL\", \"01\", \"02\", \"03\", \"02 / TESTE DE CAMPO\"",
+   "fix": "Remove them. If order truly matters, write it into the words (\"First, …\") or use a real <ol>.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "8 tiny uppercase letter-spaced labels (e.g. \"Prévia de conceito\", \"/\", \"Seu inventário tem potencial\", \"01 / SEU ARSENAL\").",
+   "fix": "Use sentence-case text at a readable size, or delete the label.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "text-shadow",
+   "width": 1440,
+   "message": "1 text-shadow(s).",
+   "fix": "Remove; fix legibility with a scrim or a different crop.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "button-fx",
+   "width": 1440,
+   "message": "Buttons with shadow/glow.",
+   "fix": "Flat fill, one colour.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "palette-purple",
+   "width": 1440,
+   "message": "Indigo / violet (button #b88aff).",
+   "fix": "Use the accent from the drawn palette.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-count",
+   "width": 1440,
+   "message": "3 typefaces in use (Barlow, IBM Plex Mono, Barlow Condensed).",
+   "fix": "Two at most.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "12 different font sizes (10, 11, 12, 13, 14, 16, 17, 18, 21, 38, 82, 122).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "body-size",
+   "width": 1440,
+   "message": "Body text is 14px (the size most of the running text is set in).",
+   "fix": "Body copy 16–20px. Map small sizes from blueprints onto your body step.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "12 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Only 0 element(s) moved while the page loaded and scrolled.",
+   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "1 headline(s) wrap past two lines at 768px: \"MUDE OS RECURSOS. VEJA O IMPACTO.\" → 3 lines (6 words, 50px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "2 headline(s) wrap past two lines at 390px: \"FERRAMENTAS PARA CADA JORNADA.\" → 3 lines (4 words, 50px); \"MUDE OS RECURSOS. VEJA O IMPACTO.\" → 3 lines (6 words, 50px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect-gamer\\desktop-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect-gamer\\desktop-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect-gamer\\tablet-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect-gamer\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect-gamer\\mobile-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect-gamer\\mobile-page-01.jpg"
+   ]
+  }
+ ]
+}

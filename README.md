@@ -7,7 +7,7 @@ pile of one-off scripts. Live at [forneus.wiki](https://forneus.wiki).
 |---|---|
 | Amigatos (catpal Fish Jelly allocation) | Available |
 | Fantasmas (ghosts) | Planned |
-| Guardiões Florais (floral guardians) | Planned |
+| Guardiões Florais (floral guardians) | Beta — garden calculator |
 
 ## What this repository is
 
@@ -87,6 +87,11 @@ result is optimal for the given data, not a greedy approximation.
   versioned and should be reviewed after future game rebalances.
 - **Only Fish Jelly is modeled.** Silverleaf and Dried Fish costs are not
   considered anywhere. Treat results as jelly-optimal, not globally optimal.
+- **The optimizer's power curves are a 2026-09-17 capture.** The separate
+  [Amigatos progression lookup](web/src/data/AMIGATOS-SOURCE.md) uses the
+  2026-10-14 Portuguese client configuration for material costs, star bonuses,
+  spirit levels and Atlas increments. It does not replace those power curves
+  or claim to model server calculations.
 
 Tier provenance lives in each category's `tier` field in the dataset.
 
@@ -144,11 +149,13 @@ print(format_json(result, "en-US"))
 - [ ] Add and validate the Amigatos visual assets
 - [ ] Model Silverleaf and Dried Fish costs (turns the solver into a
       multidimensional knapsack)
+- [x] Add a separately sourced material and progression lookup for Amigatos
 
 ### Later tools
 
 - [ ] Phase 4 - Fantasmas optimizer
-- [ ] Phase 5 - Guardiões Florais
+- [x] Guardiões Florais — manual garden calculator (pt/en), cultivation costs, skill bonuses and local save/import/export
+- [ ] Guardiões Florais — automatic allocation optimizer and in-game dataset validation
 - [ ] Recapture Red r2 data at tier 6 of 6, if the data becomes available
 
 ## License

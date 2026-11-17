@@ -1,0 +1,318 @@
+---
+import Site from '../../../../layouts/Site.astro';
+import { LOCALES, type Locale } from '../../../../i18n/ui';
+import { progression, qualities, classes, costSystems, planCosts, starBonus, spiritLevel, atlasLevel, attributeName } from '../../../../lib/amigatos-progression.ts';
+import rosterSnapshot from '../../../../data/amigatos-roster.json';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const pt = locale === 'pt';
+const fmt = (value: number) => new Intl.NumberFormat(pt ? 'pt-BR' : 'en-US', { maximumFractionDigits: 2 }).format(value);
+const initial = planCosts('awake_cost', 7, 2, 15);
+const cats = rosterSnapshot.cats;
+const initialCat = cats.find((cat) => cat.id === 5110002)!;
+const initialStar = starBonus(initialCat.cat_star_id, 2)!;
+const spiritQualities = [...new Set(progression.spirit_rows.map((row) => row.quality))].sort((a, b) => a - b);
+const initialSpirit = spiritLevel(initialCat.quality, 1)!;
+const initialAtlas = atlasLevel(1)!;
+const systems: Record<string, string> = pt
+  ? { develop_cost: 'Melhoria', awake_cost: 'Despertar', star_up_cost: 'Estrela' }
+  : { develop_cost: 'Level upgrade', awake_cost: 'Awakening', star_up_cost: 'Star upgrade' };
+---
+<Site
+  locale={locale}
+  active="amigatos"
+  title={pt ? 'Progressão de Amigatos' : 'Catpal progression'}
+  description={pt ? 'Consulte custos, bônus de estrela, espírito e Atlas extraídos das tabelas do jogo.' : 'Look up costs, star bonuses, spirit levels and Atlas progression from game tables.'}
+>
+  <div class="progression" data-locale={locale}>
+    <header class="progression__head">
+      <div>
+        <p class="eyebrow">TREE OF SAVIOR NEO <span>/</span> {pt ? 'AMIGATOS' : 'CATPALS'}</p>
+        <h1>{pt ? 'Progressão de Amigatos' : 'Catpal progression'}</h1>
+        <p class="lede">{pt
+          ? 'Consulte cada gasto antes de evoluir. Os valores abaixo vêm da configuração portuguesa extraída em 14/10/2026.'
+          : 'Check each cost before upgrading. These values come from the Portuguese game configuration extracted on 14 Oct 2026.'}</p>
+        <a class="back" href={`/${locale}/ferramentas/amigatos/`}>← {pt ? 'Voltar à calculadora de equipe' : 'Back to team optimizer'}</a>
+      </div>
+      <img src="/assets/amigatos/catmain.png" width="546" height="151" alt="" />
+    </header>
+
+    <aside class="source-note" role="note">
+      <strong>{pt ? 'Escopo dos dados' : 'Data scope'}</strong>
+      <p>{pt
+        ? 'Os nomes, variantes e IDs de estrela foram vinculados pela tabela de itens do jogo. Os custos são da configuração local, não uma previsão do servidor. Há retratos confirmados para 29 dos 74 Amigatos; os demais aparecem pelo nome. Confira o custo no jogo antes de gastar.'
+        : 'Names, cost variants and star IDs come from the game item table. Costs reflect the local configuration, not a live server prediction. Exact portraits are available for 29 of 74 Catpals; the rest remain identifiable by name. Check the in-game cost before spending.'}</p>
+    </aside>
+
+    <section class="cat-stage" aria-labelledby="cat-heading">
+      <div class="cat-stage__top"><span class="index">{pt ? 'COLEÇÃO DE AMIGATOS' : 'CATPAL COLLECTION'}</span><h2 id="cat-heading">{pt ? 'Escolha seu Amigato' : 'Choose your Catpal'}</h2></div>
+      <div class="cat-stage__layout">
+        <div class="cat-roster">
+          <label for="cat-search">{pt ? 'Buscar pelo nome' : 'Search by name'}</label>
+          <input id="cat-search" class="fx-field" type="search" autocomplete="off" placeholder={pt ? 'Ex.: Flora, Sakurako...' : 'E.g. Flora, Sakurako...'} />
+          <div class="cat-roster__list" id="cat-roster" role="group" aria-label={pt ? 'Lista de Amigatos' : 'Catpal list'}>
+            {cats.map((cat) => <button type="button" class="cat-card" data-cat-id={cat.id} data-cat-name={cat.name.toLocaleLowerCase()} aria-pressed={cat.id === initialCat.id ? 'true' : 'false'}>
+              <span class="cat-card__portrait">{cat.portrait ? <img src={cat.portrait} width="58" height="58" alt="" loading="lazy" /> : <img src="/assets/amigatos/game-cat.png" width="38" height="44" alt="" loading="lazy" />}</span>
+              <span class="cat-card__name">{cat.name}</span><span class="cat-card__quality">T{cat.quality}</span>
+            </button>)}
+          </div>
+          <p id="cat-empty" class="cat-empty" hidden>{pt ? 'Nenhum Amigato encontrado.' : 'No Catpal found.'}</p>
+        </div>
+        <div class="cat-preview">
+          <div class="cat-preview__art"><img id="selected-portrait" src={initialCat.portrait || '/assets/amigatos/game-cat.png'} width="150" height="172" alt="" /><span id="portrait-note">{initialCat.portrait ? (pt ? 'Retrato extraído do jogo' : 'Portrait extracted from the game') : (pt ? 'Retrato não encontrado na extração' : 'Portrait unavailable in extraction')}</span></div>
+          <div class="cat-preview__details">
+            <div class="cat-preview__identity"><span class="index">{pt ? 'AMIGATO SELECIONADO' : 'SELECTED CATPAL'}</span><h3 id="selected-name">{initialCat.name}</h3><div class="cat-preview__badges"><span id="selected-quality">T{initialCat.quality}</span><span id="selected-class">{pt ? 'Variante' : 'Variant'} {initialCat.class}</span></div></div>
+            <section class="game-stats" aria-labelledby="game-stats-title">
+              <div class="game-stats__heading"><h4 id="game-stats-title">{pt ? 'Atributos do personagem' : 'Character attributes'}</h4><label>{pt ? 'Nível / estrela' : 'Level / star'}<select id="stage-star-level" class="fx-field"><option value="2">2</option></select></label></div>
+              <ul class="metric-list" id="stage-attributes">{initialStar.attrs.map(([id, value]) => <li><span>{attributeName(id)}</span><strong>+{fmt(value)}</strong></li>)}</ul>
+              <p class="game-stats__note">{pt ? 'Bônus da progressão por estrela neste nível. A base de combate não está disponível nesta extração.' : 'Star progression bonuses at this level. Base combat stats are not available in this extract.'}</p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="cost-heading">
+      <div class="panel__intro"><span class="index">01 / {pt ? 'MATERIAIS' : 'MATERIALS'}</span><h2 id="cost-heading">{pt ? 'Custo por etapa' : 'Cost by step'}</h2><p>{pt ? 'Selecione uma etapa ou uma faixa para somar todos os materiais.' : 'Select one step or a range to sum every material.'}</p></div>
+      <div class="presets"><span>{pt ? 'Exemplos conferidos em tela:' : 'Screenshot-checked examples:'}</span><button type="button" data-cost-preset="flora">Flora · 15</button><button type="button" data-cost-preset="sakurako">Sakurako · 12</button></div>
+      <div class="controls">
+        <label>{pt ? 'Sistema' : 'System'}<select id="cost-system" class="fx-field">{costSystems.map((system) => <option value={system} selected={system === 'awake_cost'}>{systems[system]}</option>)}</select></label>
+        <select id="cost-quality" hidden aria-hidden="true">{qualities.map((quality) => <option value={quality} selected={quality === 7}>{quality}</option>)}</select>
+        <select id="cost-class" hidden aria-hidden="true">{classes.map((costClass) => <option value={costClass} selected={costClass === 2}>{costClass}</option>)}</select>
+        <label>{pt ? 'Primeira etapa' : 'First step'}<select id="cost-first" class="fx-field"><option value="15">15</option></select></label>
+        <label>{pt ? 'Última etapa' : 'Last step'}<select id="cost-last" class="fx-field"><option value="15">15</option></select></label>
+      </div>
+      <div class="result-bar"><span id="cost-summary">{pt ? 'Despertar · qualidade 7 · variante 2 · etapa 15' : 'Awakening · quality 7 · variant 2 · step 15'}</span><strong id="cost-steps">1 {pt ? 'etapa' : 'step'}</strong></div>
+      <p class="scroll-hint">{pt ? 'Deslize a tabela para ver saldos e faltas →' : 'Scroll the table to see balances and shortages →'}</p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label={pt ? 'Materiais necessários' : 'Required materials'}><table><caption class="sr-only">{pt ? 'Materiais necessários' : 'Required materials'}</caption><thead><tr><th scope="col">{pt ? 'Material' : 'Material'}</th><th scope="col">ID</th><th scope="col">{pt ? 'Necessário' : 'Required'}</th><th scope="col">{pt ? 'Você tem' : 'You have'}</th><th scope="col">{pt ? 'Falta' : 'Missing'}</th></tr></thead><tbody id="cost-materials">{initial.materials.map((material) => <tr><th scope="row">{material.name}</th><td class="num">{material.item_id}</td><td class="num">{fmt(material.amount)}</td><td><input class="balance" type="number" min="0" step="1" value="0" data-item={material.item_id} aria-label={`${pt ? 'Saldo de' : 'Balance of'} ${material.name}`} /></td><td class="num" data-shortage={material.item_id}>{fmt(material.amount)}</td></tr>)}</tbody></table></div>
+      <p class="footnote" id="cost-extra">{pt ? 'Nível de personagem exigido: 100.' : 'Required player level: 100.'}</p>
+      <p class="footnote">{pt ? 'A quantidade de fragmentos para estrela é exibida separadamente; a tabela não identifica qual fragmento pertence a cada Amigato.' : 'Star fragments are shown separately; the table does not identify which fragment belongs to each Catpal.'}</p>
+    </section>
+
+    <div class="secondary-grid">
+      <section class="panel" aria-labelledby="star-heading">
+        <div class="panel__intro"><span class="index">02 / {pt ? 'ESTRELA' : 'STAR'}</span><h2 id="star-heading">{pt ? 'Bônus de estrela' : 'Star bonus'}</h2><p>{pt ? 'Bônus do Amigato escolhido.' : 'Bonuses for the selected Catpal.'}</p></div>
+        <div class="controls controls--small"><label>{pt ? 'Estrela' : 'Star'}<select id="star-level" class="fx-field"><option value="2">2</option></select></label></div>
+        <p class="result-bar"><span id="star-summary">{initialCat.name} · {initialStar.star} ★</span></p>
+        <ul class="metric-list" id="star-attributes">{initialStar.attrs.map(([id, value]) => <li><span>{attributeName(id)}</span><strong>+{fmt(value)}</strong></li>)}</ul>
+        <p class="footnote">{pt ? 'Bônus de atributo; não convertido em poder total.' : 'Attribute bonus; not converted into total power.'}</p>
+      </section>
+
+      <section class="panel" aria-labelledby="spirit-heading">
+        <div class="panel__intro"><span class="index">03 / {pt ? 'ESPÍRITO' : 'SPIRIT'}</span><h2 id="spirit-heading">{pt ? 'Nível do espírito' : 'Spirit level'}</h2><p>{pt ? 'Experiência e atributos configurados para cada nível.' : 'Configured experience and attributes at each level.'}</p></div>
+        <div class="controls controls--small"><select id="spirit-quality" hidden aria-hidden="true">{spiritQualities.map((quality) => <option value={quality}>{quality}</option>)}</select><label>{pt ? 'Nível' : 'Level'}<input id="spirit-level" class="fx-field" type="number" inputmode="numeric" min="0" max="1000" step="1" value="1" /></label></div>
+        <p class="result-bar"><span id="spirit-summary">{pt ? 'Nível' : 'Level'} 1</span></p>
+        <ul class="metric-list" id="spirit-attributes">{initialSpirit.attrs.map(([id, value]) => <li><span>{attributeName(id)}</span><strong>+{fmt(value)}</strong></li>)}</ul>
+        <p class="footnote" id="spirit-extra">EXP {fmt(initialSpirit.exp)} · {pt ? 'nível de personagem' : 'player level'} {initialSpirit.player_level}</p>
+      </section>
+    </div>
+
+    <section class="panel panel--atlas" aria-labelledby="atlas-heading">
+      <div class="panel__intro"><span class="index">04 / ATLAS</span><h2 id="atlas-heading">{pt ? 'Avanço do Atlas' : 'Atlas progression'}</h2><p>{pt ? 'Incrementos e experiência da etapa selecionada. São 185 níveis na extração.' : 'Increments and experience for the selected step. The export contains 185 levels.'}</p></div>
+      <div class="controls controls--small"><label>{pt ? 'Nível do Atlas' : 'Atlas level'}<select id="atlas-level" class="fx-field">{Array.from({ length: 185 }, (_, i) => <option value={i + 1}>{i + 1}</option>)}</select></label></div>
+      <p class="result-bar"><span id="atlas-summary">{pt ? 'Nível' : 'Level'} 1 · EXP {fmt(initialAtlas.exp)}</span></p>
+      <ul class="metric-list metric-list--atlas" id="atlas-attributes">{initialAtlas.attrs.map(([id, value]) => <li><span>{attributeName(id)}</span><strong>+{fmt(value)}</strong></li>)}</ul>
+    </section>
+
+    <footer class="provenance"><span>{pt ? 'Fotografia dos dados' : 'Data snapshot'} · 14/10/2026</span><code>config_eu_pt.cw · {progression.config_sha256.slice(0, 12)}…</code><a href={`/${locale}/ferramentas/amigatos/`}>{pt ? 'Abrir calculadora de equipe' : 'Open team optimizer'} →</a></footer>
+  </div>
+</Site>
+
+<style>
+  .progression { padding: clamp(20px, 4vw, 56px) var(--page-pad) 80px; max-width: 1180px; margin: auto; }
+  .progression__head { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-bottom: 36px; border-bottom: 1px solid var(--line-hard); }
+  .progression__head h1 { font-size: clamp(42px, 6vw, 72px); line-height: 1; text-transform: uppercase; }
+  .progression__head img { width: 98px; height: 112px; object-fit: contain; }
+  .eyebrow, .index { font: 600 11px var(--font-mono); letter-spacing: .14em; color: var(--accent); text-transform: uppercase; }
+  .eyebrow { margin-bottom: 16px; }.eyebrow span { color: var(--text-faint); padding: 0 8px; }
+  .lede { max-width: 670px; margin-top: 18px; font-size: 16px; color: var(--text-muted); }
+  .back { display: inline-block; margin-top: 22px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+  .source-note { display: grid; grid-template-columns: 160px 1fr; gap: 20px; margin: 28px 0; padding: 18px 22px; background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--text-default); }
+  .source-note strong { color: var(--warn); font: 700 15px var(--font-display); text-transform: uppercase; letter-spacing: .08em; }.source-note p { max-width: 850px; }
+  .panel { background: var(--bg-panel); border: 1px solid var(--line-hard); padding: clamp(20px, 3vw, 32px); margin-top: 20px; }
+  .panel__intro { margin-bottom: 24px; }.panel__intro h2 { margin-top: 7px; text-transform: uppercase; }.panel__intro p { margin-top: 7px; color: var(--text-muted); }
+  .presets { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: -6px 0 20px; color: var(--text-faint); font-size: 12px; }.presets button { min-height: 30px; padding: 4px 10px; color: var(--accent); background: var(--bg-inset); border: 1px solid var(--line-control); font: 600 12px var(--font-mono); cursor: pointer; }.presets button:hover { border-color: var(--accent); }
+  .controls { display: grid; grid-template-columns: repeat(5, minmax(120px, 1fr)); gap: 12px; }.controls--small { grid-template-columns: repeat(2, minmax(120px, 180px)); }
+  label { display: flex; flex-direction: column; gap: 7px; color: var(--text-faint); font: 600 11px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; }
+  .fx-field { color: var(--text-strong); background: var(--bg-inset); }.result-bar { display: flex; justify-content: space-between; gap: 16px; margin: 26px 0 12px; padding: 12px 0; border-top: 1px solid var(--line-hard); border-bottom: 1px solid var(--line-hard); color: var(--text-strong); font: 500 13px var(--font-mono); }
+  .result-bar strong { color: var(--accent); font-weight: 600; }.scroll-hint { display: none; margin: 0 0 8px; color: var(--text-faint); font-size: 12px; }.table-wrap { overflow-x: auto; }table { border-collapse: collapse; width: 100%; min-width: 620px; }th,td { padding: 10px 12px; border-bottom: 1px solid var(--line-soft); text-align: left; }thead th { background: var(--bg-chrome); font: 600 10px var(--font-mono); text-transform: uppercase; letter-spacing: .1em; color: var(--text-faint); }tbody th { font-weight: 500; color: var(--text-strong); }.num { font: 500 13px var(--font-mono); font-variant-numeric: tabular-nums; }.balance { width: 120px; min-height: 36px; padding: 5px 8px; color: var(--text-strong); background: var(--bg-inset); border: 1px solid var(--line-control); font: 13px var(--font-mono); }.shortage-zero { color: var(--ok); }.footnote { margin-top: 12px; color: var(--text-muted); font-size: 12px; }
+  .secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }.metric-list { list-style: none; margin: 0; padding: 0; }.metric-list li { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--line-soft); }.metric-list strong { font: 600 13px var(--font-mono); color: var(--accent); font-variant-numeric: tabular-nums; }.metric-list--atlas { max-width: 520px; }.provenance { display: flex; flex-wrap: wrap; gap: 16px 28px; justify-content: space-between; margin-top: 28px; color: var(--text-faint); font-size: 12px; }.provenance code { font-family: var(--font-mono); }.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  @media (max-width: 800px) { .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }.secondary-grid { grid-template-columns: 1fr; }.source-note { grid-template-columns: 1fr; gap: 6px; }.scroll-hint { display: block; } }
+  @media (max-width: 560px) { .progression__head img { width: 64px; height: auto; }.controls { grid-template-columns: 1fr 1fr; }.controls--small { grid-template-columns: 1fr 1fr; }.progression { padding-inline: 16px; }.panel { padding: 18px; } }
+  .progression { --cat-ink: #352a22; --cat-paper: #f3e6ca; --cat-border: #9c6b3c; max-width: 1240px; padding-top: 28px; }
+  .progression__head { align-items: flex-end; padding-bottom: 22px; }
+  .progression__head h1 { font-size: clamp(42px, 5vw, 62px); }
+  .progression__head .lede { margin-top: 12px; }.progression__head .back { margin-top: 14px; }
+  .progression__head img { width: min(34vw, 350px); height: auto; filter: drop-shadow(0 12px 18px #0005); }
+  .source-note { border-left: 4px solid #b58a52; margin: 16px 0; padding-block: 13px; }
+  .cat-stage { margin: 18px 0 34px; padding: 18px; border: 1px solid #a97b48; border-radius: 14px; background: linear-gradient(145deg, #987452, #665447 48%, #84705c); box-shadow: 0 20px 36px #0005, inset 0 0 0 2px #d5b283; }
+  .cat-stage__top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 2px 6px 16px; }
+  .cat-stage__top .index { color: #fbe7ba; }.cat-stage__top h2 { color: #fff5df; font-size: clamp(25px, 3vw, 38px); text-shadow: 0 2px 2px #4a2b1c; }
+  .cat-stage__layout { display: grid; grid-template-columns: minmax(210px, 25%) minmax(0, 1fr); gap: 12px; min-height: 375px; }
+  .cat-roster { min-width: 0; padding: 14px; border: 2px solid #623d25; border-radius: 8px; background: linear-gradient(#f4e8ce, #e4c99e); box-shadow: inset 0 0 0 2px #fffae6; }
+  .cat-roster label { color: #634527; }
+  .cat-roster input { width: 100%; margin: 7px 0 12px; color: var(--cat-ink); background: #fff9e9; border: 1px solid #a5845d; border-radius: 4px; padding: 9px 11px; }
+  .cat-roster__list { display: grid; grid-template-columns: 1fr; gap: 7px; max-height: 472px; overflow: auto; padding: 2px 5px 2px 2px; scrollbar-color: #a47544 #e5cfab; }
+  .cat-card { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 8px; min-width: 0; min-height: 58px; padding: 4px 6px; border: 2px solid #9d7147; border-radius: 7px; color: #4a3422; background: linear-gradient(#fff5dc, #dfbd87); box-shadow: 0 2px 4px #6f46263d; cursor: pointer; text-align: left; }
+  .cat-card:hover, .cat-card:focus-visible { border-color: #f5d383; background: #fff4d5; outline: 2px solid #6c452d; outline-offset: 1px; }
+  .cat-card[aria-pressed="true"] { border-color: #f8d28a; color: #fff8e6; background: linear-gradient(130deg, #ae4d34, #79311f); box-shadow: inset 0 0 0 1px #ffda99, 0 2px 7px #6a341c8a; }
+  .cat-card[hidden] { display: none; }
+  .cat-card__portrait { display: grid; place-items: center; width: 46px; height: 46px; overflow: hidden; border-radius: 5px; background: #b68b68; border: 1px solid #755139; }
+  .cat-card__portrait img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .cat-card__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 700 13px var(--font-display); }
+  .cat-card__quality { position: absolute; right: 5px; bottom: 4px; font: 700 10px var(--font-mono); opacity: .75; }
+  .cat-empty { color: #573923; font-size: 13px; }
+  .cat-preview { display: grid; grid-template-columns: minmax(135px, 28%) minmax(0, 1fr); align-items: stretch; gap: 14px; min-width: 0; padding: 16px; border: 2px solid #95704d; border-radius: 8px; color: #493629; background: radial-gradient(circle at 28% 38%, #82929a, #697b80 55%, #52666b); box-shadow: inset 0 0 0 2px #d0bd9f, inset 0 0 32px #263638; }
+  .cat-preview__art { display: grid; justify-items: center; align-content: center; gap: 10px; min-height: 0; padding: 8px; }
+  .cat-preview__art img { display: block; width: min(100%, 210px); aspect-ratio: 1; height: auto; object-fit: contain; border: 4px solid #d8b576; border-radius: 8px; background: linear-gradient(145deg, #f7e7c6, #c9a875); box-shadow: 0 5px 12px #27333555; }
+  .cat-preview__art span { max-width: 145px; color: #5c3c1d; text-align: center; font: 700 10px/1.25 var(--font-mono); }
+  .cat-preview__details { display: grid; grid-template-columns: minmax(150px, .8fr) minmax(220px, 1.2fr); align-items: center; gap: 18px; min-width: 0; }
+  .cat-preview__identity .index { color: #f7dfa9; }.cat-preview__identity h3 { margin: 12px 0; color: #fff8e7; font-size: clamp(30px, 4vw, 52px); line-height: 1; text-shadow: 0 3px 4px #1e3146; }
+  .game-stats { padding: 16px 18px; border: 2px solid #9a734b; border-radius: 14px; color: #553c2a; background: linear-gradient(#f7e8c9, #eddbb7); box-shadow: inset 0 0 0 2px #fff6e2, 0 5px 14px #202c2b4d; }
+  .game-stats__heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid #c9ab7e; }
+  .game-stats__heading h4 { font: 700 15px var(--font-display); color: #68462b; }
+  .game-stats__heading label { max-width: 92px; color: #79583a; font-size: 9px; }
+  .game-stats__heading .fx-field { padding: 4px 6px; color: #493629; background: #fff6e4; border: 1px solid #b99869; border-radius: 4px; }
+  .game-stats .metric-list li { padding: 8px 0; border-color: #d8c29c; font-weight: 600; }
+  .game-stats .metric-list strong { color: #398b60; font-size: 14px; }
+  .game-stats__note { margin-top: 10px; color: #80694e; font-size: 10px; line-height: 1.35; }
+  .cat-preview__badges { display: flex; flex-wrap: wrap; gap: 7px; }.cat-preview__badges span { padding: 6px 9px; border: 1px solid #f6d593; border-radius: 4px; color: #5d361f; background: #f2dba8; font: 700 11px var(--font-mono); }
+  .panel { border: 2px solid #a47749; border-radius: 7px; background: linear-gradient(#f8efd9, #f0e0bf); color: var(--cat-ink); box-shadow: inset 0 0 0 2px #fff8e8, 0 8px 18px #0002; }
+  .panel__intro h2 { color: #563a28; }.panel__intro p, .panel .footnote { color: #6c5743; }.panel .index { color: #9a4e2c; }
+  .panel label { color: #684a31; }.panel .fx-field, .panel .balance { color: #34271e; background: #fff9e9; border: 1px solid #ae8d64; border-radius: 4px; }
+  .panel .result-bar { border-color: #c4a778; color: #50351f; }.panel .result-bar strong, .panel .metric-list strong { color: #9c3b28; }
+  .panel thead th { color: #644831; background: #e6d0a6; }.panel tbody th { color: #3e3023; }.panel th, .panel td, .panel .metric-list li { border-color: #d6bc90; }
+  .panel .presets { color: #785d47; }.panel .presets button { color: #883e2a; background: #fff4d8; border-color: #bd9967; border-radius: 4px; }.panel .presets button:hover { background: #f4dcab; }
+  .panel :global(.balance) { color: #34271e; background: #fff9e9; border: 1px solid #ae8d64; border-radius: 4px; }
+  .panel :global(.metric-list li) { border-color: #d6bc90; }
+  .panel :global(.metric-list strong) { color: #9c3b28; }
+  .panel :global(.shortage-zero) { color: #236a4a; }
+  @media (max-width: 900px) { .cat-stage__layout { grid-template-columns: minmax(180px, 30%) minmax(0, 1fr); }.cat-roster__list { max-height: 430px; }.cat-preview { grid-template-columns: minmax(100px, 26%) minmax(0, 1fr); padding: 12px; }.cat-preview__details { grid-template-columns: 1fr; gap: 12px; }.cat-preview__art img { width: min(100%, 170px); } }
+  @media (max-width: 600px) { .progression__head img { width: 105px; }.cat-stage { padding: 10px; }.cat-stage__top { display: block; }.cat-stage__top h2 { margin-top: 6px; }.cat-stage__layout { grid-template-columns: 1fr; }.cat-roster__list { max-height: 220px; grid-template-columns: repeat(2,minmax(0,1fr)); }.cat-card { grid-template-columns: 42px minmax(0,1fr); min-height: 54px; }.cat-card__portrait { width: 40px; height: 40px; }.cat-preview { grid-template-columns: 1fr; text-align: center; padding: 10px 14px 16px; }.cat-preview__art img { width: min(58vw, 180px); }.cat-preview__details { grid-template-columns: 1fr; }.cat-preview__badges { justify-content: center; }.game-stats { text-align: left; }.game-stats__heading { text-align: left; } }
+</style>
+
+<script>
+  import { progression, costSteps, planCosts, starBonus, spiritLevel, atlasLevel, attributeName, type CostSystem } from '../../../../lib/amigatos-progression.ts';
+  import rosterSnapshot from '../../../../data/amigatos-roster.json';
+  const root = document.querySelector<HTMLElement>('.progression')!;
+  const pt = root.dataset.locale === 'pt';
+  const fmt = (value: number) => new Intl.NumberFormat(pt ? 'pt-BR' : 'en-US', { maximumFractionDigits: 2 }).format(value);
+  const select = (id: string) => document.getElementById(id) as HTMLSelectElement;
+  const out = (id: string) => document.getElementById(id)!;
+  const system = select('cost-system'); const quality = select('cost-quality'); const costClass = select('cost-class');
+  const first = select('cost-first'); const last = select('cost-last');
+  const cats = rosterSnapshot.cats;
+  let selectedCat = cats.find((cat) => cat.id === 5110002)!;
+  const balances = new Map<number, number>();
+  const names: Record<CostSystem, string> = pt
+    ? { develop_cost: 'Melhoria', awake_cost: 'Despertar', star_up_cost: 'Estrela' }
+    : { develop_cost: 'Level upgrade', awake_cost: 'Awakening', star_up_cost: 'Star upgrade' };
+  const fill = (element: HTMLSelectElement, values: number[], preferred: number) => {
+    element.replaceChildren(...values.map((value) => {
+      const option = document.createElement('option'); option.value = String(value); option.textContent = String(value); return option;
+    }));
+    element.value = String(values.includes(preferred) ? preferred : values[0]);
+  };
+  function renderCost() {
+    const systemValue = system.value as CostSystem;
+    const plan = planCosts(systemValue, Number(quality.value), Number(costClass.value), Number(first.value), Number(last.value));
+    out('cost-summary').textContent = `${selectedCat.name} · ${names[systemValue]} · ${first.value}${first.value === last.value ? '' : '–' + last.value}`;
+    out('cost-steps').textContent = `${plan.rows.length} ${pt ? (plan.rows.length === 1 ? 'etapa' : 'etapas') : (plan.rows.length === 1 ? 'step' : 'steps')}`;
+    const body = out('cost-materials'); body.replaceChildren();
+    for (const material of plan.materials) {
+      const row = document.createElement('tr'); const name = document.createElement('th'); name.scope = 'row'; name.textContent = material.name;
+      const item = document.createElement('td'); item.className = 'num'; item.textContent = String(material.item_id);
+      const amount = document.createElement('td'); amount.className = 'num'; amount.textContent = fmt(material.amount);
+      const balanceCell = document.createElement('td'); const input = document.createElement('input'); input.type = 'number'; input.min = '0'; input.step = '1'; input.className = 'balance'; input.value = String(balances.get(material.item_id) ?? 0); input.setAttribute('aria-label', `${pt ? 'Saldo de' : 'Balance of'} ${material.name}`);
+      const shortage = document.createElement('td'); shortage.className = 'num';
+      const update = () => { const available = Math.max(0, Math.trunc(Number(input.value)) || 0); balances.set(material.item_id, available); const missing = Math.max(0, material.amount - available); shortage.textContent = fmt(missing); shortage.classList.toggle('shortage-zero', missing === 0); };
+      input.addEventListener('input', update); update(); balanceCell.append(input); row.append(name, item, amount, balanceCell, shortage); body.append(row);
+    }
+    const extras: string[] = [];
+    if (plan.required_player_level !== null) extras.push(`${pt ? 'Nível de personagem exigido' : 'Required player level'}: ${fmt(plan.required_player_level)}`);
+    if (plan.fragment_count) extras.push(`${pt ? 'Fragmentos' : 'Fragments'}: ${fmt(plan.fragment_count)}`);
+    out('cost-extra').textContent = extras.join(' · ');
+  }
+  function syncSteps(preferFirst = Number(first.value), preferLast = Number(last.value)) {
+    const steps = costSteps(system.value as CostSystem, Number(quality.value), Number(costClass.value));
+    fill(first, steps, preferFirst); fill(last, steps.filter((step) => step >= Number(first.value)), Math.max(preferLast, Number(first.value)));
+    renderCost();
+  }
+  system.addEventListener('change', () => syncSteps());
+  first.addEventListener('change', () => syncSteps(Number(first.value), Number(last.value)));
+  last.addEventListener('change', renderCost);
+  const starLevel = select('star-level'); const stageStarLevel = select('stage-star-level');
+  function renderStar() {
+    const row = starBonus(selectedCat.cat_star_id, Number(starLevel.value)); if (!row) return;
+    stageStarLevel.value = starLevel.value;
+    out('star-summary').textContent = `${selectedCat.name} · ${row.star} ★ · ${pt ? 'habilidade' : 'skill'} ${row.skill_level}`;
+    renderMetrics('star-attributes', row.attrs);
+    renderMetrics('stage-attributes', row.attrs);
+  }
+  function renderMetrics(id: string, attrs: [number, number][]) {
+    const list = out(id);
+    if (attrs.length === 0) {
+      const li = document.createElement('li'); li.textContent = pt ? 'Sem bônus de atributo nesta etapa.' : 'No attribute bonus at this step.';
+      list.replaceChildren(li); return;
+    }
+    list.replaceChildren(...attrs.map(([attrId, value]) => {
+      const li = document.createElement('li'); const name = document.createElement('span'); name.textContent = attributeName(attrId);
+      const amount = document.createElement('strong'); amount.textContent = `+${fmt(value)}`; li.append(name, amount); return li;
+    }));
+  }
+  starLevel.addEventListener('change', renderStar);
+  stageStarLevel.addEventListener('change', () => { starLevel.value = stageStarLevel.value; renderStar(); });
+  const syncStar = () => { const levels = progression.star_rows.filter((row) => row.cat_star_id === selectedCat.cat_star_id).map((row) => row.star); fill(starLevel, levels, Number(starLevel.value) || 2); fill(stageStarLevel, levels, Number(starLevel.value)); renderStar(); };
+
+  const spiritQuality = select('spirit-quality'); const spiritLevelInput = document.getElementById('spirit-level') as HTMLInputElement;
+  function renderSpirit() {
+    const level = Number(spiritLevelInput.value);
+    if (!Number.isInteger(level) || level < Number(spiritLevelInput.min) || level > Number(spiritLevelInput.max)) {
+      out('spirit-summary').textContent = `${pt ? 'Escolha um nível entre' : 'Choose a level from'} 0 ${pt ? 'e' : 'to'} ${spiritLevelInput.max}`;
+      out('spirit-attributes').replaceChildren(); out('spirit-extra').textContent = ''; return;
+    }
+    const row = spiritLevel(Number(spiritQuality.value), level); if (!row) return;
+    out('spirit-summary').textContent = `${pt ? 'Qualidade' : 'Quality'} ${row.quality} · ${pt ? 'nível' : 'level'} ${row.level}`;
+    renderMetrics('spirit-attributes', row.attrs);
+    out('spirit-extra').textContent = `EXP ${fmt(row.exp)} · ${pt ? 'nível de personagem' : 'player level'} ${fmt(row.player_level)}`;
+  }
+  const syncSpirit = () => { spiritQuality.value = String(selectedCat.quality); const levels = progression.spirit_rows.filter((row) => row.quality === Number(spiritQuality.value)).map((row) => row.level); spiritLevelInput.max = String(Math.max(...levels)); spiritLevelInput.value = String(Math.min(Number(spiritLevelInput.value) || 1, Number(spiritLevelInput.max))); renderSpirit(); };
+  spiritLevelInput.addEventListener('change', renderSpirit);
+  function chooseCat(id: number, step?: number) {
+    const cat = cats.find((entry) => entry.id === id); if (!cat) return;
+    selectedCat = cat;
+    quality.value = String(cat.quality); costClass.value = String(cat.class);
+    out('selected-name').textContent = cat.name;
+    out('selected-quality').textContent = `T${cat.quality}`;
+    out('selected-class').textContent = `${pt ? 'Variante' : 'Variant'} ${cat.class}`;
+    const portrait = out('selected-portrait') as HTMLImageElement;
+    portrait.src = cat.portrait || '/assets/amigatos/game-cat.png';
+    out('portrait-note').textContent = cat.portrait ? (pt ? 'Retrato extraído do jogo' : 'Portrait extracted from the game') : (pt ? 'Retrato não encontrado na extração' : 'Portrait unavailable in extraction');
+    document.querySelectorAll<HTMLButtonElement>('[data-cat-id]').forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.catId) === id)));
+    const steps = costSteps(system.value as CostSystem, cat.quality, cat.class);
+    const desired = step ?? (steps.includes(Number(first.value)) ? Number(first.value) : steps[0]);
+    syncSteps(desired, desired);
+    syncStar(); syncSpirit();
+  }
+  document.querySelectorAll<HTMLButtonElement>('[data-cat-id]').forEach((button) => button.addEventListener('click', () => chooseCat(Number(button.dataset.catId))));
+  document.querySelectorAll<HTMLButtonElement>('[data-cost-preset]').forEach((button) => button.addEventListener('click', () => {
+    system.value = 'awake_cost';
+    const flora = button.dataset.costPreset === 'flora';
+    chooseCat(flora ? 5110002 : 5100000, flora ? 15 : 12);
+    document.querySelector<HTMLButtonElement>(`[data-cat-id="${flora ? 5110002 : 5100000}"]`)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }));
+  const search = document.getElementById('cat-search') as HTMLInputElement;
+  search.addEventListener('input', () => {
+    const term = search.value.trim().toLocaleLowerCase(); let visible = 0;
+    document.querySelectorAll<HTMLButtonElement>('[data-cat-id]').forEach((button) => { const match = (button.dataset.catName || '').includes(term); button.hidden = !match; if (match) visible++; });
+    (out('cat-empty') as HTMLElement).hidden = visible > 0;
+  });
+  chooseCat(5110002, 15);
+
+  const atlasSelect = select('atlas-level');
+  atlasSelect.addEventListener('change', () => { const row = atlasLevel(Number(atlasSelect.value)); if (!row) return; out('atlas-summary').textContent = `${pt ? 'Nível' : 'Level'} ${atlasSelect.value} · EXP ${fmt(row.exp)}`; renderMetrics('atlas-attributes', row.attrs); });
+</script>

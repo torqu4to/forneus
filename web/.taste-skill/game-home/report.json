@@ -1,0 +1,1442 @@
+{
+ "url": "http://localhost:4321/pt/",
+ "at": "2026-10-16T17:38:54.177Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.9,
+    0.65,
+    0.56,
+    0.71
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 0,
+    "transitions": 3,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2931,
+     "screens": 3.3,
+     "words": 246,
+     "img": 17,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "world-tree.webp",
+      "world-tree.webp",
+      "journey.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Cada recurso conta.",
+     "words": 3,
+     "chars": 19,
+     "lines": 3,
+     "size": 88,
+     "vw": 6.1,
+     "font": "Bree Serif",
+     "weight": 400,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.28,
+     "top": 147,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Cada recurso conta.",
+     "words": 3,
+     "lines": 3,
+     "size": 88,
+     "font": "Bree Serif"
+    },
+    "headings": [
+     {
+      "text": "Cada recurso conta.",
+      "words": 3,
+      "chars": 19,
+      "lines": 3,
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 147,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Prepare sua equipe",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.25,
+      "top": 826,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Quem merece o próximo nível?",
+      "words": 5,
+      "chars": 28,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.25,
+      "top": 1025,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Teste antes de investir",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 1501,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 1675,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano acompanha você.",
+      "words": 4,
+      "chars": 25,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 2312,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 56,
+      "vw": 3.9,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.2,
+      "top": 2616,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Ferramentas e dados para Tree of Savior Neo.",
+      "words": 8,
+      "chars": 44,
+      "lines": 2,
+      "size": 31,
+      "vw": 2.2,
+      "font": "Barlow",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.3,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.34,
+      "top": 2665,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.91,
+       "mono": false
+      },
+      {
+       "family": "Bree Serif",
+       "share": 0.08,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      23,
+      25,
+      31,
+      32,
+      36,
+      44,
+      56,
+      88
+     ],
+     "sizeCount": 16,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.3
+     },
+     "measureChars": 53,
+     "max": {
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bree Serif",
+      "text": "Cada recurso conta."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#e9ecd9",
+     "bodyBgHsl": {
+      "h": 69,
+      "s": 0.33,
+      "l": 0.89
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f6efd9",
+       "top": 82,
+       "hsl": {
+        "h": 46,
+        "s": 0.62,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#e9ecd9",
+       "top": 82,
+       "hsl": {
+        "h": 69,
+        "s": 0.33,
+        "l": 0.89
+       }
+      },
+      {
+       "color": "#3f6249",
+       "top": 2515,
+       "hsl": {
+        "h": 137,
+        "s": 0.22,
+        "l": 0.32
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#443e2d",
+       "share": 0.44
+      },
+      {
+       "color": "#615b45",
+       "share": 0.23
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.13
+      },
+      {
+       "color": "#fff9e9",
+       "share": 0.06
+      },
+      {
+       "color": "#f1eee2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#3f6249",
+      "hsl": {
+       "h": 137,
+       "s": 0.22,
+       "l": 0.32
+      },
+      "fg": "#fff9e9"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 2,
+     "radius": 5,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus Amigatos"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 2,
+     "roundedMedia": 1,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.43
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 82,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "bree serif"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.87,
+    0.61,
+    0.73
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 2926,
+     "screens": 2.9,
+     "words": 241,
+     "img": 17,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "world-tree.webp",
+      "world-tree.webp",
+      "journey.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Cada recurso conta.",
+     "words": 3,
+     "chars": 19,
+     "lines": 3,
+     "size": 70,
+     "vw": 9.1,
+     "font": "Bree Serif",
+     "weight": 400,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.41,
+     "top": 147,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Cada recurso conta.",
+     "words": 3,
+     "lines": 3,
+     "size": 70,
+     "font": "Bree Serif"
+    },
+    "headings": [
+     {
+      "text": "Cada recurso conta.",
+      "words": 3,
+      "chars": 19,
+      "lines": 3,
+      "size": 70,
+      "vw": 9.1,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.41,
+      "top": 147,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Prepare sua equipe",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.34,
+      "top": 771,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Quem merece o próximo nível?",
+      "words": 5,
+      "chars": 28,
+      "lines": 2,
+      "size": 36,
+      "vw": 4.7,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 947,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Teste antes de investir",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 1427,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 5.7,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.34,
+      "top": 1601,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano acompanha você.",
+      "words": 4,
+      "chars": 25,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.59,
+      "top": 2238,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 2619,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 7,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.91,
+       "mono": false
+      },
+      {
+       "family": "Bree Serif",
+       "share": 0.08,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      25,
+      32,
+      36,
+      70
+     ],
+     "sizeCount": 13,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 18,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 9.3
+     },
+     "measureChars": 41,
+     "max": {
+      "size": 70,
+      "vw": 9.1,
+      "font": "Bree Serif",
+      "text": "Cada recurso conta."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#e9ecd9",
+     "bodyBgHsl": {
+      "h": 69,
+      "s": 0.33,
+      "l": 0.89
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f6efd9",
+       "top": 82,
+       "hsl": {
+        "h": 46,
+        "s": 0.62,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#e9ecd9",
+       "top": 82,
+       "hsl": {
+        "h": 69,
+        "s": 0.33,
+        "l": 0.89
+       }
+      },
+      {
+       "color": "#3f6249",
+       "top": 2518,
+       "hsl": {
+        "h": 137,
+        "s": 0.22,
+        "l": 0.32
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#443e2d",
+       "share": 0.46
+      },
+      {
+       "color": "#615b45",
+       "share": 0.22
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.14
+      },
+      {
+       "color": "#fff9e9",
+       "share": 0.07
+      },
+      {
+       "color": "#f1eee2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#3f6249",
+      "hsl": {
+       "h": 137,
+       "s": 0.22,
+       "l": 0.32
+      },
+      "fg": "#fff9e9"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 5,
+     "radius": 5,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus Amigatos",
+      "Amigatos",
+      "Florais",
+      "Fantasmas"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 1,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.34
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 82,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "bree serif"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.98,
+    0.84,
+    0.76,
+    0.86,
+    0.9
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3790,
+     "screens": 4.5,
+     "words": 241,
+     "img": 17,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "world-tree.webp",
+      "world-tree.webp",
+      "journey.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "Cada recurso conta.",
+     "words": 3,
+     "chars": 19,
+     "lines": 3,
+     "size": 58,
+     "vw": 14.9,
+     "font": "Bree Serif",
+     "weight": 400,
+     "tracking": -0.025,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.8,
+     "top": 106,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Cada recurso conta.",
+     "words": 3,
+     "lines": 3,
+     "size": 58,
+     "font": "Bree Serif"
+    },
+    "headings": [
+     {
+      "text": "Cada recurso conta.",
+      "words": 3,
+      "chars": 19,
+      "lines": 3,
+      "size": 58,
+      "vw": 14.9,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 106,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Prepare sua equipe",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.91,
+      "top": 815,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Quem merece o próximo nível?",
+      "words": 5,
+      "chars": 28,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 1024,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Teste antes de investir",
+      "words": 4,
+      "chars": 23,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1624,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 2208,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "Seu plano acompanha você.",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Bree Serif",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.59,
+      "top": 2778,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "FORNEUS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.12,
+      "leading": 1,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.48,
+      "top": 3166,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Ferramentas",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 25,
+      "vw": 6.4,
+      "font": "Barlow",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 3382,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.91,
+       "mono": false
+      },
+      {
+       "family": "Bree Serif",
+       "share": 0.08,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      25,
+      28,
+      32,
+      58
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 16,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.7
+     },
+     "measureChars": 43,
+     "max": {
+      "size": 58,
+      "vw": 14.9,
+      "font": "Bree Serif",
+      "text": "Cada recurso conta."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.03,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "Tree of Savior Neo",
+      "above": "Prepare sua equipe",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 14,
+      "top": 725
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#e9ecd9",
+     "bodyBgHsl": {
+      "h": 69,
+      "s": 0.33,
+      "l": 0.89
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f6efd9",
+       "top": 70,
+       "hsl": {
+        "h": 46,
+        "s": 0.62,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#e9ecd9",
+       "top": 511,
+       "hsl": {
+        "h": 69,
+        "s": 0.33,
+        "l": 0.89
+       }
+      },
+      {
+       "color": "#3f6249",
+       "top": 3065,
+       "hsl": {
+        "h": 137,
+        "s": 0.22,
+        "l": 0.32
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#443e2d",
+       "share": 0.46
+      },
+      {
+       "color": "#615b45",
+       "share": 0.22
+      },
+      {
+       "color": "#c4d5c8",
+       "share": 0.14
+      },
+      {
+       "color": "#fff9e9",
+       "share": 0.07
+      },
+      {
+       "color": "#f1eee2",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#3f6249",
+      "hsl": {
+       "h": 137,
+       "s": 0.22,
+       "l": 0.32
+      },
+      "fg": "#fff9e9"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 8,
+     "inHero": 2,
+     "radius": 5,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Pular para o conteúdo",
+      "Planejar meus Amigatos"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 1,
+     "mediaRadius": 10,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.31
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 70,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed",
+     "bree serif"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"Cada recurso conta.\" → 3 lines (3 words, 88px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (section #f6efd9, text #fff9e9, text #f1eee2).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "16 different font sizes (13, 14, 15, 16, 17, 18, 19, 20, 23, 25, 31, 32, 36, 44, 56, 88).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Only 3 element(s) moved while the page loaded and scrolled.",
+   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "1 headline(s) wrap past two lines at 768px: \"Cada recurso conta.\" → 3 lines (3 words, 70px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"Cada recurso conta.\" → 3 lines (3 words, 58px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 390,
+   "message": "1 eyebrow/kicker label(s) above headings: \"Tree of Savior Neo\" above \"Prepare sua equipe\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence."
+  },
+  {
+   "level": "WARN",
+   "id": "grey-body",
+   "width": 390,
+   "message": "The running text is a soft grey on its ground (5.7:1).",
+   "fix": "Set body copy in the full ink (7:1 or more). Keep the muted ink for secondary notes; pages read thin and unfinished when everything is grey."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "E:\\Github\\forneus\\web\\.taste-skill\\game-home\\desktop-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\web\\.taste-skill\\game-home\\desktop-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "E:\\Github\\forneus\\web\\.taste-skill\\game-home\\tablet-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\web\\.taste-skill\\game-home\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "E:\\Github\\forneus\\web\\.taste-skill\\game-home\\mobile-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\web\\.taste-skill\\game-home\\mobile-page-01.jpg"
+   ]
+  }
+ ]
+}

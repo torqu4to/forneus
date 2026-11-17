@@ -1,0 +1,1728 @@
+{
+ "url": "http://127.0.0.1:4321/pt/conceitos/gamer/",
+ "at": "2026-10-14T02:07:12.720Z",
+ "allow": [
+  "palette-purple",
+  "micro-label",
+  "numbering",
+  "still-page",
+  "shadow",
+  "gradient",
+  "hairline",
+  "outlined-box",
+  "button-fx",
+  "mono",
+  "eyebrow"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.99,
+    0.99,
+    0.86,
+    0.75
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 3219,
+     "screens": 3.6,
+     "words": 214,
+     "img": 6,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "catpal-chair.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "chars": 19,
+     "lines": 2,
+     "size": 122.4,
+     "vw": 8.5,
+     "font": "Barlow Condensed",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 0.81,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.37,
+     "top": 320,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "lines": 2,
+     "size": 122.4,
+     "font": "Barlow Condensed"
+    },
+    "headings": [
+     {
+      "text": "JOGUE COM UM PLANO.",
+      "words": 4,
+      "chars": 19,
+      "lines": 2,
+      "size": 122.4,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 0.81,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 320,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "16",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.02,
+      "top": 808,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "43.671",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.06,
+      "top": 808,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.07,
+      "top": 808,
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "ESCOLHA SUA FERRAMENTA.",
+      "words": 3,
+      "chars": 23,
+      "lines": 2,
+      "size": 82,
+      "vw": 5.7,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.49,
+      "top": 1044,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "AMIGATOS",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 38,
+      "vw": 2.6,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 1553,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FLORAIS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 38,
+      "vw": 2.6,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.26,
+      "top": 1553,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FANTASMAS",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 38,
+      "vw": 2.6,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.26,
+      "top": 1553,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "RECURSOS MUDAM TUDO.",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 82,
+      "vw": 5.7,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 1978,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "16 amigatos",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.05,
+      "top": 2016,
+      "mixedFonts": [
+       "Barlow Condensed",
+       "Barlow"
+      ],
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 78,
+      "vw": 5.4,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.37,
+      "top": 2261,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "ENTRE PREPARADO.",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 82,
+      "vw": 5.7,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.39,
+      "top": 2755,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 1
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      13,
+      16,
+      17,
+      18,
+      21,
+      38,
+      82,
+      122
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 16,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 54,
+     "max": {
+      "size": 122.4,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "text": "Jogue com"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 5,
+     "microLabelShare": 0.058,
+     "microSamples": [
+      "Prévia de conceito",
+      "/",
+      "Seu inventário tem potencial",
+      "FORNEUS",
+      "· TREE OF SAVIOR NEO"
+     ],
+     "upperShare": 0.28,
+     "centerShare": 0.01,
+     "smallText": 4
+    },
+    "eyebrows": [
+     {
+      "text": "Seu inventário tem potencial",
+      "above": "JOGUE COM UM PLANO.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 282
+     },
+     {
+      "text": "Seu arsenal",
+      "above": "ESCOLHA SUA FERRAMENTA.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 1010
+     },
+     {
+      "text": "Teste de campo",
+      "above": "RECURSOS MUDAM TUDO.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 1944
+     },
+     {
+      "text": "A próxima decisão é sua",
+      "above": "ENTRE PREPARADO.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 2721
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#090712",
+     "bodyBgHsl": {
+      "h": 251,
+      "s": 0.44,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c071a",
+       "top": 32,
+       "hsl": {
+        "h": 256,
+        "s": 0.58,
+        "l": 0.06
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#c5b9d2",
+       "share": 0.18
+      },
+      {
+       "color": "#b6a9c8",
+       "share": 0.16
+      },
+      {
+       "color": "#d7cbe3",
+       "share": 0.09
+      },
+      {
+       "color": "#f7f2ff",
+       "share": 0.09
+      },
+      {
+       "color": "#dacde9",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#b88aff",
+      "hsl": {
+       "h": 264,
+       "s": 1,
+       "l": 0.77
+      },
+      "fg": "#170d25"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 2,
+     "radius": 0,
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ir para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 3,
+     "shadowSamples": [],
+     "gradients": 10,
+     "scrims": 2,
+     "gradientSamples": [
+      "section#ferramentas.arsenal.section-wrap → radial-gradient(at 88% 0%, rgb(36, 21, 51) 0%, rgba(0, 0, 0, 0) 45%)",
+      "article.tool-card.tool-card--amigatos → radial-gradient(circle at 50% 43%, rgba(79, 43, 116, 0.314), rgba(0, 0, 0, 0) 47%), none",
+      "div.tool-card__body → linear-gradient(rgba(0, 0, 0, 0), rgb(13, 9, 24) 17%, rgb(13, 9, 24) 100%)",
+      "article.tool-card.tool-card--florais → radial-gradient(circle at 50% 42%, rgba(126, 60, 119, 0.36), rgba(0, 0, 0, 0) 49%), none"
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "header.header 1440px",
+      "section#simulador.simulation 1440px",
+      "footer.footer 1440px"
+     ],
+     "outlinedBoxes": 4,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1231
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.96
+     },
+     {
+      "type": "img",
+      "ratio": 0.21
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 78,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.98,
+    0.99,
+    0.73,
+    0.69
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3096,
+     "screens": 3,
+     "words": 214,
+     "img": 6,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "catpal-chair.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "chars": 19,
+     "lines": 2,
+     "size": 76.8,
+     "vw": 10,
+     "font": "Barlow Condensed",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 0.81,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.63,
+     "top": 280,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "lines": 2,
+     "size": 76.8,
+     "font": "Barlow Condensed"
+    },
+    "headings": [
+     {
+      "text": "JOGUE COM UM PLANO.",
+      "words": 4,
+      "chars": 19,
+      "lines": 2,
+      "size": 76.8,
+      "vw": 10,
+      "font": "Barlow Condensed",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 0.81,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.63,
+      "top": 280,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "ESCOLHA SUA FERRAMENTA.",
+      "words": 3,
+      "chars": 23,
+      "lines": 2,
+      "size": 50,
+      "vw": 6.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 1044,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "AMIGATOS",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 38,
+      "vw": 4.9,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.22,
+      "top": 1425,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FLORAIS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 38,
+      "vw": 4.9,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.22,
+      "top": 1425,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FANTASMAS",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 38,
+      "vw": 4.9,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.22,
+      "top": 1432,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "RECURSOS MUDAM TUDO.",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 50,
+      "vw": 6.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 1879,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "16 amigatos",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.1,
+      "top": 1917,
+      "mixedFonts": [
+       "Barlow Condensed",
+       "Barlow"
+      ],
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 54,
+      "vw": 7,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.35,
+      "top": 2162,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "ENTRE PREPARADO.",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 50,
+      "vw": 6.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.43,
+      "top": 2624,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 1
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.9,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.1,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      13,
+      16,
+      17,
+      18,
+      21,
+      38,
+      50,
+      77
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 16,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": null
+     },
+     "measureChars": 39,
+     "max": {
+      "size": 76.8,
+      "vw": 10,
+      "font": "Barlow Condensed",
+      "text": "Jogue com"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 5,
+     "microLabelShare": 0.058,
+     "microSamples": [
+      "Prévia de conceito",
+      "/",
+      "Seu inventário tem potencial",
+      "FORNEUS",
+      "· TREE OF SAVIOR NEO"
+     ],
+     "upperShare": 0.28,
+     "centerShare": 0.01,
+     "smallText": 4
+    },
+    "eyebrows": [
+     {
+      "text": "Seu inventário tem potencial",
+      "above": "JOGUE COM UM PLANO.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 242
+     },
+     {
+      "text": "Seu arsenal",
+      "above": "ESCOLHA SUA FERRAMENTA.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 1010
+     },
+     {
+      "text": "Teste de campo",
+      "above": "RECURSOS MUDAM TUDO.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 1845
+     },
+     {
+      "text": "A próxima decisão é sua",
+      "above": "ENTRE PREPARADO.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 2590
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#090712",
+     "bodyBgHsl": {
+      "h": 251,
+      "s": 0.44,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c071a",
+       "top": 32,
+       "hsl": {
+        "h": 256,
+        "s": 0.58,
+        "l": 0.06
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#c5b9d2",
+       "share": 0.18
+      },
+      {
+       "color": "#b6a9c8",
+       "share": 0.16
+      },
+      {
+       "color": "#d7cbe3",
+       "share": 0.09
+      },
+      {
+       "color": "#f7f2ff",
+       "share": 0.09
+      },
+      {
+       "color": "#dacde9",
+       "share": 0.06
+      }
+     ],
+     "button": {
+      "bg": "#b88aff",
+      "hsl": {
+       "h": 264,
+       "s": 1,
+       "l": 0.77
+      },
+      "fg": "#170d25"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 2,
+     "radius": 0,
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ir para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 2,
+     "shadowSamples": [],
+     "gradients": 10,
+     "scrims": 2,
+     "gradientSamples": [
+      "section#ferramentas.arsenal.section-wrap → radial-gradient(at 88% 0%, rgb(36, 21, 51) 0%, rgba(0, 0, 0, 0) 45%)",
+      "article.tool-card.tool-card--amigatos → radial-gradient(circle at 50% 43%, rgba(79, 43, 116, 0.314), rgba(0, 0, 0, 0) 47%), none",
+      "div.tool-card__body → linear-gradient(rgba(0, 0, 0, 0), rgb(13, 9, 24) 17%, rgb(13, 9, 24) 100%)",
+      "article.tool-card.tool-card--florais → radial-gradient(circle at 50% 42%, rgba(126, 60, 119, 0.36), rgba(0, 0, 0, 0) 49%), none"
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "header.header 768px",
+      "section#simulador.simulation 768px",
+      "footer.footer 768px"
+     ],
+     "outlinedBoxes": 4,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 3,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1172
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.85
+     },
+     {
+      "type": "img",
+      "ratio": 0.11
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 78,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed"
+    ]
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.98,
+    0.97,
+    0.97,
+    0.97,
+    0.67,
+    0.77
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 4246,
+     "screens": 5,
+     "words": 205,
+     "img": 6,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 2,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 1,
+     "pictureSamples": [
+      "catpal.png",
+      "catpal.png",
+      "floral-strawberry.png",
+      "phantom-forest.png",
+      "floral-citrus.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": []
+    },
+    "hero": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "chars": 19,
+     "lines": 2,
+     "size": 66,
+     "vw": 16.9,
+     "font": "Barlow Condensed",
+     "weight": 800,
+     "tracking": -0.025,
+     "leading": 0.81,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 230,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "JOGUE COM UM PLANO.",
+     "words": 4,
+     "lines": 2,
+     "size": 66,
+     "font": "Barlow Condensed"
+    },
+    "headings": [
+     {
+      "text": "JOGUE COM UM PLANO.",
+      "words": 4,
+      "chars": 19,
+      "lines": 2,
+      "size": 66,
+      "vw": 16.9,
+      "font": "Barlow Condensed",
+      "weight": 800,
+      "tracking": -0.025,
+      "leading": 0.81,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 230,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "ESCOLHA SUA FERRAMENTA.",
+      "words": 3,
+      "chars": 23,
+      "lines": 2,
+      "size": 50,
+      "vw": 12.8,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 961,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "AMIGATOS",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 33,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 1412,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FLORAIS",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 33,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 1836,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "FANTASMAS",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 33,
+      "vw": 8.5,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 2267,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "RECURSOS MUDAM TUDO.",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 50,
+      "vw": 12.8,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 2605,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "16 amigatos",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Barlow Condensed",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.19,
+      "top": 2925,
+      "mixedFonts": [
+       "Barlow Condensed",
+       "Barlow"
+      ],
+      "tag": "strong",
+      "kind": "heading"
+     },
+     {
+      "text": "489.780",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 54,
+      "vw": 13.8,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 3170,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "ENTRE PREPARADO.",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 59,
+      "vw": 15.1,
+      "font": "Barlow Condensed",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 0.92,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 3769,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 1
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Barlow",
+       "share": 0.89,
+       "mono": false
+      },
+      {
+       "family": "Barlow Condensed",
+       "share": 0.11,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      9,
+      11,
+      12,
+      13,
+      16,
+      17,
+      33,
+      50,
+      59,
+      66
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Barlow",
+      "size": 16,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 12.8
+     },
+     "measureChars": 41,
+     "max": {
+      "size": 66,
+      "vw": 16.9,
+      "font": "Barlow Condensed",
+      "text": "Jogue com"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 4,
+     "microLabelShare": 0.044,
+     "microSamples": [
+      "Prévia de conceito",
+      "/",
+      "Seu inventário tem potencial",
+      "FORNEUS"
+     ],
+     "upperShare": 0.28,
+     "centerShare": 0.07,
+     "smallText": 3
+    },
+    "eyebrows": [
+     {
+      "text": "Seu inventário tem potencial",
+      "above": "JOGUE COM UM PLANO.",
+      "upper": true,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 192
+     },
+     {
+      "text": "Seu arsenal",
+      "above": "ESCOLHA SUA FERRAMENTA.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 927
+     },
+     {
+      "text": "Teste de campo",
+      "above": "RECURSOS MUDAM TUDO.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 2571
+     },
+     {
+      "text": "A próxima decisão é sua",
+      "above": "ENTRE PREPARADO.",
+      "upper": false,
+      "tracked": true,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 3735
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#090712",
+     "bodyBgHsl": {
+      "h": 251,
+      "s": 0.44,
+      "l": 0.05
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c071a",
+       "top": 32,
+       "hsl": {
+        "h": 256,
+        "s": 0.58,
+        "l": 0.06
+       }
+      },
+      {
+       "color": "#171022",
+       "top": 1157,
+       "hsl": {
+        "h": 263,
+        "s": 0.36,
+        "l": 0.1
+       }
+      },
+      {
+       "color": "#1a1024",
+       "top": 1581,
+       "hsl": {
+        "h": 270,
+        "s": 0.38,
+        "l": 0.1
+       }
+      },
+      {
+       "color": "#15101f",
+       "top": 2005,
+       "hsl": {
+        "h": 260,
+        "s": 0.32,
+        "l": 0.09
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#c5b9d2",
+       "share": 0.19
+      },
+      {
+       "color": "#b6a9c8",
+       "share": 0.16
+      },
+      {
+       "color": "#d7cbe3",
+       "share": 0.1
+      },
+      {
+       "color": "#f7f2ff",
+       "share": 0.09
+      },
+      {
+       "color": "#dacde9",
+       "share": 0.07
+      }
+     ],
+     "button": {
+      "bg": "#b88aff",
+      "hsl": {
+       "h": 264,
+       "s": 1,
+       "l": 0.77
+      },
+      "fg": "#170d25"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 2,
+     "radius": 0,
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ir para o conteúdo",
+      "Planejar meus amigatos ↗"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 2,
+     "shadowSamples": [],
+     "gradients": 10,
+     "scrims": 2,
+     "gradientSamples": [
+      "section#ferramentas.arsenal.section-wrap → radial-gradient(at 88% 0%, rgb(36, 21, 51) 0%, rgba(0, 0, 0, 0) 45%)",
+      "article.tool-card.tool-card--amigatos → radial-gradient(circle at 50% 43%, rgba(79, 43, 116, 0.314), rgba(0, 0, 0, 0) 47%), none",
+      "div.tool-card__body → linear-gradient(rgba(0, 0, 0, 0), rgb(13, 9, 24) 17%, rgb(13, 9, 24) 100%)",
+      "article.tool-card.tool-card--florais → radial-gradient(circle at 50% 42%, rgba(126, 60, 119, 0.36), rgba(0, 0, 0, 0) 49%), none"
+     ],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "header.header 390px",
+      "section#simulador.simulation 390px",
+      "footer.footer 390px"
+     ],
+     "outlinedBoxes": 4,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1157
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "bg-image",
+      "ratio": 0.96
+     },
+     {
+      "type": "img",
+      "ratio": 0.18
+     }
+    ],
+    "nav": {
+     "links": 2,
+     "fixed": false,
+     "height": 64,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "barlow",
+     "barlow condensed"
+    ]
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "mixed-font-headline",
+   "width": 1440,
+   "message": "1 headline(s) switch typeface or to italic mid-line (the \"one italic serif word\" move).",
+   "fix": "Set the whole headline in one face. Emphasis comes from the words.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "10 different font sizes (11, 12, 13, 16, 17, 18, 21, 38, 82, 122).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "4 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "small-text",
+   "width": 390,
+   "message": "3 text block(s) under 13px.",
+   "fix": "Nothing meant to be read goes below 13px."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect-gamer-final\\desktop-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect-gamer-final\\desktop-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect-gamer-final\\tablet-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect-gamer-final\\tablet-page-01.jpg"
+   ]
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "E:\\Github\\forneus\\.taste-skill\\inspect-gamer-final\\mobile-fold.jpg",
+   "pages": [
+    "E:\\Github\\forneus\\.taste-skill\\inspect-gamer-final\\mobile-page-01.jpg"
+   ]
+  }
+ ]
+}

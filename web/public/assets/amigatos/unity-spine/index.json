@@ -1,0 +1,38 @@
+[
+  {
+    "name": "yinghuacat.skel",
+    "file": "yinghuacat.skel",
+    "bytes": 155237,
+    "format": "Spine binary 4.1.20"
+  },
+  {
+    "name": "nvpucat.atlas",
+    "file": "nvpucat.atlas",
+    "bytes": 357,
+    "format": "Atlas"
+  },
+  {
+    "name": "yinghuacat.atlas",
+    "file": "yinghuacat.atlas",
+    "bytes": 2047,
+    "format": "Atlas"
+  },
+  {
+    "name": "wushimao.atlas",
+    "file": "wushimao.atlas",
+    "bytes": 125,
+    "format": "Atlas"
+  },
+  {
+    "name": "nvpucat.skel",
+    "file": "nvpucat.skel",
+    "bytes": 24926,
+    "format": "Spine binary 4.1.20"
+  },
+  {
+    "name": "wushimao.skel",
+    "file": "wushimao.skel",
+    "bytes": 6427,
+    "format": "Spine binary 4.1.20"
+  }
+]

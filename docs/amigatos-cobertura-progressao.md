@@ -1,0 +1,67 @@
+# Cobertura dos dados de progressão dos Amigatos
+
+## Estado atual
+
+**Ainda não há base completa de atributos por personagem e por nível.** A instalação local foi investigada com REA e os CTable disponíveis foram decodificados parcialmente. As fontes atuais permitem responder várias perguntas de progressão e custo, mas não permitem declarar os atributos calculados de todos os amigatos em todos os níveis e tiers.
+
+## O que está disponível
+
+- O catálogo `amigatos_catalogo_personagens_ctable.csv` contém 100 itens de amigato, com nome, qualidade, classe, IDs de estrela/prática, cinco atributos-base quando definidos e campos brutos `init_zhanli`/`per_add_zhanli`.
+- `amigatos_custos_por_nivel_tier.csv` contém 1.908 etapas de melhoria comum, uma para cada passo 1–159 em 12 combinações classe × qualidade (classes 1–3; qualidades 3, 4, 6 e 7). Cada um dos 74 itens-base do catálogo tem uma combinação correspondente; passos 1–159 levam do nível 1 ao 160. Os outros registros no CSV são custos de estrela e despertar. Materiais, IDs e quantidades aparecem em `amigatos_custos_por_material.csv`.
+- Os 74 itens-base se distribuem por qualidade 3 (12 itens; limite 130), qualidade 4 (19; limite 140), qualidade 6 (26; limite 150) e qualidade 7 (17; limite 160), conforme `max_upgrade_level` ligado ao `cat_upgrade_id` em `amigatos_pratica_progressao_por_upgrade.csv`. As classes/qualidades e limites observados cobrem todos os itens-base listados no CTable atual.
+- Isso define 10.766 transições item × nível a cobrir: (12 × 129) + (19 × 139) + (26 × 149) + (17 × 159). Os custos dessas transições existem na tabela comum por classe/qualidade; os cinco atributos antes/depois e seus deltas continuam pendentes.
+- `amigatos_pratica_progressao_por_upgrade.csv` contém os limites e atributos de 527 estágios em 33 grupos `cat_upgrade_id`, com a biblioteca de atributos em `amigatos_pratica_attr_lib_por_upgrade.csv`. Isso descreve prática/despertar, não uma curva de atributos por nível comum para cada indivíduo.
+- `amigatos_bonus_estrela_atributos.csv` e `amigatos_poder_e_custo_por_personagem_estrela.csv` descrevem bônus e custos de estrela para os personagens que se ligam às configurações `cat_star_up`.
+- `amigatos_espirito_nivel_atributos.csv` contém 4.004 registros do subsistema Espírito. É uma progressão separada; seus níveis não equivalem aos níveis comuns do amigato.
+- `amigatos_atlas_atributos_por_nivel.csv` contém 408 registros de atributos da progressão do Atlas compartilhado. Apesar do nome conter “amigatos”, não são curvas individuais por personagem, qualidade/tier ou nível comum do amigato.
+- A referência antiga `power_cost_tier66_reference.csv` contém apenas cinco categorias agregadas, todas tier 6/6, e não fornece curvas individuais por amigato.
+
+## O que falta para o objetivo solicitado
+
+Os custos comuns por nível já estão completos para as 12 combinações classe × qualidade observadas. Falta uma tabela verificada para cada item/personagem com os cinco atributos em cada nível e seu incremento marginal até o limite. A configuração de custos resolve o custo/material, mas não carrega atributo de ganho no registro: `cat_develop_cost.develop_cost` tem apenas `class`, `level` e `enhance_cost`. Também falta validar a cobertura de tiers de cada personagem fora dos 74 itens-base incluídos no catálogo local.
+
+Uma das imagens originais fornecidas mostra Flora (classe 2, qualidade 7) no nível 1 com Sabedoria 1.388, Moral 1.313, Força 1.313, Agilidade 1.536 e Resistência 1.388; a prévia de nível 2 mostra Agilidade 1.599 (+63). O custo visível é 1.960 do item 1201 e 3.000 do item 1001. A linha CTable `develop_cost`, classe 2/qualidade 7/passo 1, coincide exatamente com os dois custos. Isso valida diretamente a interpretação do passo 1 como nível 1→2 e fornece um primeiro delta observado, mas não prova deltas dos outros 158 passos nem de outros personagens.
+
+Não se deve derivar a curva comum de `per_add_zhanli`, do poder observado nas capturas, nem dos dados de Espírito ou prática. Esses campos e observações não estabelecem a fórmula completa. As capturas da Flora confirmam um custo comum nível 1→2 e um custo de despertar específico, não a série completa.
+
+## Evidência REA e fontes locais
+
+O inventário e a extração anteriores estão registrados em `sources_and_rea_evidence.json` (evidências de inventário: `ev_2797256d13fc54c0a5cedcb7b3535c9d2e5711db3b71043eef21d08cf980830b` e `ev_7e100075c3a52eba6af4e25ad5b20635ced43ef7ede305b1dca32de822edf715`). A extração CTable de progressão registra SHA-256 da configuração portuguesa `1869fd6f3d3a6cf38fa0ddd47499758434675cfad5bef2a9cf91c04608053a20`, sob `amigatos_progression_decoded_pt_2026-10-14.json`; validações visuais/custo estão em `amigatos_validacao_poder_capturas_ctable.csv`.
+
+O relatório `relatorio_ctable_amigatos_pt_2026-10-14.md` documenta as contagens e a validação de custos. As tabelas são da configuração local do cliente e não confirmam estado ou fórmulas do servidor. Os logs verificados não contêm payloads de resposta com as curvas numéricas. Os arquivos `.cw` originais são formatos próprios; as ferramentas REA registraram inventário/extração, mas a investigação anterior não decodificou essas curvas como dados por nível/personagem.
+
+Nesta continuação, o REA abriu a biblioteca local `unity_ar.dll` com Ghidra 12.1.4 (Evidence `ev_b68305c0a49a7428cb894d3d02e7b6ad3791399ae8c0b871fed7b21a43585e7a`, SHA-256 `3074d251c9e30f023b7b0306743f70cd77b72e4a82eabce5b1b2c6a8de0d7b5a`). O inventário contém 51 procedimentos e 403 strings; a busca por `cat` encontrou apenas `lua_concat` e um símbolo de SDK. A biblioteca não forneceu o cálculo de atributos por nível. O executável também usa scripts Lua em bytecode; a tentativa com o descompilador Lua disponível recusou o cabeçalho de versão 33 como formato não padrão, então não foi usada para inferir deltas.
+
+O protocolo sproto confirma que `cat.cat_enhance` recebe o UUID do amigato e devolve um `cat_summon_change` contendo o item atualizado. `bag.Item` tem campos `level`, `base_attrs` e `cat_info`; isso indica que o estado atualizado trafega pelo protocolo, mas não fornece por si só uma tabela de previsão para outros níveis. Os quatro logs locais pesquisados registram apenas chamadas a `cat.get_cat_show_collection`, sem payloads de melhoria. Os 214 perfis AOI decodificados contêm IDs/estrelas e aparência de partidas, não os cinco atributos por nível. A auditoria de cache local também não encontrou cópias adicionais de `.cw` ou uma tabela progressiva alternativa. A busca externa não encontrou uma fonte pública aplicável com essa série por personagem.
+
+Por fim, um inventário completo dos campos das 2.068 linhas CTable de desenvolvimento mostra que as 1.908 linhas de `develop_cost` contêm somente `class`, `level` e `enhance_cost`; não há delta de atributo escondido nessas linhas. As 40 linhas de estrela contêm custo/fragmentos, e as 120 de despertar contêm etapa/requisito/custo. Portanto, a lacuna não é apenas uma coluna que faltou exportar: os dados pesquisados não codificam o crescimento de atributo comum por nível.
+
+Também foram inventariadas 109 capturas de tela locais (14/02 a 13/08/2026) e inspecionadas amostras de diferentes datas. As amostras são fotos/poses do personagem no cenário, sem tela de progressão ou leitura de atributos por nível; elas não ampliam a cobertura além das imagens de Flora já descritas.
+
+Uma segunda captura fornecida mostra Flora já no limite comum 160, abrindo a prévia de avanço: Sabedoria 8.249→8.464, Moral 8.242 (sem valor de prévia visível), Força 8.076→8.204, Agilidade 8.675→8.755 e Resistência 8.291→8.506. O custo visível é 3.300 do material premium e 13.500 do material de folha. Esses números são uma observação direta da prévia de avanço no limite 160; não fornecem os deltas dos níveis comuns intermediários.
+
+## Tentativa adicional REA e estado do cliente (15/10/2026)
+
+Na retomada solicitada, o MCP do REA voltou a responder (`binary_session` bem-sucedido); o registro Codex segue alinhado e Ghidra 12.1.4 disponível. O histórico de tentativas anteriores via CLI `rea@6.4.0` e os bloqueios de transporte permanecem registrados acima. Para a análise Ghidra anterior, foi necessário direcionar `TEMP`/`TMP` para uma pasta autorizada em Downloads/TOS; o diretório temporário padrão do sandbox havia retornado Win32 5.
+
+Nesta retomada, uma auditoria direta do JSON CTable completo percorreu os seis layers e confirmou a separação dos subsistemas: `cat_develop_cost` tem campos de classe, nível, qualidade, despertar, fragmentos e materiais; não possui campos de atributo. Os campos `attr`/`attrs` encontrados pertencem a `cat_atlas` (Atlas), `cat_star_up` (estrela) e `cat_spirit` (Espírito). Nenhum deles representa o ganho comum de atributos ao subir o nível do Amigato. O `rea doctor` atual confirma novamente registro do Codex alinhado, mas estado do servidor REA como `unknown`; a chamada `binary_session` ainda falha com `Transport closed`.
+
+Com o REA/Ghidra, a visão geral do `C:\Users\bruno\Downloads\TOS\GameAssembly.dll` retornou Evidence `ev_fba9ac7ca38433323bd4db0030153e9a1442d43fa1a9d6d5165da93fea6efd81`, SHA-256 `0b49e24e5e490b01227167f9780cec8c73955cbb5d8d8918e9bd8ec92eda2c12`. O inventário estático registra 14 segmentos, 11 procedimentos e 409 strings; o PE tem a seção `.themida`. Nesta retomada, `list_procedures` (Evidence `ev_074488ebecb2c3eabf3ca56cb22aa890367e4bde74fd9b381d584d2b25df84bc`) encontrou 11 procedimentos, limitados a imports e funções do runtime IL2CPP. As buscas por `zhanli`, `level`, `power` e `score` não acharam strings (Evidence `ev_fc67eaf95b75f5a4a3377899b207395dc9b46a763e92e89330e0bfc5359fbaee`, `ev_afe12f12d0e52ad8cd78ac34b50044bd9e4763a8e99caf73727ca4d8935c01d1`, `ev_e2b9e469a485d1d2acb293524df4d4bf836010c3c5199626860f21d81b257a3c`); `cat`/`attr`/`star` acharam somente nomes de funções do runtime IL2CPP (Evidence `ev_dcc1fd8841092678ac406a656a32a641d08be02f6134c4414205b6b1778d8528`, `ev_185af82df83091cb2caff85543665c8a82c6df31b34921d4e9b3a43e3b694a6a`, `ev_24b82f252e4669062ed03ebb1df6740595ba0e0bb8bcb948acfac468660299cc`). Isso não revelou a fórmula de atributos por nível nem a diferença do Bamboo.
+
+Também abri `C:\Users\bruno\Downloads\TOS\TOS.exe` no REA (Evidence de visão geral `ev_2cc5f6928b744e622c845bf42641f693699924e2036ba933a66e2f79f0651ab1`, SHA-256 `171c18f0762e88c9394e6dbe750ec5f9a905f98b04d713c21b7110590c99c153`). O executável tem 13 segmentos e suas buscas de strings só acharam o manifesto padrão do Unity e nenhum termo de poder/Amigato. O `binary_session` informa que `observe_native_ui` e `capture_native_ui_scenario` exigem utilitários macOS e não estão disponíveis neste host Windows; assim, esta sessão REA permite análise estática, mas não leitura da tela/processo do TOS.
+
+A tentativa REA de inspecionar membros em `DummyDll/Assembly-CSharp.dll` retornou Evidence `ev_7279a1447e2ccc0040f892c22eba40c21523caa27d22c42d1094198d3c869de4`, com metadados parciais: o orçamento de representação de 67.108.864 bytes foi excedido antes de inventariar tipos e métodos. Portanto, esse dummy assembly não fornece os corpos C# nem os membros úteis para a curva.
+
+O processo aberto foi confirmado como `TOS.exe` / “Tree of Savior: NEO” (PID 19488). A leitura pontual dos três campos estáticos de chave já identificados falhou em `OpenProcess` com Win32 5, inclusive na execução autorizada; nenhuma chave foi capturada e nenhum `.cw` adicional foi decodificado. O provedor ADB do REA também não estava pronto: o CLI informou que não encontrou um `adb` configurado. Uma captura de tela local confirmou que o jogo está na tela de formação de Amigatos, mas a árvore de acessibilidade só expõe a janela; os controles visuais não abriram a tela de atributos nesta tentativa.
+
+Essas tentativas acrescentam evidência sobre os bloqueios, não sobre as transições restantes. A cobertura de atributos comuns segue incompleta: faltam os cinco valores e deltas para as 10.766 transições item × nível indicadas acima.
+
+### Correção por captura do Bamboo (15/10/2026)
+
+A captura enviada pelo usuário mostra Bamboo qualidade 7, **nível comum 1**, **6 estrelas**, com poder exibido de **27.560**. Os atributos visíveis são Sabedoria 526, Moral 551, Força 602, Agilidade 526 e Resistência 551; a soma (2.756) × 10 coincide com o poder mostrado. A prévia de nível 1→2 indica Força 602→632. Essa captura é a evidência direta para o estado do Bamboo em 6 estrelas.
+
+O valor anterior de 22.950 para Bamboo 6 estrelas veio de `cumulative_star_power_component_x10` em `amigatos_poder_e_custo_por_personagem_estrela.csv` e **não corresponde ao poder total do jogo** nessa captura. A diferença é 4.610. Portanto, a coluna não pode ser tratada como poder total observado, e os valores de 1 a 5 estrelas calculados da mesma forma ficam sem validação no cliente. A causa da divergência entre a configuração extraída e a tela atual ainda precisa ser localizada; não projetar a diferença de 6 estrelas para os outros níveis de estrela.
+
+## Critério de conclusão
+
+Não declarar a solicitação concluída até que um artefato normalizado cubra explicitamente cada personagem/tier × todos os níveis válidos, com cinco atributos, delta por nível, custos por item e fonte/proveniência, e até que contagens de cobertura e verificações de continuidade mostrem que não há combinações ausentes. Lacunas de fonte, ambiguidade entre camadas ou dados inferidos precisam permanecer marcadas como tais, nunca preenchidas por interpolação silenciosa.

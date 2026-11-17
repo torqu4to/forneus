@@ -1,270 +1,291 @@
 ---
 import Site from '../../layouts/Site.astro';
-import ToolCards from '../../components/ToolCards.astro';
-import { availableTools, plannedTools } from '../../data/tools';
+import { tools } from '../../data/tools';
 import { solve } from '../../lib/solver/index.ts';
 import { EXAMPLE_TEAM, EXAMPLE_BUDGET } from '../../data/example-team';
-import { groupRows, categoryClass } from '../../lib/rows.ts';
+import { groupRows } from '../../lib/rows.ts';
 import { useTranslations, formatNumber, LOCALES, type Locale } from '../../i18n/utils';
 
-export function getStaticPaths() {
-  return LOCALES.map((lang) => ({ params: { lang } }));
-}
-
+export function getStaticPaths() { return LOCALES.map((lang) => ({ params: { lang } })); }
 const locale = Astro.params.lang as Locale;
 const t = useTranslations(locale);
+const pt = locale === 'pt';
 const n = (value: number) => formatNumber(value, locale);
-
-/* Solved at build time — the example is always this solver's current
-   answer, never a checked-in number that could go stale. */
-const sampleResult = solve(EXAMPLE_TEAM, EXAMPLE_BUDGET);
-
-/* The hero preview is the same solver output the tool page shows — the
-   landing never invents numbers to look impressive. */
-/* Group first, THEN take the first five: the solver emits one row per
-   catpal, so slicing the raw rows would show five identical Purple lines
-   instead of five different catpals. */
-const preview = groupRows(sampleResult.rows, sampleResult.meta.display_order).slice(0, 5);
+const copy = pt ? {
+  title: 'Sua equipe, seu plano.',
+  intro: 'Seu ponto de encontro para planejar Amigatos e Florais em Tree of Savior Neo.',
+  action: 'Planejar meus Amigatos', explore: 'Ver ferramentas',
+  tools: 'Prepare sua equipe', toolsText: 'Escolha o sistema que você quer organizar.',
+  catTitle: 'Quem merece o próximo nível?',
+  catText: 'Informe sua equipe e a gelatina disponível. Compare como distribuir seus recursos entre os Amigatos.',
+  catAction: 'Abrir planejador', catNote: 'Cálculo de poder com os Amigatos em 6 estrelas.',
+  flowerTitle: 'Encontre lugar para cada Floral.',
+  flowerText: 'Organize seus guardiões e Spiritus. Compare posições, cultivos e bônus para montar seu jardim.',
+  flowerAction: 'Planejar meu jardim', flowerNote: 'Guardiões, Spiritus e combinações R1 / R2.',
+  phantomTitle: 'Os Fantasmas chegam depois.',
+  phantomText: 'Uma ferramenta para consultar tipos, habilidades e combinações está em preparação.',
+  phantomNote: 'Ainda em desenvolvimento.', unavailable: 'Em preparação',
+  preview: 'Teste antes de investir', previewText: 'A mesma equipe, três orçamentos. Escolha quanto investir e confira o plano calculado.',
+  budget: 'Gelatina de peixe disponível', power: 'Poder efetivo da equipe', level: 'Nível', cat: 'Amigato',
+  example: 'Equipe de exemplo com 6 estrelas', full: 'Calcular com minha equipe',
+  note: 'O poder efetivo considera as taxas de assistência. Confira sua equipe no planejador antes de usar o resultado.',
+  close: 'Seu plano acompanha você.', closeText: 'Guarde seus perfis de equipe e volte quando chegar a hora da próxima evolução.', closeAction: 'Montar minha equipe',
+} : {
+  title: 'Your team, your plan.',
+  intro: 'Your place to plan Catpals and Floral Guardians in Tree of Savior Neo.',
+  action: 'Plan my Catpals', explore: 'Explore tools',
+  tools: 'Prepare your team', toolsText: 'Choose the system you want to organize.',
+  catTitle: 'Who gets the next level?',
+  catText: 'Enter your team and available Fish Jelly. Compare how to distribute your resources among your Catpals.',
+  catAction: 'Open planner', catNote: 'Power calculations use Catpals at 6 stars.',
+  flowerTitle: 'A place for every guardian.',
+  flowerText: 'Arrange your guardians and Spiritus. Compare positions, cultivation and bonuses to plan your garden.',
+  flowerAction: 'Plan my garden', flowerNote: 'Guardians, Spiritus and R1 / R2 combinations.',
+  phantomTitle: 'Phantoms are on their way.',
+  phantomText: 'A tool to explore types, skills and combinations is in preparation.',
+  phantomNote: 'Still in development.', unavailable: 'In preparation',
+  preview: 'Try before you invest', previewText: 'The same team, three budgets. Pick how much to invest and see the calculated plan.',
+  budget: 'Available Fish Jelly', power: 'Team effective power', level: 'Level', cat: 'Catpal',
+  example: 'Example team at 6 stars', full: 'Calculate for my team',
+  note: 'Effective power includes assistance rates. Check your team in the planner before using the result.',
+  close: 'Take your plan with you.', closeText: 'Keep your team profiles and return when it is time for the next upgrade.', closeAction: 'Build my team',
+};
+const toolDetails: Record<string, { icon: string; title: string; text: string; action?: string; note: string }> = {
+  amigatos: { icon: '/assets/amigatos/game-cat.png', title: copy.catTitle, text: copy.catText, action: copy.catAction, note: copy.catNote },
+  florais: { icon: '/assets/home/flower-icon.webp', title: copy.flowerTitle, text: copy.flowerText, action: copy.flowerAction, note: copy.flowerNote },
+  fantasmas: { icon: '/assets/home/pet-icon.webp', title: copy.phantomTitle, text: copy.phantomText, note: copy.phantomNote },
+};
+const orderedTools = ['amigatos', 'florais', 'fantasmas'].map((name) => tools.find((tool) => tool.name === name)!);
+const scenarios = [.5, 1, 1.5].map((ratio) => {
+  const budget = Math.round(EXAMPLE_BUDGET * ratio);
+  const result = solve(EXAMPLE_TEAM, budget);
+  return { budget, power: result.totals.effective_power, rows: groupRows(result.rows, result.meta.display_order) };
+});
+const portraits = [5100001, 5100002, 5120003, 5120004];
 ---
-<Site locale={locale} title={t('tool.amigatos.title')} description={t('site.tagline')}>
-
-  <section class="hero">
-    <div class="hero__art" aria-hidden="true"></div>
-    <div class="hero__copy">
-      <span class="fx-meta hero__eyebrow">{t('hero.eyebrow')}</span>
-      <h1><span>{t('hero.title.1')}</span><br /><span class="hero__title-accent">{t('hero.title.2')}</span></h1>
-      <p class="hero__lead">{t('hero.lead')}</p>
-      <div class="hero__cta">
-        <a class="fx-btn" href={`/${locale}/ferramentas/amigatos/`}>
-          {t('hero.cta')}
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"></path><path d="M13 6l6 6-6 6"></path></svg>
-        </a>
-        <div class="hero__benefits">
-          <span>{t('hero.noaccount')}</span>
-          <span aria-hidden="true">·</span>
-          <span>{t('hero.free')}</span>
-          <span aria-hidden="true">·</span>
-          <span>{t('hero.exact')}</span>
+<Site locale={locale} title={pt ? 'Planeje sua equipe' : 'Plan your team'} description={copy.intro} bodyClass="game-home">
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet" />
+  <div class="game-landing">
+    <section class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome__art"><img src="/assets/home/world-tree.webp" alt={pt ? 'Aventureiros e companheiros descansam sob uma árvore florida de Tree of Savior Neo.' : 'Adventurers and companions resting beneath a flowering tree in Tree of Savior Neo.'} width="2044" height="1363" fetchpriority="high" /></div>
+      <div class="welcome__content">
+        <h1 id="welcome-title">{copy.title}</h1><p>{copy.intro}</p>
+        <a class="game-button" href={`/${locale}/ferramentas/amigatos/`}>{copy.action}</a>
+        <a class="text-link" href="#ferramentas">{copy.explore}</a>
+      </div>
+    </section>
+    <section class="workbench" id="ferramentas" aria-labelledby="tools-title">
+      <div class="section-heading"><h2 id="tools-title">{copy.tools}</h2><p>{copy.toolsText}</p></div>
+      <div class="companion-book" data-tools>
+        <div class="book-tabs" role="tablist" aria-label={copy.tools}>
+          {orderedTools.map((tool, index) => <button type="button" role="tab" id={`tab-${tool.name}`} aria-controls={`panel-${tool.name}`} aria-selected={index === 0 ? 'true' : 'false'} tabindex={index === 0 ? 0 : -1} data-tool-tab={tool.name}>
+            <img src={toolDetails[tool.name].icon} alt="" width="56" height="56" /><span>{t(tool.navKey)}</span>
+          </button>)}
         </div>
+        {orderedTools.map((tool, index) => {
+          const detail = toolDetails[tool.name];
+          return <div class:list={['book-panel', `book-panel--${tool.name}`]} role="tabpanel" id={`panel-${tool.name}`} aria-labelledby={`tab-${tool.name}`} tabindex="0" hidden={index !== 0}>
+            <div class="book-panel__copy"><h3>{detail.title}</h3><p>{detail.text}</p>
+              {tool.status === 'available' ? <a class="game-button" href={`/${locale}/ferramentas/${tool.name}/`}>{detail.action}</a> : <span class="pending">{copy.unavailable}</span>}
+              <small>{detail.note}</small>
+            </div>
+            <div class="book-panel__picture" aria-hidden="true">
+              {tool.name === 'amigatos' && <><img class="book-panel__scene" src="/assets/home/world-tree.webp" width="2044" height="1363" loading="lazy" alt="" /><div class="portrait-tray">{portraits.map((id) => <img src={`/assets/amigatos/portraits/${id}.png`} width="88" height="88" loading="lazy" alt="" />)}</div></>}
+              {tool.name === 'florais' && <><img class="book-panel__scene" src="/assets/home/garden.webp" width="1943" height="1000" loading="lazy" alt="" /><div class="guardian-tray">{['strawbie','kumquat','passion-coconut'].map((name) => <img src={`/assets/florais/flowerguards-${name}.png`} width="96" height="96" loading="lazy" alt="" />)}</div></>}
+              {tool.name === 'fantasmas' && <img class="book-panel__scene journey" src="/assets/home/journey.webp" width="1302" height="487" loading="lazy" alt="" />}
+            </div>
+          </div>;
+        })}
+        <noscript><p class="no-script">{orderedTools.filter((tool) => tool.status === 'available').map((tool) => <a href={`/${locale}/ferramentas/${tool.name}/`}>{t(tool.navKey)}</a>)}</p></noscript>
       </div>
-    </div>
-
-    <figure class="preview">
-      <figcaption class="preview__head">
-        <span class="fx-meta">{t('hero.sample')}</span>
-        <span class="fx-num preview__budget">{n(sampleResult.totals.budget)}</span>
-      </figcaption>
-      <table class="preview__table">
-        <tbody>
-          {preview.map((row) => (
-            <tr>
-              <td class={categoryClass(row.category)}>
-                {row.display_name}{row.count > 1 && <span class="fx-count"> ×{row.count}</span>}
-              </td>
-              <td class="fx-num" data-align="end">{row.level}</td>
-              <td class="fx-num preview__power" data-align="end">{n(row.effective_power)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div class="preview__foot">
-        <span class="fx-meta">{t('result.power')}</span>
-        <span class="fx-num preview__total">{n(sampleResult.totals.effective_power)}</span>
+    </section>
+    <section class="planning" aria-labelledby="planning-title">
+      <div class="planning__copy"><h2 id="planning-title">{copy.preview}</h2><p>{copy.previewText}</p>
+        <img class="planning__illustration" src="/assets/home/journey.webp" alt="" width="1302" height="487" loading="lazy" />
+        <p class="planning__note">{copy.note}</p>
       </div>
-    </figure>
-  </section>
-
-  <section class="tools" aria-labelledby="tools-heading">
-    <div class="tools__head">
-      <h2 id="tools-heading" class="fx-label">{t('tools.heading')}</h2>
-      <span class="fx-meta">{t('tools.count', { available: availableTools.length, planned: plannedTools.length })}</span>
-    </div>
-
-    <ToolCards locale={locale} />
-  </section>
-
-  <section class="showcase" aria-labelledby="showcase-heading">
-    <a class="showcase__capture" href={`/${locale}/ferramentas/amigatos/`}>
-      <div class="showcase__screen">
-        <div class="showcase__screen-bar" aria-hidden="true"><i></i><b>FORNEUS</b><small>{t('showcase.tool')}</small></div>
-        <img src={`/assets/forneus-table-hd-${locale}.png`} width="1972" height="792" loading="lazy" alt={locale === 'pt' ? 'Tabela real do otimizador com amigatos, níveis, gelatina e poder efetivo.' : 'Actual optimizer table with catpals, levels, jelly and effective power.'} />
-        <div class="showcase__screen-chin" aria-hidden="true"><i></i></div>
+      <div class="plan-sheet" data-sample data-ui>
+        <p class="plan-sheet__caption">{copy.example}</p>
+        <fieldset><legend>{copy.budget}</legend><div class="budget-choices">{scenarios.map((scenario, index) => <button type="button" aria-pressed={index === 1 ? 'true' : 'false'} data-sample-choice={index}>{n(scenario.budget)}</button>)}</div></fieldset>
+        {scenarios.map((scenario, index) => <div data-sample-result={index} hidden={index !== 1} aria-live="polite">
+          <div class="team-power"><span>{copy.power}</span><strong>{n(scenario.power)}</strong></div>
+          <table><caption class="sr-only">{copy.example}</caption><thead><tr><th scope="col">{copy.cat}</th><th scope="col">{copy.level}</th><th scope="col">{pt ? 'Poder efetivo' : 'Effective power'}</th></tr></thead><tbody>{scenario.rows.map((row) => <tr><th scope="row">{row.display_name}{row.count > 1 && <span> ×{row.count}</span>}</th><td>{row.level}</td><td>{n(row.effective_power)}</td></tr>)}</tbody></table>
+        </div>)}
+        <a class="game-button" href={`/${locale}/ferramentas/amigatos/`}>{copy.full}</a>
       </div>
-      <div class="showcase__screen-stand" aria-hidden="true"></div>
-      <span>{t('hero.sample')} · {t('hero.cta')} →</span>
-    </a>
-    <div class="showcase__copy">
-      <span class="fx-meta hero__eyebrow">{t('showcase.eyebrow')}</span>
-      <h2 id="showcase-heading">{t('showcase.title')}</h2>
-      <p>{t('showcase.lead')}</p>
-      <ul>
-        <li>{t('showcase.point1')}</li>
-        <li>{t('showcase.point2')}</li>
-        <li>{t('showcase.point3')}</li>
-        <li>{t('showcase.point4')}</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="process" aria-labelledby="process-heading">
-    <div class="section-intro">
-      <span class="fx-meta hero__eyebrow">{t('process.eyebrow')}</span>
-      <h2 id="process-heading">{t('process.title')}</h2>
-      <p>{t('process.lead')}</p>
-    </div>
-    <div class="process__steps">
-      {[1, 2, 3].map((step) => (
-        <article class="process__step">
-          <div class="process__step-top">
-            <span class="process__number">0{step}</span>
-            {step < 3 && <span class="process__connector" aria-hidden="true"></span>}
-          </div>
-          <div class="process__step-copy">
-            <h3>{t(`process.${step}.title` as never)}</h3>
-            <p>{t(`process.${step}.text` as never)}</p>
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
-
+    </section>
+    <section class="camp" aria-labelledby="camp-title"><img src="/assets/amigatos/game-cat.png" width="98" height="112" loading="lazy" alt="" /><div><h2 id="camp-title">{copy.close}</h2><p>{copy.closeText}</p></div><a class="game-button" href={`/${locale}/ferramentas/amigatos/`}>{copy.closeAction}</a></section>
+  </div>
 </Site>
-
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tools]').forEach((book) => {
+    const tabs = [...book.querySelectorAll<HTMLButtonElement>('[data-tool-tab]')];
+    const select = (tab: HTMLButtonElement) => {
+      tabs.forEach((item) => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
+      book.querySelectorAll<HTMLElement>('[role="tabpanel"]').forEach((panel) => { panel.hidden = panel.id !== `panel-${tab.dataset.toolTab}`; });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (event) => {
+        let next: number;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        else return;
+        event.preventDefault(); select(tabs[next]); tabs[next].focus();
+      });
+    });
+  });
+  document.querySelectorAll<HTMLElement>('[data-sample]').forEach((sample) => {
+    const buttons = [...sample.querySelectorAll<HTMLButtonElement>('[data-sample-choice]')];
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      sample.querySelectorAll<HTMLElement>('[data-sample-result]').forEach((result) => { result.hidden = result.dataset.sampleResult !== button.dataset.sampleChoice; });
+    }));
+  });
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('arrived');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .08 });
+    document.querySelectorAll('.welcome__content > *, .section-heading, .book-tabs, .planning__copy > h2, .planning__copy > p, .plan-sheet, .camp').forEach((element) => observer.observe(element));
+  }
+</script>
 <style>
-  .hero {
-    display: grid; grid-template-columns: minmax(0, 720px);
-    min-height: 315px; align-items: center;
-    padding: var(--space-7) var(--page-pad) var(--space-7);
-    border-bottom: var(--border) solid var(--line-hard);
-    position: relative; overflow: hidden;
-    background: var(--bg-page);
+  :global(body.game-home) { --home-ground:#e9ecd9; --home-paper:#f6efd9; --home-paper-deep:#e4d6b5; --home-ink:#443e2d; --home-muted:#615b45; --home-green:#3f6249; --home-green-hover:#304e39; --home-gold:#e0bd76; --home-light:#fff9e9; --home-heading:'Bree Serif',Georgia,serif; --focus-ring:3px solid #345f49; --focus-offset:5px; background:var(--home-ground); color:var(--home-ink); color-scheme:light; }
+  :global(.game-home .page) { max-width:none; }
+  :global(body.game-home .hdr) { background:var(--home-paper); color:var(--home-ink); }
+  :global(body.game-home .hdr .hdr__inner) { max-width:1320px; min-height:82px; padding-inline:40px; }
+  :global(body.game-home .hdr .brandmark) { color:var(--home-ink); letter-spacing:.03em; }
+  :global(body.game-home .hdr .hdr__brand .brandmark) { font-size:32px; }
+  :global(body.game-home .hdr .brandmark svg) { color:var(--home-green); }
+  :global(body.game-home .hdr .hdr__link),:global(body.game-home .hdr .hdr__locale) { color:var(--home-muted); font-size:16px; }
+  :global(body.game-home .hdr .hdr__locale.is-active),:global(body.game-home .hdr .hdr__link:hover) { color:var(--home-green); }
+  :global(body.game-home .hdr .hdr__beta) { border:0; color:var(--home-green); font-size:16px; }
+  :global(body.game-home .hdr .hdr__menu span) { background:var(--home-ink); }
+  :global(body.game-home .hdr .acct__link),:global(body.game-home .hdr .acct__user) { color:var(--home-green); font-size:16px; min-height:44px; }
+  :global(body.game-home .ftr) { background:var(--home-green); }
+  :global(body.game-home .ftr::before),:global(body.game-home .ftr::after) { display:none; }
+  :global(body.game-home .ftr .ftr__inner) { max-width:1240px; padding-block:60px 45px; }
+  :global(body.game-home .ftr .ftr__bottom) { max-width:none; padding-inline:max(24px,calc((100vw - 1192px)/2)); background:var(--home-green-hover); }
+  :global(body.game-home .ftr .brandmark svg) { color:var(--home-gold); }
+  :global(body.game-home .ftr .ftr__links a span) { display:none; }
+  :global(body.game-home .ftr .ftr__about .brandmark) { font-size:44px; }
+  :global(body.game-home .ftr .ftr__about p),:global(body.game-home .ftr .ftr__links a) { font-size:18px; }
+  :global(body.game-home .ftr .ftr__links h2) { font-size:32px; }
+  :global(body.game-home .ftr .ftr__about small),:global(body.game-home .ftr .ftr__links p),:global(body.game-home .ftr .ftr__bottom) { font-size:16px; }
+  .game-landing { font:400 18px/1.55 var(--font-body); color:var(--home-ink); }
+  .game-landing :is(h1,h2,h3) { color:var(--home-ink); font-family:var(--home-heading); font-weight:400; letter-spacing:-.025em; text-transform:none; text-wrap:balance; }
+  .game-landing h2 { font-size:clamp(32px,3.4vw,44px); line-height:1.15; }
+  .game-landing p { max-width:49ch; }
+  .game-landing a { text-decoration:none; }
+  .game-button { display:inline-flex; justify-content:center; align-items:center; min-height:52px; padding:12px 25px; background:var(--home-green); color:var(--home-light); font-size:18px; font-weight:600; border-radius:5px 5px 14px 5px; transition:background .18s,transform .18s; }
+  .game-button:hover { background:var(--home-green-hover); color:var(--home-light); transform:translateY(-2px); }
+  .game-button:active { transform:translateY(1px); }
+  .text-link { display:inline-flex; align-items:center; min-height:44px; color:var(--home-green); font-weight:600; text-underline-offset:5px; }
+  .text-link:hover { color:var(--home-green-hover); text-decoration:underline; }
+  .welcome { position:relative; isolation:isolate; min-height:610px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); align-items:stretch; overflow:hidden; background:var(--home-paper); }
+  .welcome__content { grid-column:1; grid-row:1; align-self:center; min-width:0; padding:72px 48px 72px max(40px,calc((100vw - 1160px)/2)); }
+  .welcome h1 { max-width:11ch; font-size:clamp(64px,6.4vw,88px); line-height:1.02; }
+  .welcome__content p { max-width:30ch; margin:25px 0 28px; font-size:18px; line-height:1.5; }
+  .welcome__content .text-link { display:flex; width:fit-content; margin-top:14px; }
+  .welcome__art { grid-column:2; grid-row:1; position:relative; min-width:0; overflow:hidden; background:var(--home-ground); }
+  .welcome__art img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; object-position:52% 50%; }
+  .workbench { max-width:1240px; padding:72px 40px 92px; margin:auto; scroll-margin-top:24px; }
+  .section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:20px; margin-bottom:32px; }
+  .section-heading p { color:var(--home-muted); }
+  .companion-book { position:relative; }
+  .book-tabs { display:flex; align-items:end; gap:8px; padding-left:16px; }
+  .book-tabs button { display:flex; align-items:center; gap:10px; min-height:74px; padding:8px 30px 10px 16px; border:0; border-radius:14px 14px 0 0; font:600 18px var(--font-body); color:var(--home-muted); background:var(--home-paper-deep); cursor:pointer; transition:background .2s,transform .2s; }
+  .book-tabs button[aria-selected='true'] { background:var(--home-paper); color:var(--home-green); }
+  .book-tabs button:hover { color:var(--home-green); transform:translateY(-3px); }
+  .book-tabs img { width:48px; height:48px; object-fit:contain; transition:transform .2s; }
+  .book-tabs button:hover img { transform:rotate(-7deg); }
+  .book-panel { display:grid; grid-template-columns:1fr 1.05fr; min-height:390px; background:var(--home-paper); border-radius:12px 20px 20px 12px; overflow:hidden; }
+  .book-panel__copy { padding:42px 40px; display:flex; flex-direction:column; align-items:start; }
+  .book-panel h3 { max-width:21ch; font-size:32px; line-height:1.15; }
+  .book-panel p { margin:18px 0 26px; }
+  .book-panel small { display:block; max-width:39ch; margin-top:18px; font-size:16px; color:var(--home-muted); }
+  .book-panel__picture { position:relative; min-width:0; overflow:hidden; }
+  .book-panel__scene { display:block; height:100%; width:100%; object-fit:cover; object-position:52% 60%; }
+  .book-panel--florais .book-panel__scene { object-position:65% center; }
+  .portrait-tray,.guardian-tray { position:absolute; bottom:28px; left:0; right:0; display:flex; justify-content:center; gap:10px; }
+  .portrait-tray img { width:76px; height:76px; object-fit:contain; background:var(--home-paper); border-radius:12px; padding:4px; transition:transform .2s; }
+  .portrait-tray img:hover,.guardian-tray img:hover { transform:translateY(-7px); }
+  .guardian-tray img { width:86px; height:86px; object-fit:contain; transition:transform .2s; }
+  .book-panel--fantasmas .book-panel__picture { display:flex; align-items:center; background:var(--home-ground); }
+  .book-panel .journey { height:auto; object-fit:contain; }
+  .pending { padding:12px 20px; background:var(--home-paper-deep); border-radius:5px; font-size:18px; font-weight:600; }
+  .no-script { padding:20px; background:var(--home-paper); }
+  .no-script a { color:var(--home-green); margin-right:20px; text-decoration:underline; }
+  .planning { display:grid; grid-template-columns:1fr 1fr; align-items:start; gap:70px; max-width:1240px; margin:auto; padding:0 40px 90px; }
+  .planning__copy { padding-top:30px; }
+  .planning__copy>p { margin-top:22px; }
+  .planning__illustration { display:block; width:100%; height:auto; margin:40px 0 0; }
+  .planning .planning__note { max-width:47ch; color:var(--home-muted); font-size:16px; margin-top:26px; }
+  .plan-sheet { background:var(--home-paper); padding:30px 32px 34px; border-radius:16px 16px 28px 5px; font-size:16px; }
+  .plan-sheet__caption { margin-bottom:22px; color:var(--home-muted); }
+  .plan-sheet fieldset { padding:0; margin:0; border:0; min-width:0; }
+  .plan-sheet legend { padding:0; margin-bottom:12px; font-weight:600; }
+  .budget-choices { display:flex; gap:8px; }
+  .budget-choices button { flex:1; min-height:44px; padding:8px; border:2px solid var(--home-paper-deep); border-radius:5px; font:600 16px var(--font-body); font-variant-numeric:tabular-nums; background:var(--home-light); color:var(--home-ink); cursor:pointer; transition:background .2s,transform .2s; }
+  .budget-choices button[aria-pressed='true'] { background:var(--home-green); color:var(--home-light); border-color:var(--home-green); }
+  .budget-choices button:hover { transform:translateY(-2px); }
+  .team-power { display:flex; flex-direction:column; padding:22px 0 16px; color:var(--home-green); }
+  .team-power strong { font-size:44px; line-height:1.2; font-variant-numeric:tabular-nums; font-weight:600; }
+  .plan-sheet table { width:100%; border-collapse:collapse; font-size:16px; font-variant-numeric:tabular-nums; }
+  .plan-sheet th,.plan-sheet td { padding:9px 7px; text-align:right; border-bottom:1px solid var(--home-paper-deep); }
+  .plan-sheet th:first-child { text-align:left; padding-left:0; }
+  .plan-sheet thead th { font-weight:500; color:var(--home-muted); }
+  .plan-sheet tbody th { font-weight:600; }
+  .plan-sheet tbody th span { font-weight:400; }
+  .plan-sheet .game-button { width:100%; margin-top:24px; }
+  .camp { display:flex; gap:25px; align-items:center; max-width:1160px; margin:0 auto 75px; padding:30px 35px; background:var(--home-paper-deep); border-radius:16px; }
+  .camp>img { width:78px; height:90px; object-fit:contain; flex:none; }
+  .camp h2 { font-size:32px; }
+  .camp p { margin-top:8px; max-width:47ch; font-size:18px; }
+  .camp .game-button { flex:none; margin-left:auto; }
+  .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+  @media (prefers-reduced-motion:no-preference) {
+    .arrived { animation:settle-in .45s ease-out both; }
+    .welcome__content p.arrived { animation-delay:60ms; }
+    .welcome__content .game-button.arrived { animation-delay:120ms; }
+    .welcome__content .text-link.arrived { animation-delay:180ms; }
+    .welcome__art img { animation:tree-breath 22s ease-in-out infinite alternate; }
+    .book-panel:not([hidden]) .book-panel__picture { animation:page-open .35s ease-out; }
+    [data-sample-result]:not([hidden]) .team-power { animation:page-open .2s ease-out; }
+    @keyframes tree-breath { to { transform:scale(1.035); } }
+    @keyframes page-open { from { opacity:.35; transform:translateY(5px); } to { opacity:1; transform:none; } }
+    @keyframes settle-in { from { opacity:.5; transform:translateY(8px); } to { opacity:1; transform:none; } }
   }
-  .hero__art {
-    position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(5, 10, 9, .97) 0%, rgba(5, 10, 9, .88) 27%, rgba(5, 10, 9, .22) 70%, rgba(5, 10, 9, .48) 100%), url('/assets/hero-forneus.jpg') center / cover no-repeat;
-    opacity: .94; pointer-events: none;
+  @media (max-width:1000px) {
+    .welcome { min-height:540px; } .welcome__content { padding-right:32px; } .welcome h1 { font-size:clamp(48px,6.4vw,60px); } .welcome__content p { max-width:26ch; }
+    .planning { gap:35px; } .book-panel__copy { padding:32px 26px; } .book-tabs button { padding-right:22px; }
+    .portrait-tray { gap:5px; } .portrait-tray img { width:64px; height:64px; }
+    .camp { margin-inline:40px; flex-wrap:wrap; } .camp .game-button { margin-left:103px; }
   }
-  .hero > *:not(.hero__art) { position: relative; z-index: 1; }
-  .hero > .preview { display: none; }
-  .hero__copy { display: flex; flex-direction: column; gap: var(--space-8); }
-  .hero h1 { font-family: Georgia, 'Times New Roman', serif !important; font-size: clamp(2.7rem, 5vw, 4.6rem); line-height: .98; letter-spacing: -.045em; font-weight: 600; }
-  .hero__title-accent { color: #52d7a7 !important; }
-  .hero__eyebrow { color: var(--accent); letter-spacing: var(--track-label-wide); }
-  .hero__lead { font-size: var(--size-body-l); color: var(--text-muted); max-width: 620px; }
-  .hero__cta { display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
-  .hero__benefits { display: flex; gap: var(--space-3); flex-wrap: wrap; color: var(--text-muted); font-family: var(--font-body); font-size: var(--size-label); }
-  .hero__cta .fx-btn { padding-left: var(--space-5); padding-right: var(--space-4); gap: var(--space-2); background: linear-gradient(135deg, #48d8a4, #1da878); color: #04100b; box-shadow: 0 8px 26px rgba(43, 213, 157, .22); }
-
-  .preview { margin: 0; background: var(--bg-panel); border: var(--border) solid var(--line-hard); }
-  .preview__head, .preview__foot {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: var(--space-3) var(--space-7); background: var(--bg-chrome);
+  @media (max-width:700px) {
+    :global(body.game-home .hdr .hdr__inner) { min-height:70px; padding-inline:20px; } :global(body.game-home .hdr .hdr__link) { border:0; }
+    .welcome { display:flex; flex-direction:column; align-items:stretch; min-height:0; }
+    .welcome__content { align-self:stretch; padding:36px 24px 28px; order:-1; } .welcome h1 { font-size:54px; max-width:12ch; }
+    .welcome__content p { max-width:35ch; font-size:18px; margin:18px 0 22px; }
+    .welcome__content .text-link { margin:12px 0 0; }
+    .welcome__art { position:relative; inset:auto; height:310px; z-index:0; } .welcome__art img { object-position:center 61%; }
+    .workbench { padding:44px 18px 50px; } .section-heading { display:block; margin-bottom:22px; } .section-heading p { margin-top:10px; font-size:18px; }
+    .book-tabs { gap:5px; padding-left:7px; } .book-tabs button { flex:1; flex-direction:column; gap:3px; padding:8px 5px; min-height:86px; font-size:16px; }
+    .book-tabs img { width:42px; height:42px; } .book-panel { grid-template-columns:1fr; min-height:0; border-radius:10px 10px 20px 10px; }
+    .book-panel__copy { padding:27px 25px; } .book-panel h3 { font-size:32px; max-width:20ch; } .book-panel p { margin:14px 0 20px; font-size:18px; }
+    .book-panel__picture { min-height:245px; height:245px; } .book-panel__scene { object-position:center 63%; }
+    .portrait-tray { bottom:18px; gap:10px; } .portrait-tray img { width:66px; height:66px; }
+    .planning { grid-template-columns:1fr; padding:0 18px 50px; gap:24px; } .planning__copy { padding:0 6px; }
+    .planning__copy>p { margin-top:16px; } .planning__illustration { margin-top:24px; } .plan-sheet { padding:25px 22px; }
+    .camp { margin:0 18px 45px; padding:25px; gap:18px; } .camp>img { width:55px; height:65px; } .camp>div { flex:1; }
+    .camp h2 { font-size:28px; } .camp p { font-size:16px; } .camp .game-button { margin-left:0; width:100%; }
   }
-  .preview__head { border-bottom: var(--border) solid var(--line-hard); }
-  .preview__foot { border-top: var(--border) solid var(--line-hard); }
-  .preview__budget { font-size: var(--size-label-xs); color: var(--accent); }
-  .preview__total { font-size: var(--size-figure); font-weight: 600; color: var(--accent); }
-  .preview__table { width: 100%; border-collapse: collapse; }
-  .preview__table td {
-    padding: var(--space-2) var(--space-7); font-size: var(--size-figure-s);
-    border-bottom: var(--border) solid var(--line-soft);
-  }
-  .preview__table tr:last-child td { border-bottom: 0; }
-  .preview__table [data-align="end"] { text-align: right; }
-  .preview__power { color: var(--accent); }
-
-  .tools { display: flex; flex-direction: column; gap: var(--border); background: var(--line-hard); }
-  .tools__head {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: var(--space-6) var(--page-pad); background: var(--bg-page);
-  }
-
-
-  .showcase { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(300px, .82fr); gap: clamp(40px, 7vw, 112px); align-items: center; max-width: 1200px; margin-inline: auto; padding: 56px var(--page-pad) 64px; background: var(--bg-inset); border-top: var(--border) solid var(--line-hard); }
-  .showcase__capture { display: block; min-width: 0; color: inherit; }
-  .showcase__screen { overflow: hidden; padding: 8px 8px 0; border: 1px solid #394044; border-radius: 14px; background: #171b1e; box-shadow: 0 18px 42px rgba(0,0,0,.34); }
-  .showcase__screen-bar { display: flex; align-items: center; gap: 10px; padding: 8px 10px 12px; color: var(--text-muted); font: .65rem var(--font-mono); }
-  .showcase__screen-bar i { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
-  .showcase__screen-bar small { margin-left: auto; font: inherit; }
-  .showcase__screen-chin { display: grid; place-items: center; height: 22px; }
-  .showcase__screen-chin i { width: 18px; height: 2px; background: var(--accent); opacity: .6; }
-  .showcase__screen-stand { width: 26%; height: 26px; margin: 0 auto 12px; border-bottom: 4px solid #394044; background: linear-gradient(#171b1e, #2a3034); clip-path: polygon(34% 0,66% 0,72% 80%,100% 86%,100% 100%,0 100%,0 86%,28% 80%); }
-  .showcase__capture img { display: block; width: 100%; height: auto; }
-  .showcase__capture span { display: block; padding: var(--space-3) var(--space-2); border-top: 1px solid var(--line); color: var(--accent); font-size: var(--size-body-s); }
-  .showcase__capture:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .mockup__bar { display: flex; justify-content: space-between; padding: var(--space-3) var(--space-5); color: var(--text-faint); font: 500 .68rem var(--font-mono); border-bottom: 1px solid var(--line-control); }
-  .mockup__body { display: grid; grid-template-columns: .75fr 1.25fr; gap: var(--space-5); padding: var(--space-6); }
-  .mockup__resources, .mockup__result { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-5); background: var(--bg-panel); border: 1px solid var(--line); }
-  .mockup__resources strong { color: var(--accent); font: 600 var(--size-figure) var(--font-mono); }
-  .mockup__resource-line { height: 26px; border: 1px solid var(--line-control); background: linear-gradient(90deg, rgba(74, 215, 169, .22) 0 62%, transparent 62%); }
-  .mockup__resource-line--short { background: linear-gradient(90deg, rgba(222, 176, 82, .25) 0 38%, transparent 38%); }
-  .mockup__result strong { color: var(--accent); font: 600 clamp(1.6rem, 4vw, 2.8rem) var(--font-mono); }
-  .mockup__gain { color: var(--accent); font: 500 .7rem var(--font-mono); }
-  .mockup__rows { display: flex; flex-direction: column; gap: var(--border); margin-top: var(--space-3); }
-  .mockup__row { display: flex; justify-content: space-between; gap: var(--space-3); padding: var(--space-2) 0; color: var(--text-muted); font-size: var(--size-body-s); border-bottom: 1px solid var(--line); }
-  .showcase__copy { max-width: 500px; }
-  .showcase__copy h2 { margin: var(--space-4) 0 var(--space-5); font-size: clamp(2rem, 3vw, 2.8rem); line-height: 1.08; }
-  .showcase__copy > p { color: var(--text-muted); line-height: var(--leading-relaxed); }
-  .showcase__copy ul { display: grid; gap: var(--space-5); margin: var(--space-8) 0 0; padding: 0; list-style: none; color: var(--text-muted); }
-  .showcase__copy li { display: flex; gap: var(--space-4); align-items: baseline; }
-  .showcase__copy li::before { content: '✓'; flex: none; color: var(--accent); font-family: var(--font-mono); }
-  .process, .wiki { padding: clamp(56px, 8vw, 96px) var(--page-pad); border-top: var(--border) solid var(--line-hard); }
-  .process { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: clamp(48px, 8vw, 128px); align-items: start; background: var(--bg-page); }
-  .section-intro { max-width: 520px; }
-  .section-intro h2 { margin: var(--space-4) 0 var(--space-3); }
-  .section-intro p { color: var(--text-muted); line-height: var(--leading-relaxed); }
-  .process__steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-top: var(--space-3); }
-  .process__step { position: relative; min-width: 0; }
-  .process__step-top { display: flex; align-items: center; height: 28px; }
-  .process__number { display: grid; place-items: center; width: 28px; height: 28px; flex: none; color: var(--bg-page); background: var(--accent); font: 600 .72rem var(--font-mono); }
-  .process__connector { display: block; width: 100%; height: 1px; background: var(--line-control); }
-  .process__step-copy { padding: var(--space-6) var(--space-6) 0 0; }
-  .process__step h3 { margin: 0 0 var(--space-3); font-size: var(--size-display-s); line-height: 1.12; }
-  .process__step p { max-width: 230px; color: var(--text-muted); line-height: var(--leading-relaxed); }
-  .wiki { background: var(--bg-page); }
-  .wiki__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); margin-top: var(--space-9); }
-  .wiki__card { min-height: 180px; display: flex; flex-direction: column; padding: var(--space-6); background: var(--bg-panel); border: 1px solid var(--line-control); transition: border-color 180ms ease, transform 180ms ease; }
-  .wiki__card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .wiki__card h3 { margin: var(--space-7) 0 var(--space-3); font-size: var(--size-display-s); }
-  .wiki__card p { color: var(--text-muted); line-height: var(--leading-relaxed); }
-  .wiki__link { margin-top: auto; padding-top: var(--space-5); color: var(--accent); font: 500 .72rem var(--font-mono); text-transform: uppercase; }
-
-  .why {
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--border); background: var(--line-hard);
-    border-top: var(--border) solid var(--line-hard);
-  }
-  .why__cell {
-    display: flex; flex-direction: column; gap: var(--space-3);
-    padding: var(--space-9) var(--page-pad); background: var(--bg-page);
-  }
-  .why__label { color: var(--accent); }
-  .why__text { font-size: var(--size-body-s); color: var(--text-muted); }
-
-  @media (max-width: 1100px) {
-    .hero { grid-template-columns: minmax(0, 1fr); gap: var(--space-9); }
-    .why, .showcase, .process { grid-template-columns: minmax(0, 1fr); }
-    .wiki__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .process__steps { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
-    .process__step { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: var(--space-5); }
-    .process__step-top { display: block; height: auto; }
-    .process__connector { width: 1px; height: calc(100% + var(--space-8)); margin: 0 auto; }
-    .process__step-copy { padding: 0; }
-    .process__step p { max-width: 520px; }
-  }
-  @media (max-width: 640px) {
-    .hero { padding-block: var(--space-9); }
-    .hero h1 { font-size: var(--size-display-l); }
-    .showcase { padding-block: var(--space-9); }
-    .mockup__body { grid-template-columns: 1fr; }
-    .wiki__grid { grid-template-columns: minmax(0, 1fr); }
-  }
-  @media (max-width: 700px) {
-    .showcase { gap: var(--space-10); padding-block: var(--space-10); }
-    .showcase__copy h2 { font-size: var(--size-display-l); }
-  }
-
-  @media (max-width: 600px) {
-    .tools__head { align-items: flex-start; flex-direction: column; gap: var(--space-2); }
-  }
+  @media (max-width:400px) { .welcome__content .text-link { display:flex; margin-left:0; } .welcome__art { height:260px; } .portrait-tray { gap:5px; } .portrait-tray img { width:60px; height:60px; } .plan-sheet table { font-size:16px; } }
+  @media (prefers-reduced-motion:reduce) { .game-landing *, .game-landing *::before { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
 </style>

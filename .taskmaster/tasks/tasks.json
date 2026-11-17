@@ -1,0 +1,228 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Correcao de Integridade e Sincronizacao de Fixtures do Python",
+        "description": "Atualizar o teste test_matches_known_scenario em Python para refletir os valores oficiais vigentes (565347) e regenerar os fixtures rodando o script generate_fixtures.py.",
+        "details": "Investigar a divergencia no teste tests/test_optimizer.py::test_matches_known_scenario devida a alteracoes nas tabelas de dados ou formulas de poder efetivo. Corrigir o teste ou as formulas no Core Python conforme o gabarito oficial e executar 'python scripts/generate_fixtures.py' para atualizar os arquivos JSON de fixture consumidos pelo frontend TypeScript.",
+        "testStrategy": "Executar a suite de testes Python via pytest para garantir que todos os testes do core passem sem falhas.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [],
+        "complexity": 5,
+        "recommendedSubtasks": 3,
+        "expansionPrompt": "Break down Task 1 into subtasks focusing on investigating formula discrepancies in pytest, updating Python optimizer core logic, and regenerating/verifying JSON fixtures."
+      },
+      {
+        "id": 2,
+        "title": "Harmonizacao do Solver TypeScript com o Core Python",
+        "description": "Ajustar a logica de calculo em web/src/lib/solver/ para eliminar discrepancias de arredondamento, calculo de raw_power e leveling_cost em relacao aos novos fixtures, zerando os erros em web/test/solver.test.ts.",
+        "details": "Analisar as falhas em web/test/solver.test.ts. Modificar a implementacao do solver TypeScript em web/src/lib/solver/ para garantir paridade exata com as formulas e resultados gerados pelo core Python e armazenados nos fixtures sincronizados na tarefa 1.",
+        "testStrategy": "Executar o comando de testes do frontend ('npm test') para verificar que todos os testes unitarios do solver TypeScript passam com sucesso.",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "complexity": 7,
+        "recommendedSubtasks": 4,
+        "expansionPrompt": "Break down Task 2 into subtasks for auditing solver math discrepancies, refactoring raw_power and leveling_cost calculations in TS, and validating against updated test fixtures."
+      },
+      {
+        "id": 3,
+        "title": "Correcao de Formatacao e Localizacao de Exportacoes (CSV / JSON)",
+        "description": "Implementar formatacao decimal estrita por locale (pt-BR com virgula, en-US com ponto) nos utilitarios de exportacao e preservar corretamente o estado de avisos no JSON exportado.",
+        "details": "Corrigir os metodos de exportacao testados em web/test/exports.test.ts. Garantir o tratamento correto de separadores decimais baseados no locale escolhido pelo usuario e assegurar que os avisos ja resolvidos nao sejam perdidos na serializacao do arquivo JSON.",
+        "testStrategy": "Executar a suite de testes de exportacao em web/test/exports.test.ts para validar a geracao de arquivos CSV e JSON.",
+        "priority": "medium",
+        "dependencies": [
+          "2"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "complexity": 4,
+        "recommendedSubtasks": 2,
+        "expansionPrompt": "Break down Task 3 into subtasks for implementing locale-aware CSV formatting (pt-BR/en-US) and updating JSON export serialization to maintain resolved warning states."
+      },
+      {
+        "id": 4,
+        "title": "Higiene de Codigo, Artefatos Temporarios e Governanca do Repositorio",
+        "description": "Remover ou realocar arquivos e scripts temporarios soltos na pasta web/ (_inspect_amigato_anim_tmp.py, _amigato_prefab_hits_tmp.txt, gallery-server.cjs) e atualizar o .gitignore.",
+        "details": "Fazer uma varredura por artefatos temporarios de extracao e inspecao na pasta web/. Mover utilitarios permanentes para pastas dedicadas de scripts/ferramentas ou exclui-los, e atualizar o arquivo .gitignore para evitar que arquivos de diagnostico temporarios sejam versionados acidentalmente.",
+        "testStrategy": "Verificar o status do repositorio git ('git status') para garantir que nenhum arquivo temporario nao rastreado permaneca e que o projeto limpo compile corretamente.",
+        "priority": "medium",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [],
+        "complexity": 2,
+        "recommendedSubtasks": 0,
+        "expansionPrompt": "Task 4 is straightforward cleanup and does not require further subtask expansion."
+      },
+      {
+        "id": 5,
+        "title": "Melhorias de Acessibilidade, Performance e Feedback nos Web Workers de Florais",
+        "description": "Otimizar a reatividade dos Web Workers de Florais (florais-planner.worker.ts, florais-recommend.worker.ts) e assegurar feedback de carregamento claro para calculos longos na UI.",
+        "details": "Revisar a comunicacao assincrona e o ciclo de vida dos Web Workers de Florais para evitar travamentos de interface. Implementar estados de loading/progresso perceptíveis ao usuario durante o processamento de calculos pesados na interface Astro/TypeScript.",
+        "testStrategy": "Validar manualmente a fluidez da UI durante operacoes pesadas de florais e executar testes de regressao de interface e componentes se disponiveis.",
+        "priority": "low",
+        "dependencies": [
+          "2"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "complexity": 6,
+        "recommendedSubtasks": 3,
+        "expansionPrompt": "Break down Task 5 into subtasks for refactoring Web Worker asynchronous messaging, introducing loading/progress UI feedback, and verifying interface responsiveness."
+      },
+      {
+        "id": 6,
+        "title": "Extracao de Regras de Negocio e Assets Brutos dos Binarios do Jogo",
+        "description": "Analisar os binarios e estruturas de dados do jogo em C:\\Users\\bruno\\Downloads\\TOS para extrair formulas, tabelas de atributos e assets.",
+        "details": "Utilizar ferramentas de analise de binarios Unity/IL2CPP (como Il2CppDumper/Cpp2IL ou MCP rea) na pasta C:\\Users\\bruno\\Downloads\\TOS (GameAssembly.dll, TOS_Data) para extrair metadados, estruturas de dados e tabelas. Identificar as formulas de calculo de atributos, curvas de nivel e multiplicadores. Exportar os dados brutos e assets relevantes em formatos estruturados (JSON/CSV) em pastas especificas de recursos do projeto para posterior integracao no solver e na interface.",
+        "testStrategy": "Verificar a consistencia dos dados extraidos comparando amostras com os valores observados em jogo. Garantir que os arquivos JSON/CSV gerados estejam bem formatados e possam ser parseados sem erros pelos scripts do projeto.",
+        "status": "in-progress",
+        "dependencies": [],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Setup IL2CPP Analysis Environment",
+            "description": "Prepare the environment and verify the binary files located in C:\\Users\\bruno\\Downloads\\toS for analysis.",
+            "dependencies": [],
+            "details": "Check access to GameAssembly.dll and the TOS_Data folder. Ensure that analysis tools like Il2CppDumper or Cpp2IL are properly configured to read metadata and binary structures.",
+            "status": "pending",
+            "testStrategy": "Verify that the dumping tool successfully loads the metadata without corruption or missing references."
+          },
+          {
+            "id": 2,
+            "title": "Extract Metadata and Structural Data",
+            "description": "Run the dumping tool to extract metadata, class definitions, and raw attribute structures from the game binaries.",
+            "dependencies": [
+              1
+            ],
+            "details": "Execute Il2CppDumper against the game assembly and metadata files to generate dump.cs, global-metadata.dat mapping, and script JSON outputs.",
+            "status": "pending",
+            "testStrategy": "Inspect the generated dump files to ensure that major character classes, attribute tables, and formulas are fully visible and readable."
+          },
+          {
+            "id": 3,
+            "title": "Identify Game Formulas and Level Curves",
+            "description": "Analyze the dumped source structures to isolate formulas for attribute calculation, leveling curves, and multiplier tables.",
+            "dependencies": [
+              2
+            ],
+            "details": "Search through generated code and database dumps for combat formulas, stat scaling algorithms, and progression tables used by the game engine.",
+            "status": "pending",
+            "testStrategy": "Cross-reference extracted formulas with known manual calculations or documented game mechanics to verify mathematical logic."
+          },
+          {
+            "id": 4,
+            "title": "Export Structured Data to JSON and CSV",
+            "description": "Export the extracted formulas, attribute tables, and numerical constants into structured JSON and CSV formats.",
+            "dependencies": [
+              3
+            ],
+            "details": "Write parsing scripts or manual extraction routines to format the raw database records into clean JSON/CSV files suited for project integration.",
+            "status": "pending",
+            "testStrategy": "Validate the exported JSON and CSV files using standard parsers to confirm there are no syntax or formatting errors."
+          },
+          {
+            "id": 5,
+            "title": "Integrate Resources into Project Asset Folders",
+            "description": "Move and organize the generated JSON/CSV data files into the designated project resource directories for the solver and UI.",
+            "dependencies": [
+              4
+            ],
+            "details": "Place the structured data files inside the target directories of the repository so that the Python core and TypeScript frontend can consume them seamlessly.",
+            "status": "pending",
+            "testStrategy": "Run project load scripts or unit tests to ensure that the application successfully reads the newly integrated resource files."
+          }
+        ],
+        "updatedAt": "2026-10-23T13:00:20.037Z"
+      },
+      {
+        "id": 7,
+        "title": "UI/UX Evolution and Integrated Game Design System",
+        "description": "Incorporate icons, textures, typography, and visual elements from extracted game assets into web screens (Home, Amigatos, Florais, Gamer) to build an immersive visual identity faithful to Tree of Savior Neo.",
+        "details": "1. Asset Ingestion and Optimization: Transfer and organize visual resources from 'C:\\Users\\bruno\\Desktop\\forneus assets' into the web workspace (web/public/assets/ or web/src/assets/). Compress textures and convert icons to WebP or SVG formats to optimize loading times. 2. Design Tokens and Theme Definition: Configure global CSS/Tailwind design tokens including game-inspired color palettes, custom typography, frames, button variants, and icon components reflecting Tree of Savior Neo visual aesthetics. 3. UI Component Integration: Refactor the Home, Amigatos, Florais, and Gamer pages to utilize the new themed UI components, textured card borders, custom fonts, and game icon sets. 4. Responsive Adaptation: Ensure visual frames and layout components scale seamlessly across desktop, tablet, and mobile breakpoints without breaking accessibility or text readability.",
+        "testStrategy": "1. Visual Audit: Perform visual walkthroughs of the Home, Amigatos, Florais, and Gamer routes to verify consistent application of typography, icons, textures, and custom borders. 2. Asset Integrity Check: Inspect browser DevTools Network tab to ensure all asset paths resolve successfully (HTTP 200) with zero missing resource (404) errors. 3. Responsiveness and Performance Verification: Test responsive breakpoints on desktop and mobile viewports to confirm visual components adjust fluidly without layout overflow.",
+        "status": "pending",
+        "dependencies": [
+          "6"
+        ],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Asset Ingestion and Optimization",
+            "description": "Transfer and organize visual resources from forneus assets into the web workspace and compress/convert them.",
+            "dependencies": [
+              6
+            ],
+            "details": "Transfer visual resources from C:\\Users\\bruno\\Desktop\\forneus assets into web/public/assets/ or web/src/assets/. Compress textures and convert icons to WebP or SVG formats to optimize loading times.",
+            "status": "pending",
+            "testStrategy": "Inspect browser DevTools Network tab to ensure all asset paths resolve successfully with optimal loading times."
+          },
+          {
+            "id": 2,
+            "title": "Design Tokens and Theme Definition",
+            "description": "Configure global CSS and Tailwind design tokens including game-inspired color palettes and typography.",
+            "dependencies": [
+              1
+            ],
+            "details": "Configure global CSS/Tailwind design tokens including game-inspired color palettes, custom typography, frames, button variants, and icon components reflecting Tree of Savior Neo visual aesthetics.",
+            "status": "pending",
+            "testStrategy": "Verify tokens compilation and check design token integration within the global styles file."
+          },
+          {
+            "id": 3,
+            "title": "UI Component Integration",
+            "description": "Refactor the Home, Amigatos, Florais, and Gamer pages to utilize new themed UI components.",
+            "dependencies": [
+              2
+            ],
+            "details": "Refactor the Home, Amigatos, Florais, and Gamer pages to utilize the new themed UI components, textured card borders, custom fonts, and game icon sets.",
+            "status": "pending",
+            "testStrategy": "Perform visual walkthroughs of the Home, Amigatos, Florais, and Gamer routes to verify consistent application of typography, icons, textures, and custom borders."
+          },
+          {
+            "id": 4,
+            "title": "Responsive Adaptation",
+            "description": "Ensure visual frames and layout components scale seamlessly across desktop, tablet, and mobile breakpoints.",
+            "dependencies": [
+              3
+            ],
+            "details": "Ensure visual frames and layout components scale seamlessly across desktop, tablet, and mobile breakpoints without breaking accessibility or text readability.",
+            "status": "pending",
+            "testStrategy": "Test user interfaces across multiple screen resolutions using responsive design mode and check accessibility guidelines compliance."
+          },
+          {
+            "id": 5,
+            "title": "Visual Audit and Final Polish",
+            "description": "Perform end-to-end visual review and fix any asset rendering or alignment anomalies across all screens.",
+            "dependencies": [
+              4
+            ],
+            "details": "Conduct a thorough end-to-end visual review of all migrated screens, validating contrast ratios, font rendering, and asset integrity to guarantee complete visual fidelity.",
+            "status": "pending",
+            "testStrategy": "Execute complete visual regression checks and gather stakeholder feedback on UI consistency."
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "version": "1.0.0",
+      "lastModified": "2026-10-23T13:00:20.038Z",
+      "taskCount": 7,
+      "completedCount": 0,
+      "tags": [
+        "master"
+      ],
+      "created": "2026-10-23T13:04:53.869Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
