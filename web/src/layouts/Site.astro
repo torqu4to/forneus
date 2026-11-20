@@ -6,7 +6,7 @@ import { useTranslations, switchLocalePath, LOCALES, type Locale } from '../i18n
 import { LOCALE_TAG } from '../i18n/ui';
 
 interface Props { locale: Locale; title: string; description?: string; active?: string; bodyClass?: string }
-const { locale, title, description, active, bodyClass } = Astro.props;
+const { locale, title, description, bodyClass } = Astro.props;
 const t = useTranslations(locale);
 
 const site = Astro.site ?? new URL('https://forneus.wiki');
@@ -24,7 +24,7 @@ const indexable = site.host === PRODUCTION_HOST || site.host === `www.${PRODUCTI
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0e1715" />
+    <meta name="theme-color" content="#101114" />
     <title>{title} · Forneus</title>
     <meta name="description" content={description ?? t('site.tagline')} />
     {!indexable && <meta name="robots" content="noindex, nofollow" />}
@@ -57,7 +57,7 @@ const indexable = site.host === PRODUCTION_HOST || site.host === `www.${PRODUCTI
   </head>
   <body class={bodyClass}>
     <a href="#main" class="skip">{locale === 'pt' ? 'Pular para o conteúdo' : 'Skip to content'}</a>
-    <SiteHeader locale={locale} active={active} />
+    <SiteHeader locale={locale} />
     <main id="main" class="page">
       <slot />
     </main>

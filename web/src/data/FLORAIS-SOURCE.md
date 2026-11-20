@@ -6,7 +6,9 @@ The source provides `fg-data` and `fg-icons` JSON blocks in its public HTML.
 The import script extracts only data and game icons; source application code and design are not bundled.
 Game art remains the property of its respective rights holders; repository code licensing does not grant rights to third-party art/data.
 
-15 guardians, 9 guardian slots and 52 Spiritus slots. Cultivation 1–13;
+The runtime catalog supplements the 15 imported guardians with Mangosteen (Mangostão), verified from in-game absorption panels.
+
+15 imported guardians, 9 guardian slots and 52 Spiritus slots. Cultivation 1–13;
 stars 1–6; Spiritus R1/R2, single/dual attributes, levels 0–9.
 Star bonuses (primary/secondary) are 0/0, 0/1, 1/1, 1/1, 1/2, 2/2.
 Cardinal directions open at cultivation 1; NW/NE/SW/SE at 3/5/7/9.

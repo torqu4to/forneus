@@ -61,7 +61,7 @@ export const guardianNamesPt: Record<string, string> = {
   Lacordini: 'Tulipixie', Kumquat: 'Laranjinha', Lacecap: 'Azulária',
   'Passion Coconut': 'Cocorico', Strawbie: 'Amorango', 'Morning Glory': 'Ipomênia',
   Tradescantia: 'Mirtilda', 'Sleepy Waterlily': 'Lotulina', 'Velvet Futon': 'Futonludo',
-  'Frost Lily': 'Gelíria', Kitsune: 'Triguinha', Macadamia: 'Macadâmia',
+  'Frost Lily': 'Gelíria', Kitsune: 'Triguinha', Macadamia: 'Macadâmia', Mangosteen: 'Mangostão',
 };
 export function guardianName(name: string, locale: 'pt' | 'en'): string {
   return locale === 'pt' ? guardianNamesPt[name] ?? name : name;

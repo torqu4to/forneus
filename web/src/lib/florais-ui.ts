@@ -44,7 +44,7 @@ function init(root: HTMLElement) {
   function el<K extends keyof HTMLElementTagNameMap>(tag: K, text = '', className = '') {
     const e = document.createElement(tag); e.textContent = text; e.className = className; return e;
   }
-  function icon(src: string, alt = '') { const img = el('img'); img.src = src; img.alt = alt; return img; }
+  function icon(src: string | undefined, alt = '') { if (!src) return el('span', '🌸'); const img = el('img'); img.onerror = () => img.replaceWith(el('span', '🌸')); img.src = src; img.alt = alt; return img; }
   function table(headers: string[], rows: string[][]) {
     const wrap = el('div', '', 'floral-table-wrap'), table = el('table', '', 'floral-table'), head = el('thead'), tr = el('tr');
     for (const label of headers) { const th = el('th', label); th.scope = 'col'; tr.append(th); }

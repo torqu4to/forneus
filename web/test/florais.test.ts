@@ -4,8 +4,8 @@ import { data, emptyGarden, parseGarden, calculateSlot, calculateGarden, spiritu
 import type { Spiritus } from '../src/lib/florais.ts';
 
 describe('Floral guardian calculator — Flowerguard Online snapshot', () => {
-  it('has 15 guardians, nine slots, 52 Spiritus and valid adjacency', () => {
-    assert.equal(data.flowerguards.length, 15); assert.equal(data.flowerguardSlots.length, 9);
+  it('has 16 guardians, nine slots, 52 Spiritus and valid adjacency', () => {
+    assert.equal(data.flowerguards.length, 16); assert.equal(data.flowerguardSlots.length, 9);
     assert.equal(data.gridLayout.filter(c => c.type === 'spiritus').length, 52);
     assert.equal(new Set(data.gridLayout.map(c => `${c.row}:${c.col}`)).size, 61);
     for (const a of Object.values(data.gridAdjacency)) for (const id of Object.values(a)) assert(data.gridLayout.some(c => c.id === id && c.type === 'spiritus'));

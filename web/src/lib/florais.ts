@@ -22,7 +22,21 @@ interface Dataset {
   cultivationCosts: Record<Tier, Record<string, { powder: number; oil: number }>>;
   icons: { flowerguards: Record<string, string>; spiritus: Record<string, string> };
 }
-export const data = raw as Dataset;
+// Absorption requirements verified from the in-game Mangosteen cards.
+const mangosteen: Guardian = {
+  name: 'Mangosteen', tier: 'R2',
+  spiritus1_physical: 'Agility', spiritus2_physical: 'Stamina',
+  spiritus1_magic: 'Wisdom', spiritus2_magic: 'Stamina',
+  primary_stat: 'Haste', secondary_stat: 'PvP HP',
+};
+const snapshot = raw as Dataset;
+export const data: Dataset = {
+  ...snapshot,
+  icons: { ...snapshot.icons, flowerguards: { Mangosteen: "/mangosteen.png", ...snapshot.icons.flowerguards } },
+  flowerguards: snapshot.flowerguards.some(g => g.name === mangosteen.name)
+    ? snapshot.flowerguards
+    : [...snapshot.flowerguards, mangosteen],
+};
 export const allowedStats: Record<ClassType, Stat[]> = { physical: ['Strength', 'Agility', 'Stamina'], magic: ['Wisdom', 'Morale', 'Stamina'] };
 export const starBonus = [[0, 0], [0, 0], [0, 1], [1, 1], [1, 1], [1, 2], [2, 2]];
 export const emptyGarden = (): Garden => ({ version: 1, classType: 'magic', flowerguard: {}, spiritus: {} });

@@ -19,27 +19,27 @@
   /* ── surfaces ─────────────────────────────────────────────────────
      Five steps from the page floor up. Panels sit ABOVE the page, chrome
      (headers, table heads) sits above panels. */
-  --bg-page:        #0d1916;
-  --bg-panel:       #11221d;
-  --bg-raised:      #182b24;
-  --bg-chrome:      #20372e;
-  --bg-inset:       #0f211b;
+  --bg-page:        #101114;
+  --bg-panel:       #15171b;
+  --bg-raised:      #1b1d22;
+  --bg-chrome:      #22252b;
+  --bg-inset:       #111316;
 
   /* ── lines ────────────────────────────────────────────────────────
      --line-hard separates regions; --line-soft separates rows inside one
      region. Using hard between table rows makes a dense table look caged. */
-  --line-hard:      #2a4338;
-  --line-soft:      #1d342b;
+  --line-hard:      #30333a;
+  --line-soft:      #24272d;
   --line:           var(--line-hard);
-  --line-control:   #456154;
+  --line-control:   #41454d;
 
   /* ── text ─────────────────────────────────────────────────────────
      Four steps. Anything below --text-faint fails contrast on --bg-page. */
-  --text-strong:    #f4f0e4;
-  --text-default:   #d5e3d9;
-  --text-muted:     #a9c0b1;
-  --text-faint:     #94ac9d;
-  --text-disabled:  #6e8578;   /* UI only: disabled controls, never content */
+  --text-strong:    #f5f5f6;
+  --text-default:   #e1e2e5;
+  --text-muted:     #b5b7bd;
+  --text-faint:     #9da0a7;
+  --text-disabled:  #737780;   /* UI only: disabled controls, never content */
 
   /* ── brand accent ─────────────────────────────────────────────────
      One accent, three roles: primary action, active state, the number that

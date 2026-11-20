@@ -55,7 +55,7 @@ export function initPlanner(root: HTMLElement, locale: 'pt'|'en', getGarden:()=>
   function button(label:string){const b=el('button',label,'fx-btn fx-btn--ghost');b.type='button';return b;}
   function selectField(title:string,options:string[][]){const label=el('label',title),input=el('select');options.forEach(([value,name])=>input.append(new Option(name,value)));label.append(input);return {label,input};}
   function numField(title:string,min:number,max:number,value:number){const label=el('label',title),input=el('input');input.type='number';input.min=String(min);input.max=String(max);input.step='1';input.value=String(value);input.required=true;label.append(input);return{label,input};}
-  function icon(src:string){const img=el('img');img.src=src;img.alt='';img.width=36;img.height=36;return img;}
+  function icon(src:string | undefined){if(!src)return el('span','🌸');const img=el('img'); img.onerror = () => img.replaceWith(el('span', '🌸'));img.src=src;img.alt='';img.width=36;img.height=36;return img;}
   function invalidate(){worker?.terminate();worker=null;result=null;run.disabled=false;cancel.hidden=true;output.replaceChildren();status.textContent='';}
   function save(){try{localStorage.setItem(key(),JSON.stringify({stock,limits,manual,target:priority.input.value}));status.textContent=tr('Inventário e limites salvos neste navegador.','Inventory and limits saved in this browser.');}catch{status.textContent=text.storageFail;}}
   function populateLimits(){for(const [k,f]of Object.entries(fields))f.input.value=String(limits[k as keyof typeof fields]);maxTier.input.value=limits.tier;}
